@@ -1,5 +1,7 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+#
+# Installer version customized per https://github.com/Misterio77/nix-starter-configs
 {
   inputs,
   lib,
@@ -18,7 +20,15 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
+  
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      ctorgalson = import ../home-manager/home.nix;
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -72,7 +82,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
 
   nixpkgs = {
     # You can add overlays here
@@ -135,8 +144,20 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [
+        # thunderbird
+      ];
     };
   };
+  
+  programs.firefox.enable = true;
+  
+  environment.systemPackages = with pkgs; [
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
+     vim
+  ];
+
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
