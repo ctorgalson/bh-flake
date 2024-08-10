@@ -25,7 +25,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-6959cef7-9727-4cab-a672-a440e9e5ff95".device = "/dev/disk/by-uuid/6959cef7-9727-4cab-a672-a440e9e5ff95";
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ser6"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -116,22 +116,25 @@
   # FIXME: Add the rest of your current configuration
 
   # TODO: Set your hostname
-  networking.hostName = "your-hostname";
+  # networking.hostName = "your-hostname";
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username
-    your-username = {
+    ctorgalson = {
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "correcthorsebatterystaple";
+      # initialPassword = "correcthorsebatterystaple";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARjoOuzp5vkg05GYXcvGSqwH+TPMtEWjWx6AQo+QofY
+        sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIL8NdyEZwj8stFcSA+y6kXeP2a5reIjtPF5g3E5WkOFcAAAABHNzaDo=
+        sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIDtpZtMLS2NxNgLu+jNA5mufLH2shsKottATkgQZ0DyEAAAABHNzaDo=
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDK1/S0Q2E46Pi34Q4a0/o8Y7pljVnpBfNUeLcDk/KPMHKEFwqy1WSo3eBnI8gZtA7r5tNBctFC3FPnDx+oHlmEOz/mBKmQMLyxM1+5cfP6AjpYJ17WZMtt/xdASD4EbYNhGvk1lVaaj4+wTN2gTKiP1tdp8F2kPYjbXVqJv8BstLvloC5dF+XPPdlA0/sEQOGETGzcUywqSqpQ0DDHZbN+3n24UBJWBy6bJnI973wybt3qCaWiEyyqHZxIu1+gY03Y9dH82MdIeqGVv4PsHT5x3ziIvYo/2s0AR9s236sb/fiyd4ok/YSv34F3lyIFC3NM3RtOaGOmckfloUUZp2ed+728N4XMXLOo0JXszjui0/wxyE/jiFXtM8Pmb7npzLWsPjoOwCA7acy6XYuaOl30jmKXYBfobGvfnhTmjPzQvRAZextkG+nJE5R31P0q86BaJx/zY6EOrL1vJ1vCM9eNYMOg57gI5AuRyu/grRBxpEzQp/OU72SAqUCxkqGq/sYZpoBPdIlw/9153WnvodJUpFL8SQLA3+0FDRHOK2y0b24AVqXeRhOxONAFMGwKmTFb3HrkrUSGAFEdk3JS7RNi1bym04irBx/ODPGyFoIicxfa1F8HED7rkklG9XKJXGW6hyK/Pbs5kZhv8ZSgbjD0Grh9ZGmmLr3VTz4ipwO4Gw==
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = [ "networkmanager" "wheel" ];
     };
   };
 
