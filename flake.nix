@@ -25,7 +25,7 @@
       ser6 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
+        modules = [./ser6/configuration.nix];
       };
     };
 
