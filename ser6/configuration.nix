@@ -7,8 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./ser6/hardware-configuration.nix
-      ./main-user.nix 
+      ./hardware-configuration.nix
+      ../main-user.nix 
     ];
 
   # Enable flakes.
