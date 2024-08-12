@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-6959cef7-9727-4cab-a672-a440e9e5ff95".device = "/dev/disk/by-uuid/6959cef7-9727-4cab-a672-a440e9e5ff95";
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ser6"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
