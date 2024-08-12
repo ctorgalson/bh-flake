@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./ser6/hardware-configuration.nix
+      ./main-user.nix 
     ];
 
   # Enable flakes.
@@ -73,14 +74,15 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ctorgalson = {
-    isNormalUser = true;
-    description = "Christopher";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
+  #users.users.ctorgalson = {
+  #  isNormalUser = true;
+  #  description = "Christopher";
+  #  extraGroups = [ "networkmanager" "wheel" ];
+  #  packages = with pkgs; [
+  #  #  thunderbird
+  #  ];
+  #};
+  main-user.enable = true; 
 
   # Install firefox.
   programs.firefox.enable = true;
