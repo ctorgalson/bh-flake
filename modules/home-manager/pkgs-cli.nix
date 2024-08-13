@@ -12,13 +12,19 @@
       docker
       fastfetch
       gtop
+      hddtemp
       httpie
       imagemagick
       jq
+      lm_sensors
       lynis
+      pciutils
       platformsh
+      quickemu
+      shellcheck
       starship
       tmux
+      yt-dlp
     ];
   };
 }

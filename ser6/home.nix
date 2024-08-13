@@ -8,6 +8,7 @@
 
   imports = [
     ../modules/home-manager/pkgs-cli.nix
+    ../modules/home-manager/pkgs-gui.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
