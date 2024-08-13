@@ -9,7 +9,10 @@
   imports = [
     ../modules/home-manager/pkgs/cli.nix
     ../modules/home-manager/pkgs/gui.nix
+    ../modules/home-manager/programs/atuin.nix
+    ../modules/home-manager/programs/eza.nix
     ../modules/home-manager/programs/git.nix
+    ../modules/home-manager/programs/neovim.nix
     ../modules/home-manager/programs/starship.nix
     ../modules/home-manager/programs/zoxide.nix
     ../modules/home-manager/programs/zsh.nix
