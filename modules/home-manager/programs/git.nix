@@ -2,7 +2,7 @@
 
 {
   config = {
-    home.pkgs = with pkgs; [
+    home.packages = with pkgs; [
       git
     ];
 
