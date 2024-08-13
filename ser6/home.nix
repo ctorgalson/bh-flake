@@ -12,6 +12,7 @@
     ../modules/home-manager/programs/git.nix
     ../modules/home-manager/programs/starship.nix
     ../modules/home-manager/programs/zoxide.nix
+    ../modules/home-manager/programs/zsh.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
