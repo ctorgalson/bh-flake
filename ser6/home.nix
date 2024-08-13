@@ -7,7 +7,7 @@
   home.homeDirectory = "/home/ctorgalson";
 
   imports = [
-    ./home-pkgs.nix
+    ../home-pkgs.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
