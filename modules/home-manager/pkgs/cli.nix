@@ -22,7 +22,6 @@
       platformsh
       quickemu
       shellcheck
-      starship
       tmux
       yt-dlp
     ];
