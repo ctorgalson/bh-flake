@@ -3,9 +3,7 @@
 {
   config = {
     home.packages = with pkgs; [
-      atuin
       bitwarden-cli
-      # bws
       byobu
       ddev
       diceware
