@@ -5,7 +5,7 @@
     home.packages = with pkgs; [
       atuin
       bitwarden-cli
-      bws
+      # bws
       byobu
       ddev
       diceware
