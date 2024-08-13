@@ -3,12 +3,16 @@
 {
   config = {
     home.packages = with pkgs; [
-      starship
+      zoxide
     ];
 
-    programs.starship = {
+    programs.zoxide = {
       enable = true;
-      settings = {};
+      enableZshIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
     };
   };
 }
+

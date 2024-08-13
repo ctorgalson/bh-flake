@@ -11,6 +11,7 @@
     ../modules/home-manager/pkgs/gui.nix
     ../modules/home-manager/programs/git.nix
     ../modules/home-manager/programs/starship.nix
+    ../modules/home-manager/programs/zoxide.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
