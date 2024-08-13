@@ -84,6 +84,9 @@
   #};
   main-user.enable = true; 
 
+  # Install git.
+  programs.fit.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 

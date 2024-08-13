@@ -35,7 +35,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    git
     neovim
   ];
 
