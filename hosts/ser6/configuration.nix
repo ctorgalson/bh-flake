@@ -109,11 +109,11 @@
     vim
   ];
 
-  programs.bws.enable;
+  programs.bws.enable = true;
 
-  programs.steam.enable;
+  programs.steam.enable = true;
 
-  programs.vim.enable;
+  programs.vim.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
