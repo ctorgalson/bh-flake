@@ -4,7 +4,6 @@
   config = {
     programs.ssh = {
       enable = true;
-      extraConfig = [];
       matchBlocks = {
       	"r2" = {
           hostname = "135.181.200.94";
@@ -12,6 +11,7 @@
           forwardAgent = true;
 	};
       };
+      # extraConfig = [];
     };
   };
 }
