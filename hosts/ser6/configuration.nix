@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ allowed-unfree-pkgs, config, inputs, lib, pkgs, ... }:
 
 {
   imports =
@@ -91,16 +91,21 @@
   programs.firefox.enable = true;
 
   # Install zsh.
-  programs.zsh.enable = true;
+  programs.zsh.enable = true;;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    bws
+    steam
     vim
   ];
 
