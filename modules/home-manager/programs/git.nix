@@ -1,4 +1,4 @@
-{ config, pkgs, home, programs, ... }:
+{ config, pkgs, programs, ... }:
 
 {
   config = {
