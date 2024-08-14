@@ -9,7 +9,7 @@
 
         # Check to see if it's possible to continue.
         if [[ -z "$BWS_ACCESS_TOKEN" ]]; then
-	  read -p 'BWS_ACCESS_TOKEN: ' token
+	  read -sp 'BWS_ACCESS_TOKEN: ' token
 	  export BWS_ACCESS_TOKEN="token"
         fi
 
@@ -29,10 +29,6 @@
           chmod "$fileperms" "$filepath"
         done
 
-        # Get public keys from github and write to authorized_keys.
-        authorized_filepath="$HOME"/.ssh/authorized_keys
-        curl https://github.com/ctorgalson.keys --output "$authorized_filepath"
-        chmod 600 "$authorized_filepath"
         ls -hal "$HOME/.ssh"      
       '')
     ];
