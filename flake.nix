@@ -10,6 +10,8 @@
     };
   };
 
+  # Home manager unfree pkgs configuration:
+  # @see https://stackoverflow.com/questions/77585228/how-to-allow-unfree-packages-in-nix-for-each-situation-nixos-nix-nix-wit
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       ser6 = nixpkgs.lib.nixosSystem {
