@@ -109,8 +109,6 @@
     vim
   ];
 
-  programs.bws.enable = true;
-
   programs.steam.enable = true;
 
   programs.vim.enable = true;
