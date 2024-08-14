@@ -91,7 +91,7 @@
   programs.firefox.enable = true;
 
   # Install zsh.
-  programs.zsh.enable = true;;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config = {
