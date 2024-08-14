@@ -15,14 +15,14 @@
       ser6 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./ser6/configuration.nix
+          ./hosts/ser6/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
       };
       executive-14 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./executive-14/configuration.nix
+          ./hosts/executive-14/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
       };

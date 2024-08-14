@@ -2,8 +2,9 @@
 
 {
   config = {
-    programs.ripgrep = {
+    programs.fzf = {
       enable = true;
+      enableZshIntegration = true;
     };
   };
 }
