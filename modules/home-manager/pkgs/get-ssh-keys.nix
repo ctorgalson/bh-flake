@@ -10,7 +10,7 @@
         # Check to see if it's possible to continue.
         if [[ -z "$BWS_ACCESS_TOKEN" ]]; then
 	  echo
-	  echo 'Please set BWS_ACCESS_TOKEN in the shell, taking care that it doesn't get into the history.'
+	  echo "Please set BWS_ACCESS_TOKEN in the shell, taking care that it doesn't get into the history."
 	  exit 1
         fi
 
