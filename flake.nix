@@ -29,7 +29,7 @@
           home-manager.nixosModules.default
 	  {
             home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPkgs = true;
+	    home-manager.useUserPackages = true;
 	    home-manager.extraSpecialArgs = { inherit allowed-unfree-packages user; };
 	  }
         ];
