@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ allowed-unfree-pkgs, config, inputs, lib, pkgs, ... }:
+{ allowed-unfree-packages, config, inputs, lib, pkgs, ... }:
 
 {
   imports =
