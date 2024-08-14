@@ -7,8 +7,16 @@
   home.homeDirectory = "/home/ctorgalson";
 
   imports = [
+    # cli pkgs.
     ../../modules/home-manager/pkgs/cli.nix
+    # gui pkgs.
     ../../modules/home-manager/pkgs/gui.nix
+    # custom pkgs.
+    ../../modules/home-manager/pkgs/homefox.nix
+    ../../modules/home-manager/pkgs/get-ssh-keys.nix
+    ../../modules/home-manager/pkgs/nixnvm.nix
+    ../../modules/home-manager/pkgs/workfox.nix
+    # programs.
     ../../modules/home-manager/programs/atuin.nix
     ../../modules/home-manager/programs/eza.nix
     ../../modules/home-manager/programs/fzf.nix
