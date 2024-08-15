@@ -7,6 +7,7 @@
       byobu
       ddev
       diceware
+      diffpdf
       docker
       fastfetch
       gtop
