@@ -17,6 +17,7 @@
       protonvpn-gui
       quickgui
       signal-desktop
+      slack
       solaar
       vorta
       vscodium
