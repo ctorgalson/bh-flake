@@ -7,7 +7,6 @@
       enableCompletion = true;
       shellAliases = {
         top = "gtop";
-        vim = "nvim";
       };
     };
   };
