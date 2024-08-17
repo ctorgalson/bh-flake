@@ -14,6 +14,13 @@
   # Enable flakes.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable garbage-collection.
+  nic.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -145,6 +152,20 @@
     users = {
       "ctorgalson" = import ./home.nix;
     };
+  };
+
+  # Enable autoUpgrade.
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--no-write-lock-file"
+      "-L"
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
   };
 
   # This value determines the NixOS release from which the default
