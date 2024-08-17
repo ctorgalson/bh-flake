@@ -2,8 +2,6 @@
 
 {
   config = {
-    gpaste.atuin = {
-      enable = true;
-    };
+    programs.gpaste.enable = true;
   };
 }
