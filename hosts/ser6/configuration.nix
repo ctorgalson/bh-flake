@@ -17,8 +17,9 @@
   # Enable garbage-collection.
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    dates = "02:00";
     options = "--delete-older-than 7d";
+    randomizedDelaySec = "45min";
   };
 
   # Bootloader.
@@ -157,6 +158,9 @@
   # Enable autoUpgrade.
   system.autoUpgrade = {
     enable = true;
+
+    allowReboot = true;
+    dates = "02:00";
     flake = inputs.self.outPath;
     flags = [
       "--update-input"
@@ -164,7 +168,6 @@
       "--no-write-lock-file"
       "-L"
     ];
-    dates = "02:00";
     randomizedDelaySec = "45min";
   };
 
