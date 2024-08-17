@@ -23,7 +23,6 @@
     ../../modules/home-manager/programs/eza.nix
     ../../modules/home-manager/programs/fzf.nix
     ../../modules/home-manager/programs/git.nix
-    ../../modules/home-manager/programs/gpaste.nix
     ../../modules/home-manager/programs/joplin-desktop.nix
     ../../modules/home-manager/programs/neovim.nix
     ../../modules/home-manager/programs/ripgrep.nix
