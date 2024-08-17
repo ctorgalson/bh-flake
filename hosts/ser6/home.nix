@@ -16,6 +16,8 @@
     ../../modules/home-manager/pkgs/get-ssh-keys.nix
     ../../modules/home-manager/pkgs/nixnvm.nix
     ../../modules/home-manager/pkgs/workfox.nix
+    # dconf settings.
+    ../../modules/home-manager/dconf
     # programs.
     ../../modules/home-manager/programs/atuin.nix
     ../../modules/home-manager/programs/eza.nix
