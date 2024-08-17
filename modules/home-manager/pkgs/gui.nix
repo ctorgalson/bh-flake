@@ -9,7 +9,7 @@
       gimp-with-plugins
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
-      gnomeExtensions.gtile
+      gnomeExtensions.tactile
       inconsolata-nerdfont
       inkscape-with-extensions
       nextcloud-client
