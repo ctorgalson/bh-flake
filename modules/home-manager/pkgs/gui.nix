@@ -10,7 +10,7 @@
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
       gnomeExtensions.gtile
-      gnome.gpaste
+      gpaste
       inconsolata-nerdfont
       inkscape-with-extensions
       nextcloud-client
