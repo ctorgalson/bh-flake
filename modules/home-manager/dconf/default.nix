@@ -5,7 +5,7 @@
     dconf.settings = {
       "org/gnome/Console" = {
         use-system-font = false;
-        custom-font = "Inconsolata Nerd Font Mono 13";
+        custom-font = "Inconsolata Nerd Font Mono 14";
       };
       "org/gnome/shell" = {
         disable-user-extensions = false;
