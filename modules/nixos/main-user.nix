@@ -4,6 +4,13 @@
   options = {
     main-user.enable =  lib.mkEnableOption "enable user module";
 
+    main-user.userDescription = lib.mkOption {
+      default = "Christopher";
+      description = ''
+        fullname
+      '';
+    };
+
     main-user.userName = lib.mkOption {
       default = "ctorgalson";
       description = ''
@@ -14,8 +21,9 @@
 
   config = lib.mkIf config.main-user.enable {
     users.users.${config.main-user.userName} = {
+      description = "${config.main-user.userDescription}";
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "docker" "networkmanager" "wheel" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARjoOuzp5vkg05GYXcvGSqwH+TPMtEWjWx6AQo+QofY"

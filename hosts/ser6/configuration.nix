@@ -113,6 +113,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     bws
+    docker
     micro
     steam
     #vim
@@ -142,8 +143,17 @@
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443
+      { from 1714 to 1764; }
+      3000
+    ];
+    allowedUDPPorts = [
+      { from 1714 to 1764; }
+    ];
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -170,6 +180,8 @@
     ];
     randomizedDelaySec = "45min";
   };
+
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

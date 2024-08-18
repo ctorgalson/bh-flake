@@ -8,7 +8,6 @@
       ddev
       diceware
       diffpdf
-      docker
       fastfetch
       gtop
       hddtemp

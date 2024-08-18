@@ -7,8 +7,9 @@
   home.homeDirectory = "/home/ctorgalson";
 
   imports = [
-    ../../modules/home-manager/pkgs
     ../../modules/home-manager/dconf
+    ../../modules/home-manager/file
+    ../../modules/home-manager/pkgs
     ../../modules/home-manager/programs
   ];
 
