@@ -147,10 +147,13 @@
     allowedTCPPorts = [
       80
       443
-      { from = 1714; to = 1764; }
       3000
     ];
-    allowedUDPPorts = [
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+    allowedUDPPorts = [ ];
+    allowedUDPPortRanges = [
       { from = 1714; to = 1764; }
     ];
   };
