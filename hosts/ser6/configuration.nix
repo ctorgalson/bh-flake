@@ -116,6 +116,7 @@
     docker
     micro
     steam
+    zoom-us
     #vim
   ];
 
