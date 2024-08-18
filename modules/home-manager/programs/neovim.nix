@@ -34,7 +34,7 @@
         neo-tree-nvim
         {
           plugin = nord-vim;
-          confit = "colorscheme nord";
+          config = "colorscheme nord";
         }
         #{
         #  plugin = nightfly;
