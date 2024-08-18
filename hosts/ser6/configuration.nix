@@ -147,11 +147,11 @@
     allowedTCPPorts = [
       80
       443
-      { from 1714 to 1764; }
+      { from = 1714; to = 1764; }
       3000
     ];
     allowedUDPPorts = [
-      { from 1714 to 1764; }
+      { from = 1714; to = 1764; }
     ];
   };
   # Or disable the firewall altogether.
