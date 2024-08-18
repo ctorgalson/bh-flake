@@ -33,12 +33,16 @@
         }
         neo-tree-nvim
         {
-          plugin = nvim-lspconfig;
+          plugin: nightfly;
+          config = "colorscheme nightfly"
         }
         {
-          plugin = nvim-solarized-lua;
-          config = "colorscheme solarized";
+          plugin = nvim-lspconfig;
         }
+        # {
+        #   plugin = nvim-solarized-lua;
+        #   config = "colorscheme solarized";
+        # }
         nvim-treesitter.withAllGrammars
         nvim-web-devicons
         telescope-nvim
