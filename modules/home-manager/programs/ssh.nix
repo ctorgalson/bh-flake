@@ -4,11 +4,8 @@
   config = {
     programs.ssh = {
       enable = true;
-      extraConfig = ''
-      Host *.platform.sh
-        Include /home/ctorgalson/.platformsh/ssh/*.config
-      Host *
-      '';
+      # extraConfig = ''
+      # '';
       matchBlocks = {
         "r2" = {
           hostname = "135.181.200.94";
@@ -19,6 +16,11 @@
           hostname = "162.55.164.32";
           user = "ctorgalson";
           forwardAgent = true;
+        };
+        "platform.sh" = {
+          Host *.platform.sh
+            Include /home/ctorgalson/.platformsh/ssh/*.config
+          Host *
         };
       };
     };
