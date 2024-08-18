@@ -1,12 +1,23 @@
 { config, lib, pkgs, programs, ... }:
 
 {
+  options = {
+    gnome-terminal.enable = lib.mkEnableOption "enable gnome-terminal module";  
+
+    gnome-terminal.profileId = lib.mkOption {
+      default = "b1dcc9dd-5262-4d8d-a863-c897e6d979b9";
+      description = ''
+        profile id
+      '';
+    };
+  };
+
   config = {
     dconf.settings = {
       "org/gnome/terminal/legacy" = {
         theme-variant = "dark";
       };
-      "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
+      "org/gnome/terminal/legacy/profiles:/:${config.gnome-terminal.profileId}" = {
         use-system-font = false;
         font = "Inconsolata Nerd Font Mono 14";
         use-theme-colors = false;

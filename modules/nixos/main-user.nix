@@ -2,7 +2,7 @@
 
 {
   options = {
-    main-user.enable =  lib.mkEnableOption "enable user module";
+    main-user.enable = lib.mkEnableOption "enable user module";
 
     main-user.userDescription = lib.mkOption {
       default = "Christopher";

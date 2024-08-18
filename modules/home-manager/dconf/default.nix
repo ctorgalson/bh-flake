@@ -10,4 +10,6 @@
     ./tactile.nix
     ./weather.nix
   ];
+
+  gnome-terminal.enable = true;
 }
