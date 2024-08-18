@@ -21,6 +21,7 @@
       quickemu
       shellcheck
       tmux
+      tmuxPlugins.nord
       yt-dlp
     ];
   };

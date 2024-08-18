@@ -33,9 +33,13 @@
         }
         neo-tree-nvim
         {
-          plugin = nightfly;
-          config = "colorscheme nightfly";
+          plugin = nord;
+          confit = "colorscheme nord";
         }
+        #{
+        #  plugin = nightfly;
+        #  config = "colorscheme nightfly";
+        #}
         {
           plugin = nvim-lspconfig;
         }
