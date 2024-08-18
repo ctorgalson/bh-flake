@@ -4,6 +4,7 @@
   config = {
     home.packages = with pkgs; [
       bitwarden-cli
+      blackbox-terminal
       byobu
       ddev
       diceware
@@ -21,7 +22,6 @@
       quickemu
       shellcheck
       tmux
-      tmuxPlugins.nord
       yt-dlp
     ];
   };
