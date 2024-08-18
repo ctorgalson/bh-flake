@@ -1,6 +1,11 @@
 { config, lib, pkgs, programs, ... }:
 
 {
+  imports = [
+    ./clocks.nix
+    ./weather.nix
+  ];
+
   config = {
     dconf.settings = {
       "org/gnome/Console" = {
@@ -32,21 +37,3 @@
     };
   };
 }
-
-# /org/gnome/clocks/world-clocks
-#   [{'location': <(uint32 2, <('Dublin', 'EIDW', true, [(0.93258759116453926, -0.1090830782496456)], [(0.93083742735051689, -0.10906368764165594)])>)>}]
-# 
-# /org/gnome/shell/world-clocks/locations
-#   [<(uint32 2, <('Dublin', 'EIDW', true, [(0.93258759116453926, -0.1090830782496456)], [(0.93083742735051689, -0.10906368764165594)])>)>]
-
-# /org/gnome/clocks/world-clocks
-#  [{'location': <(uint32 2, <('Toronto', 'CYTZ', true, [(0.76154532446909495, -1.3857914260834978)], [(0.76212711252195475, -1.3860823201099277)])>)>}]
-# 
-# /org/gnome/shell/world-clocks/locations
-#  [<(uint32 2, <('Toronto', 'CYTZ', true, [(0.76154532446909495, -1.3857914260834978)], [(0.76212711252195475, -1.3860823201099277)])>)>]
-
-# /org/gnome/clocks/world-clocks
-#   [{'location': <(uint32 2, <('Winnipeg', 'CYWG', true, [(0.87091929674517032, -1.6970418035380554)], [(0.87062840271874053, -1.695878262338921)])>)>}]
-# 
-# /org/gnome/shell/world-clocks/locations
-#   [<(uint32 2, <('Winnipeg', 'CYWG', true, [(0.87091929674517032, -1.6970418035380554)], [(0.87062840271874053, -1.695878262338921)])>)>]

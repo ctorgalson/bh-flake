@@ -6,68 +6,6 @@
       # @see https://discourse.nixos.org/t/time-zones-in-gnome-clocks-get-set-correctly-but-then-disappear-during-use/36797
       # @see https://discourse.nixos.org/t/write-key-value-using-lib-hm-gvariant-for-home-manager/31234/4
       # @see https://docs.gtk.org/glib/gvariant-format-strings.html
-
-
-      # /org/gnome/Weather/locations
-      #   [<(uint32 2, <('Lyon', 'LFLY', true, [(0.7979063621878385, 0.086393797973719322)], [(0.79848813278740571, 0.084648468721724976)])>)>]
-      # 
-      # /org/gnome/shell/weather/locations
-      #   [<(uint32 2, <('Lyon', 'LFLY', true, [(0.7979063621878385, 0.086393797973719322)], [(0.79848813278740571, 0.084648468721724976)])>)>]
-      "org/gnome/Weather" = {
-        "locations" = [
-          # Lyon
-          (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-            (lib.hm.gvariant.mkUint32 2)
-            (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-              "Lyon"
-              "LFLY"
-              true
-              [(lib.hm.gvariant.mkTuple [(0.7979063621878385) (0.086393797973719322)])]
-              [(lib.hm.gvariant.mkTuple [(0.79848813278740571) (0.084648468721724976)])]
-            ]))
-          ]))
-
-          # Toronto
-          (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-            (lib.hm.gvariant.mkUint32 2)
-            (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-              "Toronto"
-              "CYTZ"
-              true
-              [(lib.hm.gvariant.mkTuple [(0.76154532446909495) (-1.3857914260834978)])]
-              [(lib.hm.gvariant.mkTuple [(0.76212711252195475) (-1.3860823201099277)])]
-            ]))
-          ]))
-        ];
-      };
-      "org/gnome/shell/weather" = {
-        "locations" = [
-          # Lyon
-          (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-            (lib.hm.gvariant.mkUint32 2)
-            (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-              "Lyon"
-              "LFLY"
-              true
-              [(lib.hm.gvariant.mkTuple [(0.7979063621878385) (0.086393797973719322)])]
-              [(lib.hm.gvariant.mkTuple [(0.79848813278740571) (0.084648468721724976)])]
-            ]))
-          ]))
-
-          # Toronto
-          (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-            (lib.hm.gvariant.mkUint32 2)
-            (lib.hm.gvariant.mkVariant (lib.hm.gvariant.mkTuple [
-              "Toronto"
-              "CYTZ"
-              true
-              [(lib.hm.gvariant.mkTuple [(0.76154532446909495) (-1.3857914260834978)])]
-              [(lib.hm.gvariant.mkTuple [(0.76212711252195475) (-1.3860823201099277)])]
-            ]))
-          ]))
-        ];
-      };
-
       "org/gnome/clocks" = {
         world-clocks = [
           # Lyon
