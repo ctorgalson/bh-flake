@@ -7,30 +7,13 @@
   home.homeDirectory = "/home/ctorgalson";
 
   imports = [
-    # cli pkgs.
-    ../../modules/home-manager/pkgs/cli.nix
-    # gui pkgs.
-    ../../modules/home-manager/pkgs/gui.nix
-    # custom pkgs.
-    ../../modules/home-manager/pkgs/homefox.nix
-    ../../modules/home-manager/pkgs/get-ssh-keys.nix
-    ../../modules/home-manager/pkgs/nixnvm.nix
-    ../../modules/home-manager/pkgs/workfox.nix
-    # dconf settings.
+    ../../modules/home-manager/pkgs
     ../../modules/home-manager/dconf
-    # programs.
-    ../../modules/home-manager/programs/atuin.nix
-    ../../modules/home-manager/programs/eza.nix
-    ../../modules/home-manager/programs/fzf.nix
-    ../../modules/home-manager/programs/git.nix
-    ../../modules/home-manager/programs/joplin-desktop.nix
-    ../../modules/home-manager/programs/neovim.nix
-    ../../modules/home-manager/programs/ripgrep.nix
-    ../../modules/home-manager/programs/ssh.nix
-    ../../modules/home-manager/programs/starship.nix
-    ../../modules/home-manager/programs/zoxide.nix
-    ../../modules/home-manager/programs/zsh.nix
+    ../../modules/home-manager/programs
   ];
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -90,9 +73,6 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
