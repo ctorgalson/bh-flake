@@ -33,7 +33,7 @@
         }
         neo-tree-nvim
         {
-          plugin: nightfly;
+          plugin = nightfly;
           config = "colorscheme nightfly"
         }
         {
