@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./blackbox.nix
     ./clocks.nix
     ./console.nix
     ./extensions.nix
