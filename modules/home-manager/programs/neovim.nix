@@ -33,7 +33,7 @@
         }
         neo-tree-nvim
         {
-          plugin = nord;
+          plugin = nord-vim;
           confit = "colorscheme nord";
         }
         #{
