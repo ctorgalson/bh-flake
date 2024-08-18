@@ -4,12 +4,12 @@
   config = {
     home.packages = with pkgs; [
       bitwarden-cli
-      blackbox-terminal
       byobu
       ddev
       diceware
       diffpdf
       fastfetch
+      gnome-terminal
       gtop
       hddtemp
       httpie

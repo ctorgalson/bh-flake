@@ -2,11 +2,10 @@
 
 {
   imports = [
-    ./blackbox.nix
     ./clocks.nix
-    ./console.nix
     ./extensions.nix
     ./freon.nix
+    ./gnome-terminal.nix
     ./gsconnect.nix
     ./tactile.nix
     ./weather.nix
