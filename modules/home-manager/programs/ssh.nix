@@ -5,9 +5,9 @@
     programs.ssh = {
       enable = true;
       extraConfig = ''
-        Host *.platform.sh
-          Include /home/ctorgalson/.platformsh/ssh/*.config
-        Host *
+      Host *.platform.sh
+        Include /home/ctorgalson/.platformsh/ssh/*.config
+      Host *
       '';
       matchBlocks = {
         "r2" = {
