@@ -5,10 +5,11 @@
     # Create expected directories.
     home.activation.directories = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       dirs=( 'Dev/BH' 'Dev/AT' 'Nextcloud' )
-      for dir in "''${!fruits[@]}"; do
-        path="$HOME/$dir"
-        if [ ! -d "$path" ]; then
-          mkdir -p "$path"
+      for dir in "''${dirs[@]}"; do
+        dirpath="/home/ctorgalson/$dir"
+        if [ ! -d "$dirpath" ]; then
+          echo "Create $dirpath"
+          mkdir -p "$dirpath"
         fi
       done
     '';

@@ -21,7 +21,7 @@
       plugins = with pkgs.vimPlugins; [
         {
           plugin = bufferline-nvim;
-          config = toLuaFromFile ./neovim/plugins/bufferline.lua;
+          config = toLuaFromFile ./neovim/plugins/bufferline-nvim.lua;
         }
         {
           plugin = comment-nvim;
@@ -31,7 +31,10 @@
         {
           plugin = lualine-nvim;
         }
-        neo-tree-nvim
+        {
+          plugin = neo-tree-nvim;
+          config = toLuaFromFile ./neovim/plugins/neo-tree-nvim.lua;
+        }
         {
           plugin = nvim-lspconfig;
         }

@@ -20,6 +20,7 @@
       pciutils
       platformsh
       quickemu
+      rich-cli
       shellcheck
       tmux
       yt-dlp

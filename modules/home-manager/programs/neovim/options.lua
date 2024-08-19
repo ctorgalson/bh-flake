@@ -19,7 +19,7 @@ vim.wo.number = true
 -- @todo: get this plugin-specific config out of htere.
 --
 -- Toggle Neotree.
-vim.keymap.set("n", "<Leader>e", ":Neotree toggle<CR>", { desc = "Toggle file browser", remap = false })
+vim.keymap.set("n", "<Leader>e", ":Neotree reveal<CR>", { desc = "Toggle file browser", remap = false })
 
 -- Configure Telescope.
 local builtin = require('telescope.builtin')
