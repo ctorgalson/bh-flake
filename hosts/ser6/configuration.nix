@@ -117,6 +117,7 @@
     bws
     docker
     micro
+    mkcert
     steam
     zoom-us
     #vim
