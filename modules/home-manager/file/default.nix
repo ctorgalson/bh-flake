@@ -18,6 +18,7 @@
       ".config/byobu/.tmux.conf".source = ../../../dotfiles/byobu/.tmux.conf;
       # Background image
       ".background-image".source = ../../../images/.background-image;
+      ".background-image".target = ".background-image";
     };
   };
 }
