@@ -91,6 +91,8 @@
   #  ];
   #};
   main-user.enable = true; 
+  main-user.userName = "ctorgalson";
+  main-user.userDescription = "Christopher Torgalson";
 
   # Install git.
   programs.git.enable = true;
