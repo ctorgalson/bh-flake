@@ -17,6 +17,7 @@
       jq
       lm_sensors
       lynis
+      mkcert
       pciutils
       platformsh
       quickemu
