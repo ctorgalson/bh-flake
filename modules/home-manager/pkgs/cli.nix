@@ -25,6 +25,7 @@
       timewarrior
       tmux
       yt-dlp
+      zip
     ];
   };
 }
