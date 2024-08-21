@@ -22,6 +22,7 @@
       quickemu
       rich-cli
       shellcheck
+      timewarrior
       tmux
       yt-dlp
     ];
