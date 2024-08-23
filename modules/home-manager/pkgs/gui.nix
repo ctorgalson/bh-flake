@@ -11,6 +11,7 @@
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
       gnomeExtensions.tactile
+      google-chrome
       inconsolata-nerdfont
       inkscape-with-extensions
       nextcloud-client
