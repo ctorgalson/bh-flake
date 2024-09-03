@@ -182,7 +182,6 @@
     flags = [
       "--update-input"
       "nixpkgs"
-      "--no-write-lock-file"
       "-L"
     ];
     randomizedDelaySec = "45min";
