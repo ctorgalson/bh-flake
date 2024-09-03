@@ -24,6 +24,7 @@
       shellcheck
       timewarrior
       tmux
+      yq
       yt-dlp
       zip
     ];
