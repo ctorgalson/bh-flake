@@ -16,6 +16,7 @@
       imagemagick
       jq
       lm_sensors
+      lorem
       lynis
       pciutils
       platformsh
