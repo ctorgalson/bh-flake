@@ -18,6 +18,7 @@
       lm_sensors
       lorem
       lynis
+      orpie
       pciutils
       platformsh
       quickemu
