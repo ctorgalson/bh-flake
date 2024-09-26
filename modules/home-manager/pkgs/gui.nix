@@ -7,7 +7,7 @@
       calibre
       flameshot
       gimp-with-plugins
-      gnome.gnome-clocks
+      gnome-clocks
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
       gnomeExtensions.tactile
