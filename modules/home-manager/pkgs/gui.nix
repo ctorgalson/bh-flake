@@ -16,7 +16,7 @@
       inkscape-with-extensions
       nextcloud-client
       protonvpn-gui
-      quickgui
+      #quickgui
       signal-desktop
       slack
       solaar
