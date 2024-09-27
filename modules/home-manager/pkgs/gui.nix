@@ -7,10 +7,11 @@
       calibre
       flameshot
       gimp-with-plugins
-      gnome-clocks
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
       gnomeExtensions.tactile
+      gnome-clocks
+      gnome-extensions-manager
       google-chrome
       inconsolata-nerdfont
       inkscape-with-extensions
