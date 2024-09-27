@@ -11,7 +11,7 @@
       gnomeExtensions.gsconnect
       gnomeExtensions.tactile
       gnome-clocks
-      gnome-extensions-manager
+      gnome-extension-manager
       google-chrome
       inconsolata-nerdfont
       inkscape-with-extensions
