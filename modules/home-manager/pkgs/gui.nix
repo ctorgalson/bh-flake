@@ -7,6 +7,7 @@
       calibre
       flameshot
       gimp-with-plugins
+      gnomeExtensions.appindicator
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
       gnomeExtensions.tactile
