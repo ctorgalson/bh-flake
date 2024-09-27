@@ -16,7 +16,6 @@
       imagemagick
       jq
       lm_sensors
-      lorem
       lynis
       orpie
       pciutils

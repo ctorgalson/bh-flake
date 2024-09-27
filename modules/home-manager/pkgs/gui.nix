@@ -14,6 +14,7 @@
       google-chrome
       inconsolata-nerdfont
       inkscape-with-extensions
+      lorem
       nextcloud-client
       protonvpn-gui
       #quickgui
