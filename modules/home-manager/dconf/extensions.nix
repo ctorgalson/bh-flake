@@ -7,6 +7,7 @@
         disable-user-extensions = false;
         disabled-extensions = [ ]; 
         enabled-extensions = [
+          "appindicatorsupport@rgcjonas.gmail.com"
           "freon@UshakovVasilii_Github.yahoo.com"
           "gsconnect@andyholmes.github.io"
           "tactile@lundal.io"

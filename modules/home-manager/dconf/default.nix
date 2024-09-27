@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./appindicator.nix
     ./clocks.nix
     ./extensions.nix
     ./freon.nix
