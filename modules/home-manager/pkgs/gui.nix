@@ -12,6 +12,7 @@
       gnomeExtensions.gsconnect
       gnomeExtensions.tactile
       gnome-clocks
+      gnome-color-manager
       gnome-extension-manager
       google-chrome
       inconsolata-nerdfont
