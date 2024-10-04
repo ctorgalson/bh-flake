@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
       bitwarden-cli
       byobu
+      clamav
       ddev
       diceware
       diffpdf
