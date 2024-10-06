@@ -1,29 +1,14 @@
 { config, lib, pkgs, home, ... }:
 
+let
+  ansible = pkgs.ansible;
+in
 {
   config = {
     home.activation.directories = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      dirs=( 'Dev/BH' 'Dev/AT' 'Storage/Documents' 'Storage/Nextcloud' )
-      links=( 'Documents' 'Nextcloud' )
-      for dir in "''${dirs[@]}"; do
-        dirpath="/home/ctorgalson/$dir"
-        if [ ! -d "$dirpath" ]; then
-          echo "Create $dirpath"
-          mkdir -p "$dirpath"
-        fi
-      done
-      for link in "''${links[@]}"; do
-        filepath="/home/ctorgalson/Storage/$link"
-        linkpath="/home/ctorgalson/$link"
-        if [ -d "$linkpath" ]; then
-          # Fail on purpose if this exists and is not empty.
-          rmdir "$linkpath"
-        fi
-        if [ ! -l "$linkpath" ]; then
-          echo "Create symlink to $filepath"
-          ln -s "$filepath" "$linkpath"
-        fi
-      done
+      flake_path="/home/ctorgalson/bh-flake"
+      file_path="modules/home-manager/file/playbooks/default_directories.yml"
+      ${ansible}/bin/ansible-playbook "''${flake_path}/''${file_path}"
     '';
 
     home.file = {

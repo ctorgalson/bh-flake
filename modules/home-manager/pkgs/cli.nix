@@ -3,6 +3,7 @@
 {
   config = {
     home.packages = with pkgs; [
+      ansible
       bitwarden-cli
       byobu
       clamav
