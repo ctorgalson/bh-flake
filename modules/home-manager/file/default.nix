@@ -22,6 +22,7 @@
         if [ ! -l "$linkpath" ]; then
           echo "Create symlink to $filepath"
           ln -s "$filepath" "$linkpath"
+        fi
       done
     '';
 
