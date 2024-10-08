@@ -19,6 +19,7 @@
       inkscape-with-extensions
       lorem
       nextcloud-client
+      obsidian
       protonvpn-gui
       #quickgui
       signal-desktop
