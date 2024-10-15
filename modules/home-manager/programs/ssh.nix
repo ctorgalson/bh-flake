@@ -10,6 +10,11 @@
         Host *
       '';
       matchBlocks = {
+        "nx" = {
+          hostname = "ct.anner.ie";
+          user = "ctorgalson";
+          forwardAgent = true;
+        };
         "r2" = {
           hostname = "135.181.200.94";
           user = "ctorgalson";
