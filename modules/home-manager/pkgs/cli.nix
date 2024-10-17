@@ -27,6 +27,7 @@
       shellcheck
       timewarrior
       tmux
+      unison
       yq
       yt-dlp
       zip
