@@ -24,8 +24,7 @@
       #quickgui
       signal-desktop
       slack
-      solaar
-      vorta
+      #vorta
       vscodium
       zeal
     ];
