@@ -21,7 +21,7 @@
       nextcloud-client
       obsidian
       protonvpn-gui
-      quickgui
+      # quickgui
       signal-desktop
       slack
       vorta
