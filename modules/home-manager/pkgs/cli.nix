@@ -11,6 +11,7 @@
       diceware
       diffpdf
       fastfetch
+      fd
       gcc
       gnome-terminal
       gtop
