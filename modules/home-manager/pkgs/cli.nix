@@ -11,6 +11,7 @@
       diceware
       diffpdf
       fastfetch
+      gcc
       gnome-terminal
       gtop
       hddtemp
@@ -19,6 +20,7 @@
       jq
       lm_sensors
       lynis
+      nodejs_22
       orpie
       pciutils
       platformsh
@@ -27,7 +29,10 @@
       shellcheck
       timewarrior
       tmux
+      tree-sitter
       unison
+      wl-copy
+      wl-paste
       yq
       yt-dlp
       zip
