@@ -31,8 +31,7 @@
       tmux
       tree-sitter
       unison
-      wl-copy
-      wl-paste
+      wl-clipboard
       yq
       yt-dlp
       zip
