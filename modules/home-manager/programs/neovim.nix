@@ -1,6 +1,7 @@
 { config, pkgs, programs, ... }:
 
 {
+  # Refer to https://nixos.wiki/wiki/Neovim
   config = {
     programs.neovim =
     let
