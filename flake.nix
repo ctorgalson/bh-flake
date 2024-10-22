@@ -39,6 +39,11 @@
         modules = [
           ./hosts/executive-14/configuration.nix
           home-manager.nixosModules.default
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit allowed-unfree-packages inputs user; };
+          }
         ];
       };
     };
