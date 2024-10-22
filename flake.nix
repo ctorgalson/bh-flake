@@ -34,10 +34,10 @@
           }
         ];
       };
-      executive-14 = nixpkgs.lib.nixosSystem {
+      executive14 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/executive-14/configuration.nix
+          ./hosts/executive14/configuration.nix
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;

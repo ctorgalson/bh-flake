@@ -27,7 +27,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-0c5bd87e-16c8-4d5a-9ed3-4212402e8789".device = "/dev/disk/by-uuid/0c5bd87e-16c8-4d5a-9ed3-4212402e8789";
-  networking.hostName = "executive-14"; # Define your hostname.
+  networking.hostName = "executive14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
