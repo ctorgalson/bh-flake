@@ -35,6 +35,7 @@
       wl-clipboard
       yq
       yt-dlp
+      yubikey-manager
       yubikey-personalization
       zip
     ];

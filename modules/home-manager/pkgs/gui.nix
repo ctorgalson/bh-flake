@@ -26,6 +26,7 @@
       slack
       # vorta
       vscodium
+      yubikey-manager-qt
       yubikey-personalization-gui
       zeal
     ];
