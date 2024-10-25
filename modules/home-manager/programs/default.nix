@@ -4,6 +4,7 @@
   imports = [
     ./atuin.nix 
     ./eza.nix
+    ./firefox.nix
     ./fzf.nix
     ./git.nix
     ./joplin-desktop.nix
