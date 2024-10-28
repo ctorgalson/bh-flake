@@ -25,6 +25,7 @@
       signal-desktop
       slack
       # vorta
+      vlc
       vscodium
       yubikey-manager-qt
       yubikey-personalization-gui
