@@ -8,12 +8,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    knock = {
+      url = "github:BentonEdmondson/knock";
+    };
   };
 
 # Home manager unfree pkgs configuration, and also for general flake
 # structure:
 # @see https://stackoverflow.com/questions/77585228/how-to-allow-unfree-packages-in-nix-for-each-situation-nixos-nix-nix-wit
-  outputs = { home-manager, nixpkgs, self, ... }@inputs:
+  outputs = { home-manager, knock, nixpkgs, self, ... }@inputs:
   let
     user = "ctorgalson";
     allowed-unfree-packages = [
