@@ -10,7 +10,9 @@
     };
 
     # https://github.com/esn/knock
-    knock.url = "github:esn/knock";
+    knock = {
+      url = "github:esn/knock";
+    };
   };
 
 # Home manager unfree pkgs configuration, and also for general flake
@@ -26,7 +28,7 @@
   in {
     nixosConfigurations = {
       ser6 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs knock; };
         modules = [
           ./hosts/ser6/configuration.nix
           home-manager.nixosModules.default
@@ -38,7 +40,7 @@
         ];
       };
       executive14 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs knock; };
         modules = [
           ./hosts/executive14/configuration.nix
           home-manager.nixosModules.default
