@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # https://github.com/esn/knock
     knock.url = "github:esn/knock";
   };
 
