@@ -4,7 +4,7 @@
   config = {
     home.packages = with pkgs; [
       borgbackup
-      # calibre
+      calibre
       flameshot
       gimp-with-plugins
       gnomeExtensions.appindicator
