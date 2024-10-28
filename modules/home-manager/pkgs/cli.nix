@@ -28,6 +28,7 @@
       quickemu
       rich-cli
       shellcheck
+      sshfs
       timewarrior
       tmux
       tree-sitter
