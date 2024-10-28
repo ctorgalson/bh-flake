@@ -9,9 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    knock = {
-      url = "github:BentonEdmondson/knock";
-    };
+    knock.url = "github:esn/knock";
   };
 
 # Home manager unfree pkgs configuration, and also for general flake
