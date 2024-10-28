@@ -25,8 +25,6 @@
       orpie
       pciutils
       platformsh
-      python312
-      python312Packages.oscrypto
       quickemu
       rich-cli
       shellcheck
