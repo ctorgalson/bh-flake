@@ -137,7 +137,6 @@
   #  wget
     bws
     docker
-    knock
     micro
     mkcert
     steam

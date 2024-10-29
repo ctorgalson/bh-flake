@@ -20,85 +20,7 @@
         "type": "github"
       }
     },
-    "inept-epub": {
-      "inputs": {
-        "nixpkgs": [
-          "knock",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1627256311,
-        "narHash": "sha256-NEDsexz3lNmaLm6nSHURsmgNX592b3fcNR2fzEuk3U0=",
-        "owner": "BentonEdmondson",
-        "repo": "inept-epub",
-        "rev": "b992adc8be351c00673a032df10552d7bc577290",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BentonEdmondson",
-        "repo": "inept-epub",
-        "type": "github"
-      }
-    },
-    "knock": {
-      "inputs": {
-        "inept-epub": "inept-epub",
-        "libgourou-utils": "libgourou-utils",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1627937008,
-        "narHash": "sha256-NEV76NHvWtaEQdUFt/kgo9gxk6o9HNQNSi0H8KG6g90=",
-        "owner": "esn",
-        "repo": "knock",
-        "rev": "7f682b82d5e08ca95d52a3cce6deba1f13431802",
-        "type": "github"
-      },
-      "original": {
-        "owner": "esn",
-        "repo": "knock",
-        "type": "github"
-      }
-    },
-    "libgourou-utils": {
-      "inputs": {
-        "nixpkgs": [
-          "knock",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1627508403,
-        "narHash": "sha256-JHOxPSJSaS+0NTUkNv6a9oI8g30pBuCDC+JwtZBaq3U=",
-        "owner": "BentonEdmondson",
-        "repo": "libgourou-utils",
-        "rev": "f16d3df200134209a1e2e530db056b3cd715425d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BentonEdmondson",
-        "repo": "libgourou-utils",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1729880355,
-        "narHash": "sha256-RP+OQ6koQQLX5nw0NmcDrzvGL8HDLnyXt/jHhL1jwjM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18536bf04cd71abd345f9579158841376fdd0c5a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1729880355,
         "narHash": "sha256-RP+OQ6koQQLX5nw0NmcDrzvGL8HDLnyXt/jHhL1jwjM=",
@@ -117,8 +39,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "knock": "knock",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     }
   },

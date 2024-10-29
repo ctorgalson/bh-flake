@@ -8,17 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # https://github.com/esn/knock
-    knock = {
-      url = "github:esn/knock";
-    };
   };
 
 # Home manager unfree pkgs configuration, and also for general flake
 # structure:
 # @see https://stackoverflow.com/questions/77585228/how-to-allow-unfree-packages-in-nix-for-each-situation-nixos-nix-nix-wit
-  outputs = { home-manager, knock, nixpkgs, self, ... }@inputs:
+  outputs = { home-manager, nixpkgs, self, ... }@inputs:
   let
     user = "ctorgalson";
     allowed-unfree-packages = [
@@ -28,7 +23,7 @@
   in {
     nixosConfigurations = {
       ser6 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs knock; };
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/ser6/configuration.nix
           home-manager.nixosModules.default
@@ -40,7 +35,7 @@
         ];
       };
       executive14 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs knock; };
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/executive14/configuration.nix
           home-manager.nixosModules.default
