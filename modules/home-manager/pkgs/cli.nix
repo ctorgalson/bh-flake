@@ -19,6 +19,7 @@
       httpie
       imagemagick
       jq
+      # https://superuser.com/questions/1027608/how-to-read-an-acsm-file-on-linux#1775619
       libgourou
       lm_sensors
       lynis
@@ -33,6 +34,7 @@
       tmux
       tree-sitter
       unison
+      unzip
       wl-clipboard
       yq
       yt-dlp
