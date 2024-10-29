@@ -19,6 +19,7 @@
       httpie
       imagemagick
       jq
+      libgourou
       lm_sensors
       lynis
       nodejs_22
