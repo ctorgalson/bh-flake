@@ -5,7 +5,6 @@
     home.packages = with pkgs; [
       borgbackup
       calibre
-      flameshot
       gimp-with-plugins
       gnomeExtensions.appindicator
       gnomeExtensions.freon
