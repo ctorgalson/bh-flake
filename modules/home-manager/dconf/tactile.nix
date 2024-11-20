@@ -34,46 +34,46 @@
         layout-2-row-3 = 1;
 
         # Row 1.
-        tile-0-0 = "1";
-        tile-1-0 = "2";
-        tile-2-0 = "3";
-        tile-3-0 = "4";
-        tile-4-0 = "5";
-        tile-5-0 = "6";
-        tile-6-0 = "7";
+        tile-0-0 = ["1"];
+        tile-1-0 = ["2"];
+        tile-2-0 = ["3"];
+        tile-3-0 = ["4"];
+        tile-4-0 = ["5"];
+        tile-5-0 = ["6"];
+        tile-6-0 = ["7"];
 
         # Row 2.
-        tile-0-1 = "q";
-        tile-1-1 = "w";
-        tile-2-1 = "e";
-        tile-3-1 = "r";
-        tile-4-1 = "t";
-        tile-5-1 = "y";
-        tile-6-1 = "u";
+        tile-0-1 = ["q"];
+        tile-1-1 = ["w"];
+        tile-2-1 = ["e"];
+        tile-3-1 = ["r"];
+        tile-4-1 = ["t"];
+        tile-5-1 = ["y"];
+        tile-6-1 = ["u"];
 
         # Row 3.
-        tile-0-2 = "a";
-        tile-1-2 = "s";
-        tile-2-2 = "d";
-        tile-3-2 = "f";
-        tile-4-2 = "g";
-        tile-5-2 = "h";
-        tile-6-2 = "j";
+        tile-0-2 = ["a"];
+        tile-1-2 = ["s"];
+        tile-2-2 = ["d"];
+        tile-3-2 = ["f"];
+        tile-4-2 = ["g"];
+        tile-5-2 = ["h"];
+        tile-6-2 = ["j"];
 
         # Row 4.
-        tile-0-3 = "z";
-        tile-1-3 = "x";
-        tile-2-3 = "c";
-        tile-3-3 = "v";
-        tile-4-3 = "b";
-        tile-5-3 = "n";
-        tile-6-3 = "m";
+        tile-0-3 = ["z"];
+        tile-1-3 = ["x"];
+        tile-2-3 = ["c"];
+        tile-3-3 = ["v"];
+        tile-4-3 = ["b"];
+        tile-5-3 = ["n"];
+        tile-6-3 = ["m"];
         
         # Layout keyboard shortcuts.
-        layout-1 = "F1";
-        layout-2 = "F2";
-        layout-3 = "F3";
-        layout-4 = "F4";
+        layout-1 = ["F1"];
+        layout-2 = ["F2"];
+        layout-3 = ["F3"];
+        layout-4 = ["F4"];
         
         # Various.
         monitor-0-layout = 1;
