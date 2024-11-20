@@ -52,22 +52,22 @@
         tile-6-1 = "u";
 
         # Row 3.
-        tile-0-1 = "a";
-        tile-1-1 = "s";
-        tile-2-1 = "d";
-        tile-3-1 = "f";
-        tile-4-1 = "g";
-        tile-5-1 = "h";
-        tile-6-1 = "j";
+        tile-0-2 = "a";
+        tile-1-2 = "s";
+        tile-2-2 = "d";
+        tile-3-2 = "f";
+        tile-4-2 = "g";
+        tile-5-2 = "h";
+        tile-6-2 = "j";
 
         # Row 4.
-        tile-0-1 = "z";
-        tile-1-1 = "x";
-        tile-2-1 = "c";
-        tile-3-1 = "v";
-        tile-4-1 = "b";
-        tile-5-1 = "n";
-        tile-6-1 = "m";
+        tile-0-3 = "z";
+        tile-1-3 = "x";
+        tile-2-3 = "c";
+        tile-3-3 = "v";
+        tile-4-3 = "b";
+        tile-5-3 = "n";
+        tile-6-3 = "m";
         
         # Layout keyboard shortcuts.
         layout-1 = "F1";
