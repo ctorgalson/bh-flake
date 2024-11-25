@@ -4,7 +4,7 @@
   config = {
     home.packages = with pkgs; [
       borgbackup
-      # calibre
+      calibre
       gimp-with-plugins
       gnomeExtensions.appindicator
       gnomeExtensions.freon
