@@ -23,7 +23,7 @@
       # quickgui
       signal-desktop
       slack
-      # vorta
+      vorta
       vlc
       vscodium
       yubikey-manager-qt
