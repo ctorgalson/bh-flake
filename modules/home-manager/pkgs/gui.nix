@@ -14,6 +14,7 @@
       gnome-color-manager
       gnome-extension-manager
       google-chrome
+      guvcview
       inconsolata-nerdfont
       inkscape-with-extensions
       lorem
