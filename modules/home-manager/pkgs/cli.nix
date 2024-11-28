@@ -10,12 +10,12 @@
       ddev
       diceware
       diffpdf
+      droidcam
       fastfetch
       fd
       ffmpeg
       gcc
       gnome-terminal
-      gphoto2
       gtop
       hddtemp
       httpie
