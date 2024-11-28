@@ -137,6 +137,7 @@
   #  wget
     bws
     docker
+    linuxKernel.packages.linux_hardened.v4l2loopback
     micro
     mkcert
     steam
