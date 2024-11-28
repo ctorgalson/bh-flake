@@ -173,6 +173,7 @@
       80
       443
       3000
+      4747
     ];
     allowedTCPPortRanges = [
       { from = 1714; to = 1764; }

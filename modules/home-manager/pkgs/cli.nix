@@ -10,7 +10,6 @@
       ddev
       diceware
       diffpdf
-      droidcam
       fastfetch
       fd
       ffmpeg

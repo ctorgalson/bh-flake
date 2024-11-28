@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
       borgbackup
       calibre
+      droidcam
       gimp-with-plugins
       gnomeExtensions.appindicator
       gnomeExtensions.freon
