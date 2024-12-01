@@ -4,6 +4,7 @@
   imports = [
     ./dconf
     ./file
+    ./fonts
     ./pkgs
     ./programs
   ];
