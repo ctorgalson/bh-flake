@@ -16,6 +16,7 @@
       google-chrome
       guvcview
       nerd-fonts.inconsolata
+      nerd-fonts.ubuntu
       # pkgs.nerd-fonts.inconsolata
       # nerdfonts
       # inconsolata-nerdfont
