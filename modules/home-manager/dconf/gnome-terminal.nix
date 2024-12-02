@@ -19,7 +19,7 @@
       };
       "org/gnome/terminal/legacy/profiles:/:${config.gnome-terminal.profileId}" = {
         use-system-font = false;
-        font = "Inconsolata Nerd Font Mono 14";
+        font = "UbuntuMono Nerd Font Mono 15";
         use-theme-colors = false;
         foreground-color = "rgb(131,148,150)";
         background-color = "rgb(0,43,54)";
