@@ -16,7 +16,8 @@
       google-chrome
       guvcview
       # pkgs.nerd-fonts.inconsolata
-      nerdfonts
+      # nerdfonts
+      inconsolate-nerdfont
       inkscape-with-extensions
       lorem
       nextcloud-client
