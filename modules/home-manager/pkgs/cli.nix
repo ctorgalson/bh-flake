@@ -31,6 +31,7 @@
       quickemu
       rich-cli
       shellcheck
+      sqlite
       timewarrior
       tmux
       tree-sitter
