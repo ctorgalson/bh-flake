@@ -4,7 +4,8 @@
   config = {
     fonts.fontconfig.enable = true;
     home.packages = [
-      (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
+      pkgs.nerd-fonts.inconsolata
+      # (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
     ];
   };
 }
