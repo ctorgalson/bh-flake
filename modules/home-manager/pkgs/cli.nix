@@ -28,6 +28,7 @@
       orpie
       pciutils
       platformsh
+      python
       quickemu
       rich-cli
       shellcheck
