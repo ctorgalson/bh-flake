@@ -10,6 +10,7 @@
           "appindicatorsupport@rgcjonas.gmail.com"
           "freon@UshakovVasilii_Github.yahoo.com"
           "gsconnect@andyholmes.github.io"
+          "solaar-extension@sidevesh"
           "tactile@lundal.io"
         ];
       };

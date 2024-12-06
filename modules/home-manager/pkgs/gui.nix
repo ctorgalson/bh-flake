@@ -9,6 +9,7 @@
       gnomeExtensions.appindicator
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
+      gnomeExtensions.solaar-extension
       gnomeExtensions.tactile
       gnome-clocks
       gnome-color-manager
@@ -28,6 +29,7 @@
       # quickgui
       signal-desktop
       slack
+      solaar
       vorta
       vlc
       vscodium
