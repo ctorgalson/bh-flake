@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
       borgbackup
       calibre
+      darktable
       gimp-with-plugins
       gnomeExtensions.appindicator
       gnomeExtensions.freon
