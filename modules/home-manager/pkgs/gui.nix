@@ -23,6 +23,7 @@
       # nerdfonts
       # inconsolata-nerdfont
       inkscape-with-extensions
+      localsend
       lorem
       nextcloud-client
       obsidian
