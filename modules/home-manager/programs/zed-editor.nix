@@ -24,8 +24,8 @@
           metrics = false;
         };
         node = {
-          path: "${pkgs.nodejs}/bin/node";
-          npm_path: "${pkgs.nodejs}/bin/npm";
+          path = "${pkgs.nodejs}/bin/node";
+          npm_path = "${pkgs.nodejs}/bin/npm";
         };
         hour_format = "hour24";
         auto_update = false;
