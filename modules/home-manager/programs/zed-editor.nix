@@ -45,10 +45,10 @@
           shell = "system";
           working_directory = "current_project_directory";
           vim_mode = true;
-          theme: {
-            mode: "system",
-            light: "Solarized Light",
-            dark: "Solarized Dark"
+          theme = {
+            mode = "system";
+            light = "Solarized Light";
+            dark = "Solarized Dark";
           };
           ui_font_size = 16;
           buffer_font_size = 16;
