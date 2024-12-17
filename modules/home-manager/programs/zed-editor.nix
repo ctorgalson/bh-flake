@@ -17,10 +17,15 @@
         "toml"
         "twig"
       ];
+      # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zed-editor.userKeymaps
+      userKeymaps = { };
       userSettings = {
+        telemetry = {
+          metrics = false;
+        };
         node = {
-          path = lib.getExe pkgs.nodejs;
-          npm_path = lib.getExe pkgs.nodejs "npm";
+          path: "${pkgs.nodejs}/bin/node";
+          npm_path: "${pkgs.nodejs}/bin/npm";
         };
         hour_format = "hour24";
         auto_update = false;
