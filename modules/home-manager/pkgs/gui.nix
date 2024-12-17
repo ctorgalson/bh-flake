@@ -38,7 +38,6 @@
       yubikey-manager-qt
       yubikey-personalization-gui
       zeal
-      zed-editor
     ];
   };
 }

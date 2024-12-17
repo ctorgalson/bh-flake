@@ -12,6 +12,7 @@
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
+    ./zed-editor.nix
     ./zoxide.nix
     ./zsh.nix
   ];
