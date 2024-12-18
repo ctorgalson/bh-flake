@@ -50,7 +50,7 @@
         git = {
           enabled = true;
           git_status = true;
-          git_gutter: "tracked_files";
+          git_gutter = "tracked_files";
         };
         line_height = "comfortable";
         linter = "eslint";
