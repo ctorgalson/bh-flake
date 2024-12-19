@@ -35,7 +35,7 @@
       ];
       userSettings = {
         auto_update = false;
-        buffer_font_family = "UbuntuMono Nerd Font Mono";
+        buffer_font_family = "DejaVu Sans Mono";
         buffer_font_size = 16;
         eslint = {
           enabled = true;
@@ -43,7 +43,7 @@
           autoFixOnFormat = true;
           autoFixOnFormatDelay = 1500;
         };
-        font_family = "UbuntuMono Nerd Font Mono";
+        font_family = "DejaVu Sans Mono";
         font_features = null;
         font_size = null;
         formatter = "prettier";
@@ -102,7 +102,7 @@
           mode = "dark";
         };
         ui_font_size = 16;
-        ui_font_family = "UbuntuMono Nerd Font Mono";
+        ui_font_family = "DejaVu Sans Mono";
         vim_mode = true;
         working_directory = "current_project_directory";
       };
