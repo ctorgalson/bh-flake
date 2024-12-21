@@ -35,7 +35,7 @@
       ];
       userSettings = {
         auto_update = false;
-        buffer_font_family = "DejaVu Sans Mono";
+        buffer_font_family = "Ubuntu";
         buffer_font_size = 16;
         eslint = {
           enabled = true;
@@ -43,7 +43,7 @@
           autoFixOnFormat = true;
           autoFixOnFormatDelay = 1500;
         };
-        font_family = "DejaVu Sans Mono";
+        font_family = "Ubuntu";
         font_features = null;
         font_size = null;
         formatter = "prettier";
@@ -71,9 +71,16 @@
         ssh_connections = [
           {
             host = "nx";
-            # projects = {
-            #   dcc = "~/Projects/dublin-city-council";
-            # };
+            projects = [
+              {
+                paths = [
+                  "~/Projects/dublin-city-council/web/themes/custom/dcc_reference"
+                  "~/Projects/dublin-city-council/web/themes/custom/weatherlab"
+                ];
+              }
+            ];
+            # @see https://github.com/zed-industries/zed/issues/22251
+            # @see https://zed.dev/docs/remote-development?highlight=remote#configuration
           }
         ];
         tabs = {
@@ -102,7 +109,7 @@
           mode = "dark";
         };
         ui_font_size = 16;
-        ui_font_family = "DejaVu Sans Mono";
+        ui_font_family = "Ubuntu";
         vim_mode = true;
         working_directory = "current_project_directory";
       };
