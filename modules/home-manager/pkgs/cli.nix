@@ -36,6 +36,7 @@
       lynis
       nodejs_22
       orpie
+      pandoc
       pciutils
       platformsh
       python314
