@@ -14,6 +14,7 @@
       fd
       ffmpeg
       gcc
+      glow
       gnome-terminal
       gtop
       hddtemp
@@ -36,7 +37,6 @@
       lynis
       nodejs_22
       orpie
-      pandoc
       pciutils
       platformsh
       python314
