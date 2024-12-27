@@ -21,8 +21,12 @@
         use-system-font = false;
         font = "UbuntuMono Nerd Font 14";
         use-theme-colors = false;
-        foreground-color = "rgb(131,148,150)";
-        background-color = "rgb(0,43,54)";
+        # Solarized dark.
+        # foreground-color = "rgb(131,148,150)";
+        # background-color = "rgb(0,43,54)";
+        # Solarized light.
+        foreground-color = "rgb(101,123,131)";
+        background-color = "rgb(253,246,227)";
         palette = [
           "rgb(7,54,66)"
           "rgb(220,50,47)"
