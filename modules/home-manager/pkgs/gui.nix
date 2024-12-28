@@ -32,7 +32,7 @@
       signal-desktop
       slack
       solaar
-      transmission_4
+      transmission_4-gtk
       vorta
       vlc
       vscodium
