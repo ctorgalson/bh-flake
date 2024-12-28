@@ -6,6 +6,7 @@
       borgbackup
       calibre
       darktable
+      fragments
       gimp-with-plugins
       gnomeExtensions.appindicator
       gnomeExtensions.freon
@@ -32,7 +33,6 @@
       signal-desktop
       slack
       solaar
-      transmission_4-gtk
       vorta
       vlc
       vscodium
