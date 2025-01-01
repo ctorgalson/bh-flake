@@ -7,7 +7,8 @@
       calibre
       darktable
       fragments
-      gimp-with-plugins
+      gimp
+      # gimp-with-plugins
       gnomeExtensions.appindicator
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
@@ -15,7 +16,7 @@
       gnomeExtensions.tactile
       gnome-clocks
       gnome-color-manager
-      gnome-extension-manager
+      # gnome-extension-manager
       google-chrome
       guvcview
       nerd-fonts.inconsolata
