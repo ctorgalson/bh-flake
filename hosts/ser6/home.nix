@@ -68,8 +68,8 @@
   #  /etc/profiles/per-user/ctorgalson/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "lvim";
+    VISUAL = "lvim";
   };
 
   # This value determines the Home Manager release that your configuration is
