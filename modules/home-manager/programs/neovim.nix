@@ -15,40 +15,41 @@
       extraConfig = ''
       '';
 
-      extraLuaConfig = ''
-        ${builtins.readFile ./neovim/options.lua}
-      '';
+      # extraLuaConfig = ''
+      #   ${builtins.readFile ./neovim/options.lua}
+      # '';
 
       plugins = with pkgs.vimPlugins; [
-        {
-          plugin = bufferline-nvim;
-          config = toLuaFromFile ./neovim/plugins/bufferline-nvim.lua;
-        }
-        {
-          plugin = comment-nvim;
-          config = toLuaFromString "require(\"Comment\").setup()";
-        }
-        gitsigns-nvim
-        {
-          plugin = lualine-nvim;
-        }
-        {
-          plugin = neo-tree-nvim;
-          config = toLuaFromFile ./neovim/plugins/neo-tree-nvim.lua;
-        }
-        {
-          plugin = nvim-lspconfig;
-        }
-        {
-          plugin = nvim-solarized-lua;
-          config = "colorscheme solarized";
-        }
-        nvim-treesitter.withAllGrammars
-        nvim-web-devicons
-        telescope-nvim
-        {
-          plugin = which-key-nvim;
-        }
+          nvchad-ui
+      #   {
+      #     plugin = bufferline-nvim;
+      #     config = toLuaFromFile ./neovim/plugins/bufferline-nvim.lua;
+      #   }
+      #   {
+      #     plugin = comment-nvim;
+      #     config = toLuaFromString "require(\"Comment\").setup()";
+      #   }
+      #   gitsigns-nvim
+      #   {
+      #     plugin = lualine-nvim;
+      #   }
+      #   {
+      #     plugin = neo-tree-nvim;
+      #     config = toLuaFromFile ./neovim/plugins/neo-tree-nvim.lua;
+      #   }
+      #   {
+      #     plugin = nvim-lspconfig;
+      #   }
+      #   {
+      #     plugin = nvim-solarized-lua;
+      #     config = "colorscheme solarized";
+      #   }
+      #   nvim-treesitter.withAllGrammars
+      #   nvim-web-devicons
+      #   telescope-nvim
+      #   {
+      #     plugin = which-key-nvim;
+      #   }
       ];
 
       viAlias = true;
