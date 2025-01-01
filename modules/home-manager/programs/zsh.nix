@@ -7,6 +7,9 @@
       enableCompletion = true;
       shellAliases = {
         top = "gtop";
+        nvim = "lvim";
+        vi = "lvim";
+        vim = "lvim";
       };
     };
   };
