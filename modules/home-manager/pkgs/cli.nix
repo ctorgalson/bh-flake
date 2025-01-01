@@ -34,13 +34,14 @@
       # adept_remove file.pdf
       libgourou
       lm_sensors
+      lunarvim
       lynis
       nodejs_22
       orpie
       pciutils
       platformsh
       python314
-      quickemu
+      #quickemu
       rich-cli
       shellcheck
       sqlite
