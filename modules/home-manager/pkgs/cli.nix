@@ -34,7 +34,6 @@
       # adept_remove file.pdf
       libgourou
       lm_sensors
-      lunarvim
       lynis
       nodejs_22
       orpie
@@ -46,7 +45,7 @@
       shellcheck
       sqlite
       timewarrior
-      tmux
+      # tmux
       tree-sitter
       unison
       unzip

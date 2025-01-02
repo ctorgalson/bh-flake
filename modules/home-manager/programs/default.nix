@@ -8,10 +8,11 @@
     ./fzf.nix
     ./git.nix
     ./joplin-desktop.nix
-    # ./neovim.nix
+    ./neovim.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
+    ./tmux.nix
     ./zed-editor.nix
     ./zoxide.nix
     ./zsh.nix
