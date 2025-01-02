@@ -8,7 +8,7 @@
     ./fzf.nix
     ./git.nix
     ./joplin-desktop.nix
-    ./neovim
+    #./neovim
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
