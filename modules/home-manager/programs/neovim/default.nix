@@ -24,28 +24,50 @@
           plugin = bufferline-nvim;
           config = toLuaFromFile ./plugins/bufferline-nvim.lua;
         }
+
         {
           plugin = comment-nvim;
           config = toLuaFromString "require(\"Comment\").setup()";
         }
-        gitsigns-nvim
+
+        {
+          plugin = gitsigns-nvim;
+        }
+
         {
           plugin = lualine-nvim;
         }
+
         {
           plugin = neo-tree-nvim;
           config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
+
         {
           plugin = nvim-lspconfig;
         }
+
         {
           plugin = catppuccin-nvim;
           config = "colorscheme catppuccin-mocha";
         }
-        nvim-treesitter.withAllGrammars
-        nvim-web-devicons
-        telescope-nvim
+
+        {
+          plugin = nvim-treesitter.withAllGrammars;
+        }
+
+        {
+          plugin = nvim-treesitter-parsers.twig;
+        }
+
+        {
+          plugin = nvim-web-devicons;
+        }
+
+        {
+          plugin = telescope-nvim;
+        }
+
         {
           plugin = which-key-nvim;
         }
