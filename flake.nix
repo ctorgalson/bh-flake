@@ -20,11 +20,16 @@
 # @see https://stackoverflow.com/questions/77585228/how-to-allow-unfree-packages-in-nix-for-each-situation-nixos-nix-nix-wit
   outputs = { home-manager, nixpkgs, self, ... }@inputs:
   let
-    user = "ctorgalson";
     allowed-unfree-packages = [
       "bws"
       "steam"
     ];
+    lib = nixpkgs.lib;
+    pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+    system = "x86_64-linux";
+    user = "ctorgalson";
+    extraSpecialArgs = { inherit system; inherit inputs; };  # <- passing inputs to the attribute set for home-manager
+    specialArgs = { inherit system; inherit inputs; };       # <- passing inputs to the attribute set for NixOS (opti
   in {
     nixosConfigurations = {
       ser6 = nixpkgs.lib.nixosSystem {
