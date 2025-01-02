@@ -43,9 +43,9 @@
           config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
 
-        {
-          plugin = nvim-lspconfig;
-        }
+        # {
+        #   plugin = nvim-lspconfig;
+        # }
 
         {
           plugin = catppuccin-nvim;
@@ -54,11 +54,30 @@
 
         {
           plugin = nvim-treesitter.withAllGrammars;
+          config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
+        # https://nixos.wiki/wiki/Treesitter
+        # (nvim-treesitter.withPlugins (p: [
+        #   p.bash
+        #   p.css
+        #   p.html
+        #   p.javascript
+        #   p.json
+        #   p.lua
+        #   p.markdown
+        #   p.nix
+        #   p.php
+        #   p.python
+        #   p.toml
+        #   p.twig
+        #   p.typescript
+        #   p.yaml
+        #   p.vim
+        # ]))
 
-        {
-          plugin = nvim-treesitter-parsers.twig;
-        }
+        # {
+        #   plugin = nvim-treesitter-parsers.twig;
+        # }
 
         {
           plugin = nvim-web-devicons;
