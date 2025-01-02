@@ -25,8 +25,12 @@
         # foreground-color = "rgb(131,148,150)";
         # background-color = "rgb(0,43,54)";
         # Solarized light.
-        foreground-color = "rgb(101,123,131)";
-        background-color = "rgb(253,246,227)";
+        # foreground-color = "rgb(101,123,131)";
+        # background-color = "rgb(253,246,227)";
+        # Gnome Dark.
+        foreground-color = "rgb(208,207,204)";
+        background-color = "rgb(23,20,33)";
+
         palette = [
           "rgb(7,54,66)"
           "rgb(220,50,47)"
