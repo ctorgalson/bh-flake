@@ -16,13 +16,13 @@
       '';
 
       extraLuaConfig = ''
-        ${builtins.readFile ./neovim/options.lua}
+        ${builtins.readFile ./options.lua}
       '';
 
       plugins = with pkgs.vimPlugins; [
         {
           plugin = bufferline-nvim;
-          config = toLuaFromFile ./neovim/plugins/bufferline-nvim.lua;
+          config = toLuaFromFile ./plugins/bufferline-nvim.lua;
         }
         {
           plugin = comment-nvim;
@@ -34,17 +34,14 @@
         }
         {
           plugin = neo-tree-nvim;
-          config = toLuaFromFile ./neovim/plugins/neo-tree-nvim.lua;
+          config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
         {
           plugin = nvim-lspconfig;
         }
         {
           plugin = catppuccin-nvim;
-        }
-        {
-          plugin = nvim-solarized-lua;
-          config = "colorscheme solarized";
+          config = "colorscheme catppuccin-mocha";
         }
         nvim-treesitter.withAllGrammars
         nvim-web-devicons
