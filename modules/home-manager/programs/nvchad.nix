@@ -1,10 +1,10 @@
 { inputs, config, pkgs, programs, ... }:
 
 {
+  imports = [
+    inputs.nvchad4nix.homeManagerModule
+  ];
   config = {
-    imports = [
-      inputs.nvchad4nix.homeManagerModule
-    ];
     programs.nvchad = {
       enable = true;
       extraPackages = with pkgs; [ ];
