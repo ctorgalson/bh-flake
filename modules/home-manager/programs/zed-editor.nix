@@ -6,13 +6,13 @@
       enable = true;
       extensions = [
         "basher"
+        "catppuccin"
         "csv"
         "git-firefly"
         "html"
+        "jinja2"
         "nix"
         "php"
-        "git-firefly"
-        "jinja2"
         "sql"
         "toml"
         "twig"
@@ -104,8 +104,10 @@
           env = { };
         };
         theme = {
-          dark = "Solarized Dark";
-          light = "Solarized Light";
+          # dark = "Solarized Dark";
+          # light = "Solarized Light";
+          dark = "Catppuccin Macchiato";
+          light = "Cattpuccin Latte";
           mode = "dark";
         };
         ui_font_size = 16;
