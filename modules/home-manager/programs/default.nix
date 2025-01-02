@@ -9,6 +9,7 @@
     ./git.nix
     ./joplin-desktop.nix
     #./neovim
+    ./nvchad.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
