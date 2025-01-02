@@ -6,7 +6,7 @@
       enable = true;
       extraPackages = with pkgs; [
       ];
-      backup
+      backup = true;
     };
   };
 }
