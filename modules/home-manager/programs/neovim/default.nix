@@ -13,6 +13,7 @@
       defaultEditor = true;
 
       extraConfig = ''
+      colorscheme catppuccin-mocha
       '';
 
       extraLuaConfig = ''
@@ -24,63 +25,33 @@
           plugin = bufferline-nvim;
           config = toLuaFromFile ./plugins/bufferline-nvim.lua;
         }
-
         {
           plugin = comment-nvim;
           config = toLuaFromFile ./plugins/comment-nvim.lua;
         }
-
         { plugin = gitsigns-nvim; }
-
         { plugin = lualine-nvim; }
-
         {
           plugin = neo-tree-nvim;
           config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
-
         # {
         #   plugin = nvim-lspconfig;
         # }
-
+        { plugin = catppuccin-nvim; }
         {
-          plugin = catppuccin-nvim;
-          config = "colorscheme catppuccin-mocha";
+          plugin = nvim-treesitter.withAllGrammars;
+          config = toLuaFromFile ./plugins/nvim-treesitter.lua;
         }
-
-        {
-          # plugin = nvim-treesitter.withAllGrammars;
-          plugin = nvim-treesitter;
-          config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
-        }
-        # https://nixos.wiki/wiki/Treesitter
-        # (nvim-treesitter.withPlugins (p: [
-        #   p.bash
-        #   p.css
-        #   p.html
-        #   p.javascript
-        #   p.json
-        #   p.lua
-        #   p.markdown
-        #   p.nix
-        #   p.php
-        #   p.python
-        #   p.toml
-        #   p.twig
-        #   p.typescript
-        #   p.yaml
-        #   p.vim
-        # ]))
-
-        # {
-        #   plugin = nvim-treesitter-parsers.twig;
-        # }
-
         { plugin = nvim-web-devicons; }
-
-        { plugin = telescope-nvim; }
-
-        { plugin = which-key-nvim; }
+        {
+          plugin = telescope-nvim;
+          config = toLuaFromFile ./plugins/nvim-telescope.lua;
+        }
+        {
+          plugin = which-key-nvim;
+          config = toLuaFromFile ./plugins/which-key-nvim.lua;
+        }
       ];
 
       viAlias = true;
