@@ -9,10 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvchad4nix = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvchad4nix = {
+    #   url = "github:nix-community/nix4nvchad";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
 # Home manager unfree pkgs configuration, and also for general flake
@@ -36,15 +36,15 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/ser6/configuration.nix
-          {
-            nixpkgs = {
-              overlays = [
-                (final: prev: {
-                    nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-                })
-              ];
-            };
-          }
+          # {
+          #   nixpkgs = {
+          #     overlays = [
+          #       (final: prev: {
+          #           nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
+          #       })
+          #     ];
+          #   };
+          # }
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
@@ -57,15 +57,15 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/executive14/configuration.nix
-          {
-            nixpkgs = {
-              overlays = [
-                (final: prev: {
-                    nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-                })
-              ];
-            };
-          }
+          # {
+          #   nixpkgs = {
+          #     overlays = [
+          #       (final: prev: {
+          #           nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
+          #       })
+          #     ];
+          #   };
+          # }
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
