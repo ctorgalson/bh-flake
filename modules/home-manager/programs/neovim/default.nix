@@ -27,16 +27,12 @@
 
         {
           plugin = comment-nvim;
-          config = toLuaFromString "require(\"Comment\").setup()";
+          config = toLuaFromFile ./plugins/comment-nvim.lua;
         }
 
-        {
-          plugin = gitsigns-nvim;
-        }
+        { plugin = gitsigns-nvim; }
 
-        {
-          plugin = lualine-nvim;
-        }
+        { plugin = lualine-nvim; }
 
         {
           plugin = neo-tree-nvim;
@@ -53,7 +49,8 @@
         }
 
         {
-          plugin = nvim-treesitter.withAllGrammars;
+          # plugin = nvim-treesitter.withAllGrammars;
+          plugin = nvim-treesitter;
           config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
         # https://nixos.wiki/wiki/Treesitter
@@ -79,17 +76,11 @@
         #   plugin = nvim-treesitter-parsers.twig;
         # }
 
-        {
-          plugin = nvim-web-devicons;
-        }
+        { plugin = nvim-web-devicons; }
 
-        {
-          plugin = telescope-nvim;
-        }
+        { plugin = telescope-nvim; }
 
-        {
-          plugin = which-key-nvim;
-        }
+        { plugin = which-key-nvim; }
       ];
 
       viAlias = true;
