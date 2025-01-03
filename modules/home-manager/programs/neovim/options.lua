@@ -14,19 +14,8 @@ vim.o.termguicolors = true
 vim.o.updatetime = 300
 vim.wo.number = true
 
--- It should be possible to configure these plugins in their own files.
---
--- @todo: get this plugin-specific config out of htere.
---
 -- Toggle Neotree.
 vim.keymap.set("n", "<Leader>e", ":Neotree toggle<CR>", { desc = "Toggle file browser", remap = false })
-
--- Configure Telescope.
--- local builtin = require('telescope.builtin')
--- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Search for files" })
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Search in files" })
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Search in open buffers" })
--- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Search Neovim help" })
 
 -- Move between and resize panes.
 --

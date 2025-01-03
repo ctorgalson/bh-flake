@@ -1,4 +1,4 @@
--- @see https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#customization
+-- @see https://github.com/nvim-telescope/telescope.nvim
 require("telescope").setup({
   defaults = {
     -- Default configuration for telescope goes here:
