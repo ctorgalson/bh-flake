@@ -1,10 +1,13 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- Comment to prevent weirdness when nix prepends the main neovim config.
+
+-- Basic configuration.
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.colorcolumn = '80'
 vim.o.expandtab = true
 vim.o.hlsearch = true
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 vim.o.mouse = 'a'
 vim.o.number = true
 vim.o.shiftwidth = 2
@@ -28,7 +31,7 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = tr
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
 -- Resize window using <ctrl> arrow keys
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
