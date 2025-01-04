@@ -18,10 +18,10 @@
     # Configure package preferences.
     dconf.settings = {
       "com/raggesilver/BlackBox" = {
-        font = "UbuntuMono Nerd Font Mono 14";
+        font = "UbuntuMono Nerd Font Mono 15";
         theme-bold-is-bright = true;
         remember-window-size = true;
-        show-headerbar = true;
+        show-headerbar = false;
         floating-controls = true;
         delay-before-showing-floating-controls = (lib.hm.gvariant.mkUint32 250);
         style-preference = (lib.hm.gvariant.mkUint32 2);
