@@ -43,7 +43,8 @@ local lspconfig = require('lspconfig')
 -- or stick with intelephense (seems better off the top)
 local servers = {
   'cssls',
-  'htmx',
+  'html',
+  -- 'htmx',
   -- 'jsonls',
   -- 'phpactor',
   'intelephense',

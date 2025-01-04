@@ -7,6 +7,7 @@
       htmx-lsp
       intelephense
       phpactor
+      nodePackages.prettier
       typescript
       typescript-language-server
       vscode-langservers-extracted
