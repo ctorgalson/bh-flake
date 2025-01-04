@@ -4,6 +4,11 @@
   # Refer to https://nixos.wiki/wiki/Neovim
   config = {
     home.packages = with pkgs; [
+      htmx-lsp
+      intelephense
+      phpactor
+      typescript
+      typescript-language-server
       vscode-langservers-extracted
     ];
 
@@ -41,20 +46,10 @@
           plugin = comment-nvim;
 	        config = toLuaFromFile ./plugins/comment-nvim.lua;
         }
-        # { plugin = cmp-nvim-lsp; }
-        # { plugin = cmp-buffer; }
-        # { plugin = cmp-path; }
-        # { plugin = cmp-cmdline; }
-        # { plugin = cmp-cmdline; }
-        # { 
-        #   plugin = nvim-cmp;
-        #   config = toLuaFromFile ./plugins/nvim-cmp.lua;
-        # }
-        # { plugin = vim-vsnip; }
-        # {
-        #   # @see https://github.com/lewis6991/gitsigns.nvim
-        #   plugin = gitsigns-nvim;
-        # }
+        {
+          # @see https://github.com/lewis6991/gitsigns.nvim
+          plugin = gitsigns-nvim;
+        }
         {
           plugin = lualine-nvim;
 	        config = toLuaFromFile ./plugins/lualine-nvim.lua;
@@ -66,10 +61,6 @@
         {
           plugin = nvim-colorizer-lua;
           config = toLuaFromFile ./plugins/nvim-colorizer-lua.lua;
-        }
-        {
-          # @see https://github.com/neovim/nvim-lspconfig
-          plugin = nvim-lspconfig;
         }
         {
           plugin = nvim-treesitter.withAllGrammars;
@@ -86,6 +77,24 @@
         {
           plugin = which-key-nvim;
 	        config = toLuaFromFile ./plugins/which-key-nvim.lua;
+        }
+        # LSP noodling.
+        {
+          # @see https://github.com/neovim/nvim-lspconfig
+          plugin = nvim-lspconfig;
+        }
+        {
+          plugin = nvim-cmp;
+	        config = toLuaFromFile ./plugins/nvim-cmp.lua;
+        }
+        { plugin = cmp-nvim-lsp; }
+        { plugin = cmp-nvim-lsp-signature-help; }
+        { plugin = cmp-buffer; }
+        { plugin = cmp-path; }
+        { plugin = vim-prettier; }
+        {
+          plugin = luasnip;
+          config = toLuaFromFile ./plugins/luasnip.lua;
         }
       ];
 
