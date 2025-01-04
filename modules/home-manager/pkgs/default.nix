@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./blackbox-terminal
     ./cli.nix
     ./get-ssh-keys.nix
     ./gui.nix
