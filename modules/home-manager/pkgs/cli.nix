@@ -6,7 +6,6 @@
       ansible
       blackbox-terminal
       bitwarden-cli
-      byobu
       clamav
       ddev
       diceware
