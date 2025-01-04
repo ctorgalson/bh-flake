@@ -1,4 +1,4 @@
-{ config, pkgs, programs, ... }:
+{ config, home, pkgs, programs, ... }:
 
 {
   # Refer to https://nixos.wiki/wiki/Neovim
@@ -6,6 +6,7 @@
     home.packages = with pkgs; [
       htmx-lsp
       intelephense
+      nixd
       phpactor
       nodePackages.prettier
       typescript
@@ -80,6 +81,8 @@
 	        config = toLuaFromFile ./plugins/which-key-nvim.lua;
         }
         # LSP noodling.
+        #
+        # @see https://nathan-long.com/blog/modern-javascript-tooling-in-neovim/
         {
           # @see https://github.com/neovim/nvim-lspconfig
           plugin = nvim-lspconfig;

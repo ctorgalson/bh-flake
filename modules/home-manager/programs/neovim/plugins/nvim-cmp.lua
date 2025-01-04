@@ -48,6 +48,7 @@ local servers = {
   -- 'jsonls',
   -- 'phpactor',
   'intelephense',
+  'nixd',
   'ts_ls',
   -- 'tailwindcss',
   -- 'tsserver',
