@@ -32,6 +32,12 @@
             "ctrl-j" = ["workspace::ActivatePaneInDirection" "Down"];
           };
         }
+        {
+          context = "Terminal";
+          bindings = {
+            "ctrl-\\" = "workspace::ToggleBottomDock";
+          };
+        }
       ];
       userSettings = {
         auto_update = false;
