@@ -16,6 +16,7 @@
       gnomeExtensions.tactile
       gnome-clocks
       gnome-color-manager
+      gnome-multi-writer
       # gnome-extension-manager
       google-chrome
       guvcview
