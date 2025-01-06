@@ -58,6 +58,11 @@
           git_status = true;
           git_gutter = "tracked_files";
         };
+        languages = {
+          Python = {
+            tab_size = 4;
+          };
+        };
         line_height = "comfortable";
         linter = "eslint";
         hour_format = "hour24";
@@ -89,6 +94,7 @@
             # @see https://zed.dev/docs/remote-development?highlight=remote#configuration
           }
         ];
+        tab_size = 2;
         tabs = {
           file_icons = true;
           git_status = true;
