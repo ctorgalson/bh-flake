@@ -70,6 +70,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
+    GIT_EDITOR="vim -c 'set buftype='";
   };
 
   # This value determines the Home Manager release that your configuration is

@@ -77,6 +77,10 @@
 	        config = toLuaFromFile ./plugins/nvim-telescope.lua;
         }
         {
+            plugin = toggleterm-nvim;
+            config = toLuaFromFile ./plugins/toggleterm-nvim.lua;
+        }
+        {
           plugin = which-key-nvim;
 	        config = toLuaFromFile ./plugins/which-key-nvim.lua;
         }
