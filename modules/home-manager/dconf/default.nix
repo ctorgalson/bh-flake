@@ -5,6 +5,7 @@
     ./appindicator.nix
     ./clocks.nix
     ./extensions.nix
+    ./fonts.nix
     ./freon.nix
     ./gnome-terminal.nix
     ./gsconnect.nix
