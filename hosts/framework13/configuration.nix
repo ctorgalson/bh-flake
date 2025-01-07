@@ -7,7 +7,7 @@
       ../../modules/nixos/main-user.nix
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flake" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.gc = {
     automatic = true;
