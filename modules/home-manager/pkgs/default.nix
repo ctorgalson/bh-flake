@@ -6,6 +6,7 @@
     ./byobu
     ./cli.nix
     ./get-ssh-keys.nix
+    ./ghostty
     ./gui.nix
     ./homefox.nix
     ./nixnvm.nix

@@ -1,0 +1,6 @@
+font-family = UbuntuMono Nerd Font
+font-size = 15
+theme = catppuccin-macchiato
+window-padding-x = 3
+window-padding-y = 3
+window-padding-balance = true
