@@ -36,15 +36,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/ser6/configuration.nix
-          # {
-          #   nixpkgs = {
-          #     overlays = [
-          #       (final: prev: {
-          #           nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-          #       })
-          #     ];
-          #   };
-          # }
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
@@ -57,15 +48,18 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/executive14/configuration.nix
-          # {
-          #   nixpkgs = {
-          #     overlays = [
-          #       (final: prev: {
-          #           nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-          #       })
-          #     ];
-          #   };
-          # }
+          home-manager.nixosModules.default
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit allowed-unfree-packages inputs user; };
+          }
+        ];
+      };
+      framework13 = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/framework13/configuration.nix
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
