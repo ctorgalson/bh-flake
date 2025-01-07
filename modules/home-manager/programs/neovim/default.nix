@@ -3,7 +3,13 @@
 {
   # Refer to https://nixos.wiki/wiki/Neovim
   config = {
+    home.file = {
+      # Distant
+      ".config/distant/config.toml".source = ./dotfiles/distant/config.toml;
+    };
+
     home.packages = with pkgs; [
+      distant
       htmx-lsp
       intelephense
       nixd
@@ -47,6 +53,10 @@
         {
           plugin = comment-nvim;
 	        config = toLuaFromFile ./plugins/comment-nvim.lua;
+        }
+        {
+          plugin = distant-nvim;
+          config = toLuaFromFile ./plugins/distant-nvim.lua;
         }
         {
           # @see https://github.com/lewis6991/gitsigns.nvim
