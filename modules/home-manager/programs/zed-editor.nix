@@ -89,6 +89,12 @@
                   "~/Projects/dublin-city-council/web/themes/custom/weatherlab"
                 ];
               }
+              {
+                paths = [
+                  "~/Projects/galway-coco-lgd/web/themes/custom/lgd"
+                  "~/Projects/galway-coco-lgd/web/themes/custom/lgdold"
+                ];
+              }
             ];
             # @see https://github.com/zed-industries/zed/issues/22251
             # @see https://zed.dev/docs/remote-development?highlight=remote#configuration
