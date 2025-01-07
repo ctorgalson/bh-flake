@@ -17,6 +17,7 @@
       gnome-clocks
       gnome-color-manager
       gnome-multi-writer
+      gnome-tweak
       # gnome-extension-manager
       google-chrome
       guvcview
