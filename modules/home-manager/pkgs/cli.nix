@@ -46,6 +46,7 @@
       sqlite
       timewarrior
       # tmux
+      tree
       tree-sitter
       unison
       unzip

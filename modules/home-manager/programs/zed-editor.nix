@@ -92,7 +92,7 @@
               {
                 paths = [
                   "~/Projects/galway-coco-lgd/web/themes/custom/lgd"
-                  "~/Projects/galway-coco-lgd/web/themes/custom/lgdold"
+                  "~/Projects/gcoco-lgd-theme-old"
                 ];
               }
             ];
