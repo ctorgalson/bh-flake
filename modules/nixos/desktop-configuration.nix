@@ -1,7 +1,20 @@
 { allowed-unfree-packages, inputs, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../../modules/nixos/main-user.nix
+  ];
+
+  # Vars for main-user module
+
+  main-user.enable = true;
+  main-user.userName = "ctorgalson";
+  main-user.userDescription = "Christopher Torgalson";
+
+  # NIX
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   nix.gc = {
     automatic = true;
     dates = "02:00";
@@ -9,54 +22,7 @@
     randomizedDelaySec = "45min";
   };
 
-  networking.networkmanager.enable = true;
-
-  time.timeZone = "America/Toronto";
-
-  i18n.defaultLocale = "en_CA.UTF-8";
-
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  services.printing.enable = true;
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
-
-  services.tailscale = {
-    enable = true;
-  };
-
-  main-user.enable = true;
-  main-user.userName = "ctorgalson";
-  main-user.userDescription = "Christopher Torgalson";
-
-  programs.git.enable = true;
-
-  programs.zsh.enable = true;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-  };
+  # ENVIRONMENT 
 
   environment.systemPackages = with pkgs; [
     bws
@@ -67,7 +33,71 @@
     zoom-us
   ];
 
+  # I18N
+
+  i18n.defaultLocale = "en_CA.UTF-8";
+
+  # NETWORKING
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443
+      3000
+      4747
+      53317 # localsend
+    ];
+
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+
+    allowedUDPPorts = [
+      53317 # localsend
+    ];
+
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+  };
+
+  networking.networkmanager.enable = true;
+
+  # NIXPKGS
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  };
+
+  # PROGRAMS
+
+  programs.git.enable = true;
+
   programs.steam.enable = true;
+
+  programs.zsh.enable = true;
+
+  # SECURITY
+
+  security.rtkit.enable = true;
+
+  # SERVICES
+
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+  };
+
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+  };
 
   services.openssh = {
     enable = true;
@@ -78,31 +108,22 @@
     };
   };
 
-  networking.firewall = {
-    allowedTCPPorts = [
-      80
-      443
-      3000
-      4747
-      53317 # localsend
-    ];
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
-    allowedUDPPorts = [
-      53317 # localsend
-    ];
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "ctorgalson" = import ../../modules/home-manager; 
-    };
-  };  
+  services.printing.enable = true;
+
+  services.pulseaudio.enable = false;
+
+  services.tailscale = {
+    enable = true;
+  };
+
+  # SYSTEM
 
   system.autoUpgrade = {
     enable = true;
@@ -115,6 +136,12 @@
     ];
     randomizedDelaySec = "45min";
   };
+
+  # TIME
+
+  time.timeZone = "America/Toronto";
+
+  # VIRTUALISATION
 
   virtualisation.docker.enable = true;
 }
