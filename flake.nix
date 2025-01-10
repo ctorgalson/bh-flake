@@ -27,6 +27,7 @@
     user = "ctorgalson";
   in {
     nixosConfigurations = {
+      # @see https://discourse.nixos.org/t/pass-specialargs-to-the-home-manager-module/33068/4
       ser6 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
@@ -36,6 +37,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit allowed-unfree-packages inputs user; };
+            home-manager.users = {
+              "ctorgalson" = import ./modules/home-manager;
+            };
           }
         ];
       };
@@ -48,6 +52,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit allowed-unfree-packages inputs user; };
+            home-manager.users = {
+              "ctorgalson" = import ./modules/home-manager;
+            };
           }
         ];
       };
@@ -60,6 +67,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit allowed-unfree-packages inputs user; };
+            home-manager.users = {
+              "ctorgalson" = import ./modules/home-manager;
+            };
           }
         ];
       };
