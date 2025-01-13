@@ -14,6 +14,7 @@
       fd
       ffmpeg
       gcc
+      git-brunch
       glow
       gnome-terminal
       gtop
