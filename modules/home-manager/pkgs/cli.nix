@@ -14,7 +14,6 @@
       fd
       ffmpeg
       gcc
-      git-brunch
       glow
       gnome-terminal
       gtop
@@ -33,6 +32,7 @@
       #
       # Decrypt
       # adept_remove file.pdf
+      lazygit
       libgourou
       lm_sensors
       lynis
