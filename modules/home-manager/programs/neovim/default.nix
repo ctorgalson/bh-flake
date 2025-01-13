@@ -1,3 +1,7 @@
+# TODO Steal nvim-ide plugin config where useful.
+#
+# @see https://github.com/ldelossa/nvim-ide
+
 { config, home, pkgs, programs, ... }:
 
 {
