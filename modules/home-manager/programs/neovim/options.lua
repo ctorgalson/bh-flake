@@ -34,10 +34,6 @@ keymap("n", "<C-l>", "<C-w>l", { desc = "Go to right window", noremap = true })
 
 -- Likewise, but with terminals
 keymap('t', '<esc>', '<C-\\><C-N>', { silent = true })
--- keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', { noremap = true, silent = true })
--- keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', { noremap = true, silent = true })
--- keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', { noremap = true, silent = true })
--- keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', { noremap = true, silent = true })
 keymap('t', '<C-h>', '<C-\\><C-N><cmd>wincmd h<cr>', { noremap = true, silent = true })
 keymap('t', '<C-j>', '<C-\\><C-N><cmd>wincmd j<cr>', { noremap = true, silent = true })
 keymap('t', '<C-k>', '<C-\\><C-N><cmd>wincmd k<cr>', { noremap = true, silent = true })
