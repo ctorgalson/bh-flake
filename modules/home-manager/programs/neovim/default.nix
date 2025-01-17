@@ -8,14 +8,7 @@
   # Refer to https://nixos.wiki/wiki/Neovim
   config = {
     home.packages = with pkgs; [
-      htmx-lsp
-      intelephense
-      nixd
-      phpactor
       nodePackages.prettier
-      typescript
-      typescript-language-server
-      vscode-langservers-extracted
     ];
 
     programs.neovim = 
@@ -84,6 +77,7 @@
             plugin = toggleterm-nvim;
             config = toLuaFromFile ./plugins/toggleterm-nvim.lua;
         }
+        { plugin = vim-prettier; }
         {
           plugin = which-key-nvim;
 	        config = toLuaFromFile ./plugins/which-key-nvim.lua;
@@ -91,23 +85,6 @@
         # LSP noodling.
         #
         # @see https://nathan-long.com/blog/modern-javascript-tooling-in-neovim/
-        {
-          # @see https://github.com/neovim/nvim-lspconfig
-          plugin = nvim-lspconfig;
-        }
-        {
-          plugin = nvim-cmp;
-	        config = toLuaFromFile ./plugins/nvim-cmp.lua;
-        }
-        { plugin = cmp-nvim-lsp; }
-        { plugin = cmp-nvim-lsp-signature-help; }
-        { plugin = cmp-buffer; }
-        { plugin = cmp-path; }
-        { plugin = vim-prettier; }
-        {
-          plugin = luasnip;
-          config = toLuaFromFile ./plugins/luasnip.lua;
-        }
       ];
 
       viAlias = true;
