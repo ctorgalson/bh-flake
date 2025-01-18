@@ -6,6 +6,7 @@
     ./file
     ./pkgs
     ./programs
+    ./services
   ];
 
   config = {
