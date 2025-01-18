@@ -40,7 +40,7 @@
         };
       };
       tray = {
-        enabled = true;
+        enable = true;
       };
     };
   };
