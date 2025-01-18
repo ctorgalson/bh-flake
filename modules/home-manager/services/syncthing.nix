@@ -39,9 +39,9 @@
           urAccepted = -1;
         };
       };
-      tray = {
-        enable = true;
-      };
+      # tray = {
+      #   enable = true;
+      # };
     };
   };
 }
