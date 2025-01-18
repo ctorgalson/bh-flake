@@ -23,9 +23,24 @@
           #   name = "ser6";
           # };
         };
+        folders = {
+          "/home/ctorgalson/Storage/Documents" = {
+            id = "documents";
+            devices = [ "executive14", "framework13" ];
+            label = "Documents";
+            type = "sendrecieve";
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "500";
+            };
+          };
+        };
         options = {
           urAccepted = -1;
         };
+      };
+      tray = {
+        enabled = true;
       };
     };
   };
