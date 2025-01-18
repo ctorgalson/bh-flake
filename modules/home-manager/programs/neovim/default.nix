@@ -10,7 +10,10 @@
     home.packages = with pkgs; [
       htmx-lsp
       nodePackages.prettier
-      quick-lint-js
+      phpactor
+      pylyzer
+      typescript
+      typescript-language-server
       vscode-langservers-extracted
     ];
 
