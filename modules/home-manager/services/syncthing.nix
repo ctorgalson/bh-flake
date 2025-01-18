@@ -28,7 +28,7 @@
             id = "documents";
             devices = [ "executive14" "framework13" ];
             label = "Documents";
-            type = "sendrecieve";
+            type = "sendreceive";
             versioning = {
               type = "trashcan";
               params.cleanoutDays = "500";
