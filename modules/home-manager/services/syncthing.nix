@@ -7,11 +7,11 @@
       # @see https://nix-community.github.io/home-manager/options.xhtml#opt-services.syncthing.settings
       settings = {
         devices = {
-          # executive14 = {
-          #   addresses = [ "tcp://100.70.30.43" ];
-          #   id = "";
-          #   name = "Executive 14";
-          # };
+          executive14 = {
+            addresses = [ "tcp://100.70.30.43" ];
+            id = "P5S4BLK-LG6SGIL-MYYBQFY-RULRMZI-CW3DRJT-47YEQCK-YS35BWR-JNYQUQV";
+            name = "Executive 14";
+          };
           framework13 = {
             addresses = [ "100.72.220.20" ];
             id = "5FD4APM-6GOYMMY-UQEQWXA-JTS6QYA-Y4NSCIS-SVAXP5N-XZ5ZFR4-U2UJFAD";
