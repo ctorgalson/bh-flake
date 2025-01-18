@@ -8,7 +8,10 @@
   # Refer to https://nixos.wiki/wiki/Neovim
   config = {
     home.packages = with pkgs; [
+      htmx-lsp
       nodePackages.prettier
+      quick-lint-js
+      vscode-langservers-extracted
     ];
 
     programs.neovim = 
@@ -85,6 +88,17 @@
         # LSP noodling.
         #
         # @see https://nathan-long.com/blog/modern-javascript-tooling-in-neovim/
+        {
+          plugin = nvim-lspconfig;
+          config = toLuaFromFile ./plugins/nvim-lspconfig.lua;
+        }
+        {
+          plugin = blink-cmp;
+          config = toLuaFromFile ./plugins/blink-cmp.lua;
+        }
+        {
+          plugin = friendly-snippets;
+        }
       ];
 
       viAlias = true;
