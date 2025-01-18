@@ -26,7 +26,7 @@
         folders = {
           "/home/ctorgalson/Storage/Documents" = {
             id = "documents";
-            devices = [ "executive14", "framework13" ];
+            devices = [ "executive14" "framework13" ];
             label = "Documents";
             type = "sendrecieve";
             versioning = {
