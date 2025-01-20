@@ -37,8 +37,9 @@
       signal-desktop
       slack
       solaar
-      vorta
+      via
       vlc
+      vorta
       vscodium
       yubikey-manager-qt
       yubikey-personalization-gui
