@@ -91,6 +91,7 @@
               }
               {
                 paths = [
+                  "~/Projects/galway-coco-lgd"
                   "~/Projects/galway-coco-lgd/web/themes/custom/lgd"
                   "~/Projects/gcoco-lgd-theme-old"
                 ];
