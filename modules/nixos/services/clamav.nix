@@ -15,12 +15,12 @@
       };
 
       fangfrisch = {
-        enable = true;
+        enable = false;
       };
 
       scanner = {
         enable = true;
-        interval = "*-*-* 13:10:00";
+        interval = "*-*-* 15:20:00";
       };
 
       updater = {
