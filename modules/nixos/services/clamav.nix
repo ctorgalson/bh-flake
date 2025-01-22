@@ -8,6 +8,9 @@
     services.clamav = {
       daemon= {
         enable = true;
+        settings = {
+          LogSyslog = true;
+        };
       };
 
       fangfrisch = {
