@@ -54,6 +54,7 @@
         {
           # @see https://github.com/lewis6991/gitsigns.nvim
           plugin = gitsigns-nvim;
+          config = toLuaFromFile ./plugins/gitsigns-nvim.lua;
         }
         {
           plugin = lualine-nvim;
