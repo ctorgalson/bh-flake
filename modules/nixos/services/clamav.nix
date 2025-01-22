@@ -6,7 +6,7 @@
 {
   config = {
     services.clamav = {
-      daemon= {
+      daemon = {
         enable = true;
         settings = {
           LogSyslog = true;
