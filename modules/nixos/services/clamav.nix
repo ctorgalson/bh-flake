@@ -10,6 +10,7 @@
         enable = true;
         settings = {
           LogSyslog = true;
+          MaxDirectoryRecursion = 50;
         };
       };
 
