@@ -13,15 +13,15 @@
     ];
 
   # Enable flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable garbage-collection.
-  nix.gc = {
-    automatic = true;
-    dates = "02:00";
-    options = "--delete-older-than 3d";
-    randomizedDelaySec = "45min";
-  };
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "02:00";
+  #   options = "--delete-older-than 3d";
+  #   randomizedDelaySec = "45min";
+  # };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -36,69 +36,69 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Toronto";
+  # time.timeZone = "America/Toronto";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
+  # i18n.defaultLocale = "en_CA.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_CA.UTF-8";
-    LC_IDENTIFICATION = "en_CA.UTF-8";
-    LC_MEASUREMENT = "en_CA.UTF-8";
-    LC_MONETARY = "en_CA.UTF-8";
-    LC_NAME = "en_CA.UTF-8";
-    LC_NUMERIC = "en_CA.UTF-8";
-    LC_PAPER = "en_CA.UTF-8";
-    LC_TELEPHONE = "en_CA.UTF-8";
-    LC_TIME = "en_CA.UTF-8";
-  };
+  # i18n.extraLocaleSettings = {
+  #   LC_ADDRESS = "en_CA.UTF-8";
+  #   LC_IDENTIFICATION = "en_CA.UTF-8";
+  #   LC_MEASUREMENT = "en_CA.UTF-8";
+  #   LC_MONETARY = "en_CA.UTF-8";
+  #   LC_NAME = "en_CA.UTF-8";
+  #   LC_NUMERIC = "en_CA.UTF-8";
+  #   LC_PAPER = "en_CA.UTF-8";
+  #   LC_TELEPHONE = "en_CA.UTF-8";
+  #   LC_TIME = "en_CA.UTF-8";
+  # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
+  # services.xserver = {
+  #   xkb.layout = "us";
+  #   xkb.variant = "";
+  # };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable bluetooth.
-  hardware.bluetooth.enable = true;
+  # hardware.bluetooth.enable = true;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  # services.pulseaudio.enable = false;
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   # If you want to use JACK applications, uncomment this
+  #   #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  #   # use the example session manager (no others are packaged yet so this is enabled by default,
+  #   # no need to redefine it in your config for now)
+  #   #media-session.enable = true;
+  # };
 
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
+  # services.clamav = {
+  #   daemon.enable = true;
+  #   updater.enable = true;
+  # };
 
-  services.tailscale = {
-    enable = true;
-  };
+  # services.tailscale = {
+  #   enable = true;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -112,40 +112,40 @@
   #  #  thunderbird
   #  ];
   #};
-  main-user.enable = true; 
-  main-user.userName = "ctorgalson";
-  main-user.userDescription = "Christopher Torgalson";
+  # main-user.enable = true; 
+  # main-user.userName = "ctorgalson";
+  # main-user.userDescription = "Christopher Torgalson";
 
   # Install git.
-  programs.git.enable = true;
+  # programs.git.enable = true;
 
   # Install firefox.
   # programs.firefox.enable = true;
 
   # Install zsh.
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-  };
+  # nixpkgs.config = {
+  #   allowUnfree = true;
+  #   allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    bws
-    docker
-    micro
-    mkcert
-    steam
-    zoom-us
-    #vim
-  ];
+  # environment.systemPackages = with pkgs; [
+  # #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  # #  wget
+  #   bws
+  #   docker
+  #   micro
+  #   mkcert
+  #   steam
+  #   zoom-us
+  #   #vim
+  # ];
 
-  programs.steam.enable = true;
+  # programs.steam.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -159,61 +159,61 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
+  # services.openssh = {
+  #   enable = true;
+  #   settings = {
+  #     PasswordAuthentication = false;
+  #     KbdInteractiveAuthentication = false;
+  #     PermitRootLogin = "no";
+  #   };
+  # };
 
   # Open ports in the firewall.
-  networking.firewall = {
-    allowedTCPPorts = [
-      80
-      443
-      3000
-      4747
-      53317 # localsend
-    ];
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
-    allowedUDPPorts = [
-      53317 # localsend
-    ];
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
-  };
+  # networking.firewall = {
+  #   allowedTCPPorts = [
+  #     80
+  #     443
+  #     3000
+  #     4747
+  #     53317 # localsend
+  #   ];
+  #   allowedTCPPortRanges = [
+  #     { from = 1714; to = 1764; }
+  #   ];
+  #   allowedUDPPorts = [
+  #     53317 # localsend
+  #   ];
+  #   allowedUDPPortRanges = [
+  #     { from = 1714; to = 1764; }
+  #   ];
+  # };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
   # Home-manager.
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "ctorgalson" = import ../../modules/home-manager;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = { inherit inputs; };
+  #   users = {
+  #     "ctorgalson" = import ../../modules/home-manager;
+  #   };
+  # };
 
   # Enable autoUpgrade.
-  system.autoUpgrade = {
-    enable = true;
+  # system.autoUpgrade = {
+  #   enable = true;
 
-    allowReboot = true;
-    dates = "02:00";
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L"
-    ];
-    randomizedDelaySec = "45min";
-  };
+  #   allowReboot = true;
+  #   dates = "02:00";
+  #   flake = inputs.self.outPath;
+  #   flags = [
+  #     "--update-input"
+  #     "nixpkgs"
+  #     "-L"
+  #   ];
+  #   randomizedDelaySec = "45min";
+  # };
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
