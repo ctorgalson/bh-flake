@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./syncthing.nix
+    ./clamav.nix
   ];
 }

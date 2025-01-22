@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ../../modules/nixos/main-user.nix
+    ./main-user.nix
+    ./services
   ];
 
   # Vars for main-user module
@@ -85,6 +86,7 @@
   # SERVICES
 
   # @see modules/home-manager/services
+  # @see modules/nixos/services
 
   services.xserver = {
     enable = true;

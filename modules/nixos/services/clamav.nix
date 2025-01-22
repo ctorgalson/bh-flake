@@ -16,7 +16,7 @@
 
       scanner = {
         enable = true;
-        interval = "*-*-* 09:45:00";
+        interval = "*-*-* 09:50:00";
       };
 
       updater = {
