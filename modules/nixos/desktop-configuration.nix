@@ -84,10 +84,7 @@
 
   # SERVICES
 
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
+  # @see modules/home-manager/services
 
   services.xserver = {
     enable = true;
