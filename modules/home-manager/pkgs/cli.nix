@@ -6,7 +6,7 @@
       ansible
       blackbox-terminal
       bitwarden-cli
-      clamav
+      # clamav
       ddev
       diceware
       diffpdf
