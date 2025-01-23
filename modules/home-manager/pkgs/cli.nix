@@ -34,7 +34,6 @@
       # adept_remove file.pdf
       lazygit
       libgourou
-      libnotify
       lm_sensors
       lynis
       nodejs_22
