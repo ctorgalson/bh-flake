@@ -2,13 +2,13 @@
 
 {
   imports = [
-    ./blackbox-terminal
     ./byobu
     ./cli.nix
     ./get-ssh-keys.nix
     ./gui.nix
     ./homefox.nix
     ./nixnvm.nix
+    ./tilix
     ./workfox.nix
   ];
 }

@@ -4,7 +4,6 @@
   config = {
     home.packages = with pkgs; [
       ansible
-      blackbox-terminal
       bitwarden-cli
       # clamav
       ddev
