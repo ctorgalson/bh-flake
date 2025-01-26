@@ -29,10 +29,5 @@
     #     done
     #   fi
     # '';
-
-    # home.file = {
-    #   # Byobu
-    #   ".config/byobu/.tmux.conf".source = ../../../dotfiles/byobu/.tmux.conf;
-    # };
   };
 }
