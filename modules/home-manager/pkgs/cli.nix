@@ -10,7 +10,6 @@
       ddev
       diceware
       diffpdf
-      fastfetch
       fd
       ffmpeg
       gcc
