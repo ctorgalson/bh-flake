@@ -126,14 +126,15 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "02:00";
+    dates = "08:35";
     flake = inputs.self.outPath;
     flags = [
+      "--no-write-lock-file"
       "--update-input"
       "nixpkgs"
       "-L"
     ];
-    randomizedDelaySec = "45min";
+    # randomizedDelaySec = "45min";
   };
 
   # TIME
