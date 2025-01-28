@@ -8,8 +8,8 @@
     ];
 
     # Write dotfile.
-    # home.file = {
-    #   ".config/zellij/
-    # };
+    home.file = {
+      ".config/zellij/config.kdl".src = ./config.kdl;
+    };
   };
 }
