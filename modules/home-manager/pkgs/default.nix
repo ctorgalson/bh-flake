@@ -10,5 +10,6 @@
     ./nixnvm.nix
     ./tilix
     ./workfox.nix
+    ./zellij
   ];
 }
