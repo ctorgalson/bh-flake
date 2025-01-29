@@ -9,7 +9,7 @@
 
     # Write dotfile.
     home.file = {
-      ".config/zellij/config.kdl".src = ./config.kdl;
+      ".config/zellij/config.kdl".source = ./config.kdl;
     };
   };
 }

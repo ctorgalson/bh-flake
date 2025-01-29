@@ -255,6 +255,7 @@ load_plugins {
 //   - false
 //
 // pane_frames true
+pane_frames false
 
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
@@ -310,6 +311,7 @@ load_plugins {
 // Default: default
 //
 // theme "default"
+theme "catppuccin-mocha"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -331,6 +333,7 @@ load_plugins {
 //   - false
 //
 // mouse_mode false
+mouse_mode true
 
 // Configure the scroll back buffer size
 // This is the number of lines zellij stores for each pane in the scroll back
