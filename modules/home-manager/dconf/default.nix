@@ -4,6 +4,7 @@
   imports = [
     ./appindicator.nix
     ./clocks.nix
+    ./desktop.nix
     ./extensions.nix
     ./fonts.nix
     ./freon.nix

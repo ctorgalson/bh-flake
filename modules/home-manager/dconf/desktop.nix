@@ -13,13 +13,13 @@
 
       "org/gnome/desktop/interface" = {
         clock-show-weekday = true;
-      }
+      };
 
       "org/gnome/desktop/input-sources" = {
-        xkb-options = [
+        xk-options = [
           "terminate:ctrl_alt_bksp"
-          "compose:ralt"
           "lv3:switch"
+          "compose:ralt"
         ];
       };
     };
