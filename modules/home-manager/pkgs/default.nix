@@ -9,6 +9,7 @@
     ./homefox.nix
     ./nixnvm.nix
     ./tilix
+    ./timereport.nix
     ./workfox.nix
     ./zellij
   ];
