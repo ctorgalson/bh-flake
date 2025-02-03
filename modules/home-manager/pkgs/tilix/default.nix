@@ -51,6 +51,7 @@
           "#45475A"
         ];
         use-theme-colors = false;
+        use-system-font = false;
         font = "UbuntuMono Nerd Font Mono 15";
       };
     };
