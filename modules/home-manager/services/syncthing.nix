@@ -17,11 +17,11 @@
             id = "5FD4APM-6GOYMMY-UQEQWXA-JTS6QYA-Y4NSCIS-SVAXP5N-XZ5ZFR4-U2UJFAD";
             name = "Framework 13";
           };
-          # ser6 = {
-          #   addresses = [ "100.74.137.33" ];
-          #   id = "";
-          #   name = "ser6";
-          # };
+          ser6 = {
+            addresses = [ "100.74.137.33" ];
+            id = "ZSMEGAM-DLTNL6D-ECH3ATT-GDR3NIR-N5XJTPO-BA7VW5Q-6JAJELD-MDPOIAK";
+            name = "ser6";
+          };
         };
         folders = {
           "/home/ctorgalson/Storage/Documents" = {
