@@ -20,13 +20,13 @@
           ser6 = {
             addresses = [ "100.74.137.33" ];
             id = "ZSMEGAM-DLTNL6D-ECH3ATT-GDR3NIR-N5XJTPO-BA7VW5Q-6JAJELD-MDPOIAK";
-            name = "ser6";
+            name = "SER6";
           };
         };
         folders = {
           "/home/ctorgalson/Storage/Documents" = {
             id = "documents";
-            devices = [ "executive14" "framework13" ];
+            devices = [ "executive14" "framework13" "ser6" ];
             label = "Documents";
             type = "sendreceive";
             versioning = {
