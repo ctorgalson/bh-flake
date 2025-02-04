@@ -17,8 +17,13 @@
     { device = "/dev/disk/by-uuid/2f2055db-4f9f-44e9-a2b0-2b8cba6b8c4d";
       fsType = "ext4";
     };
+  fileSystems."/home/ctorgalson/Storage" =
+    { device = "/dev/disk/by-uuid/7eae0fe0-d1c8-4b4b-90f1-d8c587253109";
+      fsType = "ext4";
+    };
 
   boot.initrd.luks.devices."luks-dc346729-efd3-433c-86d3-599eec6b84d3".device = "/dev/disk/by-uuid/dc346729-efd3-433c-86d3-599eec6b84d3";
+  boot.initrd.luks.devices."luks-91eef538-61b2-46c9-8f21-c9d4ea615b31".device = "/dev/disk/by-uuid/91eef538-61b2-46c9-8f21-c9d4ea615b31";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/39E9-5BAB";
