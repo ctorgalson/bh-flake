@@ -73,7 +73,7 @@
   # services.printing.enable = true;
 
   # Enable bluetooth.
-  # hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
 
   # Enable sound with pipewire.
   # services.pulseaudio.enable = false;
