@@ -57,6 +57,10 @@
           config = toLuaFromFile ./plugins/gitsigns-nvim.lua;
         }
         {
+          plugin = leap-nvim;
+          config = toLuaFromFile ./plugins/leap-nvim.lua;
+        }
+        {
           plugin = lualine-nvim;
 	        config = toLuaFromFile ./plugins/lualine-nvim.lua;
         }

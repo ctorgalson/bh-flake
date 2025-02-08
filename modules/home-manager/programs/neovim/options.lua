@@ -44,3 +44,8 @@ keymap("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 keymap("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Keymapping for leap.nvim
+vim.keymap.set({'n', 'x', 'o'}, '<C-Right>',  '<Plug>(leap-forward)')
+vim.keymap.set({'n', 'x', 'o'}, '<C-Left>',  '<Plug>(leap-backward)')
+vim.keymap.set({'n', 'x', 'o'}, '<C-Up>', '<Plug>(leap-from-window)')
