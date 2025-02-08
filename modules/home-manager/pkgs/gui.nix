@@ -3,7 +3,7 @@
 {
   config = {
     home.packages = with pkgs; [
-      bitwarden-desktop
+      # bitwarden-desktop
       borgbackup
       calibre
       darktable

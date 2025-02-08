@@ -4,7 +4,7 @@
   config = {
     home.packages = with pkgs; [
       ansible
-      bitwarden-cli
+      # bitwarden-cli
       # clamav
       ddev
       diceware
