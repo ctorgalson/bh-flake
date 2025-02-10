@@ -8,9 +8,11 @@
     ./nix
     ./nixpkgs
     ./programs
+    ./security
     ./services
     ./system
     ./time
+    ./users
     ./virtualisation
   ];  
 }
