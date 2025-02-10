@@ -2,17 +2,17 @@
 
 {
   imports = [
-    ./main-user.nix
+    # ./main-user.nix: MOVED
     ./services
   ];
 
-  # Vars for main-user module
+  # Vars for main-user module: MOVED
 
   main-user.enable = true;
   main-user.userName = "ctorgalson";
   main-user.userDescription = "Christopher Torgalson";
 
-  # NIX
+  # NIX: MOVED
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -23,7 +23,7 @@
     randomizedDelaySec = "45min";
   };
 
-  # ENVIRONMENT 
+  # ENVIRONMENT: MOVED
 
   environment.systemPackages = with pkgs; [
     bws
@@ -34,11 +34,11 @@
     zoom-us
   ];
 
-  # I18N
+  # I18N: MOVED
 
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # NETWORKING
+  # NETWORKING: MOVED
 
   networking.firewall = {
     allowedTCPPorts = [
@@ -64,14 +64,14 @@
 
   networking.networkmanager.enable = true;
 
-  # NIXPKGS
+  # NIXPKGS: MOVED
 
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
-  # PROGRAMS
+  # PROGRAMS: MOVED
 
   programs.git.enable = true;
 
@@ -79,11 +79,11 @@
 
   programs.zsh.enable = true;
 
-  # SECURITY
+  # SECURITY: MOVED
 
   security.rtkit.enable = true;
 
-  # SERVICES
+  # SERVICES: MOVED
 
   # @see modules/home-manager/services
   # @see modules/nixos/services
@@ -122,7 +122,7 @@
     enable = true;
   };
 
-  # SYSTEM
+  # SYSTEM: MOVED
 
   system.autoUpgrade = {
     enable = true;
@@ -137,11 +137,11 @@
     # randomizedDelaySec = "45min";
   };
 
-  # TIME
+  # TIME: MOVED
 
   time.timeZone = "America/Toronto";
 
-  # VIRTUALISATION
+  # VIRTUALISATION: MOVED
 
   virtualisation.docker.enable = true;
 }
