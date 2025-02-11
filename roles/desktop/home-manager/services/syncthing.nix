@@ -36,7 +36,7 @@
           };
           "/home/ctorgalson/.local/share/timewarrior" = {
             id = "timewarrior";
-            devices = [ "executive14", "framework13", "ser6" ];
+            devices = [ "executive14" "framework13" "ser6" ];
             label = "Timewarrior";
             type = "sendreceive";
             versioning = {
