@@ -1,11 +1,11 @@
-{ allowed-unfree-packages, config, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/nixos/desktop-configuration.nix
-    ../../modules/nixos/main-user.nix
-  ];
+  # imports = [
+  #   ./hardware-configuration.nix
+  #   ../../modules/nixos/desktop-configuration.nix
+  #   ../../modules/nixos/main-user.nix
+  # ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
