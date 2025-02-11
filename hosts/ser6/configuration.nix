@@ -5,12 +5,12 @@
 { allowed-unfree-packages, config, inputs, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/desktop-configuration.nix
-      ../../modules/nixos/main-user.nix 
-    ];
+# imports =
+#    [ # Include the results of the hardware scan.
+#      ./hardware-configuration.nix
+#      ../../modules/nixos/desktop-configuration.nix
+#      ../../modules/nixos/main-user.nix 
+#    ];
 
   # Enable flakes.
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
