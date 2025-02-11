@@ -34,6 +34,16 @@
               params.cleanoutDays = "500";
             };
           };
+          "/home/ctorgalson/.local/share/timewarrior" = {
+            id = "timewarrior";
+            devices = [ "executive14", "framework13", "ser6" ];
+            label = "Timewarrior";
+            type = "sendreceive";
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "500";
+            };
+          };
         };
         options = {
           urAccepted = -1;
