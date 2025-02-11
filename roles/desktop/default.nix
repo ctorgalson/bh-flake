@@ -1,9 +1,9 @@
-{ allowedUnfreePackages, inputs, lib, pkgs, ... }:
+{ allowedUnfreePackages, host, inputs, lib, pkgs, system, ... }:
 
 {
   imports = [
     ./nixos
-    #./home-manager
-    #./overrides.nix
   ];
+
+  home-manager.users."ctorgalson" = ./home-manager;
 }
