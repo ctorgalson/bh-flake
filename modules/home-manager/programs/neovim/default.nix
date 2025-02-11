@@ -1,6 +1,8 @@
 # TODO Steal nvim-ide plugin config where useful.
 #
 # @see https://github.com/ldelossa/nvim-ide
+# 
+# TODO Maybe do this: https://primamateria.github.io/blog/neovim-nix/
 
 { config, home, pkgs, programs, ... }:
 
