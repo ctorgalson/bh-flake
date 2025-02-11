@@ -10,6 +10,7 @@
     ./nixnvm.nix
     ./tilix
     ./timereport.nix
+    ./timewarrior
     ./workfox.nix
     ./zellij
   ];

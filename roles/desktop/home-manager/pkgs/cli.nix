@@ -43,7 +43,7 @@
       rich-cli
       shellcheck
       sqlite
-      timewarrior
+      # timewarrior
       # tmux
       tree
       tree-sitter
