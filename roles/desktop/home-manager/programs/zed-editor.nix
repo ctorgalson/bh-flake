@@ -49,6 +49,9 @@
           autoFixOnFormat = true;
           autoFixOnFormatDelay = 1500;
         };
+        file_types = {
+          PHP = ["*.module" "*.theme"];
+        };
         font_family = "Ubuntu";
         font_features = null;
         font_size = null;
