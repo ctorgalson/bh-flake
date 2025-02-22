@@ -6,5 +6,6 @@
     ./configuration.nix
     ./nixos/environment
     ./nixos/services
+    ./home-manager/dconf
   ];
 }
