@@ -21,6 +21,7 @@
       gnome-tweaks
       # gnome-extension-manager
       google-chrome
+      gpt4all
       guvcview
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
