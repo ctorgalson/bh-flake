@@ -38,6 +38,7 @@
       signal-desktop
       slack
       solaar
+      usbutils
       via
       vlc
       vorta
