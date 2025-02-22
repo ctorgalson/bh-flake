@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix
-    # ./overrides.nix
+    ./nixos/environment
+    ./nixos/services
   ];
 }
