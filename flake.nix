@@ -3,11 +3,19 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { home-manager, nixpkgs, self, ... }@inputs:
+  outputs = { home-manager, nixpkgs, self, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";
       hostData = import ./hosts/data.nix;
@@ -28,6 +36,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
               }
+              sopx-nix.nixosModules.sops
               # role configuration.
               ./roles/${host.role}
               # host configuration (including role overrides).
