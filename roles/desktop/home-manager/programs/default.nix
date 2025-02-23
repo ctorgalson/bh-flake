@@ -9,6 +9,7 @@
     ./fzf.nix
     ./git.nix
     ./joplin-desktop.nix
+    ./kitty.nix
     ./neovim
     ./ripgrep.nix
     ./ssh.nix
