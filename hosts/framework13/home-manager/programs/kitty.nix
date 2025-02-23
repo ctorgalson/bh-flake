@@ -1,5 +1,5 @@
-{ config, pkgs, programs, ... }:
+{ config, lib, pkgs, programs, ... }:
 
 {
-  home-manager.users."ctorgalson".config.programs.kitty.font.size = 13;
+  home-manager.users."ctorgalson".config.programs.kitty.font.size = lib.mkForce 13;
 }
