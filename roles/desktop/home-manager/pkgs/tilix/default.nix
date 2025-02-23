@@ -23,7 +23,7 @@
     };
 
     dconf.settings = {
-      "com/gexperts/Tilix" ={
+      "com/gexperts/Tilix" = {
         terminal-title-show-when-single = false;
         terminal-title-style = "none";
         theme-variant = "dark";
