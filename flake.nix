@@ -36,7 +36,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
               }
-              sopx-nix.nixosModules.sops
+              sops-nix.nixosModules.sops
               # role configuration.
               ./roles/${host.role}
               # host configuration (including role overrides).
