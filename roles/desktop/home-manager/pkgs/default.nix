@@ -4,7 +4,7 @@
   imports = [
     ./byobu
     ./cli.nix
-    ./get-ssh-keys.nix
+    ./get-sops-key.nix
     ./gui.nix
     ./homefox.nix
     ./nixnvm.nix

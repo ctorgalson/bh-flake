@@ -43,6 +43,7 @@
       #quickemu
       rich-cli
       shellcheck
+      sops
       sqlite
       # timewarrior
       # tmux

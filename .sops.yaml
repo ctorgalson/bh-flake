@@ -1,0 +1,13 @@
+---
+# @see https://zohaib.me/managing-secrets-in-nixos-home-manager-with-sops/
+keys:
+  - &host_executive14 age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
+  - &host_framework13 age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
+  - &host_ser6 age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+      - age:
+          - *host_executive14
+          - *host_framework13
+          - *host_ser6

@@ -28,15 +28,18 @@
           value = nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs; inherit system; };
             modules = [
+              sops-nix.nixosModules.sops
               home-manager.nixosModules.default
               {
                 home-manager.extraSpecialArgs = {
                   inherit allowedUnfreePackages inputs system;
                 };
+                home-manager.sharedModules = [
+                  sops-nix.homeManagerModules.sops
+                ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
               }
-              sops-nix.nixosModules.sops
               # role configuration.
               ./roles/${host.role}
               # host configuration (including role overrides).
