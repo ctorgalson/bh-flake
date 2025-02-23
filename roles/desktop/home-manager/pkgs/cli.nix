@@ -3,6 +3,7 @@
 {
   config = {
     home.packages = with pkgs; [
+      age
       ansible
       # bitwarden-cli
       # clamav
