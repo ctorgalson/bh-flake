@@ -17,28 +17,28 @@
     age.keyFile = "${homedir}/.config/sops/age/keys.txt";
 
     secrets = {
-      id_ed25519 = {
+      "ssh_keys/id_ed25519/private" = {
         path = "${homedir}/.ssh/id_ed25519";
         owner = username;
         group = "users";
         mode = "600";
       };
 
-      id_ed25519_pub = {
+      "ssh_keys/id_ed25519/public" = {
         path = "${homedir}/.ssh/id_ed25519.pub";
         owner = username;
         group = "users";
         mode = "644";
       };
 
-      id_rsa = {
+      "ssh_keys/id_rsa/private" = {
         path = "${homedir}/.ssh/id_rsa";
         owner = username;
         group = "users";
         mode = "600";
       };
 
-      id_rsa_pub = {
+      "ssh_keys/id_rsa/public" = {
         path = "${homedir}/.ssh/id_rsa.pub";
         owner = username;
         group = "users";
