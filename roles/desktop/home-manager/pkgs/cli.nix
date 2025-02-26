@@ -6,20 +6,18 @@
       age
       ansible
       # bitwarden-cli
-      # clamav
       ddev
       diceware
       diffpdf
       fd
       ffmpeg
       gcc
-      glow
-      gnome-terminal
-      gtop
+      glow                        # markdown reader
+      gtop                        # modern top replacement
       hddtemp
-      httpie
-      imagemagick
-      jq
+      httpie                      # http client
+      imagemagick                 # image-creation, manipulation utility
+      jq                          # for querying, slicing and dicing yaml
       # https://superuser.com/questions/1027608/how-to-read-an-acsm-file-on-linux#1775619
       #
       # # Use your username and password from https://account.adobe.com
@@ -31,32 +29,31 @@
       #
       # Decrypt
       # adept_remove file.pdf
-      lazygit
-      libgourou
+      libgourou                   # for downloading and decrypting ebooks
       lm_sensors
-      lynis
-      nodejs_22
+      lynis                       # security scanning utility
+      nodejs_22                   # up-to-date-ish version of node
+      python313Packages.fonttools # for use with npm pkg glyphhanger
       orpie
       pciutils
-      platformsh
-      python314
+      platformsh                  # platform.sh cli tool
+      python313                   # up-to-date-ish version of python
       #quickemu
       rich-cli
-      shellcheck
-      sops
+      shellcheck                  # for linting bash scripts
+      sops                        # for secrets management via sops(-nix)
       sqlite
-      # timewarrior
       # tmux
-      tree
-      tree-sitter
+      tree                        # for displaying directory structure
+      tree-sitter                 # for neovim usage
       unison
-      unzip
+      unzip                       # basic unzipping utility
       wl-clipboard
-      yq
-      yt-dlp
-      yubikey-manager
-      yubikey-personalization
-      zip
+      yq                          # for querying, slicing and dicing yaml
+      yt-dlp                      # for downloading Youtube & other videos
+      yubikey-manager             # newer Yubikey customization tool 
+      yubikey-personalization     # older Yubikey customization tool
+      zip                         # basic zip-creation utility
     ];
   };
 }
