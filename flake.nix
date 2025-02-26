@@ -19,7 +19,7 @@
     let
       system = "x86_64-linux";
       hostData = import ./hosts/data.nix;
-      allowedUnfreePackages = [ "bws" "steam" ];
+      allowedUnfreePackages = [ "bws" "steam" "zoom-us" ];
     in
     {
       nixosConfigurations = nixpkgs.lib.listToAttrs (map
