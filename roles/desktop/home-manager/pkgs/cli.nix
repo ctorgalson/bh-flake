@@ -33,7 +33,6 @@
       lm_sensors
       lynis                       # security scanning utility
       nodejs_22                   # up-to-date-ish version of node
-      python313Packages.fonttools # for use with npm pkg glyphhanger
       orpie
       pciutils
       platformsh                  # platform.sh cli tool
@@ -54,6 +53,10 @@
       yubikey-manager             # newer Yubikey customization tool 
       yubikey-personalization     # older Yubikey customization tool
       zip                         # basic zip-creation utility
+      # for use with npm pkg glyphhanger
+      brotli
+      python313Packages.fonttools
+      zopfli
     ];
   };
 }
