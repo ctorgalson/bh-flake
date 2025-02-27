@@ -17,6 +17,8 @@
     age.keyFile = "${homedir}/.config/sops/age/keys.txt";
 
     secrets = {
+      "example_number" = { };
+
       "ssh_keys/id_ed25519/private" = {
         path = "${homedir}/.ssh/id_ed25519";
         owner = username;
