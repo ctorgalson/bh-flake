@@ -24,6 +24,7 @@
       #
       # # Use your username and password from https://account.adobe.com
       # This registers your device so only needs to be done once.
+      #
       # adept_activate -u user -p pass
       #
       # Download the ACSM file
