@@ -16,7 +16,13 @@
         notify_on_cmd_finish = "unfocused 5";
         remember_window_size = true;
         scrollback_lines = 10000;
-        term = "xterm";
+        # Rather than unsetting the default $TERM value, xterm-kitty, run this
+        # against any server that complains: 
+        #
+        # infocmp -x | ssh YOUR-SERVER -- tic -x -
+        #
+        # @see https://ghostty.org/docs/help/terminfo
+        # term = "xterm";
         update_check_interval = 0;
       };
       shellIntegration.enableZshIntegration = true;
