@@ -36,10 +36,12 @@
       libgourou
       lm_sensors
       lynis
+      nixos-icons
       nodejs_22
       orpie
       pciutils
       platformsh
+      plymouth
       python314
       #quickemu
       rich-cli

@@ -45,10 +45,10 @@
           plugin = bufferline-nvim;
 	        config = toLuaFromFile ./plugins/bufferline-nvim.lua;
         }
-        {
-          # @see https://github.com/anachronic/catppuccin-nvim?tab=readme-ov-file
-          plugin = catppuccin-nvim;
-        }
+        # {
+        #   # @see https://github.com/anachronic/catppuccin-nvim?tab=readme-ov-file
+        #   plugin = catppuccin-nvim;
+        # }
         {
           plugin = comment-nvim;
 	        config = toLuaFromFile ./plugins/comment-nvim.lua;

@@ -39,19 +39,21 @@
     image = ../../../images/IMG_0952.jpg;
 
     targets = {
-      # gnome = {
-      #   enable = true;
-      #   useWallpaper = true;
-      # };
+      gnome = {
+        enable = true;
+      };
 
       grub = {
         enable = true;
         useWallpaper = true;
       };
 
-      lightdm = {
+      nixos-icons = {
         enable = true;
-        useWallpaper = true;
+      };
+
+      plymouth = {
+        enable = true;
       };
     };
 
