@@ -4,7 +4,11 @@
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix
-    # ./overrides.nix
   ];
+
+  stylix.fonts.sizes = {
+    applications = lib.mkForce 13;
+    terminal = lib.mkForce 13;
+  };
 }
 
