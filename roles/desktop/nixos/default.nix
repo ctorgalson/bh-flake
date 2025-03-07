@@ -1,4 +1,4 @@
-{ allowedUnfreePackages, inputs, lib, pkgs, ... }:
+{ allowedUnfreePackages, inputs, lib, pkgs, stylix, ... }:
 
 {
   imports = [
@@ -15,4 +15,50 @@
     ./users
     ./virtualisation
   ];  
+
+  stylix = {
+    enable = true;
+
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+
+    fonts = {
+      monospace = {
+        name = "UbuntuMono Nerd Font";
+        package = pkgs.nerd-fonts.ubuntu-mono;
+      };
+
+      sizes = {
+        applications = 10;
+        desktop = 10;
+        popups = 8;
+        terminal = 11;
+      };
+    };
+
+    image = ../../../images/IMG_0952.jpg;
+
+    targets = {
+      # gnome = {
+      #   enable = true;
+      #   useWallpaper = true;
+      # };
+
+      grub = {
+        enable = true;
+        useWallpaper = true;
+      };
+
+      lightdm = {
+        enable = true;
+        useWallpaper = true;
+      };
+    };
+
+    # Tmux (?)
+
+    # Zed
+
+    # Zellij
+  };
 }

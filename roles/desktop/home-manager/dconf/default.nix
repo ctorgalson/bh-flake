@@ -6,7 +6,8 @@
     ./clocks.nix
     ./desktop.nix
     ./extensions.nix
-    ./fonts.nix
+    # Taken over by stylix
+    # ./fonts.nix
     ./freon.nix
     ./gnome-terminal.nix
     ./gsconnect.nix

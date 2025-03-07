@@ -41,8 +41,9 @@
       ];
       userSettings = {
         auto_update = false;
-        buffer_font_family = "Ubuntu";
-        buffer_font_size = 16;
+        # Taken over by stylix
+        #buffer_font_family = "Ubuntu";
+        #buffer_font_size = 16;
         eslint = {
           enabled = true;
           autoFixOnSave = true;
@@ -52,7 +53,8 @@
         file_types = {
           PHP = ["*.module" "*.theme"];
         };
-        font_family = "Ubuntu";
+        # Taken over by stylix
+        # font_family = "Ubuntu";
         font_features = null;
         font_size = null;
         formatter = "prettier";
@@ -125,15 +127,16 @@
           };
           env = { };
         };
-        theme = {
-          # dark = "Solarized Dark";
-          # light = "Solarized Light";
-          dark = "Catppuccin Macchiato";
-          light = "Cattpuccin Latte";
-          mode = "dark";
-        };
-        ui_font_size = 16;
-        ui_font_family = "Ubuntu";
+        # Taken over by stylix
+        # theme = {
+        #   # dark = "Solarized Dark";
+        #   # light = "Solarized Light";
+        #   dark = "Catppuccin Macchiato";
+        #   light = "Cattpuccin Latte";
+        #   mode = "dark";
+        # };
+        # ui_font_size = 16;
+        # ui_font_family = "Ubuntu";
         vim_mode = true;
         working_directory = "current_project_directory";
       };

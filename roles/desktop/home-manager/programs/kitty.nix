@@ -1,4 +1,4 @@
-{ config, pkgs, programs, ... }:
+{ config, lib, pkgs, programs, ... }:
 
 {
   config = {
@@ -6,8 +6,9 @@
     # @see https://sw.kovidgoyal.net/kitty/_downloads/433dadebd0bf504f8b008985378086ce/kitty.conf
     programs.kitty = {
       enable = true;
-      font.name = "UbuntuMono Nerd Font Mono";
-      font.size = 15;
+      # Taken over by stylix
+      # font.name = "UbuntuMono Nerd Font Mono";
+      # font.size = 15;
       # @see https://sw.kovidgoyal.net/kitty/conf/
       settings = {
         allow_hyperlinks = true;
@@ -26,7 +27,8 @@
         update_check_interval = 0;
       };
       shellIntegration.enableZshIntegration = true;
-      themeFile = "Catppuccin-Mocha";
+      # Taken over by stylix
+      # themeFile = "Catppuccin-Mocha";
     };
   };
 }

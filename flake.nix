@@ -13,9 +13,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { home-manager, nixpkgs, self, sops-nix, ... }@inputs:
+  outputs = { home-manager, nixpkgs, self, sops-nix, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
       hostData = import ./hosts/data.nix;
@@ -29,13 +31,15 @@
             specialArgs = { inherit inputs; inherit system; };
             modules = [
               sops-nix.nixosModules.sops
+              stylix.nixosModules.stylix
               home-manager.nixosModules.default
               {
                 home-manager.extraSpecialArgs = {
                   inherit allowedUnfreePackages inputs system;
                 };
                 home-manager.sharedModules = [
-                  sops-nix.homeManagerModules.sops
+                  # sops-nix.homeManagerModules.sops
+                  # stylix.homeManagerModules.stylix
                 ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
