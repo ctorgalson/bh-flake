@@ -25,6 +25,14 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  # 0: not bad, but HUGE
+  # 1: pretty good, type a bit fuzzy
+  # 2: like 0
+  # 5: ?
+  # auto: like keep
+  # max: like keep
+  # keep: badly horizontally stretched
+  boot.loader.systemd-boot.consoleMode = "1";
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-6959cef7-9727-4cab-a672-a440e9e5ff95".device = "/dev/disk/by-uuid/6959cef7-9727-4cab-a672-a440e9e5ff95";
