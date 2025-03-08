@@ -21,7 +21,7 @@
       };
     };
 
-    image = ../../../images/IMG_0952.jpg;
+    image = ../../../../images/IMG_0952.jpg;
 
     targets = {
       gnome = {
