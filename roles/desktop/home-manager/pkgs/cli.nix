@@ -5,7 +5,7 @@
     home.packages = with pkgs; [
       age
       ansible
-      # bitwarden-cli
+      bitwarden-cli
       # clamav
       ddev
       diceware
