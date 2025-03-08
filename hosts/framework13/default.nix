@@ -8,4 +8,11 @@
     ./nixos/services
     ./home-manager
   ];
+
+  stylix.fonts.sizes = {
+    applications = lib.mkForce 13;
+    desktop = lib.mkForce 13;
+    popups = lib.mkForce 12;
+    terminal = lib.mkForce 15;
+  };
 }
