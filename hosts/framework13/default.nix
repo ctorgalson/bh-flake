@@ -1,3 +1,4 @@
+# framework13
 { config, inputs, lib, pkgs, ... }:
 
 {
@@ -10,9 +11,9 @@
   ];
 
   stylix.fonts.sizes = {
-    applications = lib.mkForce 13;
-    desktop = lib.mkForce 13;
-    popups = lib.mkForce 12;
-    terminal = lib.mkForce 15;
+    applications = lib.mkForce 12;
+    desktop = lib.mkForce 12;
+    popups = lib.mkForce 10;
+    terminal = lib.mkForce 13;
   };
 }
