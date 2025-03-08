@@ -8,9 +8,21 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     fonts = {
+      # emoji = {};
+
       monospace = {
         name = "UbuntuMono Nerd Font";
         package = pkgs.nerd-fonts.ubuntu-mono;
+      };
+
+      sansSerif = {
+        name = "Cantarell Regular";
+        package = pkgs.cantarell-fonts;
+      };
+
+      serif = {
+        name = "Cantarell Regular";
+        package = pkgs.cantarell-fonts;
       };
 
       sizes = {
