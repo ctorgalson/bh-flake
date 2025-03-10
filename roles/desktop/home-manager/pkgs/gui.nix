@@ -42,7 +42,11 @@
       via
       vlc
       vorta
-      vscodium
+      # vscode-extensions.catppuccin.catppuccin-vsc
+      # vscode-extensions.ms-vscode-remote.remote-ssh
+      # vscode
+      # vscodium
+      # vscode-extensions.ms-vscode-remote.remote-ssh
       yubikey-manager-qt
       yubikey-personalization-gui
       zeal
