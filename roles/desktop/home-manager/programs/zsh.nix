@@ -6,24 +6,24 @@
       enable = true;
       enableCompletion = true;
       envExtra = ''
-        # Searches for existing session and attaches to the first in the list.
-        #
-        # @see https://zellij.dev/documentation/integration.html#autostart-on-shell-creation
-        if [[ -z "$ZELLIJ" ]]; then
-          # Get the first non-EXITED session.
-          last_session="$(zellij list-sessions | grep -v 'EXITED' | head -1 | cut -d' ' -f1)"
-          
-          # If we found one, attach to it. Otherwise, just start Zellij.
-          if [[ -n "$last_session" ]]; then
-            zellij attach "$last_session"
-          else
-            zellij
-          fi
+        # # Searches for existing session and attaches to the first in the list.
+        # #
+        # # @see https://zellij.dev/documentation/integration.html#autostart-on-shell-creation
+        # if [[ -z "$ZELLIJ" ]]; then
+        #   # Get the first non-EXITED session.
+        #   last_session="$(zellij list-sessions | grep -v 'EXITED' | head -1 | cut -d' ' -f1)"
+        #   
+        #   # If we found one, attach to it. Otherwise, just start Zellij.
+        #   if [[ -n "$last_session" ]]; then
+        #     zellij attach "$last_session"
+        #   else
+        #     zellij
+        #   fi
 
-          if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-            exit
-          fi
-        fi
+        #   if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        #     exit
+        #   fi
+        # fi
       '';
       plugins = [
         {
@@ -37,6 +37,19 @@
           };
         }
       ];
+      sessionVariables = {
+        SSH_AUTH_SOCK = "$HOME.bitwarden-ssh-agent.sock";
+        XDG_CACHE_HOME = "$HOME/.cache";
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_DATA_HOME = "$HOME/.local/share";
+        XDG_STATE_HOME = "$HOME/.local/state";
+
+        # Not officially in the specification
+        XDG_BIN_HOME = "$HOME/.local/bin";
+        PATH = [ 
+          "$''{XDG_BIN_HOME}"
+        ];
+      };
       shellAliases = {
         top = "gtop";
         vi = "nvim";

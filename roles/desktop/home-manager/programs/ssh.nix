@@ -27,5 +27,15 @@
         };
       };
     };
+    services.ssh-agent.enable = false;
+
+    # Try to override gnome's ssh agent autostarting.
+    xdg.configFile."autostart/gnome-keyring-ssh.desktop" = {
+      enable = true;
+      text = ''
+      [Desktop Entry]
+      X-GNOME-Autostart-enabled=false
+      '';
+    };
   };
 }
