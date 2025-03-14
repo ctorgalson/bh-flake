@@ -6,7 +6,7 @@ let
     log_file="/var/log/clamav.log"
     max_cvd_age=3
     # clamscan_targets=("/etc" "/home" "/tmp" "/var/lib" "/var/tmp")
-    clamscan_targets=("/home")
+    clamscan_targets=("/home" "/tmp" "/var/tmp")
     user_log="/home/${host.username}/last-clamscan.log"
 
     # Ensure logfile existence.
