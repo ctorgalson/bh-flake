@@ -17,6 +17,6 @@
     ./tmux.nix
     ./zed-editor.nix
     ./zoxide.nix
-    ./zsh.nix
+    ./zsh
   ];
 }

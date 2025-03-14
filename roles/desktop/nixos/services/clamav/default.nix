@@ -5,7 +5,8 @@ let
     # Configure vars.
     log_file="/var/log/clamav.log"
     max_cvd_age=3
-    clamscan_targets=("/etc" "/home" "/tmp" "/var/lib" "/var/tmp")
+    #clamscan_targets=("/etc" "/home" "/tmp" "/var/lib" "/var/tmp")
+    clamscan_targets=("/home/ctorgalson/bh-flake/")
     user_log="/home/${host.username}/last-clamscan.log"
 
     # Ensure logfile existence.
@@ -51,21 +52,10 @@ in
     #     MaxDirectoryRecursion = 50;
     #   };
     # };
-
-    #   fangfrisch = {
-    #     enable = false;
-    #   };
-
-    # scanner = {
-    #   enable = true;
-    #   interval = "*-*-* 09:40:00";
-    #   # TEMPORARY
-    #   scanDirectories = [ "/home" ];
-    # };
-
-    updater = {
-      enable = true;
-    };
+    daemon.enable = false;
+    fangfrisch.enable = false;
+    scanner.enable = false;
+    updater.enable = true;
   };
 
   # Define the ClamAV scan service

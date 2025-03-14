@@ -12,6 +12,7 @@
       diffpdf
       fd
       ffmpeg
+      figlet
       gcc
       glow
       gnome-terminal
