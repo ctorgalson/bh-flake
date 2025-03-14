@@ -28,7 +28,7 @@
         (host: {
           name = host.hostname;
           value = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs; inherit system; };
+            specialArgs = { inherit host; inherit inputs; inherit system; };
             modules = [
               sops-nix.nixosModules.sops
               stylix.nixosModules.stylix
