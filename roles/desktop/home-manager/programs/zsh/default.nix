@@ -47,6 +47,7 @@
         }
       ];
       shellAliases = {
+        dig = "doggo";
         top = "gtop";
         vi = "nvim";
         vim = "nvim";

@@ -3,24 +3,23 @@
 {
   config = {
     home.packages = with pkgs; [
-      age
-      ansible
-      bitwarden-cli
-      # clamav
-      ddev
-      diceware
-      diffpdf
-      fd
-      ffmpeg
-      figlet
-      gcc
-      glow
-      gnome-terminal
-      gtop
-      hddtemp
-      httpie
-      imagemagick
-      jq
+      age                         # encryption utility
+      ansible                     # server provision + automation
+      bitwarden-cli               # bw command
+      ddev                        # dev servers
+      diceware                    # passphrase generator
+      diffpdf                     # pdf diff tool
+      doggo                       # dig replacement
+      fd                          # find replacement
+      ffmpeg                      # media convertor
+      figlet                      # ascii fonts
+      gcc                         # c compiler
+      glow                        # markdown reader
+      gtop                        # top replacement
+      hddtemp                     # hard drive temperature monitor
+      httpie                      # curl-like tool
+      imagemagick                 # image-manipulation
+      jq                          # json query + manipulation tool
       # https://superuser.com/questions/1027608/how-to-read-an-acsm-file-on-linux#1775619
       #
       # # Use your username and password from https://account.adobe.com
