@@ -24,7 +24,7 @@ let
       --recursive=yes \
       "''${clamscan_targets[@]}" > "$temp_file"
 
-    mv "$temp_file" "$log_file"
+    mv "$temp_file" "$user_log"
   '';
 in
 {
