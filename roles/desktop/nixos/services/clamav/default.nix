@@ -3,11 +3,12 @@
 let
   avScan = pkgs.writeShellScriptBin "av-scan" ''
     # Configure vars.
-    log_file="/var/log/clamav.log"
     max_cvd_age=3
     # clamscan_targets=("/etc" "/home" "/tmp" "/var/lib" "/var/tmp")
     clamscan_targets=("/home" "/tmp" "/var/tmp")
     user_log="/home/${host.username}/last-clamscan.log"
+    # Create tempfile.
+    temp_file="$(mktemp)"
 
     # Ensure logfile existence.
     if [ ! -f $user_log ]; then
@@ -21,7 +22,9 @@ let
       --infected \
       --log="/var/log/clamav.log" \
       --recursive=yes \
-      "''${clamscan_targets[@]}" > "$user_log"
+      "''${clamscan_targets[@]}" > "$temp_file"
+
+    mv "$temp_file" "$log_file"
   '';
 in
 {
