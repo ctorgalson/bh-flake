@@ -19,6 +19,7 @@
       hddtemp                     # hard drive temperature monitor
       httpie                      # curl-like tool
       imagemagick                 # image-manipulation
+      joplin                      # Joplin cli tool
       jq                          # json query + manipulation tool
       # https://superuser.com/questions/1027608/how-to-read-an-acsm-file-on-linux#1775619
       #
