@@ -8,7 +8,7 @@ let
     clamscan_targets=("/home" "/tmp" "/var/tmp")
     user_log="/home/${host.username}/last-clamscan.log"
     # Create tempfile.
-    temp_file="$(mktemp)"
+    temp_file="$(${pkgs.mktemp}/bin/mktemp)"
 
     # Ensure logfile existence.
     if [ ! -f $user_log ]; then
@@ -37,6 +37,7 @@ in
     # doesn't work, so let's install it manually and just make use of the clamav
     # updater service below.
     clamav 
+    mktemp
   ];
 
   # @see https://mynixos.com/options/services.clamav
