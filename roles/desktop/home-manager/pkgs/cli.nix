@@ -34,6 +34,7 @@
       #
       # Decrypt
       # adept_remove file.pdf
+      killall
       lazygit
       libgourou
       lm_sensors
