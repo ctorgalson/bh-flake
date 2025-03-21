@@ -9,6 +9,7 @@
     # Taken over by stylix
     # ./fonts.nix
     ./freon.nix
+    ./freedesktop.nix
     ./gnome-terminal.nix
     ./gsconnect.nix
     ./settings-daemon.nix

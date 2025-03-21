@@ -22,6 +22,24 @@
           "compose:ralt"
         ];
       };
+
+      "org/gnome/desktop/search-providers" = {
+        sort-order = [
+          "org.gnome.Calculator.desktop"
+          "org.gnome.seahorse.Application.desktop"
+          "org.gnome.Settings.desktop"
+          "org.gnome.Calendar.desktop"
+          "org.gnome.Documents.desktop"
+          "org.gnome.Nautilus.desktop"
+          "org.gnome.Characters.desktop"
+          "org.gnome.clocks.desktop"
+          "org.gnome.Contacts.desktop"
+        ];
+      };
     };
   };
 }
+
+# /org/gnome/desktop/search-providers/sort-order
+#   ['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Settings.desktop', 'org.gnome.seahorse.Application.desktop']
+# 
