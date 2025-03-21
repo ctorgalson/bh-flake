@@ -15,7 +15,7 @@
       figlet                      # ascii fonts
       gcc                         # c compiler
       glow                        # markdown reader
-      gnome.gnome-screenshot      # cli screenshot utility
+      gnome-screenshot      # cli screenshot utility
       gtop                        # top replacement
       hddtemp                     # hard drive temperature monitor
       httpie                      # curl-like tool
