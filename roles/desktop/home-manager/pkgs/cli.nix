@@ -15,6 +15,7 @@
       figlet                      # ascii fonts
       gcc                         # c compiler
       glow                        # markdown reader
+      gnome.gnome-screenshot      # cli screenshot utility
       gtop                        # top replacement
       hddtemp                     # hard drive temperature monitor
       httpie                      # curl-like tool
@@ -41,7 +42,7 @@
       nodejs_22
       orpie
       pciutils
-      platformsh
+      platformsh                  # platform.sh cli tool
       plymouth
       python314
       #quickemu
