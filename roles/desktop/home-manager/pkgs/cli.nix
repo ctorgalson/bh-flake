@@ -15,7 +15,7 @@
       figlet                      # ascii fonts
       gcc                         # c compiler
       glow                        # markdown reader
-      gnome-screenshot      # cli screenshot utility
+      gnome-screenshot            # for reports.sh
       gtop                        # top replacement
       hddtemp                     # hard drive temperature monitor
       httpie                      # curl-like tool
@@ -34,7 +34,6 @@
       #
       # Decrypt
       # adept_remove file.pdf
-      killall
       lazygit
       libgourou
       lm_sensors
