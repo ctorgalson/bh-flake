@@ -87,8 +87,8 @@
 	        config = toLuaFromFile ./plugins/nvim-telescope.lua;
         }
         {
-            plugin = toggleterm-nvim;
-            config = toLuaFromFile ./plugins/toggleterm-nvim.lua;
+          plugin = toggleterm-nvim;
+          config = toLuaFromFile ./plugins/toggleterm-nvim.lua;
         }
         { plugin = vim-prettier; }
         {
