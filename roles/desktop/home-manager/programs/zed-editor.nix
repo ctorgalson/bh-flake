@@ -1,4 +1,4 @@
-{ config, lib, pkgs, programs, ... }:
+{ config, lib, pkgs, programs, stable-pkgs, ... }:
 
 {
   config = {
@@ -17,6 +17,7 @@
         "toml"
         "twig"
       ];
+      package = stable-pkgs.zed-editor;
       # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zed-editor.userKeymaps
       # https://www.reddit.com/r/ZedEditor/comments/1bd6ene/zed_editor_settings/
       userKeymaps = [

@@ -1,11 +1,10 @@
-{ config, pkgs, home, ... }:
+{ config, pkgs, home, stable-pkgs, ... }:
 
 {
   config = {
     home.packages = with pkgs; [
       bitwarden-desktop
       borgbackup
-      calibre
       darktable
       fragments
       gimp
@@ -38,6 +37,7 @@
       signal-desktop
       slack
       solaar
+      stable-pkgs.calibre
       usbutils
       via
       vlc

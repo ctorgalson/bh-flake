@@ -1,4 +1,4 @@
-{ config, pkgs, home, ... }:
+{ config, pkgs, home, stable-pkgs, ... }:
 
 {
   imports = [
@@ -15,7 +15,7 @@
     ./ssh.nix
     ./starship.nix
     ./tmux.nix
-    #./zed-editor.nix
+    ./zed-editor.nix
     ./zoxide.nix
     ./zsh
   ];
