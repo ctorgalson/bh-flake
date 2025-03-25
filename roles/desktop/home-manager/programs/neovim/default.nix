@@ -10,6 +10,7 @@
   # Refer to https://nixos.wiki/wiki/Neovim
   config = {
     home.packages = with pkgs; [
+      distant
       htmx-lsp
       nodePackages.prettier
       phpactor
@@ -52,6 +53,10 @@
         {
           plugin = comment-nvim;
 	        config = toLuaFromFile ./plugins/comment-nvim.lua;
+        }
+        {
+          plugin = distant-nvim;
+          config = toLuaFromFile ./plugins/distant-nvim.lua;
         }
         {
           # @see https://github.com/lewis6991/gitsigns.nvim
