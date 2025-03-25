@@ -15,7 +15,7 @@
     ./ssh.nix
     ./starship.nix
     ./tmux.nix
-    ./zed-editor.nix
+    #./zed-editor.nix
     ./zoxide.nix
     ./zsh
   ];
