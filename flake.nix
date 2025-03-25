@@ -15,10 +15,13 @@
     };
 
     stylix.url = "github:danth/stylix";
+
+    stable.url = "github:NixOS/nixpkgs/nixos-24.11";
   };
 
-  outputs = { home-manager, nixpkgs, self, sops-nix, stylix, ... }@inputs:
+  outputs = { home-manager, nixpkgs, self, sops-nix, stable, stylix, ... }@inputs:
     let
+      stable-pkgs = import stable { inherit system; };
       system = "x86_64-linux";
       hostData = import ./hosts/data.nix;
       allowedUnfreePackages = [ "bws" "steam" "zoom-us" ];
@@ -28,14 +31,14 @@
         (host: {
           name = host.hostname;
           value = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit host; inherit inputs; inherit system; };
+            specialArgs = { inherit host inputs stable-pkgs system; };
             modules = [
               sops-nix.nixosModules.sops
               stylix.nixosModules.stylix
               home-manager.nixosModules.default
               {
                 home-manager.extraSpecialArgs = {
-                  inherit allowedUnfreePackages inputs system;
+                  inherit allowedUnfreePackages host inputs stable-pkgs system;
                 };
                 home-manager.sharedModules = [
                   # sops-nix.homeManagerModules.sops
