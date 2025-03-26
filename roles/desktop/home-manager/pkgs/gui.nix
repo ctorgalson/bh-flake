@@ -47,7 +47,8 @@
       # vscode
       # vscodium
       # vscode-extensions.ms-vscode-remote.remote-ssh
-      yubikey-manager-qt
+      yubioath-flutter
+      #yubikey-manager-qt
       yubikey-personalization-gui
       zeal
     ];
