@@ -9,6 +9,7 @@
       ddev                        # dev servers
       diceware                    # passphrase generator
       diffpdf                     # pdf diff tool
+      dmidecode                   # bios info utility
       doggo                       # dig replacement
       fd                          # find replacement
       ffmpeg                      # media convertor
