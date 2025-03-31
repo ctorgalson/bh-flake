@@ -9,6 +9,12 @@
 
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [
+    # https://github.com/FrameworkComputer/SoftwareFirmwareIssueTracker/issues/25
+    "amdgpu.dcdebugmask=0x400"
+    # https://bbs.archlinux.org/viewtopic.php?id=301734
+    # amdgpu.dcdebugmask=0x10
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
