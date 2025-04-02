@@ -22,11 +22,9 @@
       google-chrome
       gpt4all
       guvcview
+      libreoffice                 # Office suite
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
-      # pkgs.nerd-fonts.inconsolata
-      # nerdfonts
-      # inconsolata-nerdfont
       inkscape-with-extensions
       localsend
       lorem
