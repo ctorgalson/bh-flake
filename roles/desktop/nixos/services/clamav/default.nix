@@ -25,6 +25,7 @@ let
       "''${clamscan_targets[@]}" > "$temp_file"
 
     mv "$temp_file" "$user_log"
+    chown "${host.username}:users" "$user_log"
   '';
 in
 {
