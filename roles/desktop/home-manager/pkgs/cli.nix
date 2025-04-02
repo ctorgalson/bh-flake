@@ -17,6 +17,7 @@
       gcc                         # c compiler
       glow                        # markdown reader
       gnome-screenshot            # for reports.sh
+      go                          # go language
       gtop                        # top replacement
       hddtemp                     # hard drive temperature monitor
       httpie                      # curl-like tool
