@@ -32,7 +32,7 @@
       obsidian
       protonvpn-gui
       # quickgui
-      signal-desktop
+      signal-desktop-bin
       slack
       solaar
       stable-pkgs.calibre
