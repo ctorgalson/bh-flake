@@ -32,6 +32,7 @@
       obsidian
       protonvpn-gui
       # quickgui
+      resources
       signal-desktop-bin
       slack
       solaar
