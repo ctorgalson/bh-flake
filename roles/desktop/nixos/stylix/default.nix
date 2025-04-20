@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
 
-    autoEnable = true;
+    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     fonts = {
@@ -36,28 +36,47 @@
     image = ../../../../images/IMG_0952.jpg;
 
     targets = {
-      gnome = {
-        enable = true;
-      };
+      # home manager only
+      # fzf.enable = true;
+
+      gnome.enable = true;
 
       grub = {
         enable = true;
         useWallpaper = true;
       };
 
-      nixos-icons = {
-        enable = true;
-      };
+      gtk.enable = true;
 
-      plymouth = {
-        enable = true;
-      };
+      # home manager only
+      # kitty.enable = true;
+
+      # home manager only
+      # micro.enable = true;
+
+      # home manager only
+      # neovim.enable = true;
+
+      nixos-icons.enable = true;
+
+      qt.enable = true;
+
+      plymouth.enable = true;
+
+      # home manager only
+      # starship.enable = true;
+
+      # home manager only
+      # tmux.enable = true;
+
+      # home manager only
+      # vscode.enable = true;
+
+      # home manager only
+      # zed.enable = true;
+
+      # home manager only
+      # zellij.enable = true;
     };
-
-    # Tmux (?)
-
-    # Zed
-
-    # Zellij
   };
 }
