@@ -48,7 +48,7 @@
       plymouth
       python314
       #quickemu
-      rich-cli
+      # rich-cli                    # nice cli output library for pyton
       shellcheck
       sops
       sqlite
