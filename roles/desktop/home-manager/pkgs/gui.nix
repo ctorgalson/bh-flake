@@ -30,7 +30,7 @@
       lorem
       nextcloud-client
       obsidian
-      protonvpn-gui
+      stable-pkgs.protonvpn-gui
       # quickgui
       resources
       signal-desktop-bin
