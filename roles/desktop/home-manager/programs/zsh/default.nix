@@ -31,7 +31,7 @@
         #   fi
         # fi
       '';
-      initExtra = ''
+      initContent = ''
       hello-terminal "bonjour"
       '';
       plugins = [
