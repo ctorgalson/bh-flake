@@ -52,7 +52,7 @@ summary_lines="$(<"/home/ctorgalson/last-clamscan.log")"
 summary_width=36
 summary_output="$(center_h "$summary_lines" "$summary_width" "$cols")"
 
-weather_lines="$(curl --silent wttr.in/\?0AQ)"
+weather_lines="$(timeout 5 curl --silent wttr.in/\?0AQ || "No forecast")"
 weather_width=35
 weather_output="$(center_h "$weather_lines" "$weather_width" "$cols")"
 
