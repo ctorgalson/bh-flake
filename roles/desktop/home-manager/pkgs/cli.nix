@@ -42,13 +42,13 @@
       lynis
       nixos-icons
       nodejs_22
+      ollama                      # local LLM model
       orpie
       pciutils
       platformsh                  # platform.sh cli tool
       plymouth
       python314
       #quickemu
-      # rich-cli                    # nice cli output library for pyton
       shellcheck
       sops
       sqlite

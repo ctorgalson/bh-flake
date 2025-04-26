@@ -20,7 +20,8 @@
       gnome-tweaks
       # gnome-extension-manager
       google-chrome
-      gpt4all
+      goose-cli                   # Local LLM runner
+      # gpt4all                   # Local LLM runner, but pkg is borked
       guvcview
       libreoffice                 # Office suite
       nerd-fonts.inconsolata
@@ -33,6 +34,7 @@
       stable-pkgs.protonvpn-gui
       # quickgui
       resources
+      shutter                     # screenshot and annotation tool
       signal-desktop-bin
       slack
       solaar
