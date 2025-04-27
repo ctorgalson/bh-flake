@@ -20,8 +20,7 @@
       gnome-tweaks
       # gnome-extension-manager
       google-chrome
-      goose-cli                   # Local LLM runner
-      # gpt4all                   # Local LLM runner, but pkg is borked
+      stable-pkgs.gpt4all                   # Local LLM runner, but pkg is borked
       guvcview
       libreoffice                 # Office suite
       nerd-fonts.inconsolata

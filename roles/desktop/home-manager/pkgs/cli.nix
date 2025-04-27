@@ -18,6 +18,7 @@
       glow                        # markdown reader
       gnome-screenshot            # for reports.sh
       go                          # go language
+      # goose-cli                   # Local LLM runner: WRETCHEDLY frustrating.
       gtop                        # top replacement
       hddtemp                     # hard drive temperature monitor
       httpie                      # curl-like tool
