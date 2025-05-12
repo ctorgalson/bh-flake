@@ -89,7 +89,6 @@
         }
         {
           plugin = promise-async;
-          config = toLuaFromFile ./plugins/promise-async.lua;
         }
         {
           # @see https://github.com/nvim-tree/nvim-web-devicons
@@ -97,7 +96,7 @@
         }
         {
           plugin = telescope-nvim;
-	        config = toLuaFromFile ./plugins/nvim-telescope.lua;
+	  config = toLuaFromFile ./plugins/nvim-telescope.lua;
         }
         {
           plugin = toggleterm-nvim;
@@ -106,7 +105,7 @@
         { plugin = vim-prettier; }
         {
           plugin = which-key-nvim;
-	        config = toLuaFromFile ./plugins/which-key-nvim.lua;
+	  config = toLuaFromFile ./plugins/which-key-nvim.lua;
         }
         # LSP noodling.
         #
