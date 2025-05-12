@@ -84,6 +84,14 @@
 	        config = toLuaFromFile ./plugins/nvim-treesitter.lua;
         }
         {
+          plugin = nvim-ufo;
+          config = toLuaFromFile ./plugins/nvim-ufo.lua;
+        }
+        {
+          plugin = promise-async;
+          config = toLuaFromFile ./plugins/promise-async.lua;
+        }
+        {
           # @see https://github.com/nvim-tree/nvim-web-devicons
           plugin = nvim-web-devicons;
         }
