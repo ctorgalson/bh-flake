@@ -38,6 +38,7 @@
       slack
       solaar
       stable-pkgs.calibre
+      totem                       # Gnome Videos
       usbutils
       via
       vlc
