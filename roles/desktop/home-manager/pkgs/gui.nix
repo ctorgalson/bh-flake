@@ -20,12 +20,13 @@
       gnome-tweaks
       # gnome-extension-manager
       google-chrome
-      stable-pkgs.gpt4all                   # Local LLM runner, but pkg is borked
+      stable-pkgs.gpt4all         # Local LLM runner, but pkg is borked
       guvcview
       libreoffice                 # Office suite
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
       inkscape-with-extensions
+      ksnip                       # screenshot and annotation tool
       localsend
       lorem
       nextcloud-client
@@ -33,7 +34,6 @@
       stable-pkgs.protonvpn-gui
       # quickgui
       resources
-      satty                       # screenshot and annotation tool
       signal-desktop-bin
       slack
       solaar
