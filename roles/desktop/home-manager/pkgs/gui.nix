@@ -33,7 +33,7 @@
       stable-pkgs.protonvpn-gui
       # quickgui
       resources
-      shutter                     # screenshot and annotation tool
+      satty                       # screenshot and annotation tool
       signal-desktop-bin
       slack
       solaar
