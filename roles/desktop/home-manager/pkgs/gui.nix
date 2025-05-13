@@ -26,7 +26,6 @@
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
       inkscape-with-extensions
-      ksnip                       # screenshot and annotation tool
       localsend
       lorem
       nextcloud-client
