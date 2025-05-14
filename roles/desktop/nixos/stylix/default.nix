@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
 
-    autoEnable = true;
+    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     fonts = {
@@ -49,7 +49,7 @@
       gtk.enable = true;
 
       # home manager only
-      # kitty.enable = true;
+      # kitty.enable = false;
 
       # home manager only
       # micro.enable = true;

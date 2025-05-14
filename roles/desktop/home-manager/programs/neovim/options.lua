@@ -1,5 +1,8 @@
 -- Comment to prevent weirdness when nix prepends the main neovim config.
 
+-- colorscheme
+vim.cmd.colorscheme('catppuccin-mocha')
+
 -- Basic configuration.
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'

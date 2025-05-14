@@ -21,10 +21,12 @@
         "ctrl+shift+enter" = "launch --cwd=current";
       };
       # Taken over by stylix
-      # font.name = "UbuntuMono Nerd Font Mono";
-      # font.size = 15;
+      font.name = "UbuntuMono Nerd Font";
+      font.size = 16;
       # @see https://sw.kovidgoyal.net/kitty/conf/
       settings = {
+        # active_border_color = "#fab387";
+        # inactive_border_color = "#313244";
         allow_hyperlinks = true;
         enable_audio_bell = false;
         hide_window_decorations = true;
@@ -32,10 +34,9 @@
         remember_window_size = true;
         scrollback_lines = 10000;
         # Stylix is overriding this override :(
-        tab_bar_background = "#313244";
+        # tab_bar_background = "#313244";
         tab_bar_edge = "top";
         tab_bar_style = "powerline";
-        #tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{tab.active_oldest_wd}";
         tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{tab.active_oldest_wd.split('/')[-1]}";
         # Rather than unsetting the default $TERM value, xterm-kitty, run this
         # against any server that complains: 
@@ -49,7 +50,7 @@
       };
       shellIntegration.enableZshIntegration = true;
       # Taken over by stylix
-      # themeFile = "Catppuccin-Mocha";
+      themeFile = "Catppuccin-Mocha";
     };
   };
 }
