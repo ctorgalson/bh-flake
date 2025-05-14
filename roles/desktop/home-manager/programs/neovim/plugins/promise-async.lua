@@ -1,1 +1,0 @@
-require('promise-async').setup()

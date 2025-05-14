@@ -18,7 +18,7 @@
         "ctrl+down" = "resize_window shorter";
 
         # Open panes in the same ******* directory.
-        "ctrl+alt+enter" = "launch --cwd=current";
+        "ctrl+shift+enter" = "launch --cwd=current";
       };
       # Taken over by stylix
       # font.name = "UbuntuMono Nerd Font Mono";

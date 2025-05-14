@@ -35,6 +35,8 @@ require'lspconfig'.eslint.setup{}
 require'lspconfig'.html.setup{}
 require'lspconfig'.htmx.setup{
   filetypes = {
+    -- html, js are handled by other lspconfig.
+    --
     -- "aspnetcorerazor",
     -- "astro",
     -- "astro-markdown",

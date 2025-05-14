@@ -26,26 +26,27 @@ vim.keymap.set("n", "<Leader>e", ":Neotree toggle<CR>", { desc = "Toggle file br
 --
 -- @see https://github.com/LazyVim/LazyVim/blob/879e29504d43e9f178d967ecc34d482f902e5a91/lua/lazyvim/config/keymaps.lua#L15
 --
--- Move to window using the <ctrl> hjkl keys
+
+-- Resize window using <alt> hjkl keys.
+keymap("n", "<A-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+keymap("n", "<A-j>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+keymap("n", "<A-k>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+keymap("n", "<A-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+
+-- Move to window using the <ctrl> hjkl keys.
 keymap("n", "<C-h>", "<C-w>h", { desc = "Go to left window", noremap = true })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", noremap = true })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", noremap = true })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Go to right window", noremap = true })
 
--- Likewise, but with terminals
+-- Likewise, but with terminals.
 keymap('t', '<esc>', '<C-\\><C-N>', { silent = true })
 keymap('t', '<C-h>', '<C-\\><C-N><cmd>wincmd h<cr>', { noremap = true, silent = true })
 keymap('t', '<C-j>', '<C-\\><C-N><cmd>wincmd j<cr>', { noremap = true, silent = true })
 keymap('t', '<C-k>', '<C-\\><C-N><cmd>wincmd k<cr>', { noremap = true, silent = true })
 keymap('t', '<C-l>', '<C-\\><C-N><cmd>wincmd l<cr>', { noremap = true, silent = true })
 
--- Resize window using <ctrl> arrow keys
-keymap("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-keymap("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- Keymapping for leap.nvim
-vim.keymap.set({'n', 'x', 'o'}, '<C-Right>',  '<Plug>(leap-forward)')
-vim.keymap.set({'n', 'x', 'o'}, '<C-Left>',  '<Plug>(leap-backward)')
-vim.keymap.set({'n', 'x', 'o'}, '<C-Up>', '<Plug>(leap-from-window)')
+-- Keymapping for leap.nvim.
+keymap({'n', 'x', 'o'}, '<C-Right>',  '<Plug>(leap-forward)')
+keymap({'n', 'x', 'o'}, '<C-Left>',  '<Plug>(leap-backward)')
+keymap({'n', 'x', 'o'}, '<C-Up>', '<Plug>(leap-from-window)')

@@ -10,14 +10,15 @@
   # Refer to https://nixos.wiki/wiki/Neovim
   config = {
     home.packages = with pkgs; [
-      distant
+      # LSP dependencies.
       htmx-lsp
-      nodePackages.prettier
       phpactor
       pylyzer
       typescript
       typescript-language-server
       vscode-langservers-extracted
+      # Utilities dependencies.
+      nodePackages.prettier
     ];
 
     programs.neovim = 
@@ -42,74 +43,89 @@
       # Plugin configs expect Vim config, so lua config needs to be marked-up
       # using our toLuaFromFile and toLuaFromString functions.
       plugins = with pkgs.vimPlugins; [
+        # UI
+        #
+        # File browser.
         {
-          plugin = bufferline-nvim;
-	        config = toLuaFromFile ./plugins/bufferline-nvim.lua;
+          plugin = neo-tree-nvim;
+          config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
         }
-        # {
-        #   # @see https://github.com/anachronic/catppuccin-nvim?tab=readme-ov-file
-        #   plugin = catppuccin-nvim;
-        # }
+        # File type icons.
         {
-          plugin = comment-nvim;
-	        config = toLuaFromFile ./plugins/comment-nvim.lua;
+          # @see https://github.com/nvim-tree/nvim-web-devicons
+          plugin = nvim-web-devicons;
         }
-        {
-          plugin = distant-nvim;
-          config = toLuaFromFile ./plugins/distant-nvim.lua;
-        }
+        # Git status indicators.
         {
           # @see https://github.com/lewis6991/gitsigns.nvim
           plugin = gitsigns-nvim;
           config = toLuaFromFile ./plugins/gitsigns-nvim.lua;
         }
-        {
-          plugin = leap-nvim;
-          config = toLuaFromFile ./plugins/leap-nvim.lua;
-        }
-        {
-          plugin = lualine-nvim;
-	        config = toLuaFromFile ./plugins/lualine-nvim.lua;
-        }
-        {
-          plugin = neo-tree-nvim;
-	        config = toLuaFromFile ./plugins/neo-tree-nvim.lua;
-        }
-        {
-          plugin = nvim-colorizer-lua;
-          config = toLuaFromFile ./plugins/nvim-colorizer-lua.lua;
-        }
-        {
-          plugin = nvim-treesitter.withAllGrammars;
-	        config = toLuaFromFile ./plugins/nvim-treesitter.lua;
-        }
+        # Better folds.
         {
           plugin = nvim-ufo;
           config = toLuaFromFile ./plugins/nvim-ufo.lua;
         }
         {
+          # (nvim-ufo dependency).
           plugin = promise-async;
         }
+        # Tabs.
         {
-          # @see https://github.com/nvim-tree/nvim-web-devicons
-          plugin = nvim-web-devicons;
+          plugin = bufferline-nvim;
+          config = toLuaFromFile ./plugins/bufferline-nvim.lua;
         }
+        # Status line.
         {
-          plugin = telescope-nvim;
-	  config = toLuaFromFile ./plugins/nvim-telescope.lua;
+          plugin = lualine-nvim;
+          config = toLuaFromFile ./plugins/lualine-nvim.lua;
         }
+        # Colourize hex, other text colours.
+        {
+          plugin = nvim-colorizer-lua;
+          config = toLuaFromFile ./plugins/nvim-colorizer-lua.lua;
+        }
+        # Colorscheme.
+        {
+          # @see https://github.com/anachronic/catppuccin-nvim?tab=readme-ov-file
+          plugin = catppuccin-nvim;
+        }
+        # In-editor terminal.
         {
           plugin = toggleterm-nvim;
           config = toLuaFromFile ./plugins/toggleterm-nvim.lua;
         }
-        { plugin = vim-prettier; }
+
+        # UX
+        #
+        # Comments.
+        {
+          plugin = comment-nvim;
+          config = toLuaFromFile ./plugins/comment-nvim.lua;
+        }
+        # In-file navigation.
+        {
+          plugin = leap-nvim;
+          config = toLuaFromFile ./plugins/leap-nvim.lua;
+        }
+        # Help with keyboard nav.
         {
           plugin = which-key-nvim;
-	  config = toLuaFromFile ./plugins/which-key-nvim.lua;
+          config = toLuaFromFile ./plugins/which-key-nvim.lua;
         }
-        # LSP noodling.
+        {
+          # (which key dependency).
+          plugin = telescope-nvim;
+          config = toLuaFromFile ./plugins/nvim-telescope.lua;
+        }
+
+        # LSP noodling and syntax.
         #
         # @see https://nathan-long.com/blog/modern-javascript-tooling-in-neovim/
+        {
+          plugin = nvim-treesitter.withAllGrammars;
+          config = toLuaFromFile ./plugins/nvim-treesitter.lua;
+        }
         {
           plugin = nvim-lspconfig;
           config = toLuaFromFile ./plugins/nvim-lspconfig.lua;
@@ -121,8 +137,14 @@
         {
           plugin = friendly-snippets;
         }
+
+        # Utilities.
+        {
+          plugin = vim-prettier;
+        }
       ];
 
+      # Alias everything.
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;

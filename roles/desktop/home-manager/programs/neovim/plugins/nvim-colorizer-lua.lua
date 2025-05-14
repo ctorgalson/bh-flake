@@ -1,8 +1,11 @@
 require("colorizer").setup({
   filetypes = {
     "css",
-    "javascript",
     "html",
+    "javascript",
+    "php",
+    "python",
+    "go",
   };
   user_default_options = {
     css = true,
