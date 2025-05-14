@@ -17,11 +17,8 @@
         "ctrl+up" = "resize_window taller";
         "ctrl+down" = "resize_window shorter";
 
-        # Navigate between panes.
-        # "ctrl+shift+h" = "neighboring_pane left";
-        # "ctrl+shift+j" = "neighboring_pane down";
-        # "ctrl+shift+k" = "neighboring_pane up";
-        # "ctrl+shift+l" = "neighboring_pane right";
+        # Open panes in the same ******* directory.
+        "ctrl+alt+enter" = "launch --cwd=current";
       };
       # Taken over by stylix
       # font.name = "UbuntuMono Nerd Font Mono";
