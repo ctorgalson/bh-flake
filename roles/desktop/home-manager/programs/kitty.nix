@@ -35,7 +35,8 @@
         tab_bar_background = "#313244";
         tab_bar_edge = "top";
         tab_bar_style = "powerline";
-        tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{tab.active_oldest_wd}";
+        #tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{tab.active_oldest_wd}";
+        tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{tab.active_oldest_wd.split('/')[-1]}";
         # Rather than unsetting the default $TERM value, xterm-kitty, run this
         # against any server that complains: 
         #
