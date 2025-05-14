@@ -2,10 +2,27 @@
 
 {
   config = {
+    # @see https://mynixos.com/home-manager/options/programs.kitty
     # @see https://home-manager-options.extranix.com/?query=kitty&release=release-24.11
     # @see https://sw.kovidgoyal.net/kitty/_downloads/433dadebd0bf504f8b008985378086ce/kitty.conf
     programs.kitty = {
       enable = true;
+      keybindings = {
+        # "ctrl+c" = "copy_or_interrupt";
+        # "ctrl+f&gt;2" = "set_font_size 20";
+
+        # Resize panes.
+        "ctrl+left" = "resize_window narrower";
+        "ctrl+right" = "resize_window wider";
+        "ctrl+up" = "resize_window taller";
+        "ctrl+down" = "resize_window shorter";
+
+        # Navigate between panes.
+        "ctrl+shift+h" = "neighboring_pane left";
+        "ctrl+shift+j" = "neighboring_pane down";
+        "ctrl+shift+k" = "neighboring_pane up";
+        "ctrl+shift+l" = "neighboring_pane right";
+      };
       # Taken over by stylix
       # font.name = "UbuntuMono Nerd Font Mono";
       # font.size = 15;
