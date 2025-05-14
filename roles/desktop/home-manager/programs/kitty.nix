@@ -18,10 +18,10 @@
         "ctrl+down" = "resize_window shorter";
 
         # Navigate between panes.
-        "ctrl+shift+h" = "neighboring_pane left";
-        "ctrl+shift+j" = "neighboring_pane down";
-        "ctrl+shift+k" = "neighboring_pane up";
-        "ctrl+shift+l" = "neighboring_pane right";
+        # "ctrl+shift+h" = "neighboring_pane left";
+        # "ctrl+shift+j" = "neighboring_pane down";
+        # "ctrl+shift+k" = "neighboring_pane up";
+        # "ctrl+shift+l" = "neighboring_pane right";
       };
       # Taken over by stylix
       # font.name = "UbuntuMono Nerd Font Mono";
@@ -34,6 +34,8 @@
         notify_on_cmd_finish = "unfocused 5";
         remember_window_size = true;
         scrollback_lines = 10000;
+        tab_bar_edge = "top";
+        tab_bar_style = "powerline";
         # Rather than unsetting the default $TERM value, xterm-kitty, run this
         # against any server that complains: 
         #
@@ -42,6 +44,7 @@
         # @see https://ghostty.org/docs/help/terminfo
         # term = "xterm";
         update_check_interval = 0;
+        window_padding_width = 2;
       };
       shellIntegration.enableZshIntegration = true;
       # Taken over by stylix
