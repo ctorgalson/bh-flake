@@ -26,6 +26,7 @@
         hide_window_decorations = true;
         notify_on_cmd_finish = "unfocused 5";
         remember_window_size = true;
+        shell_integration = "no-title";
         scrollback_lines = 10000;
         tab_bar_edge = "top";
         tab_bar_style = "powerline";
