@@ -10,7 +10,7 @@
     ./git.nix
     ./joplin-desktop.nix
     ./kitty.nix
-    ./neovim
+    #./neovim
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
