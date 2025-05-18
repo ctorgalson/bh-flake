@@ -17,9 +17,11 @@
     stylix.url = "github:danth/stylix";
 
     stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    
+    bh-nixvim.url = "github:ctorgalson/bh-nixvim";
   };
 
-  outputs = { home-manager, nixpkgs, self, sops-nix, stable, stylix, ... }@inputs:
+  outputs = { bh-nixvim, home-manager, nixpkgs, self, sops-nix, stable, stylix, ... }@inputs:
     let
       stable-pkgs = import stable { inherit system; };
       system = "x86_64-linux";
@@ -36,6 +38,9 @@
               sops-nix.nixosModules.sops
               stylix.nixosModules.stylix
               home-manager.nixosModules.default
+              {
+              	 environment.systemPackages = [ inputs.bh-nixvim.packages."${system}".default ];
+              }
               {
                 home-manager.extraSpecialArgs = {
                   inherit allowedUnfreePackages host inputs stable-pkgs system;
