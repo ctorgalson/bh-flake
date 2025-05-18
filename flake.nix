@@ -18,7 +18,10 @@
 
     stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     
-    bh-nixvim.url = "github:ctorgalson/bh-nixvim";
+    bh-nixvim = {
+      url = "github:ctorgalson/bh-nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { bh-nixvim, home-manager, nixpkgs, self, sops-nix, stable, stylix, ... }@inputs:
