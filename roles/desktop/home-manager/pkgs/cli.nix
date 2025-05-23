@@ -41,6 +41,7 @@
       libgourou
       lm_sensors
       lynis
+      moar                        # less replacement
       nixos-icons
       nodejs_22
       ollama                      # local LLM model
@@ -50,6 +51,7 @@
       plymouth
       python314
       #quickemu
+      riffdiff                    # diff replacement w/syntax highlighting etc.
       shellcheck
       sops
       sqlite
