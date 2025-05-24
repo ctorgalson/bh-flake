@@ -6,7 +6,7 @@
       age                         # encryption utility
       ansible                     # server provision + automation
       bitwarden-cli               # bw command
-      dwt1-shell-color-scripts-unstable # Colour scripts and tools
+      dwt1-shell-color-scripts    # Colour scripts and tools
       ddev                        # dev servers
       diceware                    # passphrase generator
       diffpdf                     # pdf diff tool
