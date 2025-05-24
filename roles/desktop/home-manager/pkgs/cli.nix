@@ -6,6 +6,7 @@
       age                         # encryption utility
       ansible                     # server provision + automation
       bitwarden-cli               # bw command
+      dwt1-shell-color-scripts-unstable # Colour scripts and tools
       ddev                        # dev servers
       diceware                    # passphrase generator
       diffpdf                     # pdf diff tool
@@ -61,7 +62,8 @@
       tree-sitter
       unison
       unzip
-      wl-clipboard
+      wl-clip-persist             # Wayland clipboard contents "preserver"
+      wl-clipboard                # Wayland clipboard manager
       yq
       yt-dlp
       # yubikey-manager
