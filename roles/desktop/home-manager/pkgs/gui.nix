@@ -36,6 +36,7 @@
       signal-desktop-bin
       slack
       solaar
+      spideroak                   # Backups (installed temporarily)
       stable-pkgs.calibre
       totem                       # Gnome Videos
       usbutils
