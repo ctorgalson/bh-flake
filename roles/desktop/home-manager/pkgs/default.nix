@@ -10,6 +10,5 @@
     ./timereport.nix
     ./timewarrior
     ./workfox.nix
-    ./zellij
   ];
 }
