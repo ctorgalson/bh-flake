@@ -35,8 +35,9 @@
       homeDirectory = "/home/ctorgalson";
 
       sessionVariables = {
-        VISUAL = "nvim";
+        EDITOR = "nvim";
         GIT_EDITOR="vim -c 'set buftype='";
+        VISUAL = "nvim";
       };
 
       stateVersion = "24.05";
