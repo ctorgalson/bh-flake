@@ -3,7 +3,8 @@
 {
   environment = {
     sessionVariables = {
-      SSH_AUTH_SOCK = "$HOME.bitwarden-ssh-agent.sock";
+      # BW's ssh-agent doesn't seem to work properly on Nixos (?)
+      # SSH_AUTH_SOCK = "$HOME.bitwarden-ssh-agent.sock";
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
