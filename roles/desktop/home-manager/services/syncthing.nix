@@ -1,7 +1,11 @@
 { config, pkgs, programs, services, ... }:
 
 {
-  config = {
+  config =
+  let
+    homedir = "/home/ctorgalson";
+  in
+  {
     services.syncthing = {
       enable = true; 
       # @see https://nix-community.github.io/home-manager/options.xhtml#opt-services.syncthing.settings
@@ -24,7 +28,7 @@
           };
         };
         folders = {
-          "/home/ctorgalson/Storage/Documents" = {
+          "${homedir}/Storage/Documents" = {
             id = "documents";
             devices = [ "executive14" "framework13" "ser6" ];
             label = "Documents";
@@ -34,7 +38,7 @@
               params.cleanoutDays = "500";
             };
           };
-          "/home/ctorgalson/.local/share/timewarrior" = {
+          "${homedir}/.local/share/timewarrior" = {
             id = "timewarrior";
             devices = [ "executive14" "framework13" "ser6" ];
             label = "Timewarrior";
@@ -49,9 +53,6 @@
           urAccepted = -1;
         };
       };
-      # tray = {
-      #   enable = true;
-      # };
     };
   };
 }

@@ -13,11 +13,8 @@
       envExtra = ''
       '';
       initContent = ''
-      hello-terminal "bonjour"
-      # These don't work--presumably because they are not the last items in
-      # the composed .zshrc.
-      # DISABLE_AUTO_TITLE="true"
-      # precmd() { set-tab-title }
+        hello-terminal "bonjour"
+        export SSH_AUTH_SOCK="''${HOME}/.bitwarden-ssh-agent.sock"
       '';
       plugins = [
         {
