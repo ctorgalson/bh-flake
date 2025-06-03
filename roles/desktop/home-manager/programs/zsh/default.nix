@@ -4,7 +4,7 @@
   config = {
     home.packages = with pkgs; [
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
-    ]
+    ];
 
     programs.zsh = {
       enable = true;
