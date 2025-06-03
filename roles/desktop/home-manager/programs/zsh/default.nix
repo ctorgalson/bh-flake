@@ -4,8 +4,7 @@
   config = {
     home.packages = with pkgs; [
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
-      (writeShellScriptBin "set-tab-title" (builtins.readFile ./set-tab-title.sh))
-    ];
+    ]
 
     programs.zsh = {
       enable = true;
