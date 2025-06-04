@@ -39,6 +39,7 @@
       spideroak                   # Backups (installed temporarily)
       stable-pkgs.calibre
       totem                       # Gnome Videos
+      trayscale                  # Unofficial Tailscale GUI
       usbutils
       via
       vlc
