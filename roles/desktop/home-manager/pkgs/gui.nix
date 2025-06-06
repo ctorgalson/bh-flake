@@ -26,6 +26,7 @@
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
       inkscape-with-extensions
+      kdePackages.kruler          # Screen ruler
       localsend
       lorem
       nextcloud-client
