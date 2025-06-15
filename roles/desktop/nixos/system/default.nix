@@ -3,7 +3,7 @@
 {
   system.autoUpgrade = {
     enable = true;
-    dates = "08:35";
+    dates = "daily";
     flake = inputs.self.outPath;
     flags = [
       "--no-write-lock-file"

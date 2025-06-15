@@ -3,8 +3,8 @@
 {
   nix.gc = {
     automatic = true;
-    dates = "02:00";
-    options = "--delete-older-than 3d";
+    dates = "daily";
+    options = "--delete-older-than 7d";
     randomizedDelaySec = "45min";
   };
 
@@ -12,6 +12,9 @@
     automatic = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 }
 
