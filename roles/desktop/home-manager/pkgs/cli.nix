@@ -67,8 +67,8 @@
       yq
       yt-dlp
       # yubikey-manager
-      yubikey-personalization
-      yubioath-flutter
+      # yubikey-personalization
+      # yubioath-flutter
       zip
     ];
   };

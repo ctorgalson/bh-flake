@@ -52,8 +52,8 @@
       # vscode-extensions.ms-vscode-remote.remote-ssh
       xdg-desktop-portal-gnome    # For Zoom screen sharing
       yubioath-flutter
-      #yubikey-manager-qt
-      yubikey-personalization-gui
+      # yubikey-manager-qt
+      # yubikey-personalization-gui
       zeal
     ];
   };
