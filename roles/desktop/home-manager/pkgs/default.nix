@@ -4,6 +4,7 @@
   imports = [
     ./byobu
     ./cli.nix
+    ./gcofzf.nix
     ./gui.nix
     ./homefox.nix
     ./nixnvm.nix
