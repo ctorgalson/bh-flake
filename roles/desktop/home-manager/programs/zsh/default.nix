@@ -32,6 +32,7 @@
         top = "gtop";
         vi = "nvim";
         vim = "nvim";
+        gco = "gco-fzf";
       };
     };
   };
