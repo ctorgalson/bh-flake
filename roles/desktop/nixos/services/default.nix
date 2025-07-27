@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+# { inputs, lib, pkgs, ... }:
 
 {
   imports = [
@@ -23,6 +23,13 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+
+  services.ollama = {
+    enable = true;
+    environmentVariables = {
+      OLLAMA_KEEP_ALIVE = "10m"; # Unload models after 5 minutes of inactivity
+    };
   };
 
   services.printing.enable = true;
