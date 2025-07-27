@@ -30,6 +30,9 @@
     environmentVariables = {
       OLLAMA_KEEP_ALIVE = "10m"; # Unload models after 5 minutes of inactivity
     };
+    loadModels = [
+      "qwen2.5-coder:latest"
+    ];
   };
 
   services.printing.enable = true;
