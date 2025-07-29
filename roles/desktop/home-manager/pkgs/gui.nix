@@ -5,7 +5,7 @@
     home.packages = with pkgs; [
       bitwarden-desktop
       borgbackup
-      darktable
+      # darktable                 # Seems to rely on outdated version of libsoup
       fragments
       gimp
       # gimp-with-plugins
