@@ -17,7 +17,7 @@ function updateRepo () {
 
     # Pause while we login.
     echo "Press Enter to after authenticating to Bitwarden..."
-    read -r
+    read -rs
 
     # Update the origin url.
     git remote set-url origin "$sshremote"
@@ -36,7 +36,7 @@ function updateRepo () {
 function getSopsKey () {
   # Static variables for secret id from BWS, and path to the SOPS age key.
   secretid="c34b225f-0c4e-42d6-8c2c-b28d0133105f"
-  keypath="$HOME/.config/sops/age/keys.txt.test"
+  keypath="$HOME/.config/sops/age/keys.txt"
 
   if [[ ! -f "$keypath" ]]; then
     # Request a BWS access token.
