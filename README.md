@@ -2,10 +2,10 @@
 
 ## Initial deployment (kludgy)
 
+- install via installer
 - enable flakes in existing nix config if new
-- copy this repo (including submodule) to file system
-- `cd bh-flake`
-- `./get-sops-key`
+- `git clone https://github.com/ctorgalson/bh-flake.git`
+- `nix-shell`
 - `sudo nixos-rebuild switch --flake '#hostname?submodules=1'`
 
 ## Subsequent deployments
