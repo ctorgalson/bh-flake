@@ -11,7 +11,7 @@ function updateRepo () {
   # Get the actual current remote url.
   currentremote="$(git remote get-url "$remotename")"
 
-  if [[ $sshremote -ne $currentremote ]]; then
+  if [[ "$sshremote" != "$currentremote" ]]; then
     # Launch bitwarden.
     bitwarden &
 
