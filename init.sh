@@ -13,7 +13,7 @@ function updateRepo () {
 
   if [[ "$sshremote" != "$currentremote" ]]; then
     # Launch bitwarden.
-    bitwarden &
+    bitwarden > /dev/null 2>&1 &
 
     # Pause while we login.
     echo "Press Enter to after authenticating to Bitwarden..."
