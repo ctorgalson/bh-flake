@@ -23,7 +23,6 @@
       google-chrome
       stable-pkgs.gpt4all         # Local LLM runner, but pkg is borked
       guvcview
-      httpie-desktop              # Cross-platform API testing client for humans.
       libreoffice                 # Office suite
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
