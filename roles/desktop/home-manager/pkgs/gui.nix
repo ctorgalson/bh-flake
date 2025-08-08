@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
       bitwarden-desktop
       borgbackup
+      bruno                       # Open-source IDE For exploring and testing APIs
       # darktable                 # Seems to rely on outdated version of libsoup
       fragments
       gimp
@@ -22,7 +23,7 @@
       google-chrome
       stable-pkgs.gpt4all         # Local LLM runner, but pkg is borked
       guvcview
-      httpie-desktop
+      httpie-desktop              # Cross-platform API testing client for humans.
       libreoffice                 # Office suite
       nerd-fonts.inconsolata
       nerd-fonts.ubuntu-mono
