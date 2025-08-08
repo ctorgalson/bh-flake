@@ -16,7 +16,7 @@ function updateRepo () {
     bitwarden > /dev/null 2>&1 &
 
     # Pause while we login.
-    echo "Press Enter to after authenticating to Bitwarden..."
+    echo "Log into Bitwarden and enable SSH agent, then hit Enter... "
     read -rs
 
     # Update the origin url.
@@ -40,7 +40,7 @@ function getSopsKey () {
 
   if [[ ! -f "$keypath" ]]; then
     # Request a BWS access token.
-    echo -n "Enter BWS_ACCESS_TOKEN..."
+    echo -n "Enter BWS_ACCESS_TOKEN... "
     read -rs bws_access_token
 
     # Ensure the directory exists.
