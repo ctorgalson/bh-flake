@@ -70,6 +70,7 @@
       # yubikey-personalization
       # yubioath-flutter
       zip
+      zsh-forgit                  # A utility tool powered by fzf for using git interactively.
     ];
   };
 }
