@@ -16,6 +16,7 @@
       ffmpeg                      # media convertor
       figlet                      # ascii fonts
       gcc                         # c compiler
+      gh                          # Github cli tool
       glow                        # markdown reader
       gnome-screenshot            # for reports.sh
       go                          # go language
