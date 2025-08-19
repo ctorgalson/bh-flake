@@ -59,7 +59,7 @@
       lm_sensors                  # Temp, voltage, fan monitoring tools
 
       # System
-      catpuccin-plymouth          # boot utility theme
+      catppuccin-plymouth         # boot utility theme
       plymouth                    # boot utility
 
       # Nix-specific
