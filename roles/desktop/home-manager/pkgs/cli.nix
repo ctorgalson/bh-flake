@@ -3,30 +3,69 @@
 {
   config = {
     home.packages = with pkgs; [
-      age                         # encryption utility
-      ansible                     # server provision + automation
-      bitwarden-cli               # bw command
-      dwt1-shell-color-scripts    # Colour scripts and tools
-      ddev                        # dev servers
-      diceware                    # passphrase generator
-      diffpdf                     # pdf diff tool
-      dmidecode                   # bios info utility
-      doggo                       # dig replacement
-      fd                          # find replacement
-      ffmpeg                      # media convertor
-      figlet                      # ascii fonts
-      gcc                         # c compiler
+      # Github
+      act                         # local Github Actions runner
       gh                          # Github cli tool
-      glow                        # markdown reader
-      gnome-screenshot            # for reports.sh
-      go                          # go language
-      golangci-lint
-      # goose-cli                   # Local LLM runner: WRETCHEDLY frustrating.
-      gtop                        # top replacement
-      hddtemp                     # hard drive temperature monitor
+
+      # Automation
+      ansible                     # server provision + automation
+
+      # Development
+      ddev                        # dev servers
       httpie                      # curl-like tool
+      go                          # go language
+      golangci-lint               # golang linting tool
       imagemagick                 # image-manipulation
       jq                          # json query + manipulation tool
+      nodejs_22                   # nodejs 22
+      platformsh                  # platform.sh cli tool
+      python314                   # python 3.14
+      shellcheck                  # shell script analysis tool
+      sqlite                      # Small, fast SQL db
+      yq                          # yaml query + manipulation tool
+
+      # Modern cli
+      doggo                       # dig replacement
+      fd                          # find replacement
+      glow                        # markdown reader
+      gtop                        # top replacement
+      moar                        # less replacement
+      riffdiff                    # diff replacement w/syntax highlighting etc.
+
+      # Other cli
+      diffpdf                     # pdf diff tool
+      dmidecode                   # bios info utility
+      ffmpeg                      # media convertor
+      gcc                         # c compiler
+      tree                        # list contents of directories in tree form
+      # tree-sitter                 # build and update syntax trees
+      unzip
+      wl-clip-persist             # Wayland clipboard contents "preserver"
+      wl-clipboard                # Wayland clipboard manager
+      zip
+
+      # AI cli
+      ollama                      # local LLM model
+
+      # Security
+      age                         # encryption utility
+      bitwarden-cli               # bw command
+      diceware                    # passphrase generator
+      lynis                       # security audit and hardening tool
+      sops                        # Secrets management tool
+
+      # Hardware
+      hddtemp                     # hard drive temperature monitor
+      lm_sensors                  # Temp, voltage, fan monitoring tools
+
+      # System
+      catpuccin-plymouth          # boot utility theme
+      plymouth                    # boot utility
+
+      # Nix-specific
+      nixos-icons                 # icons of the Nix logo
+
+      # Media
       # https://superuser.com/questions/1027608/how-to-read-an-acsm-file-on-linux#1775619
       #
       # # Use your username and password from https://account.adobe.com
@@ -39,39 +78,8 @@
       #
       # Decrypt
       # adept_remove file.pdf
-      lazygit
-      libgourou
-      lm_sensors
-      lynis
-      moar                        # less replacement
-      nixos-icons
-      nodejs_22
-      ollama                      # local LLM model
-      orpie
-      pciutils
-      platformsh                  # platform.sh cli tool
-      plymouth
-      python314
-      #quickemu
-      riffdiff                    # diff replacement w/syntax highlighting etc.
-      shellcheck
-      sops
-      sqlite
-      # timewarrior
-      # tmux
-      tree
-      tree-sitter
-      unison
-      unzip
-      wl-clip-persist             # Wayland clipboard contents "preserver"
-      wl-clipboard                # Wayland clipboard manager
-      yq
-      yt-dlp
-      # yubikey-manager
-      # yubikey-personalization
-      # yubioath-flutter
-      zip
-      zsh-forgit                  # A utility tool powered by fzf for using git interactively...one which doesn't work at ALL?
+      libgourou                   # Adobe Editions fulfillment
+      yt-dlp                      # Youtube/video-downloader
     ];
   };
 }
