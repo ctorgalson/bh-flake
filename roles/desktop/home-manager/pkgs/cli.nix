@@ -38,11 +38,10 @@
       ffmpeg                      # media convertor
       gcc                         # c compiler
       tree                        # list contents of directories in tree form
-      # tree-sitter                 # build and update syntax trees
-      unzip
+      unzip                       # Unzip files/directories
       wl-clip-persist             # Wayland clipboard contents "preserver"
       wl-clipboard                # Wayland clipboard manager
-      zip
+      zip                         # Compress files/directories to .zip
 
       # AI cli
       ollama                      # local LLM model
