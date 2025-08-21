@@ -33,6 +33,7 @@
       riffdiff                    # diff replacement w/syntax highlighting etc.
 
       # Other cli
+      figlet                      # ascii fonts
       diffpdf                     # pdf diff tool
       dmidecode                   # bios info utility
       ffmpeg                      # media convertor
