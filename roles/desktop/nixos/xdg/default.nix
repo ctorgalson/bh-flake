@@ -4,9 +4,11 @@
   xdg = {
     terminal-exec = {
       enable = true;
-      settings = [
-        "kitty.desktop"
-      ];
+      settings = {
+        default = [
+          "kitty.desktop"
+        ];
+      };
     };
   };
 }
