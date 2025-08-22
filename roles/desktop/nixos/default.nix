@@ -14,7 +14,8 @@
     ./time
     ./users
     ./virtualisation
+    ./xdg
     # From flakes etc.
     ./stylix
-  ];  
+  ];
 }
