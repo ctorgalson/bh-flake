@@ -55,7 +55,7 @@
       yubioath-flutter
       # yubikey-manager-qt
       # yubikey-personalization-gui
-      zeal
+      # zeal # Temporarily disabled for dep qtwebengine-5.15.19
     ];
   };
 }

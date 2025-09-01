@@ -59,7 +59,7 @@
 
       nixos-icons.enable = true;
 
-      qt.enable = true;
+      # qt.enable = true;
 
       plymouth.enable = true;
 
