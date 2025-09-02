@@ -50,7 +50,7 @@ while true; do
       echo
       echo "In most circumstances, ./rebuild.sh will do."
       echo
-      echo "  -c, --command-only Echo a generated command only"
+      echo "  -c, --command-only Echo the generated command without executing it"
       echo "                     Use to display command syntax rather than running the command"
       echo
       echo "  -f, --flake        Specify the path for the flake to use"
@@ -81,10 +81,11 @@ while true; do
   esac
 done
 
-flakeparam="${flake}${submodules}${hostname}"
+command=(sudo --preserve-env=SSH_AUTH_SOCK -- nixos-rebuild switch --flake "${flake}${submodules}${hostname}" ${showtrace:+--show-trace})
 
 if [[ "$commandonly" == true ]]; then
-  echo "sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild switch --flake \"${flakeparam}\" ${showtrace:+--show-trace}"
+  printf '%q ' "${command[@]}"
+  printf '\n'
 else
-  sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild switch --flake "${flakeparam}" ${showtrace:+--show-trace}
+  "${command[@]}"
 fi
