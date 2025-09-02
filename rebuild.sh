@@ -11,12 +11,6 @@ if ! command -v getopt &> /dev/null; then
 fi
 
 OPTS=$(getopt -o cf:n:sth --long command-only,flake:,hostname:,submodules,show-trace,help -n "$0" -- "$@")
-
-if [[ $? -ne 0 ]]; then
-  echo "Failed to parse options"
-  exit 1
-fi
-
 eval set -- "$OPTS"
 
 commandonly=false
@@ -81,7 +75,7 @@ while true; do
       break
       ;;
     *)
-      echo "Some kind of parsing error happened, sorry."
+      echo "Some kind of argument-parsing error happened, sorry."
       exit 1
       ;;
   esac
