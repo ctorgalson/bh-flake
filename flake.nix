@@ -2,6 +2,8 @@
   description = "Nixos config flake";
 
   inputs = {
+    self.submodules = true;
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
