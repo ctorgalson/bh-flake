@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO make this into an Ansible playbook for better structure, maintainability.
+
 #
 # Updates repo remote url and submodule.
 #
