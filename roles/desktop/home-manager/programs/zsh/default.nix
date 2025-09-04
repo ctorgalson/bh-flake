@@ -3,7 +3,6 @@
 {
   config = {
     home.packages = with pkgs; [
-      (writeShellScriptBin "fzf-scrollback" (builtins.readFile ./fzf-scrollback.sh))
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
     ];
 

@@ -15,7 +15,7 @@
         "ctrl+down" = "resize_window shorter";
         # Open panes in the same ******* directory.
         "ctrl+shift+enter" = "launch --cwd=current";
-        "ctrl+shift+f" = "launch --type=overlay --stdin-source=@screen_scrollback fzf-scrollback";
+        "ctrl+shift+f" = "launch --stdin-source=@screen_scrollback --type=overlay --overlay-main-ratio=0.8 fzf --reverse --no-sort --border=rounded";
       };
       # Also touched by stylix
       font.name = "UbuntuMono Nerd Font";
