@@ -3,10 +3,12 @@
 {
   config = {
     home.packages = with pkgs; [
+      (writeShellScriptBin "fzf-scrollback" (builtins.readFile ./fzf-scrollback.sh))
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
     ];
 
     programs.zsh = {
+      defaultKeymap = "vicmd";
       enable = true;
       enableCompletion = true;
       envExtra = ''
@@ -28,8 +30,10 @@
          }
       ];
       shellAliases = {
+        df = "duf";
         diff = "riff";
         dig = "doggo";
+        du = "dust";
         less = "moar";
         top = "gtop";
         vi = "nvim";

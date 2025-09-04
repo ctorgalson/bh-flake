@@ -26,6 +26,8 @@
 
       # Modern cli
       doggo                       # dig replacement
+      duf                         # df replacement
+      dust                        # du replacement
       fd                          # find replacement
       glow                        # markdown reader
       gtop                        # top replacement
