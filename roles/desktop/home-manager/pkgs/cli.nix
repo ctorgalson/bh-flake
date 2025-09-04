@@ -60,10 +60,6 @@
       hddtemp                     # hard drive temperature monitor
       lm_sensors                  # Temp, voltage, fan monitoring tools
 
-      # Windows bullshit.
-      wine                        # 's not an emulator.
-      winetricks                  # Wine helper.
-
       # System
       catppuccin-plymouth         # boot utility theme
       plymouth                    # boot utility
