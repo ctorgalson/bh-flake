@@ -1,5 +1,8 @@
 { config, lib, pkgs, programs, ... }:
 
+let
+ stripNewlines = str: builtins.replaceStrings ["\n"] [" "] str;
+in
 {
   config = {
     # @see https://mynixos.com/home-manager/options/programs.kitty
@@ -15,7 +18,20 @@
         "ctrl+down" = "resize_window shorter";
         # Open panes in the same ******* directory.
         "ctrl+shift+enter" = "launch --cwd=current";
-        "ctrl+shift+f" = "launch --stdin-source=@screen_scrollback --type=overlay --overlay-main-ratio=0.8 fzf --reverse --no-sort --border=rounded";
+        # Search scrollback using fzf, ctrl-y to copy line.
+        "ctrl+shift+f" = stripNewlines ''
+          launch
+            --stdin-source=@screen_scrollback
+            --type=overlay
+          fzf
+            --border=rounded
+            --bind 'ctrl-y:execute-silent(echo {} | wl-copy)'
+            --input-border=rounded
+            --input-label=' Search '
+            --margin=3,5
+            --no-sort
+            --reverse
+        '';
       };
       # Also touched by stylix
       font.name = "UbuntuMono Nerd Font";
