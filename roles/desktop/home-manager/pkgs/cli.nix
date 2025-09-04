@@ -67,6 +67,9 @@
       # Nix-specific
       nixos-icons                 # icons of the Nix logo
 
+      # VMs
+      quickemu                    # VM puller, runner
+
       # Media
       # https://superuser.com/questions/1027608/how-to-read-an-acsm-file-on-linux#1775619
       #
