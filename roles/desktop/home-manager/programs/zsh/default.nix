@@ -34,10 +34,13 @@
         dig = "doggo";
         du = "dust";
         less = "moar";
+        timemonth = "timew summary :annotations :ids :month";
+        timetoday = "timew summary :annotations :ids :today";
+        timeweek = "timew summary :annotations :ids :week";
+        timeyesterday = "timew summary :annotations :ids :yesterday";
         top = "gtop";
         vi = "nvim";
         vim = "nvim";
-        fzb = "gcofzf";
       };
     };
   };
