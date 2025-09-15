@@ -41,16 +41,11 @@
       spideroak                   # Backups (installed temporarily)
       stable-pkgs.calibre
       totem                       # Gnome Videos
-      trayscale                  # Unofficial Tailscale GUI
+      trayscale                   # Unofficial Tailscale GUI
       usbutils
       via
       vlc
       vorta
-      # vscode-extensions.catppuccin.catppuccin-vsc
-      # vscode-extensions.ms-vscode-remote.remote-ssh
-      # vscode
-      # vscodium
-      # vscode-extensions.ms-vscode-remote.remote-ssh
       xdg-desktop-portal-gnome    # For Zoom screen sharing
       yubioath-flutter
       # yubikey-manager-qt
