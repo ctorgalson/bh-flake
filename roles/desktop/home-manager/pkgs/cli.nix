@@ -47,6 +47,7 @@
       zip                         # Compress files/directories to .zip
 
       # AI cli
+      aider-chat                  # Coding-focused AI Asssistant
       ollama                      # local LLM model
 
       # Security
