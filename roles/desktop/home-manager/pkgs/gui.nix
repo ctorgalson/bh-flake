@@ -4,7 +4,7 @@
   config = {
     home.packages = with pkgs; [
       bitwarden-desktop           # Password manager
-      borgbackup
+      borgbackup                  # CLI backup manager (why is this HERE?)
       bruno                       # Open-source IDE For exploring and testing APIs
       # darktable                 # Seems to rely on outdated version of libsoup
       fragments                   # Bittorrent client

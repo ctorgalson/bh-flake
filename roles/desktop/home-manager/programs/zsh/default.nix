@@ -34,11 +34,13 @@
         dig = "doggo";
         du = "dust";
         less = "moar";
+        platform = "upsun";
         timelastmonth = "timew summary :annotations :ids :lastmonth";
         timelastweek = "timew summary :annotations :ids :lastweek";
         timemonth = "timew summary :annotations :ids :month";
         timetoday = "timew summary :annotations :ids :today";
         timeweek = "timew summary :annotations :ids :week";
+        timeyear = "timew summary :annotations :ids :year";
         timeyesterday = "timew summary :annotations :ids :yesterday";
         top = "gtop";
         vi = "nvim";

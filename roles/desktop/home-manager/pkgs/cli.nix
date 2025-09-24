@@ -18,10 +18,10 @@
       imagemagick                 # image-manipulation
       jq                          # json query + manipulation tool
       nodejs_22                   # nodejs 22
-      platformsh                  # platform.sh cli tool
       python314                   # python 3.14
       shellcheck                  # shell script analysis tool
       sqlite                      # Small, fast SQL db
+      upsun                       # upsun (formerly platform.sh) cli tool
       yq                          # yaml query + manipulation tool
 
       # Modern cli
