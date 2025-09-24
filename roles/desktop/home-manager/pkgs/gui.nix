@@ -22,6 +22,7 @@
       google-chrome               # Chrome browser
       stable-pkgs.gpt4all         # Local LLM runner, but pkg is borked
       guvcview                    # Webcam config utility
+      ktailctl                    # Unofficial Tailscal GUI (alt to Trayscale)
       libreoffice                 # Office suite
       nerd-fonts.inconsolata      # Enhanced Inconsolata font
       nerd-fonts.ubuntu-mono      # Enhanced Ubuntu Mono font
@@ -41,7 +42,7 @@
       stable-pkgs.calibre         # Ebook library manager
       thunderbird                 # Email client
       totem                       # Gnome Videos
-      trayscale                   # Unofficial Tailscale GUI
+      # trayscale                   # Unofficial Tailscale GUI
       usbutils
       via                         # Keyboard configurator: not sure if working
       vlc                         # Video player
