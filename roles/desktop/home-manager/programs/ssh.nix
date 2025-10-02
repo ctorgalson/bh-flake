@@ -6,7 +6,7 @@
       enable = true;
       extraConfig = ''
         Host *.platform.sh
-          Include /home/ctorgalson/.platformsh/ssh/*.config
+          Include /home/ctorgalson/.upsun-cli/ssh/*.config
         Host *
       '';
       matchBlocks = {
