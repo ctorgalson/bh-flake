@@ -5,11 +5,14 @@
     programs.ssh = {
       enable = true;
       extraConfig = ''
-        Host *.platform.sh
+        Host *.upsun.com
           Include /home/ctorgalson/.upsun-cli/ssh/*.config
         Host *
       '';
       matchBlocks = {
+        "*.anner.ie" = {
+          user = "at";
+        };
         "nx" = {
           hostname = "ct.anner.ie";
           user = "ctorgalson";
