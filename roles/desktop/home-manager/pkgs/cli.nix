@@ -40,6 +40,7 @@
       dmidecode                   # bios info utility
       ffmpeg                      # media convertor
       gcc                         # c compiler
+      links2                      # cli (text-only) browser
       tree                        # list contents of directories in tree form
       unzip                       # Unzip files/directories
       wl-clip-persist             # Wayland clipboard contents "preserver"
