@@ -34,7 +34,8 @@ in
         '';
       };
       # Also touched by stylix
-      font.name = "UbuntuMono Nerd Font";
+      # font.name = "UbuntuMono Nerd Font";
+      font.name = "Inconsolata Nerd Font Mono";
       font.size = 16;
       # @see https://sw.kovidgoyal.net/kitty/conf/
       settings = {

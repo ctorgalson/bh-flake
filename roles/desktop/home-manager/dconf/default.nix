@@ -10,6 +10,7 @@
     # ./fonts.nix
     ./freon.nix
     ./freedesktop.nix
+    ./gnome-console.nix
     ./gnome-terminal.nix
     ./gsconnect.nix
     ./settings-daemon.nix

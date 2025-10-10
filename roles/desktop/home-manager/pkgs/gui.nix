@@ -42,6 +42,7 @@
 
       # Fonts
       nerd-fonts.inconsolata      # Enhanced Inconsolata font
+      nerd-fonts.overpass         # Enhanced Overpass font
       nerd-fonts.ubuntu-mono      # Enhanced Ubuntu Mono font
 
       # Gnome programs / extensions

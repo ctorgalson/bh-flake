@@ -11,8 +11,10 @@
       # emoji = {};
 
       monospace = {
-        name = "UbuntuMono Nerd Font";
-        package = pkgs.nerd-fonts.ubuntu-mono;
+        # name = "UbuntuMono Nerd Font";
+        # package = pkgs.nerd-fonts.ubuntu-mono;
+        name = "Inconsolata Nerd Font";
+        package = pkgs.nerd-fonts.inconsolata;
       };
 
       sansSerif = {
