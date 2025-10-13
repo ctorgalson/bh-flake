@@ -1,4 +1,4 @@
-{ config, lib, pkgs, programs, ... }:
+{ config, host, lib, pkgs, programs, ... }:
 
 {
   config = {
@@ -8,9 +8,9 @@
           "&DOCUMENTS"
           "&MUSIC"
           "&VIDEOS"
-          "/home/ctorgalson/Storage/Dev"
-          "/home/ctorgalson/Storage/Documents"
-          "/home/ctorgalson/Storage/Nextcloud"
+          "/home/${host.username}/Storage/Dev"
+          "/home/${host.username}/Storage/Documents"
+          "/home/${host.username}/Storage/Nextcloud"
         ];
 
         index-single-directories = [

@@ -5,12 +5,12 @@
     ./nixos
   ];
 
-  home-manager.users."ctorgalson" = ./home-manager;
+  home-manager.users."${host.username}" = ./home-manager;
 
   sops =
   let
-    username = "ctorgalson";
-    homedir = "/home/ctorgalson";
+    username = host.username;
+    homedir = "/home/${host.username}";
   in
   {
     defaultSopsFile = ../../sops/secrets.yaml;

@@ -1,7 +1,7 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, host, pkgs, ... }:
 
 {
-  config.users.users."ctorgalson" = {
+  config.users.users."${host.username}" = {
     description = "Christopher";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     isNormalUser = true;

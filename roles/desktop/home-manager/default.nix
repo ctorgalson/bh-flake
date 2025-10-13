@@ -1,4 +1,4 @@
-{ config, lib, pkgs, stable-pkgs, ... }:
+{ config, host, lib, pkgs, stable-pkgs, ... }:
 
 {
   imports = [
@@ -31,8 +31,8 @@
 
         '';
       };
-      username = "ctorgalson";
-      homeDirectory = "/home/ctorgalson";
+      username = host.username;
+      homeDirectory = "/home/${host.username}";
 
       sessionVariables = {
         EDITOR = "nvim";

@@ -1,9 +1,9 @@
-{ config, pkgs, programs, services, ... }:
+{ config, host, pkgs, programs, services, ... }:
 
 {
   config =
   let
-    homedir = "/home/ctorgalson";
+    homedir = "/home/${host.username}";
   in
   {
     services.syncthing = {

@@ -1,4 +1,4 @@
-{ ... }:
+{ host, ... }:
 
 {
   config = {
@@ -6,7 +6,7 @@
       enable = true;
       extraConfig = ''
         Host *.upsun.com
-          Include /home/ctorgalson/.upsun-cli/ssh/*.config
+          Include /home/${host.username}/.upsun-cli/ssh/*.config
         Host *
       '';
       matchBlocks = {
@@ -15,17 +15,17 @@
         };
         "nx" = {
           hostname = "ct.anner.ie";
-          user = "ctorgalson";
+          user = host.username;
           forwardAgent = true;
         };
         "r2" = {
           hostname = "135.181.200.94";
-          user = "ctorgalson";
+          user = host.username;
           forwardAgent = true;
         };
         "rcksl" = {
           hostname = "162.55.164.32";
-          user = "ctorgalson";
+          user = host.username;
           forwardAgent = true;
         };
       };
