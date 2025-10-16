@@ -32,6 +32,7 @@
       system = "x86_64-linux";
       hostData = import ./hosts/data.nix;
       allowedUnfreePackages = [ "bws" "steam" "zoom-us" ];
+      pkgs = import nixpkgs { inherit system; };
     in
     {
       nixosConfigurations = nixpkgs.lib.listToAttrs (map
@@ -65,5 +66,17 @@
           };
         })
         hostData);
+
+      checks.${system} = {
+        formatting = pkgs.runCommand "check-formatting"
+          {
+            nativeBuildInputs = [ pkgs.alejandra pkgs.findutils ];
+          } ''
+          cd ${self}
+          # Find all .nix files and check formatting
+          find . -name '*.nix' -type f -exec alejandra --check {} \;
+          touch $out
+        '';
+      };
     };
 }

@@ -87,5 +87,19 @@ if [[ "$commandonly" == true ]]; then
   printf '%q ' "${command[@]}"
   printf '\n'
 else
+  # Determine which hostname to check
+  if [[ -n "$hostname" ]]; then
+    check_hostname="${hostname#\#}"
+  else
+    check_hostname="$(hostname)"
+  fi
+
+  echo "Checking configuration for ${check_hostname}..."
+  if ! nix eval "${flake}#nixosConfigurations.${check_hostname}.config.system.build.toplevel.drvPath" ${showtrace:+--show-trace}; then
+    echo "Error: Configuration evaluation failed for ${check_hostname}."
+    exit 1
+  fi
+  echo "Configuration check passed. Proceeding with rebuild..."
+
   "${command[@]}"
 fi
