@@ -28,11 +28,9 @@
   services.ollama = {
     enable = true;
     environmentVariables = {
-      OLLAMA_KEEP_ALIVE = "10m"; # Unload models after 5 minutes of inactivity
+      OLLAMA_KEEP_ALIVE = "10m"; # Unload models after 10 minutes of inactivity.
     };
-    acceleration = "cpu";
     loadModels = [
-      # "qwen2.5-coder:latest"
       "qwen2.5-coder:3b"
     ];
   };
