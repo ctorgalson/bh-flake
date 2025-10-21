@@ -8,6 +8,7 @@
     ./gui.nix
     ./homefox.nix
     ./nixnvm.nix
+    ./opencode
     ./timereport.nix
     ./timewarrior
     ./workfox.nix

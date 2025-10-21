@@ -22,7 +22,7 @@
       docker
       micro
       mkcert
-      #steam
+      steam
       zoom-us
     ];
   };

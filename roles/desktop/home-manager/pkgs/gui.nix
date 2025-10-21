@@ -37,6 +37,7 @@
       # Development tools
       bruno                       # Open-source IDE For exploring & testing APIs
       kdePackages.kruler          # Screen ruler
+      lmstudio                    # GUI LLM manager
       resources                   # GUI version of "top" etc
       zeal                        # Documentation browser
 
