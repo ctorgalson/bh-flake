@@ -48,8 +48,8 @@
       zip                         # Compress files/directories to .zip
 
       # AI cli
-      aider-chat                  # Coding-focused AI Asssistant
-      ollama                      # local LLM model
+      # aider-chat                  # Coding-focused AI Asssistant
+      # ollama                      # local LLM model
       claude-code                 # Package for Claude in the terminal
 
       # Security
@@ -57,6 +57,7 @@
       bitwarden-cli               # bw command
       diceware                    # passphrase generator
       lynis                       # security audit and hardening tool
+      openssl                     # SSL and TLS protocols
       sops                        # Secrets management tool
 
       # Hardware
