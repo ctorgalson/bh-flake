@@ -3,8 +3,8 @@
 {
   nix.gc = {
     automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
+    dates = "10:00";
+    options = "--delete-older-than 3d";
     randomizedDelaySec = "45min";
   };
 

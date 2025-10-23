@@ -9,6 +9,11 @@
     enable = true;
   };
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=500M
+    MaxRetentionSec=7d
+  '';
+
   services.openssh = {
     enable = true;
     settings = {
