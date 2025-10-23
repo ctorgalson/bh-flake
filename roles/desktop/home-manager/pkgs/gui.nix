@@ -8,7 +8,7 @@
       fragments                   # Bittorrent client
       guvcview                    # Webcam config utility
       ktailctl                    # Unofficial Tailscale GUI (alt to Trayscale)
-      nextcloud-client            # Nextcloud desktop app
+      stable-pkgs.nextcloud-client # Nextcloud desktop app
       # quickgui
       solaar
       spideroak                   # Backups (installed temporarily)
@@ -39,8 +39,7 @@
       kdePackages.kruler          # Screen ruler
       lmstudio                    # GUI LLM manager
       resources                   # GUI version of "top" etc
-      # Appears broken again 2025/10/23
-      # zeal                        # Documentation browser
+      stable-pkgs.zeal            # Documentation browser
 
       # Fonts
       nerd-fonts.inconsolata      # Enhanced Inconsolata font
