@@ -4,12 +4,24 @@
   config = {
     programs.ssh = {
       enable = true;
+      # Disable auto-generated defaults. Previously home-manager added:
+      #   ForwardAgent no
+      #   ServerAliveInterval 0
+      #   ServerAliveCountMax 3
+      #   Compression no
+      #   AddKeysToAgent no
+      #   HashKnownHosts no
+      #   UserKnownHostsFile ~/.ssh/known_hosts
+      #   ControlMaster no
+      #   ControlPath ~/.ssh/master-%r@%n:%p
+      #   ControlPersist no
+      enableDefaultConfig = false;
       extraConfig = ''
         Host *.upsun.com
           Include /home/${host.username}/.upsun-cli/ssh/*.config
-        Host *
       '';
       matchBlocks = {
+        "*" = {};
         "*.anner.ie" = {
           user = "at";
         };

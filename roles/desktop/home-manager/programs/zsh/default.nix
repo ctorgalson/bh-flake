@@ -33,7 +33,7 @@
         diff = "riff";
         dig = "doggo";
         du = "dust";
-        less = "moar";
+        less = "moor";
         platform = "upsun";
         timelastmonth = "timew summary :annotations :ids :lastmonth";
         timelastweek = "timew summary :annotations :ids :lastweek";

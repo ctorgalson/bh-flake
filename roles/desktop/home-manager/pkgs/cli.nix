@@ -31,7 +31,7 @@
       fd                          # find replacement
       glow                        # markdown reader
       gtop                        # top replacement
-      moar                        # less replacement
+      moor                        # less replacement
       riffdiff                    # diff replacement w/syntax highlighting etc.
 
       # Other cli
