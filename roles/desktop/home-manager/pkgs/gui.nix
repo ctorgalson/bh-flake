@@ -39,7 +39,8 @@
       kdePackages.kruler          # Screen ruler
       lmstudio                    # GUI LLM manager
       resources                   # GUI version of "top" etc
-      zeal                        # Documentation browser
+      # Appears broken again 2025/10/23
+      # zeal                        # Documentation browser
 
       # Fonts
       nerd-fonts.inconsolata      # Enhanced Inconsolata font
