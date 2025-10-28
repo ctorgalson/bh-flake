@@ -11,6 +11,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Preserve current boot behavior (no Plymouth/quiet boot)
+  boot.kernelParams = lib.mkForce [ ];
+  boot.initrd.systemd.enable = lib.mkForce false;
+  boot.plymouth.enable = lib.mkForce false;
+
   boot.initrd.luks.devices."luks-0c5bd87e-16c8-4d5a-9ed3-4212402e8789".device = "/dev/disk/by-uuid/0c5bd87e-16c8-4d5a-9ed3-4212402e8789";
   networking.hostName = "executive14"; # Define your hostname.
 

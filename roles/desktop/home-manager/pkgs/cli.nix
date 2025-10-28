@@ -64,10 +64,6 @@
       hddtemp                     # hard drive temperature monitor
       lm_sensors                  # Temp, voltage, fan monitoring tools
 
-      # System
-      catppuccin-plymouth         # boot utility theme
-      plymouth                    # boot utility
-
       # Nix-specific
       nixos-icons                 # icons of the Nix logo
 

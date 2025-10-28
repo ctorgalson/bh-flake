@@ -19,9 +19,11 @@
 
     systemPackages = with pkgs; [
       bws
+      catppuccin-plymouth
       docker
       micro
       mkcert
+      plymouth
       steam
       zoom-us
     ];

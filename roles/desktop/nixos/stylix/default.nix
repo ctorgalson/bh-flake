@@ -63,7 +63,7 @@
 
       # qt.enable = true;
 
-      plymouth.enable = true;
+      plymouth.enable = false;
 
       # home manager only
       # starship.enable = true;
