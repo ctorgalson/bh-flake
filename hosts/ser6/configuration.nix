@@ -35,6 +35,12 @@
   boot.loader.systemd-boot.consoleMode = "1";
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Fix Plymouth horizontal stretching by setting explicit video mode.
+  boot.kernelParams = [ "video=2880x1620" ];
+
+  # Load AMD GPU driver early for proper Plymouth display.
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   boot.initrd.luks.devices."luks-6959cef7-9727-4cab-a672-a440e9e5ff95".device = "/dev/disk/by-uuid/6959cef7-9727-4cab-a672-a440e9e5ff95";
   networking.hostName = "ser6"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
