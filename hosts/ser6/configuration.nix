@@ -36,7 +36,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Fix Plymouth horizontal stretching by setting explicit video mode.
-  boot.kernelParams = [ "video=2880x1620" ];
+  # Must include "quiet" and "splash" for Plymouth graphical mode.
+  boot.kernelParams = [ "video=2880x1620" "quiet" "splash" ];
 
   # Load AMD GPU driver early for proper Plymouth display.
   boot.initrd.kernelModules = [ "amdgpu" ];
