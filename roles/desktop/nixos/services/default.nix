@@ -58,4 +58,9 @@
 
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+  # GDM HiDPI scaling configuration
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${./monitors.xml}"
+  ];
 }

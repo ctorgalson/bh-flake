@@ -15,6 +15,11 @@
       theme = lib.mkDefault "catppuccin-mocha";
       themePackages = lib.mkDefault [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
       logo = ../../../../images/nixos-square.png;
+      # HiDPI scaling for high resolution displays (200%)
+      extraConfig = lib.mkDefault ''
+        [Daemon]
+        DeviceScale=2
+      '';
     };
   };
 }
