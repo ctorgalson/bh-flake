@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   networking.firewall = {
@@ -24,4 +24,6 @@
   };
 
   networking.networkmanager.enable = true;
+
+  networking.wireless.extraConfig = builtins.readFile config.sops.secrets.wifi_config.path;
 }
