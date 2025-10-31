@@ -27,7 +27,7 @@
 
   networking.wireless = {
     enable = true;
-    environmentFile = config.sops.secrets.wifi_config.path;
+    secretsFile = config.sops.secrets.wifi_config.path;
     networks = {
       "wensley".pskRaw = "ext:PSK_WENSLEY";
       "wensley_EXT".pskRaw = "ext:PSK_WENSLEY_EXT";
