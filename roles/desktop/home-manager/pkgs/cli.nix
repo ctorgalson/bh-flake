@@ -19,6 +19,7 @@
       jq                          # json query + manipulation tool
       nodejs_22                   # nodejs 22
       python314                   # python 3.14
+      scc                         # Go-based code counter
       shellcheck                  # shell script analysis tool
       sqlite                      # Small, fast SQL db
       upsun                       # upsun (formerly platform.sh) cli tool
