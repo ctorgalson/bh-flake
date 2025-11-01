@@ -12,8 +12,9 @@
 
     plymouth = {
       enable = lib.mkDefault true;
-      theme = lib.mkDefault "catppuccin-mocha";
-      themePackages = lib.mkDefault [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+      theme = lib.mkDefault "spinner";
+      #theme = lib.mkDefault "catppuccin-mocha";
+      #themePackages = lib.mkDefault [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
       logo = ../../../../images/nixos-128x128.png;
       # HiDPI scaling for high resolution displays (200%)
       extraConfig = lib.mkDefault ''

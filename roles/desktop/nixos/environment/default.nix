@@ -19,7 +19,7 @@
 
     systemPackages = with pkgs; [
       bws
-      catppuccin-plymouth
+      # catppuccin-plymouth
       docker
       micro
       mkcert
