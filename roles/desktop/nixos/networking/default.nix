@@ -26,16 +26,24 @@
   networking.networkmanager.enable = true;
 
   # SOPS secrets for Wi-Fi passwords
-  sops.secrets.wifi_psk_wensley = {
-    sopsFile = ../../../../sops/secrets.yaml;
-    mode = "0600";
-    owner = "root";
-  };
-
-  sops.secrets.wifi_psk_wensley_ext = {
-    sopsFile = ../../../../sops/secrets.yaml;
-    mode = "0600";
-    owner = "root";
+  sops = {
+    secrets = {
+      wifi_psk_nemo = {
+        sopsFile = ../../../../sops/secrets.yaml;
+        mode = "0600";
+        owner = "root";
+      };
+      wifi_psk_wensley = {
+        sopsFile = ../../../../sops/secrets.yaml;
+        mode = "0600";
+        owner = "root";
+      };
+      wifi_psk_wensley_ext = {
+        sopsFile = ../../../../sops/secrets.yaml;
+        mode = "0600";
+        owner = "root";
+      };
+    };
   };
 
   # Generate Network Manager connection files with SOPS-managed passwords
