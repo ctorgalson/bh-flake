@@ -4,7 +4,7 @@ let
   # Define Wi-Fi networks here
   wifiNetworks = [
     {
-      ssid = "nemo";
+      ssid = "Nemo";
       secretKey = "wifi_psk_nemo";
       uuid = "a1b2c3d4-5e6f-4a5b-9c8d-1e2f3a4b5c6d";
     }
