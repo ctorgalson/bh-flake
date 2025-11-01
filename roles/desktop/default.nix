@@ -17,7 +17,7 @@
     age.keyFile = "${homedir}/.config/sops/age/keys.txt";
 
     secrets = {
-      "wifi_config" = {};
+      # "wifi_config" = {};
       # "example_number" = { };
     };
   };
