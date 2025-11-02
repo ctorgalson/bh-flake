@@ -12,9 +12,10 @@
 
       # Development
       ddev                        # dev servers
-      httpie                      # curl-like tool
+      gh-dash                     # Github cli dashboard
       go                          # go language
       golangci-lint               # golang linting tool
+      httpie                      # curl-like tool
       imagemagick                 # image-manipulation
       jq                          # json query + manipulation tool
       nodejs_22                   # nodejs 22
