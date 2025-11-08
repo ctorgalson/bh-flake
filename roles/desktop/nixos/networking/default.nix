@@ -97,11 +97,11 @@ in
   networking.networkmanager.enable = true;
 
   # SOPS secrets for Wi-Fi passwords
-  sops.secrets = wifiSecrets;
+  # sops.secrets = wifiSecrets;
 
   # Generate Network Manager connection files with SOPS-managed passwords
-  sops.templates = wifiTemplates;
+  # sops.templates = wifiTemplates;
 
   # Symlink generated files to NetworkManager's directory
-  environment.etc = wifiEtcFiles;
+  # environment.etc = wifiEtcFiles;
 }
