@@ -32,12 +32,14 @@
   # auto: like keep
   # max: like keep
   # keep: badly horizontally stretched
-  boot.loader.systemd-boot.consoleMode = "1";
+  # boot.loader.systemd-boot.consoleMode = "1";
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Fix Plymouth horizontal stretching by setting explicit video mode.
   # Must include "quiet" and "splash" for Plymouth graphical mode.
-  boot.kernelParams = [ "video=2880x1620" "quiet" "splash" ];
+  boot.kernelParams = [ "video=1920x1080@60" "quiet" "splash" ];
+  #boot.kernelParams = [ "video=2880x1620@60" "quiet" "splash" ];
+  #boot.kernelParams = [ "quiet" "splash" ];
 
   # Load AMD GPU driver early for proper Plymouth display.
   boot.initrd.kernelModules = [ "amdgpu" ];
