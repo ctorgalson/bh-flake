@@ -3,6 +3,7 @@
 {
   imports = [
     ./byobu
+    ./claude-code
     ./cli.nix
     ./gcofzf.nix
     ./gui.nix

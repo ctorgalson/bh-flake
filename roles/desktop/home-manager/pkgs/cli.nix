@@ -52,7 +52,8 @@
       # AI cli
       # aider-chat                  # Coding-focused AI Asssistant
       # ollama                      # local LLM model
-      claude-code                 # Package for Claude in the terminal
+      # See ./claude-code/
+      #claude-code                 # Package for Claude in the terminal
 
       # Security
       age                         # encryption utility
