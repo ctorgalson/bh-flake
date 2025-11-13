@@ -27,6 +27,7 @@
       brave                       # chromium-based browser
       google-chrome               # Chrome browser
       thunderbird                 # Email client
+      vivaldi                     # another chromium-based browser
 
       # Chat clients / coms
       localsend                   # Cross-platform "airdrop" app
