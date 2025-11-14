@@ -26,6 +26,7 @@
       # Browsers / mail clients
       brave                       # chromium-based browser
       google-chrome               # Chrome browser
+      protonmail-bridge-gui       # "bridge" for running Prontonmail locally
       thunderbird                 # Email client
       vivaldi                     # another chromium-based browser
 
