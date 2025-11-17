@@ -6,7 +6,8 @@
       borgbackup                  # CLI backup manager (why is this HERE?)
       # darktable                 # Seems to rely on outdated version of libsoup
       fragments                   # Bittorrent client
-      guvcview                    # Webcam config utility
+      # Temporarily borked by something nix-y.
+      # guvcview                    # Webcam config utility
       ktailctl                    # Unofficial Tailscale GUI (alt to Trayscale)
       stable-pkgs.nextcloud-client # Nextcloud desktop app
       # quickgui
