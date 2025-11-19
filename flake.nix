@@ -31,37 +31,42 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       stable-pkgs = import stable { inherit system; };
-      hostData = import ./hosts/data.nix;
+
+      mkHost = hostname: role: username:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs stable-pkgs system;
+            host = { inherit hostname role username; };
+          };
+          modules = [
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.default
+            {
+              home-manager.extraSpecialArgs = {
+                inherit inputs stable-pkgs system;
+                host = { inherit hostname role username; };
+              };
+              home-manager.sharedModules = [
+                # sops-nix.homeManagerModules.sops
+                # stylix.homeManagerModules.stylix
+              ];
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            # role configuration.
+            ./roles/${role}
+            # host configuration (including role overrides).
+            ./hosts/${hostname}
+          ];
+        };
     in
     {
-      nixosConfigurations = nixpkgs.lib.listToAttrs (map
-        (host: {
-          name = host.hostname;
-          value = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit host inputs stable-pkgs system; };
-            modules = [
-              sops-nix.nixosModules.sops
-              stylix.nixosModules.stylix
-              home-manager.nixosModules.default
-              {
-                home-manager.extraSpecialArgs = {
-                  inherit host inputs stable-pkgs system;
-                };
-                home-manager.sharedModules = [
-                  # sops-nix.homeManagerModules.sops
-                  # stylix.homeManagerModules.stylix
-                ];
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-              }
-              # role configuration.
-              ./roles/${host.role}
-              # host configuration (including role overrides).
-              ./hosts/${host.hostname}
-            ];
-          };
-        })
-        hostData);
+      nixosConfigurations = {
+        framework13 = mkHost "framework13" "desktop" "ctorgalson";
+        ser6 = mkHost "ser6" "desktop" "ctorgalson";
+        executive14 = mkHost "executive14" "desktop" "ctorgalson";
+      };
 
       checks.${system} = {
         formatting = pkgs.runCommand "check-formatting"
