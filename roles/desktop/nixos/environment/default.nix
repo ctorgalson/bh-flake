@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, system, ... }:
 
 {
   environment = {
@@ -12,7 +12,7 @@
 
       # Not officially in the specification
       XDG_BIN_HOME = "$HOME/.local/bin";
-      PATH = [ 
+      PATH = [
         "$''{XDG_BIN_HOME}"
       ];
     };
@@ -21,6 +21,7 @@
       bws
       # catppuccin-plymouth
       docker
+      inputs.bh-nixvim.packages.${system}.default
       micro
       mkcert
       plymouth

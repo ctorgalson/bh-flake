@@ -28,11 +28,10 @@
 
   outputs = { bh-nixvim, home-manager, nixpkgs, self, sops-nix, stable, stylix, ... }@inputs:
     let
-      stable-pkgs = import stable { inherit system; };
       system = "x86_64-linux";
-      hostData = import ./hosts/data.nix;
-      allowedUnfreePackages = [ "bws" "steam" "zoom-us" ];
       pkgs = import nixpkgs { inherit system; };
+      stable-pkgs = import stable { inherit system; };
+      hostData = import ./hosts/data.nix;
     in
     {
       nixosConfigurations = nixpkgs.lib.listToAttrs (map
@@ -45,11 +44,8 @@
               stylix.nixosModules.stylix
               home-manager.nixosModules.default
               {
-              	 environment.systemPackages = [ inputs.bh-nixvim.packages."${system}".default ];
-              }
-              {
                 home-manager.extraSpecialArgs = {
-                  inherit allowedUnfreePackages host inputs stable-pkgs system;
+                  inherit host inputs stable-pkgs system;
                 };
                 home-manager.sharedModules = [
                   # sops-nix.homeManagerModules.sops

@@ -1,4 +1,4 @@
-{ allowedUnfreePackages, inputs, lib, pkgs, stylix, ... }:
+{ inputs, lib, pkgs, stylix, ... }:
 
 {
   imports = [

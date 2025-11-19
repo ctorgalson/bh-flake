@@ -1,4 +1,4 @@
-{ allowedUnfreePackages, config, host, inputs, lib, pkgs, stable-pkgs, system, ... }:
+{ config, host, inputs, lib, pkgs, stable-pkgs, system, ... }:
 
 {
   imports = [

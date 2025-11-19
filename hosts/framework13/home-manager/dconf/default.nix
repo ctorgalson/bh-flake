@@ -1,4 +1,4 @@
-{ allowedUnfreePackages, host, inputs, lib, pkgs, system, ... }:
+{ host, inputs, lib, pkgs, system, ... }:
 
 {
   home-manager.users."${host.username}".config.dconf.settings = {

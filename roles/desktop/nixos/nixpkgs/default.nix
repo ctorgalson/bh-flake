@@ -1,5 +1,8 @@
-{ allowedUnfreePackages, inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 
+let
+  allowedUnfreePackages = [ "bws" "steam" "zoom-us" ];
+in
 {
   nixpkgs.config = {
     allowUnfree = true;
