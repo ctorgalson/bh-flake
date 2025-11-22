@@ -46,7 +46,10 @@
 
   services.tailscale = {
     enable = true;
+    useRoutingFeatures = "client";
   };
+
+  systemd.services.tailscaled.wantedBy = [ "multi-user.target" ];
 
   services.xserver = {
     enable = true;
