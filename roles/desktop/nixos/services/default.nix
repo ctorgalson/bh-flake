@@ -14,14 +14,16 @@
     MaxRetentionSec=7d
   '';
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
+  # OpenSSH server disabled - using Tailscale SSH instead
+  # SSH client tools (ssh, ssh-keygen, etc.) remain available
+  # services.openssh = {
+  #   enable = true;
+  #   settings = {
+  #     PasswordAuthentication = false;
+  #     KbdInteractiveAuthentication = false;
+  #     PermitRootLogin = "no";
+  #   };
+  # };
 
   services.pipewire = {
     enable = true;
