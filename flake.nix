@@ -97,7 +97,10 @@
 
         # Desktop hosts (x86_64-linux)
         framework13 = { name, nodes, ... }: {
-          deployment.targetHost = "framework13";
+          deployment = {
+            targetHost = "framework13";
+            targetUser = "ctorgalson";
+          };
           _module.args = {
             inherit system;
             host = { hostname = "framework13"; role = "desktop"; username = "ctorgalson"; };
@@ -121,7 +124,10 @@
         };
 
         ser6 = { name, nodes, ... }: {
-          deployment.targetHost = "ser6";
+          deployment = {
+            targetHost = "ser6";
+            targetUser = "ctorgalson";
+          };
           _module.args = {
             inherit system;
             host = { hostname = "ser6"; role = "desktop"; username = "ctorgalson"; };
@@ -145,7 +151,10 @@
         };
 
         executive14 = { name, nodes, ... }: {
-          deployment.targetHost = "executive14";
+          deployment = {
+            targetHost = "executive14";
+            targetUser = "ctorgalson";
+          };
           _module.args = {
             inherit system;
             host = { hostname = "executive14"; role = "desktop"; username = "ctorgalson"; };
