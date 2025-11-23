@@ -64,8 +64,9 @@
   services.xserver.enable = false;
   sound.enable = false;
 
-  # Enable networking
+  # Enable networking (NetworkManager instead of wireless)
   networking.networkmanager.enable = true;
+  networking.wireless.enable = lib.mkForce false;
 
   # Set timezone
   time.timeZone = "America/Toronto";
