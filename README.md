@@ -1,17 +1,183 @@
 # BH Flake
 
-## Initial deployment (kludgy)
+NixOS configuration flake for managing a fleet of desktop machines and appliances.
 
-- install via installer
-- enable flakes in existing nix config if new
-- `git clone https://github.com/ctorgalson/bh-flake.git`
-- `nix-shell`
-- `./init.sh`
-- `sudo nixos-rebuild switch --flake '#hostname?submodules=1'`
+## Hosts
 
-## Subsequent deployments
+### Desktop Hosts (x86_64-linux)
+- **framework13** - Framework 13 laptop (user: ctorgalson)
+- **ser6** - Beelink SER6 mini PC (user: ctorgalson)
+- **executive14** - Slimbook Executive 14 laptop (user: ctorgalson)
 
-- `nix flake update`
-- `git commit -am 'feat: updates flake.lock'` (if changed)
-- `sudo nixos-rebuild switch --flake '.?submodules=1'`
+### Appliances (aarch64-linux)
+- **pi0** - Raspberry Pi Zero 2 W network appliance
 
+All desktop hosts share the `desktop` role and have ARM emulation enabled for cross-compilation.
+
+## Initial Deployment (New Host)
+
+1. Install NixOS via installer
+2. Enable flakes in existing nix config if new:
+   ```nix
+   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+   ```
+3. Clone repository:
+   ```bash
+   git clone https://github.com/ctorgalson/bh-flake.git
+   cd bh-flake
+   ```
+4. Initialize (if needed):
+   ```bash
+   nix-shell
+   ./init.sh
+   ```
+5. Build and activate configuration:
+   ```bash
+   sudo nixos-rebuild switch --flake '.#hostname?submodules=1'
+   ```
+
+## Deployment with Colmena
+
+Colmena is the unified deployment tool for all hosts - whether deploying to the current machine, a single remote host, or the entire fleet.
+
+### Deploy to Current Host
+
+```bash
+colmena apply --on $(hostname)
+```
+
+### Deploy to Specific Remote Host
+
+```bash
+colmena apply --on ser6
+```
+
+### Deploy to Multiple Hosts
+
+```bash
+# Multiple specific hosts
+colmena apply --on ser6,framework13
+
+# All hosts
+colmena apply
+
+# All hosts except current machine
+colmena apply --on @all-other
+```
+
+### Update Flake and Deploy
+
+```bash
+# Update dependencies
+nix flake update
+
+# Commit if changed
+git commit -am 'feat: updates flake.lock'
+
+# Deploy
+colmena apply --on $(hostname)  # Current host
+# or
+colmena apply                    # All hosts
+```
+
+### Deployment Goals
+
+By default, `colmena apply` switches to the new configuration. You can specify other goals:
+
+```bash
+# Only build, don't deploy
+colmena apply build --on hostname
+
+# Build and copy to hosts, but don't activate
+colmena apply push --on hostname
+
+# Dry-run activation (shows what would change)
+colmena apply dry-activate --on hostname
+
+# Boot into new config on next reboot
+colmena apply boot --on hostname
+
+# Test new config (reverts on reboot)
+colmena apply test --on hostname
+```
+
+### Inspect Configuration
+
+```bash
+# List all hosts
+colmena eval -E '{ nodes, ... }: builtins.attrNames nodes'
+
+# Get hostname of specific node
+colmena eval -E '{ nodes, ... }: nodes.ser6.config.networking.hostName'
+```
+
+## Legacy: Local rebuild.sh
+
+The `rebuild.sh` script is still available for quick local iteration but Colmena is the preferred deployment method:
+
+```bash
+./rebuild.sh
+```
+
+## Cross-Compilation
+
+Desktop hosts can build packages for pi0 (aarch64-linux) via QEMU user-mode emulation:
+- Enabled via `boot.binfmt.emulatedSystems = [ "aarch64-linux" ]`
+- Colmena automatically builds pi0 configuration on the deployment machine
+- Set per-host with `deployment.buildOnTarget = false` in Colmena config
+
+## Architecture
+
+```
+bh-flake/
+├── flake.nix                 # Main flake with nixosConfigurations and colmena outputs
+├── hosts/                    # Per-host configuration
+│   ├── framework13/
+│   ├── ser6/
+│   ├── executive14/
+│   └── pi0/
+├── roles/                    # Shared role configurations
+│   └── desktop/              # Desktop role (shared by framework13, ser6, executive14)
+│       ├── nixos/            # System-level configuration
+│       └── home-manager/     # User-level configuration
+└── rebuild.sh                # Legacy local rebuild helper script
+```
+
+## Notes
+
+- **Submodules**: This flake uses git submodules (bh-nixvim). Commands include `?submodules=1` to ensure they're fetched.
+- **Tailscale SSH**: All remote deployments use Tailscale SSH for secure connectivity.
+- **Auto-upgrades**: Desktop hosts automatically update daily with randomized delay.
+- **Secrets Management**: Uses sops-nix for encrypted secrets.
+- **Styling**: Uses stylix for consistent theming across all applications.
+
+## Troubleshooting
+
+### Dirty Git Tree Warnings
+
+If you see warnings about dirty git tree, either commit your changes or add the `--impure` flag:
+```bash
+colmena --impure apply --on $(hostname)
+```
+
+### SSH Connection Issues
+
+Ensure target host is accessible via Tailscale:
+```bash
+tailscale status
+ssh hostname
+```
+
+### Build Failures
+
+Check build logs with verbose output:
+```bash
+colmena apply -v --on hostname
+```
+
+### Cross-Compilation Issues
+
+If pi0 deployment fails, verify ARM emulation is working:
+```bash
+nix-build '<nixpkgs>' -A hello --arg crossSystem '{ config = "aarch64-unknown-linux-gnu"; }'
+```
