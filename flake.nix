@@ -92,7 +92,6 @@
       colmena = {
         meta = {
           nixpkgs = import nixpkgs { inherit system; };
-          nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) inputs.self.nixosConfigurations;
           specialArgs = { inherit inputs stable-pkgs; };
         };
 
