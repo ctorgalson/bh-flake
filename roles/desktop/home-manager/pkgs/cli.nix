@@ -69,9 +69,11 @@
       lm_sensors                  # Temp, voltage, fan monitoring tools
 
       # Nix-specific
+      colmena                     # NixOS deployment tool
       nixos-icons                 # icons of the Nix logo
 
       # VMs
+      qemu                        # VM emulator (includes ARM support)
       quickemu                    # VM puller, runner
 
       # Media

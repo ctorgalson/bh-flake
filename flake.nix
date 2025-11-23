@@ -26,6 +26,11 @@
       url = "github:ctorgalson/bh-nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -69,6 +74,101 @@
         framework13 = mkHost "framework13" "desktop" "ctorgalson";
         ser6 = mkHost "ser6" "desktop" "ctorgalson";
         executive14 = mkHost "executive14" "desktop" "ctorgalson";
+
+        # Raspberry Pi Zero 2 W - network appliance
+        pi0 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs stable-pkgs system;
+          };
+          system = "aarch64-linux";
+          modules = [
+            sops-nix.nixosModules.sops
+            ./hosts/pi0
+          ];
+        };
+      };
+
+      # Colmena deployment configuration
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs { inherit system; };
+          nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) inputs.self.nixosConfigurations;
+          specialArgs = { inherit inputs stable-pkgs; };
+        };
+
+        # Desktop hosts (x86_64-linux)
+        framework13 = { name, nodes, ... }: {
+          deployment.targetHost = "framework13";
+          imports = [
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.default
+            {
+              home-manager.extraSpecialArgs = {
+                inherit inputs stable-pkgs system;
+                host = { hostname = "framework13"; role = "desktop"; username = "ctorgalson"; };
+              };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            ./roles/desktop
+            ./hosts/framework13
+          ];
+          nixpkgs.hostPlatform = system;
+        };
+
+        ser6 = { name, nodes, ... }: {
+          deployment.targetHost = "ser6";
+          imports = [
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.default
+            {
+              home-manager.extraSpecialArgs = {
+                inherit inputs stable-pkgs system;
+                host = { hostname = "ser6"; role = "desktop"; username = "ctorgalson"; };
+              };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            ./roles/desktop
+            ./hosts/ser6
+          ];
+          nixpkgs.hostPlatform = system;
+        };
+
+        executive14 = { name, nodes, ... }: {
+          deployment.targetHost = "executive14";
+          imports = [
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.default
+            {
+              home-manager.extraSpecialArgs = {
+                inherit inputs stable-pkgs system;
+                host = { hostname = "executive14"; role = "desktop"; username = "ctorgalson"; };
+              };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            ./roles/desktop
+            ./hosts/executive14
+          ];
+          nixpkgs.hostPlatform = system;
+        };
+
+        # ARM appliance (aarch64-linux)
+        pi0 = { name, nodes, ... }: {
+          deployment = {
+            targetHost = "pi0";
+            buildOnTarget = false; # Build on deployment machine (x86_64)
+          };
+          imports = [
+            sops-nix.nixosModules.sops
+            ./hosts/pi0
+          ];
+          nixpkgs.hostPlatform = "aarch64-linux";
+        };
       };
     };
 

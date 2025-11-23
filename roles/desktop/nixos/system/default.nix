@@ -1,6 +1,9 @@
 { inputs, lib, pkgs, ... }:
 
 {
+  # Enable ARM emulation for cross-compilation to pi0
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   system.autoUpgrade = {
     enable = true;
     dates = "daily";
