@@ -18,7 +18,8 @@
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   # Enable GPU firmware
-  hardware.raspberry-pi."4".fkms-3d.enable = true;
+  # hardware.raspberry-pi."4".fkms-3d.enable = true;
+  # Commented out - requires raspberry-pi nixos module, not needed for network appliance
 
   # File systems - SD card layout
   fileSystems."/" = {
