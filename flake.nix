@@ -98,7 +98,10 @@
         # Desktop hosts (x86_64-linux)
         framework13 = { name, nodes, ... }: {
           deployment.targetHost = "framework13";
-          _module.args.host = { hostname = "framework13"; role = "desktop"; username = "ctorgalson"; };
+          _module.args = {
+            inherit system;
+            host = { hostname = "framework13"; role = "desktop"; username = "ctorgalson"; };
+          };
           imports = [
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
@@ -119,7 +122,10 @@
 
         ser6 = { name, nodes, ... }: {
           deployment.targetHost = "ser6";
-          _module.args.host = { hostname = "ser6"; role = "desktop"; username = "ctorgalson"; };
+          _module.args = {
+            inherit system;
+            host = { hostname = "ser6"; role = "desktop"; username = "ctorgalson"; };
+          };
           imports = [
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
@@ -140,7 +146,10 @@
 
         executive14 = { name, nodes, ... }: {
           deployment.targetHost = "executive14";
-          _module.args.host = { hostname = "executive14"; role = "desktop"; username = "ctorgalson"; };
+          _module.args = {
+            inherit system;
+            host = { hostname = "executive14"; role = "desktop"; username = "ctorgalson"; };
+          };
           imports = [
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
@@ -165,6 +174,7 @@
             targetHost = "pi0";
             buildOnTarget = false; # Build on deployment machine (x86_64)
           };
+          _module.args = { inherit system; };
           imports = [
             sops-nix.nixosModules.sops
             ./hosts/pi0
