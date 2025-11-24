@@ -100,6 +100,7 @@
           deployment = {
             targetHost = "framework13";
             targetUser = "bh";
+            allowLocalDeployment = true;
           };
           _module.args = {
             inherit system;
@@ -127,6 +128,7 @@
           deployment = {
             targetHost = "ser6";
             targetUser = "bh";
+            allowLocalDeployment = true;
           };
           _module.args = {
             inherit system;
@@ -154,6 +156,7 @@
           deployment = {
             targetHost = "executive14";
             targetUser = "bh";
+            allowLocalDeployment = true;
           };
           _module.args = {
             inherit system;
