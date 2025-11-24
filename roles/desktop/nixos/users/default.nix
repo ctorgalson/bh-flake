@@ -13,4 +13,11 @@
     ];
     shell = pkgs.zsh;
   };
+
+  # Colmena deployment user (authentication via Tailscale SSH)
+  config.users.users.bh = {
+    description = "Colmena deployment user";
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
 }

@@ -99,7 +99,7 @@
         framework13 = { name, nodes, ... }: {
           deployment = {
             targetHost = "framework13";
-            targetUser = "ctorgalson";
+            targetUser = "bh";
           };
           _module.args = {
             inherit system;
@@ -126,7 +126,7 @@
         ser6 = { name, nodes, ... }: {
           deployment = {
             targetHost = "ser6";
-            targetUser = "ctorgalson";
+            targetUser = "bh";
           };
           _module.args = {
             inherit system;
@@ -153,7 +153,7 @@
         executive14 = { name, nodes, ... }: {
           deployment = {
             targetHost = "executive14";
-            targetUser = "ctorgalson";
+            targetUser = "bh";
           };
           _module.args = {
             inherit system;
