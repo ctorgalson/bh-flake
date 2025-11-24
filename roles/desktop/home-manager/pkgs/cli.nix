@@ -68,6 +68,9 @@
       hddtemp                     # hard drive temperature monitor
       lm_sensors                  # Temp, voltage, fan monitoring tools
 
+      # System
+      sysstate                    # performance monitoring tools
+
       # Nix-specific
       colmena                     # NixOS deployment tool
       nixos-icons                 # icons of the Nix logo
