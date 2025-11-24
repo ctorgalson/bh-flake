@@ -69,7 +69,7 @@
       lm_sensors                  # Temp, voltage, fan monitoring tools
 
       # System
-      sysstate                    # performance monitoring tools
+      sysstat                     # performance monitoring tools
 
       # Nix-specific
       colmena                     # NixOS deployment tool
