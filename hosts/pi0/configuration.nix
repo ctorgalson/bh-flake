@@ -74,6 +74,34 @@
   # Basic locale settings
   i18n.defaultLocale = "en_CA.UTF-8";
 
+  # Colmena deployment user (authentication via Tailscale SSH)
+  users.users.bh = {
+    description = "Colmena deployment user";
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+  # Limited passwordless sudo for Colmena deployment user
+  security.sudo.extraRules = [
+    {
+      users = [ "bh" ];
+      commands = [
+        {
+          command = "/nix/store/*/bin/switch-to-configuration";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/nix/store/*/activate";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/nix-env";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   # System state version
   system.stateVersion = "25.05";
 }

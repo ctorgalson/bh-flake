@@ -181,6 +181,7 @@
         pi0 = { name, nodes, ... }: {
           deployment = {
             targetHost = "pi0";
+            targetUser = "bh";
             buildOnTarget = false; # Build on deployment machine (x86_64)
           };
           _module.args = { inherit system; };
