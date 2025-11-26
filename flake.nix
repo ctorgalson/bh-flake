@@ -109,6 +109,9 @@
         executive14 = mkHost "executive14" "desktop" "ctorgalson";
 
         # Raspberry Pi Zero 2 W - network appliance
+        # TODO: If adding more appliances, make mkHost architecture-aware to handle
+        # different architectures (aarch64-linux, etc.) and optional role/username.
+        # This would allow: pi0 = mkHost "pi0" null null "aarch64-linux";
         pi0 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs stable-pkgs system;
