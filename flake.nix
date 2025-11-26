@@ -41,6 +41,39 @@
       system = "x86_64-linux";
       stable-pkgs = import inputs.stable { inherit system; };
 
+      mkColmenaHost = hostname: role: username: hostSystem: {
+        deployment = {
+          targetHost = hostname;
+          targetUser = "bh";
+          allowLocalDeployment = true;
+        };
+
+        _module.args = {
+          # Use x86_64 system for building if target is aarch64
+          system = if hostSystem == "aarch64-linux" then "x86_64-linux" else hostSystem;
+          host = { inherit hostname role username; };
+        };
+
+        imports = [
+          sops-nix.nixosModules.sops
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.default
+          {
+            home-manager.extraSpecialArgs = {
+              inherit inputs stable-pkgs;
+              system = hostSystem;
+              host = { inherit hostname role username; };
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+          ./roles/${role}
+          ./hosts/${hostname}
+        ];
+
+        nixpkgs.hostPlatform = hostSystem;
+      };
+
       mkHost = hostname: role: username:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -96,98 +129,20 @@
         };
 
         # Desktop hosts (x86_64-linux)
-        framework13 = { name, nodes, ... }: {
-          deployment = {
-            targetHost = "framework13";
-            targetUser = "bh";
-            allowLocalDeployment = true;
-          };
-          _module.args = {
-            inherit system;
-            host = { hostname = "framework13"; role = "desktop"; username = "ctorgalson"; };
-          };
-          imports = [
-            sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.default
-            {
-              home-manager.extraSpecialArgs = {
-                inherit inputs stable-pkgs system;
-                host = { hostname = "framework13"; role = "desktop"; username = "ctorgalson"; };
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-            ./roles/desktop
-            ./hosts/framework13
-          ];
-          nixpkgs.hostPlatform = system;
-        };
+        framework13 = mkColmenaHost "framework13" "desktop" "ctorgalson" system;
+        ser6 = mkColmenaHost "ser6" "desktop" "ctorgalson" system;
+        executive14 = mkColmenaHost "executive14" "desktop" "ctorgalson" system;
 
-        ser6 = { name, nodes, ... }: {
-          deployment = {
-            targetHost = "ser6";
-            targetUser = "bh";
-            allowLocalDeployment = true;
-          };
-          _module.args = {
-            inherit system;
-            host = { hostname = "ser6"; role = "desktop"; username = "ctorgalson"; };
-          };
-          imports = [
-            sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.default
-            {
-              home-manager.extraSpecialArgs = {
-                inherit inputs stable-pkgs system;
-                host = { hostname = "ser6"; role = "desktop"; username = "ctorgalson"; };
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-            ./roles/desktop
-            ./hosts/ser6
-          ];
-          nixpkgs.hostPlatform = system;
-        };
-
-        executive14 = { name, nodes, ... }: {
-          deployment = {
-            targetHost = "executive14";
-            targetUser = "bh";
-            allowLocalDeployment = true;
-          };
-          _module.args = {
-            inherit system;
-            host = { hostname = "executive14"; role = "desktop"; username = "ctorgalson"; };
-          };
-          imports = [
-            sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.default
-            {
-              home-manager.extraSpecialArgs = {
-                inherit inputs stable-pkgs system;
-                host = { hostname = "executive14"; role = "desktop"; username = "ctorgalson"; };
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-            ./roles/desktop
-            ./hosts/executive14
-          ];
-          nixpkgs.hostPlatform = system;
-        };
-
-        # ARM appliance (aarch64-linux)
+        # ARM appliance (aarch64-linux) - pi0 doesn't use desktop role
         pi0 = { name, nodes, ... }: {
           deployment = {
             targetHost = "pi0";
             targetUser = "bh";
             buildOnTarget = false; # Build on deployment machine (x86_64)
           };
-          _module.args = { inherit system; };
+          _module.args = {
+            system = "x86_64-linux"; # Build system
+          };
           imports = [
             sops-nix.nixosModules.sops
             ./hosts/pi0

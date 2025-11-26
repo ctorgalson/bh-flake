@@ -13,7 +13,6 @@
     ./services
     ./system
     ./time
-    ./users
     ./virtualisation
     ./xdg
     # From flakes etc.
