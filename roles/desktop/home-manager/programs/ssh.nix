@@ -4,18 +4,9 @@
   config = {
     programs.ssh = {
       enable = true;
-      # Disable auto-generated defaults. Previously home-manager added:
-      #   ForwardAgent no
-      #   ServerAliveInterval 0
-      #   ServerAliveCountMax 3
-      #   Compression no
-      #   AddKeysToAgent no
-      #   HashKnownHosts no
-      #   UserKnownHostsFile ~/.ssh/known_hosts
-      #   ControlMaster no
-      #   ControlPath ~/.ssh/master-%r@%n:%p
-      #   ControlPersist no
-      enableDefaultConfig = false;
+      # Note: enableDefaultConfig option not available in Home Manager 25.05
+      # Previously used to disable auto-generated defaults like:
+      #   ForwardAgent no, ServerAliveInterval 0, etc.
       extraConfig = ''
         Host *.upsun.com
           Include /home/${host.username}/.upsun-cli/ssh/*.config

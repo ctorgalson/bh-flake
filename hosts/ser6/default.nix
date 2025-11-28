@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./configuration.nix
     ./nixos/stylix
+    ./power-management.nix
     ./wake-on-lan.nix
   ];
 }

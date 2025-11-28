@@ -1,4 +1,4 @@
-{ config, pkgs, home, ... }:
+{ config, pkgs, home, unstable-pkgs, ... }:
 
 {
   config = {
@@ -34,7 +34,7 @@
       fd                          # find replacement
       glow                        # markdown reader
       gtop                        # top replacement
-      moor                        # less replacement
+      unstable-pkgs.moor          # less replacement (not in 25.05 stable)
       riffdiff                    # diff replacement w/syntax highlighting etc.
 
       # Other cli

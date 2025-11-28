@@ -6,5 +6,6 @@
     ./hardware-configuration.nix
     ./configuration.nix
     ./nixos/stylix
+    ./power-management.nix
   ];
 }

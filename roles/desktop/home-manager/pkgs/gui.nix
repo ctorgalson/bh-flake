@@ -1,4 +1,4 @@
-{ config, pkgs, home, stable-pkgs, ... }:
+{ config, pkgs, home, unstable-pkgs, ... }:
 
 {
   config = {
@@ -9,11 +9,11 @@
       # Temporarily borked by something nix-y.
       # guvcview                    # Webcam config utility
       ktailctl                    # Unofficial Tailscale GUI (alt to Trayscale)
-      stable-pkgs.nextcloud-client # Nextcloud desktop app
+      nextcloud-client            # Nextcloud desktop app
       # quickgui
       solaar
       spideroak                   # Backups (installed temporarily)
-      stable-pkgs.calibre         # Ebook library manager
+      calibre                     # Ebook library manager
       # trayscale                   # Unofficial Tailscale GUI
       usbutils
       via                         # Keyboard configurator: not sure if working
@@ -42,7 +42,7 @@
       kdePackages.kruler          # Screen ruler
       lmstudio                    # GUI LLM manager
       resources                   # GUI version of "top" etc
-      stable-pkgs.zeal            # Documentation browser
+      zeal                        # Documentation browser
 
       # Fonts
       nerd-fonts.inconsolata      # Enhanced Inconsolata font

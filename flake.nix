@@ -4,12 +4,12 @@
   inputs = {
     self.submodules = true;
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,9 +18,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # Keep unstable available for cherry-picking newer packages if needed
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     bh-nixvim = {
       url = "github:ctorgalson/bh-nixvim";
@@ -39,7 +43,7 @@
     flake = let
       inherit (inputs) nixpkgs home-manager sops-nix stylix;
       system = "x86_64-linux";
-      stable-pkgs = import inputs.stable { inherit system; };
+      unstable-pkgs = import inputs.unstable { inherit system; };
 
       mkColmenaHost = hostname: role: username: hostSystem: {
         deployment = {
@@ -60,7 +64,7 @@
           home-manager.nixosModules.default
           {
             home-manager.extraSpecialArgs = {
-              inherit inputs stable-pkgs;
+              inherit inputs unstable-pkgs;
               system = hostSystem;
               host = { inherit hostname role username; };
             };
@@ -77,7 +81,7 @@
       mkHost = hostname: role: username:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs stable-pkgs system;
+            inherit inputs unstable-pkgs system;
             host = { inherit hostname role username; };
           };
           modules = [
@@ -86,7 +90,7 @@
             home-manager.nixosModules.default
             {
               home-manager.extraSpecialArgs = {
-                inherit inputs stable-pkgs system;
+                inherit inputs unstable-pkgs system;
                 host = { inherit hostname role username; };
               };
               home-manager.sharedModules = [
@@ -114,7 +118,7 @@
         # This would allow: pi0 = mkHost "pi0" null null "aarch64-linux";
         pi0 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs stable-pkgs system;
+            inherit inputs unstable-pkgs system;
           };
           system = "aarch64-linux";
           modules = [
@@ -128,7 +132,7 @@
       colmena = {
         meta = {
           nixpkgs = import nixpkgs { inherit system; };
-          specialArgs = { inherit inputs stable-pkgs; };
+          specialArgs = { inherit inputs unstable-pkgs; };
         };
 
         # Desktop hosts (x86_64-linux)

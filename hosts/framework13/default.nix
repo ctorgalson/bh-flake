@@ -6,5 +6,6 @@
     ./hardware-configuration.nix
     ./configuration.nix
     ./host-overrides.nix
+    ./power-management.nix
   ];
 }

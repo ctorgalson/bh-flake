@@ -8,12 +8,8 @@
         ignores = [
           ".phpactor.json"
         ];
-        settings = {
-          user = {
-            name = "Christopher Torgalson";
-            email = "manager@bedlamhotel.com";
-          };
-        };
+        userName = "Christopher Torgalson";
+        userEmail = "manager@bedlamhotel.com";
       };
     };
   };
