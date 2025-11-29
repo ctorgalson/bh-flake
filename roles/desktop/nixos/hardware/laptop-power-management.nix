@@ -37,6 +37,9 @@
     powertop.enable = true;
   };
 
+  # Disable power-profiles-daemon (conflicts with TLP)
+  services.power-profiles-daemon.enable = false;
+
   # TLP for advanced laptop power management
   services.tlp = {
     enable = true;
