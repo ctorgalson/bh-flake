@@ -33,6 +33,11 @@ in
     updater.enable = true;
   };
 
+  # Create log file with proper ownership
+  systemd.tmpfiles.rules = [
+    "f /var/log/clamd.log 0644 clamav clamav -"
+  ];
+
   # Define the ClamAV scan service
   systemd.services.av-scan = {
     description = "Antivirus Scan";

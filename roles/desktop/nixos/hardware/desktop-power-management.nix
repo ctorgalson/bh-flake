@@ -22,12 +22,14 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Power button behavior: suspend on press (change to "ignore" or "poweroff" if preferred)
-  services.logind.extraConfig = ''
-    HandlePowerKey=suspend
-    HandleSuspendKey=suspend
-    HandleLidSwitch=ignore
-    IdleAction=ignore
-  '';
+  services.logind.settings = {
+    Login = {
+      HandlePowerKey = "suspend";
+      HandleSuspendKey = "suspend";
+      HandleLidSwitch = "ignore";
+      IdleAction = "ignore";
+    };
+  };
 
   # CPU governor - balanced mode for efficiency while still responsive
   powerManagement = {
