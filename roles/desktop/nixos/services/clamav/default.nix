@@ -1,23 +1,85 @@
 { host, inputs, lib, pkgs, ... }:
 
 let
-  avScan = pkgs.writeShellScriptBin "av-scan" ''
-    user_log="/home/${host.username}/last-clamscan.log"
-    temp_file="$(mktemp)"
+  # Helper script to combine scan results into display log
+  combineLogs = pkgs.writeShellScriptBin "combine-scan-logs" ''
+    full_log="/home/${host.username}/last-clamscan-full.log"
+    daily_log="/home/${host.username}/last-clamscan-daily.log"
+    display_log="/home/${host.username}/last-clamscan.log"
+    temp_file="$(${pkgs.coreutils}/bin/mktemp)"
 
-    # Run scan using daemon (efficient, definitions stay loaded in memory).
-    # Output goes to temp file, including the SCAN SUMMARY.
-    # Prevent system suspend during the multi-hour scan.
-    systemd-inhibit --what=sleep:handle-lid-switch --who="ClamAV scan" --why="Antivirus scan in progress" \
-      clamdscan --multiscan /home /tmp /var/tmp > "$temp_file" 2>&1 || true
+    # Extract summary from full scan
+    if [ -f "$full_log" ]; then
+      echo "------- LAST FULL SCAN -------" >> "$temp_file"
+      ${pkgs.gnugrep}/bin/grep -E "Scanned files:|Infected files:|Time:|Start Date:" "$full_log" | ${pkgs.coreutils}/bin/head -4 >> "$temp_file" || true
+      echo "" >> "$temp_file"
+    fi
 
-    # Move results to user log for display in terminal.
-    mv "$temp_file" "$user_log"
-    chown "${host.username}:users" "$user_log"
+    # Extract summary from daily scan
+    if [ -f "$daily_log" ]; then
+      echo "------- LAST DAILY SCAN ------" >> "$temp_file"
+      ${pkgs.gnugrep}/bin/grep -E "Scanned files:|Infected files:|Time:|Start Date:" "$daily_log" | ${pkgs.coreutils}/bin/head -4 >> "$temp_file" || true
+    fi
+
+    # Move to display location
+    ${pkgs.coreutils}/bin/mv "$temp_file" "$display_log"
+    ${pkgs.coreutils}/bin/chown "${host.username}:users" "$display_log"
+  '';
+
+  # Full system scan (weekly)
+  avScanFull = pkgs.writeShellScriptBin "av-scan-full" ''
+    full_log="/home/${host.username}/last-clamscan-full.log"
+    temp_file="$(${pkgs.coreutils}/bin/mktemp)"
+
+    # Run full scan with low priority (nice +19, ionice idle class)
+    # --fdpass allows daemon to scan files as root (inherits service permissions)
+    ${pkgs.systemd}/bin/systemd-inhibit --what=sleep:handle-lid-switch --who="ClamAV weekly scan" --why="Antivirus weekly scan in progress" \
+      ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
+        ${pkgs.clamav}/bin/clamdscan --fdpass --multiscan /home /tmp /var/tmp > "$temp_file" 2>&1 || true
+
+    # Move results to full log
+    ${pkgs.coreutils}/bin/mv "$temp_file" "$full_log"
+    ${pkgs.coreutils}/bin/chown "${host.username}:users" "$full_log"
+
+    # Update combined display log
+    ${combineLogs}/bin/combine-scan-logs
+  '';
+
+  # Incremental scan (daily) - only files modified in last 24 hours
+  avScanDaily = pkgs.writeShellScriptBin "av-scan-daily" ''
+    daily_log="/home/${host.username}/last-clamscan-daily.log"
+    temp_file="$(${pkgs.coreutils}/bin/mktemp)"
+    file_list="$(${pkgs.coreutils}/bin/mktemp)"
+
+    # Find files modified in last 24 hours
+    ${pkgs.findutils}/bin/find /home /tmp /var/tmp -type f -mtime -1 2>/dev/null > "$file_list" || true
+
+    # Only scan if we found files
+    if [ -s "$file_list" ]; then
+      # Run incremental scan with low priority
+      ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
+        ${pkgs.clamav}/bin/clamdscan --fdpass --file-list="$file_list" > "$temp_file" 2>&1 || true
+    else
+      echo "----------- SCAN SUMMARY -----------" > "$temp_file"
+      echo "Scanned files: 0" >> "$temp_file"
+      echo "Infected files: 0" >> "$temp_file"
+      echo "Time: 0.000 sec (0 m 0 s)" >> "$temp_file"
+      echo "Start Date: $(${pkgs.coreutils}/bin/date '+%Y:%m:%d %H:%M:%S')" >> "$temp_file"
+      echo "" >> "$temp_file"
+      echo "No files modified in last 24 hours" >> "$temp_file"
+    fi
+
+    # Cleanup
+    ${pkgs.coreutils}/bin/rm -f "$file_list"
+    ${pkgs.coreutils}/bin/mv "$temp_file" "$daily_log"
+    ${pkgs.coreutils}/bin/chown "${host.username}:users" "$daily_log"
+
+    # Update combined display log
+    ${combineLogs}/bin/combine-scan-logs
   '';
 in
 {
-  environment.systemPackages = [ avScan ];
+  environment.systemPackages = [ avScanFull avScanDaily combineLogs ];
 
   # @see https://mynixos.com/options/services.clamav
   # @see https://linux.die.net/man/5/clamd.conf
@@ -38,23 +100,44 @@ in
     "f /var/log/clamd.log 0644 clamav clamav -"
   ];
 
-  # Define the ClamAV scan service
-  systemd.services.av-scan = {
-    description = "Antivirus Scan";
+  # Full scan service (weekly)
+  systemd.services.av-scan-full = {
+    description = "Antivirus Full Scan";
     after = [ "clamav-daemon.service" ];
     requires = [ "clamav-daemon.service" ];
     serviceConfig = {
-      ExecStart = "${avScan}/bin/av-scan";
+      ExecStart = "${avScanFull}/bin/av-scan-full";
       Type = "oneshot";
     };
   };
 
-  # Define the timer for the ClamAV scan
-  systemd.timers.av-scan = {
-    description = "Run av-scan every other weekday";
+  # Full scan timer (weekly on Mondays)
+  systemd.timers.av-scan-full = {
+    description = "Run full antivirus scan weekly";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "Mon,Wed,Fri 09:31:00";
+      OnCalendar = "Mon 08:11:00";
+      Persistent = true;  # Run missed scans on next boot/wake
+    };
+  };
+
+  # Daily scan service (incremental)
+  systemd.services.av-scan-daily = {
+    description = "Antivirus Daily Incremental Scan";
+    after = [ "clamav-daemon.service" ];
+    requires = [ "clamav-daemon.service" ];
+    serviceConfig = {
+      ExecStart = "${avScanDaily}/bin/av-scan-daily";
+      Type = "oneshot";
+    };
+  };
+
+  # Daily scan timer
+  systemd.timers.av-scan-daily = {
+    description = "Run daily incremental antivirus scan";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
       Persistent = true;  # Run missed scans on next boot/wake
     };
   };
