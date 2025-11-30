@@ -10,6 +10,9 @@
       # Automation
       ansible                     # server provision + automation
 
+      # Communications
+      signal-cli                  # Cli version of Signal for sending msgs
+
       # Development
       bruno-cli                   # cli for Bruno API tester
       ddev                        # dev servers

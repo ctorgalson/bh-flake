@@ -36,6 +36,33 @@ All desktop hosts share the `desktop` role and have ARM emulation enabled for cr
    sudo nixos-rebuild switch --flake '.#hostname?submodules=1'
    ```
 
+## Host-Specific Setup
+
+### Signal CLI (for ClamAV notifications)
+
+Link signal-cli to your Signal account for antivirus scan notifications:
+
+1. Generate and display QR code:
+   ```bash
+   signal-cli link -n "NixOS-hostname" | xargs -L 1 qrencode -o /tmp/qrcode.png --level=H -v 10
+   ```
+
+2. Open the QR code image:
+   ```bash
+   xdg-open /tmp/qrcode.png
+   ```
+
+3. In Signal app on your phone:
+   - Settings → Linked Devices → "+" (Link New Device)
+   - Scan the QR code
+
+4. Once linked, receive initial data:
+   ```bash
+   signal-cli receive
+   ```
+
+The ClamAV scan scripts will automatically send Signal notifications when infected files are detected.
+
 ## Deployment with Colmena
 
 Colmena is the unified deployment tool for all hosts - whether deploying to the current machine, a single remote host, or the entire fleet.

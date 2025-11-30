@@ -1,4 +1,4 @@
-{ host, inputs, lib, pkgs, ... }:
+{ config, host, inputs, lib, pkgs, ... }:
 
 let
   # Helper script to combine scan results into display log
@@ -11,14 +11,14 @@ let
     # Extract summary from full scan
     if [ -f "$full_log" ]; then
       echo "------- LAST FULL SCAN -------" >> "$temp_file"
-      ${pkgs.gnugrep}/bin/grep -E "Scanned files:|Infected files:|Time:|Start Date:" "$full_log" | ${pkgs.coreutils}/bin/head -4 >> "$temp_file" || true
+      ${pkgs.gnugrep}/bin/grep -E "Scanned directories:|Scanned files:|Infected files:|Time:|Start Date:" "$full_log" | ${pkgs.coreutils}/bin/head -5 >> "$temp_file" || true
       echo "" >> "$temp_file"
     fi
 
     # Extract summary from daily scan
     if [ -f "$daily_log" ]; then
       echo "------- LAST DAILY SCAN ------" >> "$temp_file"
-      ${pkgs.gnugrep}/bin/grep -E "Scanned files:|Infected files:|Time:|Start Date:" "$daily_log" | ${pkgs.coreutils}/bin/head -4 >> "$temp_file" || true
+      ${pkgs.gnugrep}/bin/grep -E "Scanned directories:|Scanned files:|Infected files:|Time:|Start Date:" "$daily_log" | ${pkgs.coreutils}/bin/head -5 >> "$temp_file" || true
     fi
 
     # Move to display location
@@ -30,12 +30,20 @@ let
   avScanFull = pkgs.writeShellScriptBin "av-scan-full" ''
     full_log="/home/${host.username}/last-clamscan-full.log"
     temp_file="$(${pkgs.coreutils}/bin/mktemp)"
+    signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
 
     # Run full scan with low priority (nice +19, ionice idle class)
     # --fdpass allows daemon to scan files as root (inherits service permissions)
     ${pkgs.systemd}/bin/systemd-inhibit --what=sleep:handle-lid-switch --who="ClamAV weekly scan" --why="Antivirus weekly scan in progress" \
       ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
         ${pkgs.clamav}/bin/clamdscan --fdpass --multiscan /home /tmp /var/tmp > "$temp_file" 2>&1 || true
+
+    # Check for infections and send Signal notification
+    infected_count=$(${pkgs.gnugrep}/bin/grep "^Infected files:" "$temp_file" | ${pkgs.gawk}/bin/awk '{print $3}')
+    if [ "$infected_count" -gt 0 ]; then
+      ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+        -m "⚠️ ClamAV ALERT on ${host.hostname}: Full scan found $infected_count infected file(s)" || true
+    fi
 
     # Move results to full log
     ${pkgs.coreutils}/bin/mv "$temp_file" "$full_log"
@@ -50,6 +58,7 @@ let
     daily_log="/home/${host.username}/last-clamscan-daily.log"
     temp_file="$(${pkgs.coreutils}/bin/mktemp)"
     file_list="$(${pkgs.coreutils}/bin/mktemp)"
+    signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
 
     # Find files modified in last 24 hours
     ${pkgs.findutils}/bin/find /home /tmp /var/tmp -type f -mtime -1 2>/dev/null > "$file_list" || true
@@ -59,6 +68,13 @@ let
       # Run incremental scan with low priority
       ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
         ${pkgs.clamav}/bin/clamdscan --fdpass --file-list="$file_list" > "$temp_file" 2>&1 || true
+
+      # Check for infections and send Signal notification
+      infected_count=$(${pkgs.gnugrep}/bin/grep "^Infected files:" "$temp_file" | ${pkgs.gawk}/bin/awk '{print $3}')
+      if [ "$infected_count" -gt 0 ]; then
+        ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+          -m "⚠️ ClamAV ALERT on ${host.hostname}: Daily scan found $infected_count infected file(s)" || true
+      fi
     else
       echo "----------- SCAN SUMMARY -----------" > "$temp_file"
       echo "Scanned files: 0" >> "$temp_file"
@@ -79,7 +95,12 @@ let
   '';
 in
 {
-  environment.systemPackages = [ avScanFull avScanDaily combineLogs ];
+  environment.systemPackages = [
+    avScanFull
+    avScanDaily
+    combineLogs
+    pkgs.signal-cli
+  ];
 
   # @see https://mynixos.com/options/services.clamav
   # @see https://linux.die.net/man/5/clamd.conf
@@ -99,6 +120,13 @@ in
   systemd.tmpfiles.rules = [
     "f /var/log/clamd.log 0644 clamav clamav -"
   ];
+
+  # SOPS secret for Signal username
+  sops.secrets.signal_username = {
+    sopsFile = ../../../../../sops/secrets.yaml;
+    owner = "root";
+    mode = "0400";
+  };
 
   # Full scan service (weekly)
   systemd.services.av-scan-full = {
