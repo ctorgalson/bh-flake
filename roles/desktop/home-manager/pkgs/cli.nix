@@ -47,6 +47,7 @@
       ffmpeg                      # media convertor
       gcc                         # c compiler
       links2                      # cli (text-only) browser
+      qrencode                    # QR code generator
       tree                        # list contents of directories in tree form
       unzip                       # Unzip files/directories
       wl-clip-persist             # Wayland clipboard contents "preserver"
