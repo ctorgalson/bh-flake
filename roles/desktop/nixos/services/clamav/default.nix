@@ -44,11 +44,16 @@ let
       ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
         ${pkgs.clamav}/bin/clamdscan --fdpass --multiscan /home /tmp /var/tmp > "$temp_file" 2>&1 || true
 
-    # Check for infections and send Signal notification
+    # Send Signal notification (always for full scan)
     infected_count=$(${pkgs.gnugrep}/bin/grep "^Infected files:" "$temp_file" | ${pkgs.gawk}/bin/awk '{print $3}')
+    scanned_count=$(${pkgs.gnugrep}/bin/grep -c ": OK$" "$temp_file" || echo "0")
+
     if [ "$infected_count" -gt 0 ]; then
       ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
         -m "⚠️ ClamAV ALERT on ${host.hostname}: Full scan found $infected_count infected file(s)" || true
+    else
+      ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+        -m "✓ ClamAV full scan complete on ${host.hostname}: $scanned_count files scanned, no threats found" || true
     fi
 
     # Move results to full log
