@@ -10,15 +10,21 @@ let
 
     # Extract summary from full scan
     if [ -f "$full_log" ]; then
-      echo "------- LAST FULL SCAN -------" >> "$temp_file"
-      ${pkgs.gnugrep}/bin/grep -E "Scanned directories:|Scanned files:|Infected files:|Time:|Start Date:" "$full_log" | ${pkgs.coreutils}/bin/head -5 >> "$temp_file" || true
+      echo "------- LAST FULL SCAN --------" >> "$temp_file"
+      # Count scanned files (lines ending with ": OK" before summary)
+      scanned_count=$(${pkgs.gnugrep}/bin/grep -c ": OK$" "$full_log" || echo "0")
+      echo "Scanned files: $scanned_count" >> "$temp_file"
+      ${pkgs.gnugrep}/bin/grep -E "Infected files:|Time:|Start Date:" "$full_log" | ${pkgs.coreutils}/bin/head -3 >> "$temp_file" || true
       echo "" >> "$temp_file"
     fi
 
     # Extract summary from daily scan
     if [ -f "$daily_log" ]; then
-      echo "------- LAST DAILY SCAN ------" >> "$temp_file"
-      ${pkgs.gnugrep}/bin/grep -E "Scanned directories:|Scanned files:|Infected files:|Time:|Start Date:" "$daily_log" | ${pkgs.coreutils}/bin/head -5 >> "$temp_file" || true
+      echo "------- LAST DAILY SCAN -------" >> "$temp_file"
+      # Count scanned files (lines ending with ": OK" before summary)
+      scanned_count=$(${pkgs.gnugrep}/bin/grep -c ": OK$" "$daily_log" || echo "0")
+      echo "Scanned files: $scanned_count" >> "$temp_file"
+      ${pkgs.gnugrep}/bin/grep -E "Infected files:|Time:|Start Date:" "$daily_log" | ${pkgs.coreutils}/bin/head -3 >> "$temp_file" || true
     fi
 
     # Move to display location
