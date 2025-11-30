@@ -44,7 +44,7 @@ Link signal-cli to your Signal account for antivirus scan notifications:
 
 1. Generate and display QR code:
    ```bash
-   signal-cli link -n "NixOS-hostname" | xargs -L 1 qrencode -o /tmp/qrcode.png --level=H -v 10
+   signal-cli link -n "workstation-${HOST}" | xargs -L 1 qrencode -t ansiutf8 --level=H -v 10
    ```
 
 2. Open the QR code image:
