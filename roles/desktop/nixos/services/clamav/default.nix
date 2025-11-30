@@ -8,23 +8,17 @@ let
     display_log="/home/${host.username}/last-clamscan.log"
     temp_file="$(${pkgs.coreutils}/bin/mktemp)"
 
-    # Extract summary from full scan
+    # Extract complete summary from full scan (without SCAN SUMMARY header)
     if [ -f "$full_log" ]; then
       echo "-------- LAST FULL SCAN --------" >> "$temp_file"
-      # Count scanned files (lines ending with ": OK" before summary)
-      scanned_count=$(${pkgs.gnugrep}/bin/grep -c ": OK$" "$full_log" || echo "0")
-      echo "Scanned files: $scanned_count" >> "$temp_file"
-      ${pkgs.gnugrep}/bin/grep -E "Infected files:|Time:|Start Date:" "$full_log" | ${pkgs.coreutils}/bin/head -3 >> "$temp_file" || true
+      ${pkgs.gnused}/bin/sed -n '/^Infected files:/,/^End Date:/p' "$full_log" >> "$temp_file" || true
       echo "" >> "$temp_file"
     fi
 
-    # Extract summary from daily scan
+    # Extract complete summary from daily scan (without SCAN SUMMARY header)
     if [ -f "$daily_log" ]; then
       echo "-------- LAST DAILY SCAN -------" >> "$temp_file"
-      # Count scanned files (lines ending with ": OK" before summary)
-      scanned_count=$(${pkgs.gnugrep}/bin/grep -c ": OK$" "$daily_log" || echo "0")
-      echo "Scanned files: $scanned_count" >> "$temp_file"
-      ${pkgs.gnugrep}/bin/grep -E "Infected files:|Time:|Start Date:" "$daily_log" | ${pkgs.coreutils}/bin/head -3 >> "$temp_file" || true
+      ${pkgs.gnused}/bin/sed -n '/^Infected files:/,/^End Date:/p' "$daily_log" >> "$temp_file" || true
     fi
 
     # Move to display location
@@ -40,21 +34,14 @@ let
 
     # Run full scan with low priority (nice +19, ionice idle class)
     # --fdpass allows daemon to scan files as root (inherits service permissions)
+    # VirusEvent in clamd.conf will handle infection notifications automatically
     ${pkgs.systemd}/bin/systemd-inhibit --what=sleep:handle-lid-switch --who="ClamAV weekly scan" --why="Antivirus weekly scan in progress" \
       ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
         ${pkgs.clamav}/bin/clamdscan --fdpass --multiscan /home /tmp /var/tmp > "$temp_file" 2>&1 || true
 
-    # Send Signal notification (always for full scan)
-    infected_count=$(${pkgs.gnugrep}/bin/grep "^Infected files:" "$temp_file" | ${pkgs.gawk}/bin/awk '{print $3}')
-    scanned_count=$(${pkgs.gnugrep}/bin/grep -c ": OK$" "$temp_file" || echo "0")
-
-    if [ "$infected_count" -gt 0 ]; then
-      ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
-        -m "⚠️ ClamAV ALERT on ${host.hostname}: Full scan found $infected_count infected file(s)" || true
-    else
-      ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
-        -m "✓ ClamAV full scan complete on ${host.hostname}: $scanned_count files scanned, no threats found" || true
-    fi
+    # Send success notification for completed full scan
+    ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+      -m "✓ ClamAV full scan complete on ${host.hostname}" || true
 
     # Move results to full log
     ${pkgs.coreutils}/bin/mv "$temp_file" "$full_log"
@@ -64,12 +51,25 @@ let
     ${combineLogs}/bin/combine-scan-logs
   '';
 
+  # Script to send Signal notification when virus is detected
+  virusNotify = pkgs.writeShellScriptBin "clamav-virus-notify" ''
+    # Environment variables provided by clamd:
+    # CLAM_VIRUSEVENT_FILENAME - the infected file path
+    # CLAM_VIRUSEVENT_VIRUSNAME - the virus/malware name
+
+    signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
+
+    ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+      -m "⚠️ ClamAV ALERT on ${host.hostname}: Infected file detected!
+Virus: $CLAM_VIRUSEVENT_VIRUSNAME
+File: $CLAM_VIRUSEVENT_FILENAME" || true
+  '';
+
   # Incremental scan (daily) - only files modified in last 24 hours
   avScanDaily = pkgs.writeShellScriptBin "av-scan-daily" ''
     daily_log="/home/${host.username}/last-clamscan-daily.log"
     temp_file="$(${pkgs.coreutils}/bin/mktemp)"
     file_list="$(${pkgs.coreutils}/bin/mktemp)"
-    signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
 
     # Find files modified in last 24 hours
     ${pkgs.findutils}/bin/find /home /tmp /var/tmp -type f -mtime -1 2>/dev/null > "$file_list" || true
@@ -77,15 +77,9 @@ let
     # Only scan if we found files
     if [ -s "$file_list" ]; then
       # Run incremental scan with low priority
+      # VirusEvent in clamd.conf will handle infection notifications automatically
       ${pkgs.util-linux}/bin/ionice -c 3 ${pkgs.coreutils}/bin/nice -n 19 \
         ${pkgs.clamav}/bin/clamdscan --fdpass --file-list="$file_list" > "$temp_file" 2>&1 || true
-
-      # Check for infections and send Signal notification
-      infected_count=$(${pkgs.gnugrep}/bin/grep "^Infected files:" "$temp_file" | ${pkgs.gawk}/bin/awk '{print $3}')
-      if [ "$infected_count" -gt 0 ]; then
-        ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
-          -m "⚠️ ClamAV ALERT on ${host.hostname}: Daily scan found $infected_count infected file(s)" || true
-      fi
     else
       echo "----------- SCAN SUMMARY -----------" > "$temp_file"
       echo "Scanned files: 0" >> "$temp_file"
@@ -110,6 +104,7 @@ in
     avScanFull
     avScanDaily
     combineLogs
+    virusNotify
     pkgs.signal-cli
   ];
 
@@ -122,6 +117,8 @@ in
         LogFile = "/var/log/clamd.log";
         LogTime = true;
         MaxDirectoryRecursion = 50;
+        # Execute script when virus is detected (provides CLAM_VIRUSEVENT_* env vars)
+        VirusEvent = "${virusNotify}/bin/clamav-virus-notify";
       };
     };
     updater.enable = true;
