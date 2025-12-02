@@ -38,7 +38,9 @@ Analyze code with zero tolerance for:
 
 ## Review Process
 1. Read all changed files completely
-2. Check each category systematically
-3. Report ALL issues found, no matter how small
-4. Provide specific line references
-5. Suggest concrete fixes
+2. Check for ADRs (docs/adr/, adr/, architecture/) and review relevant decisions
+3. Check each category systematically
+4. Report ALL issues found, no matter how small
+5. Provide specific line references
+6. Suggest concrete fixes
+7. If recommending against an ADR: acknowledge it explicitly, explain why circumstances changed, provide evidence, propose updated ADR
