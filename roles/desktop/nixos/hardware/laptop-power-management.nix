@@ -18,18 +18,6 @@
   # Bluetooth power settings
   hardware.bluetooth.powerOnBoot = true;
 
-  # Laptop-specific power button and lid behavior
-  services.logind.settings = {
-    Login = {
-      HandlePowerKey = "hibernate";
-      HandleSuspendKey = "suspend";
-      HandleLidSwitch = "suspend";
-      HandleLidSwitchExternalPower = "suspend";
-      IdleAction = "suspend";
-      IdleActionSec = "20min";
-    };
-  };
-
   # CPU governor - balanced, power-saving friendly
   powerManagement = {
     enable = true;

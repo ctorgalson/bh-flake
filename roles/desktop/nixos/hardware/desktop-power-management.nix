@@ -7,15 +7,21 @@
   boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
   # Configure device wake capabilities
+  # Complex setup: keyboard via monitor USB hub, wireless mouse via Logitech dongle
   services.udev.extraRules = ''
-    # Enable wake from USB input devices (mouse, keyboard)
+    # Enable wake from USB input devices (mouse, keyboard dongles)
     ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usbhid", ATTR{power/wakeup}="enabled"
 
     # Keep USB input devices always on (no autosuspend)
     ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usbhid", ATTR{power/control}="on"
 
-    # Enable wake from Bluetooth devices
+    # Enable wake from USB hubs (needed for keyboards connected through monitor hubs)
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{bDeviceClass}=="09", ATTR{power/wakeup}="enabled"
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{bDeviceClass}=="09", ATTR{power/control}="on"
+
+    # Enable wake from Bluetooth HID devices (keyboards, mice)
     ACTION=="add", SUBSYSTEM=="bluetooth", ATTR{power/wakeup}="enabled"
+    ACTION=="add", SUBSYSTEM=="input", KERNEL=="event*", ATTRS{id/bustype}=="0005", ATTR{power/wakeup}="enabled"
   '';
 
   # Bluetooth power settings
