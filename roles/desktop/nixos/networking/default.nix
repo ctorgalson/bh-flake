@@ -73,6 +73,7 @@ let
 in
 {
   networking.firewall = {
+    # SSH firewall rules are in modules/ssh.nix
     allowedTCPPorts = [
       80
       443

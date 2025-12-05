@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/ssh.nix
     ./boot
     ./environment
     ./i18n

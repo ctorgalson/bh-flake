@@ -14,16 +14,7 @@
     MaxRetentionSec=7d
   '';
 
-  # OpenSSH server disabled - using Tailscale SSH instead
-  # SSH client tools (ssh, ssh-keygen, etc.) remain available
-  # services.openssh = {
-  #   enable = true;
-  #   settings = {
-  #     PasswordAuthentication = false;
-  #     KbdInteractiveAuthentication = false;
-  #     PermitRootLogin = "no";
-  #   };
-  # };
+  # OpenSSH server configuration is in the common ssh module (imported via role)
 
   services.pipewire = {
     enable = true;

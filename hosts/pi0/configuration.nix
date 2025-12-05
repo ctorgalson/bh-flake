@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ../../modules/ssh.nix
     ../../modules/users.nix
   ];
 
@@ -22,6 +23,9 @@
 
   # Enable Tailscale
   services.tailscale.enable = true;
+
+  # Configure SOPS age key location
+  sops.age.keyFile = "/root/.config/sops/age/keys.txt";
 
   # Configure SOPS secrets
   sops.secrets.tailscale_pi0 = {
@@ -74,9 +78,11 @@
     '')
   ];
 
+  # Enable zsh (required since ctorgalson user uses zsh shell)
+  programs.zsh.enable = true;
+
   # Disable unnecessary services
   services.xserver.enable = false;
-  sound.enable = false;
 
   # Enable networking (NetworkManager instead of wireless)
   networking.networkmanager.enable = true;

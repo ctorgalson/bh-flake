@@ -17,6 +17,12 @@
   # Kernel configuration
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
+  # Don't include unnecessary display/HDMI modules for headless appliance
+  boot.initrd.availableKernelModules = lib.mkForce [
+    "usbhid"
+    "usb_storage"
+  ];
+
   # Enable GPU firmware
   # hardware.raspberry-pi."4".fkms-3d.enable = true;
   # Commented out - requires raspberry-pi nixos module, not needed for network appliance
