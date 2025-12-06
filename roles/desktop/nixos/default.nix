@@ -12,6 +12,7 @@
     ./programs
     ./security
     ./services
+    ./sops
     ./system
     ./time
     ./virtualisation
