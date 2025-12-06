@@ -25,6 +25,9 @@ in
         isNormalUser = true;
         shell = pkgs.zsh;
         hashedPasswordFile = lib.mkIf (cfg.adminPasswordFile != null) cfg.adminPasswordFile;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARjoOuzp5vkg05GYXcvGSqwH+TPMtEWjWx6AQo+QofY xps13-9350 / 2023-08-07"
+        ];
       };
       # Note: wheel group users require password for sudo (standard security)
     })
