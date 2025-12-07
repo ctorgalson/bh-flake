@@ -14,7 +14,7 @@ NixOS configuration flake for managing a fleet of desktop machines and appliance
 
 All desktop hosts share the `desktop` role and have ARM emulation enabled for cross-compilation.
 
-## Initial Deployment (New Host)
+## Initial Deployment (New Desktop Host)
 
 1. Install NixOS via installer
 2. Enable flakes in existing nix config if new:
@@ -34,6 +34,44 @@ All desktop hosts share the `desktop` role and have ARM emulation enabled for cr
 5. Build and activate configuration:
    ```bash
    sudo nixos-rebuild switch --flake '.#hostname?submodules=1'
+   ```
+
+### Post-Deployment Setup for New Desktop Host
+
+After initial deployment, complete these steps to enable the new host in the fleet:
+
+1. **Generate Nix signing key** (for Colmena cross-host deployments):
+   ```bash
+   sudo nix-store --generate-binary-cache-key $(hostname) /etc/nix/signing-key.sec /etc/nix/signing-key.pub
+   cat /etc/nix/signing-key.pub
+   ```
+
+2. **Add the public key to the flake**:
+   - Edit `roles/desktop/nixos/nix/default.nix`
+   - Add the new host's key to `trusted-public-keys` list
+   - Format: `"hostname:PUBLIC_KEY_HERE"`
+
+3. **Get SSH host key in age format** (for SOPS secrets):
+   ```bash
+   nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+   ```
+
+4. **Update SOPS configuration**:
+   - Add the host's age key to `.sops.yaml` in appropriate key groups
+   - Re-encrypt affected secrets: `sops updatekeys sops/workstation/shared.yaml`
+   - The host will automatically receive the shared editing key via SOPS
+
+5. **Backup SSH host private key** (optional, for disaster recovery):
+   ```bash
+   sudo cat /etc/ssh/ssh_host_ed25519_key
+   # Store securely in Bitwarden or similar
+   ```
+
+6. **Commit and deploy changes**:
+   ```bash
+   git add -A
+   git commit -m "feat: add new host to fleet"
+   colmena apply  # Deploy to all hosts including new one
    ```
 
 ## Host-Specific Setup
