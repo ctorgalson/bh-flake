@@ -22,6 +22,8 @@
       "framework13:LqlxIe8xSMi5P54352BZlb4JQNDWfABJgCjretPZPfs="
       "ser6:GlUy8CJNhbpCcSvVDcEiR7bI/9VQ+aBjrsqO8v2ZqQk="
     ];
+    # Automatically sign store paths with this host's key
+    secret-key-files = [ "/etc/nix/signing-key.sec" ];
   };
 }
 
