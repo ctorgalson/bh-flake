@@ -10,16 +10,18 @@ nix build .#nixosConfigurations.pi0.config.system.build.sdImage
 # Show the result
 echo ""
 echo "Build complete!"
-echo "Image location: $(readlink -f result)/sd-image/*.img.zst"
-ls -lh result/sd-image/*.img.zst
+IMAGE_PATH=$(ls result/sd-image/*.img.zst)
+echo "Image location: $IMAGE_PATH"
+ls -lh "$IMAGE_PATH"
 
 echo ""
 echo "To write to SD card (decompressing on-the-fly):"
-echo "  zstd -d result/sd-image/*.img.zst -o pi0.img"
+echo "  zstdcat \"$IMAGE_PATH\" | sudo dd of=/dev/sdX bs=4M status=progress conv=fsync"
+echo ""
+echo "Or decompress first then write:"
+echo "  zstd -d \"$IMAGE_PATH\" -o pi0.img"
 echo "  sudo dd if=pi0.img of=/dev/sdX bs=4M status=progress conv=fsync"
 echo ""
-echo "Or write directly:"
-echo "  zstdcat result/sd-image/*.img.zst | sudo dd of=/dev/sdX bs=4M status=progress"
-echo ""
-echo "To test in QEMU:"
-echo "  ./test-qemu.sh"
+echo "To use with rpi-imager, decompress first:"
+echo "  zstd -d \"$IMAGE_PATH\" -o pi0.img"
+echo "  # Then select 'Use custom' in rpi-imager and choose pi0.img"
