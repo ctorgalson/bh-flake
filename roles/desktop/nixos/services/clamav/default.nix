@@ -131,7 +131,7 @@ in
 
   # SOPS secret for Signal username
   sops.secrets.signal_username = {
-    sopsFile = ../../../../../sops/secrets.yaml;
+    sopsFile = ../../../../../sops/workstation/shared.yaml;
     owner = "root";
     mode = "0400";
   };

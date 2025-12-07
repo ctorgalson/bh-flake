@@ -17,7 +17,7 @@
 
   # Configure SOPS secret for Tailscale auth key
   sops.secrets.tailscale_auth_key = {
-    sopsFile = ../../sops/secrets.yaml;
+    sopsFile = ../../sops/workstation/framework13.yaml;
   };
 
   # Configure Tailscale to use auth key for automatic connection

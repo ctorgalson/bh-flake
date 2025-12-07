@@ -14,7 +14,7 @@
   # Configure users for pi0 appliance
   bhFlake.users = {
     enableAdmin = true;
-    adminPasswordFile = config.sops.secrets.password_pi0.path;
+    adminPasswordFile = config.sops.secrets.password.path;
     enableDeployment = true;
   };
 
@@ -24,16 +24,22 @@
   # Enable Tailscale
   services.tailscale.enable = true;
 
-  # Configure SOPS age key location
-  sops.age.keyFile = "/root/.config/sops/age/keys.txt";
-
   # Configure SOPS secrets
+  sops.secrets.age_key = {
+    sopsFile = ../../sops/appliance/pi0.yaml;
+    path = "/root/.config/sops/age/keys.txt";
+    mode = "0600";
+  };
   sops.secrets.tailscale_auth_key = {
-    sopsFile = ../../sops/secrets.yaml;
+    sopsFile = ../../sops/appliance/pi0.yaml;
   };
-  sops.secrets.password_pi0 = {
-    sopsFile = ../../sops/secrets.yaml;
+  sops.secrets.password = {
+    sopsFile = ../../sops/appliance/pi0.yaml;
+    neededForUsers = true;
   };
+
+  # Configure SOPS to use the deployed age key
+  sops.age.keyFile = config.sops.secrets.age_key.path;
 
   # Configure Tailscale to use auth key for automatic connection
   services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;

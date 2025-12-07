@@ -4,6 +4,7 @@
   # SOPS configuration for desktop role
   sops = {
     defaultSopsFile = ../../../../sops/secrets.yaml;
+
     age = {
       keyFile = "/home/${host.username}/.config/sops/age/keys.txt";
       sshKeyPaths = [
