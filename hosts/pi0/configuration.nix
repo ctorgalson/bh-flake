@@ -36,7 +36,7 @@
   };
 
   # Configure Tailscale to use auth key for automatic connection
-  services.tailscale.authKeyFile = config.sops.secrets.tailscale_pi0.path;
+  services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;
 
   # Auto-update system from flake (TODO: fix to use github URL)
   system.autoUpgrade = {

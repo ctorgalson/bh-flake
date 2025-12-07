@@ -238,7 +238,7 @@
   };
 
   # Configure Tailscale to use auth key for automatic connection
-  services.tailscale.authKeyFile = config.sops.secrets.tailscale_ser6.path;
+  services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
