@@ -28,7 +28,7 @@
   sops.age.keyFile = "/root/.config/sops/age/keys.txt";
 
   # Configure SOPS secrets
-  sops.secrets.tailscale_pi0 = {
+  sops.secrets.tailscale_auth_key = {
     sopsFile = ../../sops/secrets.yaml;
   };
   sops.secrets.password_pi0 = {

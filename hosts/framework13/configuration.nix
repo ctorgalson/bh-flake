@@ -16,7 +16,7 @@
   networking.hostName = "framework13";
 
   # Configure SOPS secret for Tailscale auth key
-  sops.secrets.tailscale_framework13 = {
+  sops.secrets.tailscale_auth_key = {
     sopsFile = ../../sops/secrets.yaml;
   };
 

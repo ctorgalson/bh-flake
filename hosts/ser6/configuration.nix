@@ -233,7 +233,7 @@
   # virtualisation.docker.enable = true;
 
   # Configure SOPS secret for Tailscale auth key
-  sops.secrets.tailscale_ser6 = {
+  sops.secrets.tailscale_auth_key = {
     sopsFile = ../../sops/secrets.yaml;
   };
 
