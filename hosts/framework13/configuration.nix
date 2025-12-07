@@ -21,7 +21,7 @@
   };
 
   # Configure Tailscale to use auth key for automatic connection
-  services.tailscale.authKeyFile = config.sops.secrets.tailscale_framework13.path;
+  services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;
 
   system.stateVersion = "24.11";
 }
