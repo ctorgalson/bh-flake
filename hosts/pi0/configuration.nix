@@ -37,12 +37,17 @@
     sopsFile = ../../sops/appliance/pi0.yaml;
     neededForUsers = true;
   };
+  sops.secrets.wifi_config = {
+    sopsFile = ../../sops/appliance/pi0.yaml;
+  };
 
   # Configure SOPS to use the deployed age key
-  sops.age.keyFile = config.sops.secrets.age_key.path;
+  # Only enable when not building SD image (chicken-egg problem on first boot)
+  sops.age.keyFile = lib.mkIf (!(config.system.build ? sdImage)) config.sops.secrets.age_key.path;
 
   # Configure Tailscale to use auth key for automatic connection
-  services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+  # Only enable when not building SD image
+  services.tailscale.authKeyFile = lib.mkIf (!(config.system.build ? sdImage)) config.sops.secrets.tailscale_auth_key.path;
 
   # Auto-update system from flake (TODO: fix to use github URL)
   system.autoUpgrade = {
@@ -90,9 +95,23 @@
   # Disable unnecessary services
   services.xserver.enable = false;
 
-  # Enable networking (NetworkManager instead of wireless)
-  networking.networkmanager.enable = true;
-  networking.wireless.enable = lib.mkForce false;
+  # Enable WiFi with wpa_supplicant for initial connection
+  networking.wireless = {
+    enable = true;
+    userControlled.enable = true;
+    # Include WiFi credentials from temp file during SD image build
+    # The build script prompts for credentials and creates /tmp/pi0-wifi.conf
+    extraConfig = lib.mkIf (config.system.build ? sdImage) (
+      builtins.readFile /tmp/pi0-wifi.conf
+    );
+  };
+
+  # Enable NetworkManager for ethernet management
+  # Configure it to ignore WiFi (managed by wpa_supplicant)
+  networking.networkmanager = {
+    enable = true;
+    unmanaged = [ "wlan0" ];
+  };
 
   # Set timezone
   time.timeZone = "America/Toronto";

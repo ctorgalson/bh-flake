@@ -17,10 +17,23 @@
   # Kernel configuration
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
-  # Don't include unnecessary display/HDMI modules for headless appliance
+  # Load USB ethernet driver for Waveshare ETH/USB HAT (RTL8152B)
+  boot.kernelModules = [ "r8152" ];
+
+  # Include kernel modules for Pi Zero 2 W
+  # Override default list which includes modules not in rpi kernel
   boot.initrd.availableKernelModules = lib.mkForce [
+    # USB support
     "usbhid"
     "usb_storage"
+
+    # Display/console support for debugging
+    "vc4"
+    "bcm2835_dma"
+    "i2c_bcm2835"
+
+    # Network
+    "cfg80211"  # WiFi
   ];
 
   # Enable GPU firmware
