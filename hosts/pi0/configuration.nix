@@ -95,9 +95,14 @@
   # Disable unnecessary services
   services.xserver.enable = false;
 
-  # Enable WiFi with wpa_supplicant for initial connection
+  # Auto-login on console for bootstrap (only during SD image build)
+  # After colmena deploy, this is disabled and password auth is required
+  services.getty.autologinUser = lib.mkIf (config.system.build ? sdImage) "ctorgalson";
+
+  # Enable WiFi with wpa_supplicant for bootstrap only
+  # After colmena deploy, WiFi is disabled and Tailscale is used exclusively
   networking.wireless = {
-    enable = true;
+    enable = lib.mkIf (config.system.build ? sdImage) true;
     userControlled.enable = true;
     # Include WiFi credentials from temp file during SD image build
     # The build script prompts for credentials and creates /tmp/pi0-wifi.conf

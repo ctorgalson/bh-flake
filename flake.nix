@@ -35,6 +35,11 @@
       url = "github:zhaofengli/colmena";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-raspberrypi = {
+      url = "github:nvmd/nixos-raspberrypi";
+      # Don't follow our nixpkgs - this flake needs its own custom fork
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -113,15 +118,19 @@
         executive14 = mkHost "executive14" "desktop" "ctorgalson";
 
         # Raspberry Pi Zero 2 W - network appliance
-        # TODO: If adding more appliances, make mkHost architecture-aware to handle
-        # different architectures (aarch64-linux, etc.) and optional role/username.
-        # This would allow: pi0 = mkHost "pi0" null null "aarch64-linux";
-        pi0 = nixpkgs.lib.nixosSystem {
+        # Uses nvmd/nixos-raspberrypi for hardware abstraction
+        pi0 = inputs.nixos-raspberrypi.lib.nixosSystem {
           specialArgs = {
             inherit inputs unstable-pkgs system;
+            nixos-raspberrypi = inputs.nixos-raspberrypi;
           };
-          system = "aarch64-linux";
           modules = [
+            {
+              imports = with inputs.nixos-raspberrypi.nixosModules; [
+                raspberry-pi-02.base
+                sd-image
+              ];
+            }
             sops-nix.nixosModules.sops
             ./hosts/pi0
           ];
@@ -151,6 +160,11 @@
             system = "x86_64-linux"; # Build system
           };
           imports = [
+            {
+              imports = with inputs.nixos-raspberrypi.nixosModules; [
+                raspberry-pi-02.base
+              ];
+            }
             sops-nix.nixosModules.sops
             ./hosts/pi0
           ];

@@ -16,23 +16,42 @@ trap cleanup EXIT INT TERM
 
 echo "Building NixOS SD card image for Raspberry Pi Zero 2 W..."
 echo ""
-
-# Prompt for WiFi credentials
-read -p "WiFi SSID: " WIFI_SSID
-read -sp "WiFi Password: " WIFI_PASSWORD
+echo "This image includes bootstrap features for easy first-boot setup:"
+echo "  - Auto-login on console as ctorgalson"
+echo "  - SSH enabled with key authentication"
+echo "  - WiFi support (optional - ethernet preferred)"
+echo ""
+echo "After first boot, use 'colmena apply --on pi0' to deploy the"
+echo "final configuration (disables auto-login and WiFi)."
 echo ""
 
+# Prompt for WiFi credentials (optional fallback)
+read -p "WiFi SSID (press Enter to skip): " WIFI_SSID
+if [ -n "$WIFI_SSID" ]; then
+  read -sp "WiFi Password: " WIFI_PASSWORD
+  echo ""
+else
+  WIFI_PASSWORD=""
+fi
+
 # Create wpa_supplicant config
-cat > "$WIFI_CONF" <<EOF
+if [ -n "$WIFI_SSID" ]; then
+  cat > "$WIFI_CONF" <<EOF
 network={
   ssid="$WIFI_SSID"
   psk="$WIFI_PASSWORD"
 }
 EOF
-
-echo ""
-echo "Building image with WiFi credentials..."
-echo "This may take a while..."
+  echo ""
+  echo "Building image with WiFi credentials..."
+  echo "This may take a while..."
+else
+  # Create empty config if no WiFi credentials provided
+  touch "$WIFI_CONF"
+  echo ""
+  echo "Building image without WiFi (ethernet only)..."
+  echo "This may take a while..."
+fi
 
 # Build the SD card image with impure flag to access temp file
 nix build .#nixosConfigurations.pi0.config.system.build.sdImage --impure
