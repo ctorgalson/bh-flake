@@ -131,6 +131,7 @@
           modules = [
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             sops-nix.nixosModules.sops
+            ./hosts/pi0/sd-image.nix  # SD image firmware config extension
             ./hosts/pi0
             {
               nixpkgs.pkgs = crossPkgs; # Configure cross compilation
