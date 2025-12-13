@@ -183,7 +183,7 @@
   };
 
   # SD Image configuration (only applies during image build)
-  sdImage = {
+  sdImage = lib.mkIf (config.system.build ? sdImage) {
     # Disable compression (we flash immediately, no need to compress)
     compressImage = false;
     imageName = "pi0.img";
