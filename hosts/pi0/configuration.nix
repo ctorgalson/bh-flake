@@ -114,12 +114,12 @@
       bindkey "^[[A" history-search-backward  # Up arrow
       bindkey "^[[B" history-search-forward   # Down arrow
     '';
+  };
 
-    # Basic prompt
-    promptInit = ''
-      autoload -U colors && colors
-      PROMPT='%F{green}%n@%m%f:%F{blue}%~%f%# '
-    '';
+  # Starship prompt (default config)
+  programs.starship = {
+    enable = true;
+    settings = {};
   };
 
   # Disable unnecessary services

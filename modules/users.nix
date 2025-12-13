@@ -34,10 +34,13 @@ in
 
     # Deployment user configuration
     (lib.mkIf cfg.enableDeployment {
-      # Colmena deployment user (authentication via Tailscale SSH)
+      # Colmena deployment user (authentication via SSH key)
       users.users.bh = {
         description = "Colmena deployment user";
         isNormalUser = true;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARjoOuzp5vkg05GYXcvGSqwH+TPMtEWjWx6AQo+QofY xps13-9350 / 2023-08-07"
+        ];
         # Note: bh is NOT in wheel group - only has limited passwordless sudo for deployment
       };
 
