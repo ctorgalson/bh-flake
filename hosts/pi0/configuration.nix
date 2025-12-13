@@ -182,21 +182,6 @@
     algorithm = "zstd";
   };
 
-  # SD Image configuration (only applies during image build)
-  sdImage = lib.mkIf (config.system.build ? sdImage) {
-    # Disable compression (we flash immediately, no need to compress)
-    compressImage = false;
-    imageName = "pi0.img";
-
-    # Give up VRAM for more Free System Memory
-    extraFirmwareConfig = {
-      # Disable camera which automatically reserves 128MB VRAM
-      start_x = 0;
-      # Reduce allocation of VRAM to 16MB minimum
-      gpu_mem = 16;
-    };
-  };
-
   # System state version
   system.stateVersion = "25.05";
 }

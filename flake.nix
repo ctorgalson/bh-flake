@@ -134,6 +134,16 @@
             ./hosts/pi0
             {
               nixpkgs.pkgs = crossPkgs; # Configure cross compilation
+
+              # SD Image specific configuration
+              sdImage = {
+                compressImage = false;
+                imageName = "pi0.img";
+                extraFirmwareConfig = {
+                  start_x = 0;
+                  gpu_mem = 16;
+                };
+              };
             }
           ];
         };
