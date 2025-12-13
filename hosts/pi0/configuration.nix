@@ -98,6 +98,16 @@
   # Disable unnecessary services
   services.xserver.enable = false;
 
+  # Disable USB autosuspend for ethernet adapter (prevents disconnections)
+  # The Waveshare ETH/USB HAT uses RTL8152B chip which can go to sleep
+  services.udev.extraRules = ''
+    # Disable autosuspend for Realtek USB ethernet (Waveshare HAT)
+    ACTION=="add", SUBSYSTEM=="usb", DRIVER=="r8152", ATTR{power/autosuspend}="-1"
+  '';
+
+  # Keep CPU governor at performance to prevent power-saving issues
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+
   # Auto-login on console for bootstrap (only during SD image build)
   # After colmena deploy, this is disabled and password auth is required
   services.getty.autologinUser = lib.mkIf (config.system.build ? sdImage) "ctorgalson";
