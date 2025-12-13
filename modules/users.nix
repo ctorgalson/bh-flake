@@ -30,6 +30,9 @@ in
         ];
       };
       # Note: wheel group users require password for sudo (standard security)
+
+      # During SD image build, allow passwordless sudo since SOPS password isn't available
+      security.sudo.wheelNeedsPassword = lib.mkIf (config.system.build ? sdImage) false;
     })
 
     # Deployment user configuration
