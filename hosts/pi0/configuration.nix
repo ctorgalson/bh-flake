@@ -21,6 +21,19 @@
   # Hostname
   networking.hostName = "pi0";
 
+  # Enable mDNS for .local hostname discovery
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+      workstation = true;
+    };
+  };
+
   # Enable Tailscale
   services.tailscale.enable = true;
 
@@ -68,7 +81,9 @@
     vim
     htop
     curl
-    wol
+    kitty.terminfo  # Support for Kitty terminal
+    # Use ether-wake from net-tools (cross-compiles better than wol)
+    nettools
     (pkgs.writeScriptBin "wake" ''
       #!/usr/bin/env bash
 
@@ -84,13 +99,40 @@
           ;;
       esac
 
-      ${pkgs.wol}/bin/wol "$MAC"
+      ${pkgs.nettools}/bin/ether-wake "$MAC"
       echo "Sent WOL packet to $HOST ($MAC)"
     '')
   ];
 
-  # Enable zsh (required since ctorgalson user uses zsh shell)
-  programs.zsh.enable = true;
+  # Enable zsh with basic functionality
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    # Vim-style key bindings and proper terminal support
+    interactiveShellInit = ''
+      # Vim key bindings
+      bindkey -v
+
+      # Fix common key bindings that should work in both modes
+      bindkey "^[[3~" delete-char        # Delete
+      bindkey "^[[H" beginning-of-line   # Home
+      bindkey "^[[F" end-of-line         # End
+      bindkey "^?" backward-delete-char  # Backspace
+
+      # History search with vim bindings
+      bindkey "^[[A" history-search-backward  # Up arrow
+      bindkey "^[[B" history-search-forward   # Down arrow
+    '';
+
+    # Basic prompt
+    promptInit = ''
+      autoload -U colors && colors
+      PROMPT='%F{green}%n@%m%f:%F{blue}%~%f%# '
+    '';
+  };
 
   # Disable unnecessary services
   services.xserver.enable = false;
@@ -118,11 +160,42 @@
     unmanaged = [ "wlan0" ];
   };
 
+  # Disable USB autosuspend for ethernet adapter (prevents disconnections)
+  # The Waveshare ETH/USB HAT uses RTL8152B chip which can go to sleep
+  services.udev.extraRules = ''
+    # Disable autosuspend for Realtek USB ethernet (Waveshare HAT)
+    ACTION=="add", SUBSYSTEM=="usb", DRIVER=="r8152", ATTR{power/autosuspend}="-1"
+  '';
+
+  # Keep CPU governor at performance to prevent power-saving issues
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+
   # Set timezone
   time.timeZone = "America/Toronto";
 
   # Basic locale settings
   i18n.defaultLocale = "en_CA.UTF-8";
+
+  # zRAM swap (Pi Zero 2 W only has 512MB RAM)
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
+  # SD Image configuration (only applies during image build)
+  sdImage = {
+    # Disable compression (we flash immediately, no need to compress)
+    compressImage = false;
+    imageName = "pi0.img";
+
+    # Give up VRAM for more Free System Memory
+    extraFirmwareConfig = {
+      # Disable camera which automatically reserves 128MB VRAM
+      start_x = 0;
+      # Reduce allocation of VRAM to 16MB minimum
+      gpu_mem = 16;
+    };
+  };
 
   # System state version
   system.stateVersion = "25.05";

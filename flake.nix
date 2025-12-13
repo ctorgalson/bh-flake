@@ -36,9 +36,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-raspberrypi = {
-      url = "github:nvmd/nixos-raspberrypi";
-      # Don't follow our nixpkgs - this flake needs its own custom fork
+    nixos-pi-zero-2 = {
+      url = "github:ctorgalson/nixos-pi-zero-2/2025/12/feature/update-for-nixos-25-11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -118,21 +118,23 @@
         executive14 = mkHost "executive14" "desktop" "ctorgalson";
 
         # Raspberry Pi Zero 2 W - network appliance
-        # Uses nvmd/nixos-raspberrypi for hardware abstraction
-        pi0 = inputs.nixos-raspberrypi.lib.nixosSystem {
+        # Uses simpler approach based on plmercereau/nixos-pi-zero-2
+        pi0 = let
+          crossPkgs = import nixpkgs {
+            localSystem = system;
+            crossSystem = "aarch64-linux";
+          };
+        in nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs unstable-pkgs system;
-            nixos-raspberrypi = inputs.nixos-raspberrypi;
           };
           modules = [
-            {
-              imports = with inputs.nixos-raspberrypi.nixosModules; [
-                raspberry-pi-02.base
-                sd-image
-              ];
-            }
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             sops-nix.nixosModules.sops
             ./hosts/pi0
+            {
+              nixpkgs.pkgs = crossPkgs; # Configure cross compilation
+            }
           ];
         };
       };
@@ -160,11 +162,6 @@
             system = "x86_64-linux"; # Build system
           };
           imports = [
-            {
-              imports = with inputs.nixos-raspberrypi.nixosModules; [
-                raspberry-pi-02.base
-              ];
-            }
             sops-nix.nixosModules.sops
             ./hosts/pi0
           ];

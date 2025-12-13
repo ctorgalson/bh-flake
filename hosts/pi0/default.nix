@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./sd-image.nix
     ./hardware-configuration.nix
     ./configuration.nix
   ];
