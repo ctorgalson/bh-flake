@@ -112,24 +112,12 @@
   # After colmena deploy, this is disabled and password auth is required
   services.getty.autologinUser = lib.mkIf (config.system.build ? sdImage) "ctorgalson";
 
-  # Enable WiFi with wpa_supplicant for bootstrap only
-  # After colmena deploy, WiFi is disabled and Tailscale is used exclusively
-  networking.wireless = {
-    enable = lib.mkIf (config.system.build ? sdImage) true;
-    userControlled.enable = true;
-    # Include WiFi credentials from temp file during SD image build
-    # The build script prompts for credentials and creates /tmp/pi0-wifi.conf
-    extraConfig = lib.mkIf (config.system.build ? sdImage) (
-      builtins.readFile /tmp/pi0-wifi.conf
-    );
-  };
+  # WiFi disabled - not needed for ethernet-only appliance
+  # (Also incompatible with WPA3 networks)
+  networking.wireless.enable = false;
 
   # Enable NetworkManager for ethernet management
-  # Configure it to ignore WiFi (managed by wpa_supplicant)
-  networking.networkmanager = {
-    enable = true;
-    unmanaged = [ "wlan0" ];
-  };
+  networking.networkmanager.enable = true;
 
   # Set timezone
   time.timeZone = "America/Toronto";

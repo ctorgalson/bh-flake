@@ -1,60 +1,22 @@
 #!/usr/bin/env bash
 set -e
 
-WIFI_CONF="/tmp/pi0-wifi.conf"
-
-# Cleanup function
-cleanup() {
-  if [ -f "$WIFI_CONF" ]; then
-    rm -f "$WIFI_CONF"
-    echo "Cleaned up temporary WiFi config"
-  fi
-}
-
-# Set trap to ensure cleanup on exit
-trap cleanup EXIT INT TERM
-
 echo "Building NixOS SD card image for Raspberry Pi Zero 2 W..."
 echo ""
 echo "This image includes bootstrap features for easy first-boot setup:"
 echo "  - Auto-login on console as ctorgalson"
 echo "  - SSH enabled with key authentication"
-echo "  - WiFi support (optional - ethernet preferred)"
+echo "  - Ethernet-only (WiFi disabled)"
 echo ""
 echo "After first boot, use 'colmena apply --on pi0' to deploy the"
-echo "final configuration (disables auto-login and WiFi)."
+echo "final configuration (disables auto-login)."
+echo ""
+echo "Building image..."
+echo "This may take a while..."
 echo ""
 
-# Prompt for WiFi credentials (optional fallback)
-read -p "WiFi SSID (press Enter to skip): " WIFI_SSID
-if [ -n "$WIFI_SSID" ]; then
-  read -sp "WiFi Password: " WIFI_PASSWORD
-  echo ""
-else
-  WIFI_PASSWORD=""
-fi
-
-# Create wpa_supplicant config
-if [ -n "$WIFI_SSID" ]; then
-  cat > "$WIFI_CONF" <<EOF
-network={
-  ssid="$WIFI_SSID"
-  psk="$WIFI_PASSWORD"
-}
-EOF
-  echo ""
-  echo "Building image with WiFi credentials..."
-  echo "This may take a while..."
-else
-  # Create empty config if no WiFi credentials provided
-  touch "$WIFI_CONF"
-  echo ""
-  echo "Building image without WiFi (ethernet only)..."
-  echo "This may take a while..."
-fi
-
-# Build the SD card image with impure flag to access temp file
-nix build .#nixosConfigurations.pi0.config.system.build.sdImage --impure
+# Build the SD card image
+nix build .#nixosConfigurations.pi0.config.system.build.sdImage
 
 # Show the result
 echo ""
