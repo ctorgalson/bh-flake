@@ -21,19 +21,6 @@
   # Hostname
   networking.hostName = "pi0";
 
-  # Enable mDNS for .local hostname discovery
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      domain = true;
-      workstation = true;
-    };
-  };
-
   # Enable Tailscale
   services.tailscale.enable = true;
 
