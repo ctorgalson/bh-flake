@@ -92,35 +92,8 @@
   ];
 
 
-  # Enable zsh with basic functionality
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    # Vim-style key bindings and proper terminal support
-    interactiveShellInit = ''
-      # Vim key bindings
-      bindkey -v
-
-      # Fix common key bindings that should work in both modes
-      bindkey "^[[3~" delete-char        # Delete
-      bindkey "^[[H" beginning-of-line   # Home
-      bindkey "^[[F" end-of-line         # End
-      bindkey "^?" backward-delete-char  # Backspace
-
-      # History search with vim bindings
-      bindkey "^[[A" history-search-backward  # Up arrow
-      bindkey "^[[B" history-search-forward   # Down arrow
-    '';
-  };
-
-  # Starship prompt (default config)
-  programs.starship = {
-    enable = true;
-    settings = {};
-  };
+  # Enable zsh (required since ctorgalson user uses zsh shell)
+  programs.zsh.enable = true;
 
   # Disable unnecessary services
   services.xserver.enable = false;
@@ -147,16 +120,6 @@
     enable = true;
     unmanaged = [ "wlan0" ];
   };
-
-  # Disable USB autosuspend for ethernet adapter (prevents disconnections)
-  # The Waveshare ETH/USB HAT uses RTL8152B chip which can go to sleep
-  services.udev.extraRules = ''
-    # Disable autosuspend for Realtek USB ethernet (Waveshare HAT)
-    ACTION=="add", SUBSYSTEM=="usb", DRIVER=="r8152", ATTR{power/autosuspend}="-1"
-  '';
-
-  # Keep CPU governor at performance to prevent power-saving issues
-  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   # Set timezone
   time.timeZone = "America/Toronto";
