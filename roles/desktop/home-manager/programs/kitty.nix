@@ -50,12 +50,13 @@ in
         tab_bar_style = "powerline";
         tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{tab.active_oldest_wd.split('/')[-1]}";
         # Rather than unsetting the default $TERM value, xterm-kitty, run this
-        # against any server that complains: 
+        # against any server that complains:
         #
         # infocmp -x | ssh YOUR-SERVER -- tic -x -
         #
         # @see https://ghostty.org/docs/help/terminfo
-        # term = "xterm";
+        # For minimal systems without kitty terminfo (like pi0), use xterm-256color
+        term = "xterm-256color";
         update_check_interval = 0;
         window_padding_width = 2;
       };

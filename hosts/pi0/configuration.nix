@@ -81,7 +81,7 @@
     vim
     htop
     curl
-    kitty.terminfo  # Support for Kitty terminal
+    ncurses  # Includes common terminal definitions
     # Use ether-wake from net-tools (cross-compiles better than wol)
     nettools
     (pkgs.writeScriptBin "wake" ''
@@ -103,6 +103,7 @@
       echo "Sent WOL packet to $HOST ($MAC)"
     '')
   ];
+
 
   # Enable zsh with basic functionality
   programs.zsh = {
