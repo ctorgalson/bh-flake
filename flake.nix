@@ -165,7 +165,7 @@
         # ARM appliance (aarch64-linux) - pi0 doesn't use desktop role
         pi0 = { name, nodes, ... }: {
           deployment = {
-            targetHost = "pi0";
+            targetHost = "192.168.68.61";  # TODO: Change back to "pi0" after first deployment
             targetUser = "bh";
             buildOnTarget = false; # Build on deployment machine (x86_64)
           };
