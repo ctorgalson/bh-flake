@@ -48,4 +48,15 @@
       filter = "*2837*"; # BCM2837 is the SoC for Pi Zero 2 W
     };
   };
+
+  # File systems for deployed system (not SD image build)
+  fileSystems."/" = lib.mkIf (!(config.system.build ? sdImage)) {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot/firmware" = lib.mkIf (!(config.system.build ? sdImage)) {
+    device = "/dev/disk/by-label/FIRMWARE";
+    fsType = "vfat";
+  };
 }
