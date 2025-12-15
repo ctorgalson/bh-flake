@@ -40,6 +40,13 @@
             installation_mode = "force_installed";
           };
 
+          # Firefox Multi-Account Containers.
+          "@testpilot-containers" = {
+            default_area = "menupanel";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
           # Obsidian Web Clipper.
           "clipper@obsidian.md" = {
             default_area = "menupanel";
