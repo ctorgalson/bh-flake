@@ -60,7 +60,7 @@
             ANRT = {
               color = "blue";
               icon = "briefcase";
-              id = 0;
+              id = 1;
               name = "ANRT";
             };
             OBS = {
