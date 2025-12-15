@@ -12,6 +12,7 @@
         "en"
         "fr"
       ];
+
       policies = {
         BlockAboutConfig = true;
 
@@ -46,6 +47,38 @@
             installation_mode = "force_installed";
             private_browsing = true;
           };
+        };
+      };
+
+      profiles = {
+        home = {
+          id = 0;
+          name = "Home";
+        };
+        work = {
+          containers = {
+            ANRT = {
+              color = "blue";
+              icon = "briefcase";
+              id = 0;
+              name = "ANRT";
+            };
+            OBS = {
+              color = "orange";
+              icon = "cart";
+              id = 2;
+              name = "OBS";
+            };
+            UL = {
+              color = "green";
+              icon = "tree";
+              id = 2;
+              name = "UL";
+            };
+          };
+          containersForce = true;
+          id = 1;
+          name = "Work";
         };
       };
     };
