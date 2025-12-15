@@ -9,6 +9,9 @@
     enable = true;
   };
 
+  # For floorp.
+  services.gnome.gnome-browser-connector.enable = true;
+
   services.journald.extraConfig = ''
     SystemMaxUse=500M
     MaxRetentionSec=7d
@@ -23,15 +26,15 @@
     pulse.enable = true;
   };
 
-  services.ollama = {
-    enable = true;
-    environmentVariables = {
-      OLLAMA_KEEP_ALIVE = "10m"; # Unload models after 10 minutes of inactivity.
-    };
-    loadModels = [
-      "qwen2.5-coder:3b"
-    ];
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   environmentVariables = {
+  #     OLLAMA_KEEP_ALIVE = "10m"; # Unload models after 10 minutes of inactivity.
+  #   };
+  #   loadModels = [
+  #     "qwen2.5-coder:3b"
+  #   ];
+  # };
 
   services.printing.enable = true;
 

@@ -6,6 +6,7 @@
     ./eza.nix
     ./fastfetch.nix
     ./firefox.nix
+    ./floorp.nix
     ./fzf.nix
     ./git.nix
     ./kitty.nix
