@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   config = {
@@ -21,42 +21,48 @@
         ExtensionSettings = {
           # 1password.
           "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
-            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # AXE Devtools.
           "@axe-firefox-devtools" = {
-            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/axe-devtools/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # Bitwarden.
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Catppuccin Latte - Blue.
+          "catppuccin-latte-blue@theme.mozilla.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-latte-blue-theme/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Catppuccin Mocha - Blue.
+          "catppuccin-mocha-blue@theme.mozilla.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-blue-theme/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # Firefox Multi-Account Containers.
           "@testpilot-containers" = {
-            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # Obsidian Web Clipper.
           "clipper@obsidian.md" = {
-            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/web-clipper-obsidian/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # uBlock Origin
           "uBlock0@raymondhill.net" = {
-            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
             installation_mode = "force_installed";
             private_browsing = true;
@@ -68,6 +74,9 @@
         home = {
           id = 0;
           name = "Home";
+          settings = {
+            "extensions.activeThemeID" = "catppuccin-mocha-blue@theme.mozilla.org";
+          };
         };
         work = {
           containers = {
@@ -93,6 +102,9 @@
           containersForce = true;
           id = 1;
           name = "Work";
+          settings = {
+            "extensions.activeThemeID" = "catppuccin-latte-blue@theme.mozilla.org";
+          };
         };
       };
     };
