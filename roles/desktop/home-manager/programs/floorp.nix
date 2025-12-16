@@ -38,13 +38,13 @@
           };
 
           # Catppuccin Latte - Blue.
-          "catppuccin-latte-blue@theme.mozilla.org" = {
+          "{catppuccin-latte-blue@theme}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-latte-blue-theme/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # Catppuccin Mocha - Blue.
-          "catppuccin-mocha-blue@theme.mozilla.org" = {
+          "{catppuccin-mocha-blue@theme}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-blue-theme/latest.xpi";
             installation_mode = "force_installed";
           };
@@ -75,7 +75,7 @@
           id = 0;
           name = "Home";
           settings = {
-            "extensions.activeThemeID" = "catppuccin-mocha-blue@theme.mozilla.org";
+            "extensions.activeThemeID" = "{catppuccin-mocha-blue@theme}";
           };
         };
         work = {
@@ -103,7 +103,7 @@
           id = 1;
           name = "Work";
           settings = {
-            "extensions.activeThemeID" = "catppuccin-latte-blue@theme.mozilla.org";
+            "extensions.activeThemeID" = "{catppuccin-latte-blue@theme}";
           };
         };
       };
