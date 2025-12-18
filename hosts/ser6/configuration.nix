@@ -243,8 +243,17 @@
     sopsFile = ../../sops/workstation/ser6.yaml;
   };
 
-  # Configure Tailscale to use auth key for automatic connection
-  services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+  services.tailscale = {
+    # Configure Tailscale to use auth key for automatic connection.
+    authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+
+    # Enable Tailscale exit node functionality.
+    useRoutingFeatures = "server";
+
+    extraSetFlags = [
+      "--advertise-exit-node"
+    ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
