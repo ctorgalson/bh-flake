@@ -41,6 +41,12 @@
   #boot.kernelParams = [ "video=2880x1620@60" "quiet" "splash" ];
   #boot.kernelParams = [ "quiet" "splash" ];
 
+  # Enable IP forwarding for Tailscale exit node
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
+
   # Load AMD GPU driver early for proper Plymouth display.
   boot.initrd.kernelModules = [ "amdgpu" ];
 
