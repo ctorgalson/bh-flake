@@ -24,7 +24,9 @@
         "pi0" = {
           hostname = "pi0";
           user = "bh";
-          strictHostKeyChecking = "no";
+          extraOptions = {
+            StrictHostKeyChecking = "no";
+          };
         };
         "r2" = {
           hostname = "135.181.200.94";
