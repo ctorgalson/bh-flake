@@ -28,7 +28,7 @@
         esac
 
         echo "Sending WakeOnLAN packet to $HOSTNAME ($MAC_ADDRESS) via pi0..."
-        tailscale ssh pi0 "wakeonlan $MAC_ADDRESS"
+        ssh pi0 "wakeonlan $MAC_ADDRESS"
 
         if [ $? -eq 0 ]; then
           echo "WakeOnLAN packet sent successfully"
