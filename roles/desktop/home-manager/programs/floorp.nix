@@ -38,12 +38,16 @@
           };
 
           # Catppuccin Latte - Blue.
+          #
+          # TODO: do this in a way that works...
           "{68f3538d-3881-45f4-aa73-288b010b39a1}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-latte-blue-theme/latest.xpi";
             installation_mode = "force_installed";
           };
 
           # Catppuccin Mocha - Blue.
+          #
+          # TODO: do this in a way that works...
           "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-blue-theme/latest.xpi";
             installation_mode = "force_installed";
@@ -68,6 +72,8 @@
             private_browsing = true;
           };
         };
+
+        OfferToSaveLogins = false;
       };
 
       profiles = {
@@ -102,6 +108,8 @@
           containersForce = true;
           id = 1;
           name = "Work";
+          # Todo: search engines
+          # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.search.engines
           settings = {
             "extensions.activeThemeID" = "{68f3538d-3881-45f4-aa73-288b010b39a1}";
           };
