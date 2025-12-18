@@ -12,6 +12,7 @@
     ./opencode
     ./timereport.nix
     ./timewarrior
+    ./wakehost.nix
     ./workfox.nix
   ];
 }
