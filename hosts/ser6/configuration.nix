@@ -248,7 +248,7 @@
     authKeyFile = config.sops.secrets.tailscale_auth_key.path;
 
     # Enable Tailscale exit node functionality.
-    useRoutingFeatures = "server";
+    useRoutingFeatures = lib.mkForce "server";
 
     extraSetFlags = [
       "--advertise-exit-node"
