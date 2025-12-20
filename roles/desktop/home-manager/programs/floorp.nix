@@ -80,6 +80,29 @@
         home = {
           id = 0;
           name = "Home";
+          search = {
+            default = "ddg";
+            force = true;
+            engines = {
+              nix-packages = {
+                name = "Nix Packages";
+                urls = [{
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    { name = "type"; value = "packages"; }
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }];
+
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@np" ];
+              };
+            };
+            order = [
+              "ddg"
+              "google"
+            ];
+          };
           settings = {
             "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
           };
@@ -110,6 +133,29 @@
           name = "Work";
           # Todo: search engines
           # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.search.engines
+          search = {
+            default = "ddg";
+            force = true;
+            engines = {
+              nix-packages = {
+                name = "Nix Packages";
+                urls = [{
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    { name = "type"; value = "packages"; }
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }];
+
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@np" ];
+              };
+            };
+            order = [
+              "ddg"
+              "google"
+            ];
+          };
           settings = {
             "extensions.activeThemeID" = "{68f3538d-3881-45f4-aa73-288b010b39a1}";
           };
