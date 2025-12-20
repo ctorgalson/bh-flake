@@ -129,7 +129,7 @@
             shopping = {
               color = "yellow";
               icon = "cart";
-              id = 8;
+              id = 9;
               name = "Shopping";
             };
           };
