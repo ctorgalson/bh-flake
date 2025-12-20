@@ -78,6 +78,61 @@
 
       profiles = {
         home = {
+          containers = {
+            banking = {
+              color = "green";
+              icon = "dollar";
+              id = 1;
+              name = "Banking";
+            };
+            facebook = {
+              color = "blue";
+              icon = "fence";
+              id = 2;
+              name = "Facebook";
+            };
+            google = {
+              color = "pink";
+              icon = "circle";
+              id = 3;
+              name = "Google";
+            };
+            housing = {
+              color = "red";
+              icon = "vacation";
+              id = 4;
+              name = "Housing search";
+            };
+            infrastructure = {
+              color = "purple";
+              icon = "circle";
+              id = 5;
+              name = "Infrastructure";
+            };
+            media = {
+              color = "yellow";
+              icon = "fence";
+              id = 6;
+            };
+            personal = {
+              color = "blue";
+              icon = "fingerprint";
+              id = 7;
+              name = "Personal";
+            };
+            proton = {
+              color = "purple";
+              icon = "circle";
+              id = 8;
+              name = "Proton";
+            };
+            shopping = {
+              color = "yellow";
+              icon = "cart";
+              id = 8;
+              name = "Shopping";
+            };
+          };
           id = 0;
           name = "Home";
           search = {
@@ -95,13 +150,14 @@
                 }];
 
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
+                definedAliases = [ "@nix" ];
               };
             };
             order = [
               "ddg"
               "google"
             ];
+            privateDefault = "ddg";
           };
           settings = {
             "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
@@ -109,23 +165,41 @@
         };
         work = {
           containers = {
-            ANRT = {
+            anrt = {
               color = "blue";
               icon = "briefcase";
               id = 1;
               name = "ANRT";
             };
-            OBS = {
+            obs = {
               color = "orange";
               icon = "cart";
               id = 2;
               name = "OBS";
             };
-            UL = {
+            ul = {
               color = "green";
               icon = "tree";
               id = 3;
               name = "UL";
+            };
+            google = {
+              color = "pink";
+              icon = "circle";
+              id = 4;
+              name = "Google";
+            };
+            infrastructure = {
+              color = "purple";
+              icon = "circle";
+              id = 5;
+              name = "Infrastructure";
+            };
+            lgd = {
+              color = "turquoise";
+              icon = "vacation";
+              id = 6;
+              name = "LGD"
             };
           };
           containersForce = true;
@@ -148,13 +222,14 @@
                 }];
 
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
+                definedAliases = [ "@nix" ];
               };
             };
             order = [
               "ddg"
               "google"
             ];
+            privateDefault = "ddg";
           };
           settings = {
             "extensions.activeThemeID" = "{68f3538d-3881-45f4-aa73-288b010b39a1}";
