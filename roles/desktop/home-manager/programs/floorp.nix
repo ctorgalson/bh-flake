@@ -199,7 +199,7 @@
               color = "turquoise";
               icon = "vacation";
               id = 6;
-              name = "LGD"
+              name = "LGD";
             };
           };
           containersForce = true;
