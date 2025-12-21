@@ -109,10 +109,17 @@
               id = 5;
               name = "Infrastructure";
             };
+            linkedin = {
+              color = "blue";
+              icon = "circle";
+              id = 10;
+              name = "Linkedin";
+            };
             media = {
               color = "yellow";
               icon = "fence";
               id = 6;
+              name = "Media";
             };
             personal = {
               color = "blue";
