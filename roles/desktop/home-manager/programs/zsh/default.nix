@@ -29,6 +29,10 @@
          }
       ];
       shellAliases = {
+        clamstartdaily = "sudo systemctl start av-scan-daily.service";
+        clamstartfull = "sudo systemctl start av-scan-full.service";
+        clamstopdaily = "sudo systemctl stop av-scan-daily.service";
+        clamstopfull = "sudo systemctl stop av-scan-full.service";
         df = "duf";
         diff = "riff";
         dig = "doggo";
