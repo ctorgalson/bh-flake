@@ -49,6 +49,7 @@
       links2                      # cli (text-only) browser
       qrencode                    # QR code generator
       rpi-imager                  # Raspberry Pi imager
+      tldr                        # simplified man pages
       tree                        # list contents of directories in tree form
       unzip                       # Unzip files/directories
       wl-clip-persist             # Wayland clipboard contents "preserver"
@@ -78,6 +79,7 @@
 
       # Nix-specific
       colmena                     # NixOS deployment tool
+      nh                          # Nix cli utilities
       nixos-icons                 # icons of the Nix logo
 
       # VMs
