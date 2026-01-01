@@ -87,17 +87,22 @@
       bind -n F11 previous-window
       bind -n F12 next-window
       bind m choose-tree
-      bind k choose-session
+
+      # Pane Navigation (Vim-like)
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
 
       # Swap Windows
       bind-key -n C-S-Left swap-window -d -t -1
       bind-key -n C-S-Right swap-window -d -t +1
 
-      # Pane Resizing (Vim-like)
-      bind < resize-pane -L 10
-      bind > resize-pane -R 10
-      bind + resize-pane -D 10
-      bind - resize-pane -U 10
+      # Pane Resizing (Arrow keys)
+      bind Left resize-pane -L 2
+      bind Right resize-pane -R 2
+      bind Up resize-pane -U 2
+      bind Down resize-pane -D 2
 
       # Session Management
       bind $ command-prompt 'rename-session %%'
