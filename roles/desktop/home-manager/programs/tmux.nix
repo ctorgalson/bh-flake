@@ -16,7 +16,7 @@
         renumber-windows = on
 
         bind s split-window -v -c "#{pane_current_path}"
-        bind S-s split-window -h -c "#{pane_current_path}"
+        bind S split-window -h -c "#{pane_current_path}"
       '';
       keyMode = "vi";
       mouse = true;
