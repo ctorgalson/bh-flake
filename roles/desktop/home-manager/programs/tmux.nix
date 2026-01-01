@@ -1,10 +1,23 @@
-{ config, pkgs, home, ... }:
+{ pkgs, ... }:
 
 {
   config = {
+    home.packages = with pkgs; [
+      tmuxPlugins.catppuccin
+    ];
+
     programs.tmux = {
+      baseIndex = 1;
       clock24 = true;
       enable = true;
+      escapeTime = 0;
+      extraConfig = ''
+        detach-on-destroy = off
+        renumber-windows = on
+
+        bind s split-window -v -c "#{pane_current_path}"
+        bind S-s split-window -h -c "#{pane_current_path}"
+      '';
       keyMode = "vi";
       mouse = true;
       newSession = true;
@@ -22,8 +35,9 @@
           # # set -ga status-right " #{?#{e|>:#{window_width},95}, %Y-%m-%d,} "
           # # set -ga status-right "#{E:#{@custom_separator}}"
           # '';
-        } 
+        }
       ];
-    }; 
+      terminal = "tmux-256color";
+    };
   };
 }
