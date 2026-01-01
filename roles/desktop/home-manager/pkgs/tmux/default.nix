@@ -12,8 +12,8 @@
       # ==============================================================================
 
       # Prefix configuration
-      unbind C-b
-      set-option -g prefix C-f
+      # unbind C-b
+      # set-option -g prefix C-f
       bind-key a send-prefix
 
       # General behavior
@@ -51,23 +51,24 @@
       # ==============================================================================
 
       # Status Bar
-      set -g status-bg colour233
-      set -g status-fg white
-      set -g status-left '#[fg=green]#S '
-      set -g status-right '#[fg=green]%d.%m. %H:%M'
-      set -g status-left-length 15
-      set -g status-right-length 15
+      # set -g status-bg colour233
+      # set -g status-fg white
+      # set -g status-left '#[fg=green]#S '
+      # set -g status-right '#[fg=green]%d.%m. %H:%M'
+      # set -g status-left-length 15
+      # set -g status-right-length 15
 
       # Window Status
       set-window-option -g window-status-current-style fg=black,bg=green
 
       # Window Styles (Dim inactive windows)
-      set-window-option -g window-style 'bg=#101010'
-      set-window-option -g window-active-style 'bg=#151515'
+      # set-window-option -g window-style 'bg=#101010'
+      # set-window-option -g window-active-style 'bg=#151515'
 
       # Pane Borders
-      set -g pane-border-style fg=colour238,bg=#101010
-      set -g pane-active-border-style fg=colour113,bg=#151515
+      # set -g pane-border-style fg=colour238,bg=#101010
+      # set -g pane-active-border-style fg=colour113,bg=#151515
+      set -g pane-border-lines heavy
 
       # ==============================================================================
       # KEY BINDINGS
