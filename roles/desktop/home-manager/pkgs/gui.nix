@@ -50,13 +50,14 @@
       nerd-fonts.ubuntu-mono      # Enhanced Ubuntu Mono font
 
       # Gnome programs / extensions
+      design                      # 2D CAD
       gnomeExtensions.appindicator
       gnomeExtensions.freon
       gnomeExtensions.gsconnect
       gnomeExtensions.solaar-extension
       gnomeExtensions.tactile
       gnome-clocks
-      gnome-color-manager
+      gnome-color-managerplaplann
       gnome-multi-writer
       gnome-tweaks
       # gnome-extension-manager
