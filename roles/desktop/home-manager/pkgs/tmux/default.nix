@@ -3,6 +3,8 @@
 {
   home.packages = with pkgs; [
     tmux
+    tmuxPlugins.cpu
+    tmuxPlugins.battery
   ];
 
   home.file = {
@@ -50,13 +52,19 @@
       # APPEARANCE
       # ==============================================================================
 
+      # Catppuccin Configuration
+      set -g @catppuccin_flavor "mocha"
+      set -g @catppuccin_window_status_style "rounded"
+
       # Status Bar
-      # set -g status-bg colour233
-      # set -g status-fg white
-      # set -g status-left '#[fg=green]#S '
-      # set -g status-right '#[fg=green]%d.%m. %H:%M'
-      # set -g status-left-length 15
-      # set -g status-right-length 15
+      set -g status-right-length 100
+      set -g status-left-length 100
+      set -g status-left ""
+      set -g status-right "#{E:@catppuccin_status_application}"
+      set -agF status-right "#{E:@catppuccin_status_cpu}"
+      set -ag status-right "#{E:@catppuccin_status_session}"
+      set -ag status-right "#{E:@catppuccin_status_uptime}"
+      set -agF status-right "#{E:@catppuccin_status_battery}"
 
       # Window Status
       set-window-option -g window-status-current-style fg=black,bg=green
@@ -112,6 +120,10 @@
 
       # Catppuccin plugin
       run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
+
+      # Additional plugins for status bar modules
+      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+      run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
     '';
   };
 }
