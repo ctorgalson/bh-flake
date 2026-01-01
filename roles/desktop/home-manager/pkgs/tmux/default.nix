@@ -22,7 +22,7 @@
       set -g base-index 1                  # Start window indexing at 1
       set-option -g renumber-windows on    # Renumber windows when one is closed
       set -g detach-on-destroy off         # Don't detach when killing a session
-      set -g mouse off                     # Disable mouse
+      set -g mouse on                      # Enable mouse support
       set -s escape-time 0                 # No delay for escape key press
       set-option -g display-time 4000      # Duration of status messages
       set-option -g focus-events on        # Focus events enabled for terminals that support it
