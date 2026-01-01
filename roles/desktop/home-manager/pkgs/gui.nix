@@ -57,7 +57,7 @@
       gnomeExtensions.solaar-extension
       gnomeExtensions.tactile
       gnome-clocks
-      gnome-color-managerplaplann
+      gnome-color-manager
       gnome-multi-writer
       gnome-tweaks
       # gnome-extension-manager
