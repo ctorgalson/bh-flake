@@ -1,0 +1,111 @@
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    tmux
+  ];
+
+  home.file = {
+    ".config/tmux/tmux.conf".text = ''
+      # ==============================================================================
+      # CORE SETTINGS
+      # ==============================================================================
+
+      # Prefix configuration
+      unbind C-b
+      set-option -g prefix C-f
+      bind-key a send-prefix
+
+      # General behavior
+      set -g base-index 1                  # Start window indexing at 1
+      set-option -g renumber-windows on    # Renumber windows when one is closed
+      set -g detach-on-destroy off         # Don't detach when killing a session
+      set -g mouse off                     # Disable mouse
+      set -s escape-time 0                 # No delay for escape key press
+      set-option -g display-time 4000      # Duration of status messages
+      set-option -g focus-events on        # Focus events enabled for terminals that support it
+      setw -g mode-keys vi                 # Vi key bindings in copy mode
+      setw -g aggressive-resize on         # Aggressive resize for shared sessions
+      set -g main-pane-width 110           # Main pane width for specific layouts
+
+      # ==============================================================================
+      # TERMINAL & COLOR SUPPORT
+      # ==============================================================================
+
+      set -g default-terminal "tmux-256color"
+      set -ga terminal-overrides ",xterm-kitty:Tc:sitm=\E[3m"
+      set-option -sa terminal-overrides ',xterm-256color:RGB'
+
+      # Undercurl & Underscore colors support
+      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+
+      # ==============================================================================
+      # CLIPBOARD
+      # ==============================================================================
+
+      set -g set-clipboard on
+
+      # ==============================================================================
+      # APPEARANCE
+      # ==============================================================================
+
+      # Status Bar
+      set -g status-bg colour233
+      set -g status-fg white
+      set -g status-left '#[fg=green]#S '
+      set -g status-right '#[fg=green]%d.%m. %H:%M'
+      set -g status-left-length 15
+      set -g status-right-length 15
+
+      # Window Status
+      set-window-option -g window-status-current-style fg=black,bg=green
+
+      # Window Styles (Dim inactive windows)
+      set-window-option -g window-style 'bg=#101010'
+      set-window-option -g window-active-style 'bg=#151515'
+
+      # Pane Borders
+      set -g pane-border-style fg=colour238,bg=#101010
+      set -g pane-active-border-style fg=colour113,bg=#151515
+
+      # ==============================================================================
+      # KEY BINDINGS
+      # ==============================================================================
+
+      # Config Reload
+      unbind r
+      bind r source-file ~/.tmux.conf
+
+      # Window Management (Vim-like splits)
+      bind s split-window -h -c "#{pane_current_path}"
+      bind S split-window -v -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+
+      # Navigation
+      bind -n F11 previous-window
+      bind -n F12 next-window
+      bind m choose-tree
+      bind k choose-session
+
+      # Swap Windows
+      bind-key -n C-S-Left swap-window -d -t -1
+      bind-key -n C-S-Right swap-window -d -t +1
+
+      # Pane Resizing (Vim-like)
+      bind < resize-pane -L 10
+      bind > resize-pane -R 10
+      bind + resize-pane -D 10
+      bind - resize-pane -U 10
+
+      # Session Management
+      bind $ command-prompt 'rename-session %%'
+      bind N new-session
+      # Create new session from current window
+      bind B command-prompt -p "New session name:" "new-session -d -s '%%'; move-window -t '%%:'; switch-client -t '%%'"
+
+      # Catppuccin plugin
+      run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
+    '';
+  };
+}
