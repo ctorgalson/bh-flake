@@ -13,7 +13,6 @@
       # quickgui
       solaar
       spideroak                   # Backups (installed temporarily)
-      sweethome3d.application     # Interior CAD
       calibre                     # Ebook library manager
       # trayscale                   # Unofficial Tailscale GUI
       usbutils
