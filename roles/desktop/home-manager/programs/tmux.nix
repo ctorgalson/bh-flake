@@ -20,7 +20,6 @@
         bind s split-window -v -c "#{pane_current_path}"
         bind S split-window -h -c "#{pane_current_path}"
         bind F run-shell 'tmux list-sessions -F "#{session_name}" | fzf --reverse --prompt="Sessions> " | xargs -r -I{} tmux switch-client -t {}'
-```
       '';
       keyMode = "vi";
       mouse = true;
