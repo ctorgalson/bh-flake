@@ -30,6 +30,10 @@
       setw -g aggressive-resize on         # Aggressive resize for shared sessions
       set -g main-pane-width 110           # Main pane width for specific layouts
 
+      # Window naming - use git root directory name if in git repo, otherwise basename
+      set-option -g automatic-rename on
+      set-option -g automatic-rename-format '#(cd #{pane_current_path}; git rev-parse --show-toplevel 2>/dev/null | xargs basename || basename "#{pane_current_path}")'
+
       # ==============================================================================
       # TERMINAL & COLOR SUPPORT
       # ==============================================================================
