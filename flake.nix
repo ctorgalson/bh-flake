@@ -35,11 +35,6 @@
       url = "github:zhaofengli/colmena";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixos-pi-zero-2 = {
-      url = "github:ctorgalson/nixos-pi-zero-2/2025/12/feature/update-for-nixos-25-11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -116,38 +111,6 @@
         framework13 = mkHost "framework13" "desktop" "ctorgalson";
         ser6 = mkHost "ser6" "desktop" "ctorgalson";
         executive14 = mkHost "executive14" "desktop" "ctorgalson";
-
-        # Raspberry Pi Zero 2 W - network appliance
-        # Uses simpler approach based on plmercereau/nixos-pi-zero-2
-        pi0 = let
-          crossPkgs = import nixpkgs {
-            localSystem = system;
-            crossSystem = "aarch64-linux";
-          };
-        in nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs unstable-pkgs system;
-          };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            sops-nix.nixosModules.sops
-            ./hosts/pi0/sd-image.nix  # SD image firmware config extension
-            ./hosts/pi0
-            {
-              nixpkgs.pkgs = crossPkgs; # Configure cross compilation
-
-              # SD Image specific configuration
-              sdImage = {
-                compressImage = false;
-                imageName = "pi0.img";
-                extraFirmwareConfig = {
-                  start_x = 0;
-                  gpu_mem = 16;
-                };
-              };
-            }
-          ];
-        };
       };
 
       # Colmena deployment configuration
@@ -161,23 +124,6 @@
         framework13 = mkColmenaHost "framework13" "desktop" "ctorgalson" system;
         ser6 = mkColmenaHost "ser6" "desktop" "ctorgalson" system;
         executive14 = mkColmenaHost "executive14" "desktop" "ctorgalson" system;
-
-        # ARM appliance (aarch64-linux) - pi0 doesn't use desktop role
-        pi0 = { name, nodes, ... }: {
-          deployment = {
-            targetHost = "192.168.68.61";  # TODO: Change back to "pi0" after first deployment
-            targetUser = "bh";
-            buildOnTarget = false; # Build on deployment machine (x86_64)
-          };
-          _module.args = {
-            system = "x86_64-linux"; # Build system
-          };
-          imports = [
-            sops-nix.nixosModules.sops
-            ./hosts/pi0
-          ];
-          nixpkgs.hostPlatform = "aarch64-linux";
-        };
       };
     };
 

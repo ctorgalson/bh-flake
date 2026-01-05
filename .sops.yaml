@@ -4,18 +4,11 @@ keys:
   - &host_framework13 age10vwddsxes35azh349ffejrrzcj6wmnz56z5gqzgd764u2j6kw4ls3c8gz0
   - &host_ser6 age1j5qe7lrhcrqyvj4u5n8rzqxy74vn099m6m00qunjvhdfs37zkquq3cp0e4
   - &workstation age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
-  - &appliance age176und3jcdxr4eqgwjw5kls5pdmf695lesu8vyne6dnzjhwfvc3pq7yrk9l
   # - &host_executive14 age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
   # - &host_framework13 age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
   # - &host_ser6 age1kpn9v4jyjf85779a64hh3qrfk6sd6nwzxprs5ezkdkes9x2vxvcqgzklgr
 
 creation_rules:
-  - path_regex: appliance/(pi0).yaml$
-    key_groups:
-      - age:
-          - *appliance
-          - *workstation
-
   - path_regex: workstation/(shared|framework13|ser6).yaml$
     key_groups:
       - age:

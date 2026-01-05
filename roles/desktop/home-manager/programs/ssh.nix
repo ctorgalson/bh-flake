@@ -21,13 +21,6 @@
           user = host.username;
           forwardAgent = true;
         };
-        "pi0" = {
-          hostname = "pi0";
-          user = "bh";
-          extraOptions = {
-            StrictHostKeyChecking = "no";
-          };
-        };
         "r2" = {
           hostname = "135.181.200.94";
           user = host.username;
