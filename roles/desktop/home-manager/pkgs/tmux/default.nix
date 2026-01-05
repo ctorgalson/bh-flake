@@ -65,6 +65,7 @@
       set -g @catppuccin_window_text " #W"                      # Override default #T (title) with #W (name)
       set -g @catppuccin_window_default_text " #W"              # Inactive: just name
       set -g @catppuccin_window_current_text " #{host_short}: #W"  # Active: hostname: name
+      set -g @catppuccin_status_background "none"
 
       # Status Bar
       set -g status-right-length 100
@@ -74,7 +75,6 @@
       set -agF status-right "#{E:@catppuccin_status_load}"
       set -ag status-right "#{E:@catppuccin_status_uptime}"
       set -ag status-right "#{E:@catppuccin_status_date_time}"
-      set -g status-style "bg=transparent"
 
       # Window Status
       # set-window-option -g window-status-current-style fg=black,bg=green
