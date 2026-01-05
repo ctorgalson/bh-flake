@@ -34,6 +34,9 @@
       set-option -g automatic-rename on
       set-option -g automatic-rename-format '#(cd #{pane_current_path}; git rev-parse --show-toplevel 2>/dev/null | xargs basename || basename "#{pane_current_path}")'
 
+      # Hook to ensure new windows get automatic rename enabled
+      set-hook -g after-new-window 'set-window-option automatic-rename on'
+
       # ==============================================================================
       # TERMINAL & COLOR SUPPORT
       # ==============================================================================
@@ -95,7 +98,7 @@
       # Window Management (Vim-like splits)
       bind s split-window -h -c "#{pane_current_path}"
       bind S split-window -v -c "#{pane_current_path}"
-      bind c new-window -c "#{pane_current_path}" \; set-window-option automatic-rename on
+      bind c new-window -c "#{pane_current_path}"
 
       # Navigation
       bind -n F11 previous-window
