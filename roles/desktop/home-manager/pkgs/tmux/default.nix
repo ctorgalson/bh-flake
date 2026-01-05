@@ -74,9 +74,10 @@
       set -agF status-right "#{E:@catppuccin_status_load}"
       set -ag status-right "#{E:@catppuccin_status_uptime}"
       set -ag status-right "#{E:@catppuccin_status_date_time}"
+      set -g status-style "bg=transparent"
 
       # Window Status
-      set-window-option -g window-status-current-style fg=black,bg=green
+      # set-window-option -g window-status-current-style fg=black,bg=green
 
       # Window Styles (Dim inactive windows)
       # set-window-option -g window-style 'bg=#101010'
