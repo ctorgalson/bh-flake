@@ -126,6 +126,10 @@
       # Catppuccin plugin
       run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
 
+      # Override window status format after Catppuccin loads
+      set -g window-status-format "#[fg=colour239,bg=colour235] #I #[fg=colour249,bg=colour235] #W "
+      set -g window-status-current-format "#[fg=colour234,bg=colour31] #I #[fg=colour231,bg=colour31,bold] #{host_short}: #W "
+
       # Additional plugins for status bar modules
       run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
       run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
