@@ -85,7 +85,7 @@
 
       # Config Reload
       unbind r
-      bind r source-file ~/.tmux.conf
+      bind r source-file ~/.config/tmux/tmux.conf
 
       # Window Management (Vim-like splits)
       bind s split-window -h -c "#{pane_current_path}"
