@@ -70,10 +70,6 @@
       set -g status-right-length 100
       set -g status-left-length 100
       set -g status-left ""
-      # set -gF status-right "#{E:@catppuccin_status_cpu}"
-      # set -agF status-right "#{E:@catppuccin_status_load}"
-      set -ag status-right "#{E:@catppuccin_status_uptime}"
-      set -ag status-right "#{E:@catppuccin_status_date_time}"
 
       # Window Status
       # set-window-option -g window-status-current-style fg=black,bg=green
@@ -129,6 +125,10 @@
 
       # Catppuccin plugin
       run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
+
+      # Override Catppuccin's default status-right after it loads
+      set -g status-right "#{E:@catppuccin_status_uptime}"
+      set -ag status-right "#{E:@catppuccin_status_date_time}"
 
       # Additional plugins for status bar modules
       # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
