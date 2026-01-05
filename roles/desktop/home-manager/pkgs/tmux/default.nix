@@ -65,14 +65,13 @@
       set -g @catppuccin_window_text " #W"                      # Override default #T (title) with #W (name)
       set -g @catppuccin_window_default_text " #W"              # Inactive: just name
       set -g @catppuccin_window_current_text " #{host_short}: #W"  # Active: hostname: name
-      set -g @catppuccin_status_background "none"
 
       # Status Bar
       set -g status-right-length 100
       set -g status-left-length 100
       set -g status-left ""
-      set -gF status-right "#{E:@catppuccin_status_cpu}"
-      set -agF status-right "#{E:@catppuccin_status_load}"
+      # set -gF status-right "#{E:@catppuccin_status_cpu}"
+      # set -agF status-right "#{E:@catppuccin_status_load}"
       set -ag status-right "#{E:@catppuccin_status_uptime}"
       set -ag status-right "#{E:@catppuccin_status_date_time}"
 
@@ -132,8 +131,8 @@
       run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
 
       # Additional plugins for status bar modules
-      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
-      run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
+      # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+      # run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
     '';
   };
 }
