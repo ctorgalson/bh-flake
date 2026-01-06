@@ -64,6 +64,7 @@
       totem                       # Gnome Videos
 
       # Graphics tools.
+      eyedropper                  # Pick and format colors
       gimp                        # Raser image editor.
       inkscape-with-extensions    # Vector image editor
 
