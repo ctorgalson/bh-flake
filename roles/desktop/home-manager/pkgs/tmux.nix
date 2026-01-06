@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     tmux
-    tmuxPlugins.ctrlw
+    tmuxPlugins.pain-control
     tmuxPlugins.tmux-fzf
     tmuxPlugins.tmux-which-key
   ];
@@ -114,10 +114,8 @@
       set -ag status-right "#{E:@catppuccin_status_date_time}"
 
       # Additional plugins for status bar modules
-      # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
-      # run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
-      run-shell ${pkgs.tmuxPlugins.ctrlw}/share/tmux-plugins/ctrlw/ctrlw.tmux
       run-shell ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/main.tmux
+      run-shell ${pkgs.tmuxPlugins.tmux-pain-control}/share/tmux-plugins/tmux-pain-control/pain_control.tmux
       run-shell ${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin.sh.tmux
     '';
   };
