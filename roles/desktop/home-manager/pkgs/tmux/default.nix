@@ -58,7 +58,7 @@
 
       # Catppuccin Configuration
       set -g @catppuccin_flavor "mocha"
-      set -g @catppuccin_window_status_style "block"
+      set -g @catppuccin_window_status_style "rounded"
       set -g @catppuccin_window_text " #W"                      # Override default #T (title) with #W (name)
       set -g @catppuccin_window_default_text " #W"              # Inactive: just name
       set -g @catppuccin_window_current_text " #{host_short}: #W"  # Active: hostname: name
