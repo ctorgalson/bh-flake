@@ -69,28 +69,16 @@
       set -g status-left ""
 
       # Pane Borders
-      # set -g pane-border-style fg=colour238,bg=#101010
-      # set -g pane-active-border-style fg=colour113,bg=#151515
-      # set -g pane-border-lines heavy
-      # set -g pane-active-border-style "fg=#fe640b,bg=#fe640b"
+      set -g pane-active-border-style fg=#fe640b,bg=#151515
+      set -g pane-border-lines heavy
 
       # setw -g pane-border-format ""
       # setw -g pane-active-border-style "bg=#{@thm_overlay_0},fg=#{@thm_overlay_0}"
       # setw -g pane-border-style "bg=#{@thm_bg},fg=#{@thm_surface_0}"
       # setw -g pane-border-lines heavy
 
-      set -g @catppuccin_pane_status_enabled "no" # set to "yes" to enable
-      set -g @catppuccin_pane_border_status "off" # set to "yes" to enable
-      set -g @catppuccin_pane_border_style "fg=#{@thm_overlay_0}"
-      set -g @catppuccin_pane_active_border_style "##{?pane_in_mode,fg=#{@thm_lavender},##{?pane_synchronized,fg=#{@thm_mauve},fg=#{@thm_lavender}}}"
-      set -g @catppuccin_pane_left_separator "█"
-      set -g @catppuccin_pane_middle_separator "█"
-      set -g @catppuccin_pane_right_separator "█"
-      set -g @catppuccin_pane_color "#{@thm_green}"
-      set -g @catppuccin_pane_background_color "#{@thm_surface_0}"
-      set -g @catppuccin_pane_default_text "##{b:pane_current_path}"
-      set -g @catppuccin_pane_default_fill "number"
-      set -g @catppuccin_pane_number_position "left" # right, left
+      set -g @catppuccin_pane_status_enabled "yes" # set to "yes" to enable
+      set -g @catppuccin_pane_border_status "yes" # set to "yes" to enable
 
       # ==============================================================================
       # KEY BINDINGS
@@ -109,12 +97,6 @@
       bind -n F11 previous-window
       bind -n F12 next-window
       bind m choose-tree
-
-      # Pane Navigation (Vim-like)
-      # bind h select-pane -L
-      # bind j select-pane -D
-      # bind k select-pane -U
-      # bind l select-pane -R
 
       # Swap Windows
       bind-key -n C-S-Left swap-window -d -t -1
