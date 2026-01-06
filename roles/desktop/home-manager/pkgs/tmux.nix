@@ -5,6 +5,7 @@
     tmux
     tmuxPlugins.ctrlw
     tmuxPlugins.tmux-fzf
+    tmuxPlugins.tmux-which-key
   ];
 
   home.file = {
@@ -117,6 +118,7 @@
       # run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
       run-shell ${pkgs.tmuxPlugins.ctrlw}/share/tmux-plugins/ctrlw/ctrlw.tmux
       run-shell ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/main.tmux
+      run-shell ${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin.sh.tmux
     '';
   };
 }
