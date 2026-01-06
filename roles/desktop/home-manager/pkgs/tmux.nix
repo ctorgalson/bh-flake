@@ -86,19 +86,19 @@
       bind r source-file ~/.config/tmux/tmux.conf
 
       # Navigation
-      bind -n F11 previous-window
-      bind -n F12 next-window
-      bind m choose-tree
+      # bind -n F11 previous-window
+      # bind -n F12 next-window
+      # bind m choose-tree
 
       # Swap Windows
-      bind-key -n C-S-Left swap-window -d -t -1
-      bind-key -n C-S-Right swap-window -d -t +1
+      # bind-key -n C-S-Left swap-window -d -t -1
+      # bind-key -n C-S-Right swap-window -d -t +1
 
       # Pane Resizing (Arrow keys)
-      bind Left resize-pane -L 4
-      bind Right resize-pane -R 4
-      bind Up resize-pane -U 4
-      bind Down resize-pane -D 4
+      # bind Left resize-pane -L 4
+      # bind Right resize-pane -R 4
+      # bind Up resize-pane -U 4
+      # bind Down resize-pane -D 4
 
       # Session Management
       bind $ command-prompt 'rename-session %%'
