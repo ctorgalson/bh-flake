@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     tmux
     tmuxPlugins.ctrlw
+    tmuxPlugins.tmux-fzf
   ];
 
   home.file = {
@@ -115,6 +116,7 @@
       # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
       # run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
       run-shell ${pkgs.tmuxPlugins.ctrlw}/share/tmux-plugins/ctrlw/ctrlw.tmux
+      run-shell ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/tmux-fzf.tmux
     '';
   };
 }
