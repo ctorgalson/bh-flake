@@ -72,14 +72,6 @@
       set -g pane-active-border-style fg=#fe640b,bg=#151515
       set -g pane-border-lines heavy
 
-      # setw -g pane-border-format ""
-      # setw -g pane-active-border-style "bg=#{@thm_overlay_0},fg=#{@thm_overlay_0}"
-      # setw -g pane-border-style "bg=#{@thm_bg},fg=#{@thm_surface_0}"
-      # setw -g pane-border-lines heavy
-
-      set -g @catppuccin_pane_status_enabled "yes" # set to "yes" to enable
-      set -g @catppuccin_pane_border_status "yes" # set to "yes" to enable
-
       # ==============================================================================
       # KEY BINDINGS
       # ==============================================================================
@@ -87,11 +79,6 @@
       # Config Reload
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
-
-      # Window Management (Vim-like splits)
-      # bind s split-window -h -c "#{pane_current_path}"
-      # bind S split-window -v -c "#{pane_current_path}"
-      # bind c new-window -c "#{pane_current_path}"
 
       # Navigation
       bind -n F11 previous-window
@@ -120,6 +107,13 @@
       # Override Catppuccin's default status-right after it loads
       set -g status-right "#{E:@catppuccin_status_uptime}"
       set -ag status-right "#{E:@catppuccin_status_date_time}"
+
+      # setw -g pane-active-border-style "bg=#{@thm_overlay_0},fg=#{@thm_overlay_0}"
+      # setw -g pane-border-style "bg=#{@thm_bg},fg=#fe640b"
+      setw -g pane-border-lines heavy
+
+      set -g @catppuccin_pane_status_enabled "yes" # set to "yes" to enable
+      set -g @catppuccin_pane_border_status "yes" # set to "yes" to enable
 
       # Additional plugins for status bar modules
       # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
