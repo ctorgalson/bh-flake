@@ -115,8 +115,8 @@
 
       # Additional plugins for status bar modules
       run-shell ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/main.tmux
-      run-shell ${pkgs.tmuxPlugins.pain-control}/share/tmux-plugins/tmux-pain-control/pain_control.tmux
-      run-shell ${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin.sh.tmux
+      run-shell ${pkgs.tmuxPlugins.pain-control}/share/tmux-plugins/pain-control/pain_control.tmux
+      # run-shell ${pkgs.tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin.sh.tmux
     '';
   };
 }
