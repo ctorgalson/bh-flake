@@ -41,6 +41,7 @@
       riffdiff                    # diff replacement w/syntax highlighting etc.
 
       # Other cli
+      emoji-picker                # cli emoji picker
       figlet                      # ascii fonts
       diffpdf                     # pdf diff tool
       dmidecode                   # bios info utility
