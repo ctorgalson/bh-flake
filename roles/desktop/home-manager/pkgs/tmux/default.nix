@@ -108,13 +108,6 @@
       set -g status-right "#{E:@catppuccin_status_uptime}"
       set -ag status-right "#{E:@catppuccin_status_date_time}"
 
-      # setw -g pane-active-border-style "bg=#{@thm_overlay_0},fg=#{@thm_overlay_0}"
-      # setw -g pane-border-style "bg=#{@thm_bg},fg=#fe640b"
-      setw -g pane-border-lines heavy
-
-      set -g @catppuccin_pane_status_enabled "yes" # set to "yes" to enable
-      set -g @catppuccin_pane_border_status "yes" # set to "yes" to enable
-
       # Additional plugins for status bar modules
       # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
       # run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
