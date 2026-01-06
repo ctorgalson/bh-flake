@@ -67,7 +67,7 @@
       set -g status-right-length 100
       set -g status-left-length 100
       set -g status-left ""
-      set -g @catppuccin_status_module_bg_color "#1E1E2E
+      set -g @catppuccin_status_module_bg_color "#1E1E2E"
 
       # Pane Borders
       set -g pane-active-border-style "fg=#fe640b,bg=#151515"
