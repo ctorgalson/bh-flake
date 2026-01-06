@@ -72,7 +72,12 @@
       # set -g pane-border-style fg=colour238,bg=#101010
       # set -g pane-active-border-style fg=colour113,bg=#151515
       # set -g pane-border-lines heavy
-      set -g pane-active-border-style "fg=#fe640b,bg=#fe640b"
+      # set -g pane-active-border-style "fg=#fe640b,bg=#fe640b"
+
+      setw -g pane-border-format ""
+      setw -g pane-active-border-style "bg=#{@thm_overlay_0},fg=#{@thm_overlay_0}"
+      setw -g pane-border-style "bg=#{@thm_bg},fg=#{@thm_surface_0}"
+      setw -g pane-border-lines heavy
 
       # ==============================================================================
       # KEY BINDINGS
