@@ -3,8 +3,7 @@
 {
   home.packages = with pkgs; [
     tmux
-    tmuxPlugins.cpu
-    tmuxPlugins.battery
+    tmuxPlugins.ctrlw
   ];
 
   home.file = {
@@ -14,8 +13,6 @@
       # ==============================================================================
 
       # Prefix configuration
-      # unbind C-b
-      # set-option -g prefix C-f
       bind-key a send-prefix
 
       # General behavior
@@ -71,17 +68,11 @@
       set -g status-left-length 100
       set -g status-left ""
 
-      # Window Status
-      # set-window-option -g window-status-current-style fg=black,bg=green
-
-      # Window Styles (Dim inactive windows)
-      # set-window-option -g window-style 'bg=#101010'
-      # set-window-option -g window-active-style 'bg=#151515'
-
       # Pane Borders
       # set -g pane-border-style fg=colour238,bg=#101010
       # set -g pane-active-border-style fg=colour113,bg=#151515
-      set -g pane-border-lines heavy
+      # set -g pane-border-lines heavy
+      set -g pane-active-border-style "fg=#fe640b,bg=#fe640b"
 
       # ==============================================================================
       # KEY BINDINGS
@@ -92,9 +83,9 @@
       bind r source-file ~/.config/tmux/tmux.conf
 
       # Window Management (Vim-like splits)
-      bind s split-window -h -c "#{pane_current_path}"
-      bind S split-window -v -c "#{pane_current_path}"
-      bind c new-window -c "#{pane_current_path}"
+      # bind s split-window -h -c "#{pane_current_path}"
+      # bind S split-window -v -c "#{pane_current_path}"
+      # bind c new-window -c "#{pane_current_path}"
 
       # Navigation
       bind -n F11 previous-window
@@ -102,20 +93,20 @@
       bind m choose-tree
 
       # Pane Navigation (Vim-like)
-      bind h select-pane -L
-      bind j select-pane -D
-      bind k select-pane -U
-      bind l select-pane -R
+      # bind h select-pane -L
+      # bind j select-pane -D
+      # bind k select-pane -U
+      # bind l select-pane -R
 
       # Swap Windows
       bind-key -n C-S-Left swap-window -d -t -1
       bind-key -n C-S-Right swap-window -d -t +1
 
       # Pane Resizing (Arrow keys)
-      bind Left resize-pane -L 2
-      bind Right resize-pane -R 2
-      bind Up resize-pane -U 2
-      bind Down resize-pane -D 2
+      bind Left resize-pane -L 4
+      bind Right resize-pane -R 4
+      bind Up resize-pane -U 4
+      bind Down resize-pane -D 4
 
       # Session Management
       bind $ command-prompt 'rename-session %%'
@@ -133,6 +124,7 @@
       # Additional plugins for status bar modules
       # run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
       # run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
+      run-shell ${pkgs.tmuxPlugins.ctrlw}/share/tmux-plugins/ctrlw/ctrlw.tmux
     '';
   };
 }
