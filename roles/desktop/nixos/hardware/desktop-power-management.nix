@@ -27,15 +27,19 @@
   # Bluetooth power settings
   hardware.bluetooth.powerOnBoot = true;
 
-  # Power button behavior: suspend on press (change to "ignore" or "poweroff" if preferred)
+  # Let GNOME handle power management - logind stays out of the way
+  # GNOME Settings Daemon blocks these keys via inhibitor and handles them itself
   services.logind.settings = {
     Login = {
-      HandlePowerKey = "suspend";
-      HandleSuspendKey = "suspend";
+      HandlePowerKey = "ignore";
+      HandleSuspendKey = "ignore";
       HandleLidSwitch = "ignore";
-      IdleAction = "ignore";
+      # Don't set IdleAction - let GNOME power settings control screen blanking/suspend
     };
   };
+
+  # Disable power-profiles-daemon to avoid conflicts with GNOME power management
+  services.power-profiles-daemon.enable = false;
 
   # CPU governor - balanced mode for efficiency while still responsive
   powerManagement = {

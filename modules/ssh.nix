@@ -42,16 +42,17 @@
           # Check if any SSH sessions exist
           if ${pkgs.procps}/bin/pgrep -x sshd > /dev/null && \
              [ "$(${pkgs.coreutils}/bin/who | ${pkgs.gnugrep}/bin/grep -c pts)" -gt 0 ]; then
-            # Active SSH sessions found - hold inhibitor lock
-            exec ${pkgs.systemd}/bin/systemd-inhibit \
+            # Active SSH sessions found - hold inhibitor lock for 15 minutes
+            ${pkgs.systemd}/bin/systemd-inhibit \
               --what=sleep \
               --who="SSH Session Guard" \
               --why="Active SSH sessions present" \
               --mode=block \
-              ${pkgs.coreutils}/bin/sleep infinity
+              ${pkgs.coreutils}/bin/sleep 900
+          else
+            # No sessions - sleep without inhibitor
+            ${pkgs.coreutils}/bin/sleep 600
           fi
-          # Check every 30 seconds
-          ${pkgs.coreutils}/bin/sleep 30
         done
       '';
     };
