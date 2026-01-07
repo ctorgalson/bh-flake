@@ -66,12 +66,12 @@
       set -g @catppuccin_window_current_text " #{host_short}: #W"  # Active: hostname: name
 
       # Status Bar
-      set -g status-style bg=#1e1e23
+      set -g status-style bg=#1e1e2e
       set -g status-right-length 100
       set -g status-left-length 100
       set -g status-left ""
       # Match Kitty
-      set -g @catppuccin_status_module_bg_color "#1e1e2e"
+      # set -g @catppuccin_status_module_bg_color "#1e1e2e"
 
       # Pane Borders
       set -g pane-active-border-style "fg=#fe640b,bg=#151515"
