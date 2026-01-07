@@ -66,12 +66,11 @@
       set -g @catppuccin_window_current_text " #{host_short}: #W"  # Active: hostname: name
 
       # Status Bar
-      set -g status-style bg=#1e1e2e
       set -g status-right-length 100
       set -g status-left-length 100
       set -g status-left ""
-      # Match Kitty
-      # set -g @catppuccin_status_module_bg_color "#1e1e2e"
+      # Match Kitty - set Catppuccin variables before plugin loads
+      set -g @catppuccin_status_background "default"
 
       # Pane Borders
       set -g pane-active-border-style "fg=#fe640b,bg=#151515"
@@ -112,6 +111,8 @@
       # Override Catppuccin's default status-right after it loads
       set -g status-right "#{E:@catppuccin_status_uptime}"
       set -ag status-right "#{E:@catppuccin_status_date_time}"
+      # Force status bar to use terminal background (base color)
+      set -g status-style bg=default
 
       # Additional plugins for status bar modules
       run-shell ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/main.tmux
