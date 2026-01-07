@@ -140,6 +140,7 @@
               name = "Shopping";
             };
           };
+          containersForce = true;
           id = 0;
           name = "Home";
           search = {
