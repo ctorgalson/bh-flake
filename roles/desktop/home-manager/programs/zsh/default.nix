@@ -37,6 +37,8 @@
         diff = "riff";
         dig = "doggo";
         du = "dust";
+        # @see roles/desktop/home-manager/pkgs/glab.nix.
+        glab = "glab-wrapper";
         less = "moor";
         platform = "upsun";
         timelastmonth = "timew summary :annotations :ids :lastmonth";

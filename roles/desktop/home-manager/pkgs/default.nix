@@ -6,6 +6,7 @@
     ./claude-code
     ./cli.nix
     ./gcofzf.nix
+    ./glab.nix
     ./gui.nix
     ./homefox.nix
     ./nixnvm.nix
