@@ -36,6 +36,12 @@
       # Hook to ensure new windows get automatic rename enabled
       set-hook -g after-new-window 'set-window-option automatic-rename on'
 
+      # Hook to (hopefully) adapt when loading session on a machine with a very
+      # different display size.
+      set -g aggressive-resize on
+      set-hook -g client-attached 'run-shell "tmux refresh-client -S; tmux select-layout -E"'
+
+
       # ==============================================================================
       # TERMINAL & COLOR SUPPORT
       # ==============================================================================
