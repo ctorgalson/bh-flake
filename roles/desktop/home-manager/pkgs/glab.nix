@@ -11,10 +11,13 @@
       '')
     ];
 
-    home.file = {
-      ".config/glab-cli/config.yml".text = ''
-        # No config currently needed beyond glab-wrapper's env vars.
-      '';
-    };
+    # If we ever need a config file, we'll have to do this in a way that allows
+    # setting file perms to 0600.
+    #
+    # home.file = {
+    #   ".config/glab-cli/config.yml".text = ''
+    #     # No config currently needed beyond glab-wrapper's env vars.
+    #   '';
+    # };
   };
 }
