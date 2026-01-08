@@ -39,8 +39,7 @@
       # Hook to (hopefully) adapt when loading session on a machine with a very
       # different display size.
       set -g aggressive-resize on
-      set-hook -g client-attached 'run-shell "tmux refresh-client -S; tmux select-layout -E"'
-
+      set-hook -g client-attached 'run-shell "sleep 0.05; tmux resize-window -x \\\"$(tmux display-message -p \\\"#{client_width}\\\")\\\" -y \\\"$(tmux display-message -p \\\"#{client_height}\\\")\\\"; tmux select-layout tiled; tmux select-layout -E"'
 
       # ==============================================================================
       # TERMINAL & COLOR SUPPORT
