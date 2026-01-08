@@ -8,6 +8,8 @@
         # TODO: extend for non-AT uses of Gitlab.
         export GITLAB_HOST="$(cat /run/secrets/gitlab_host_at)"
         export GITLAB_TOKEN="$(cat /run/secrets/gitlab_token_at)"
+
+        exec ${pkgs.glab}/bin/glab "$@"
       '')
     ];
 
