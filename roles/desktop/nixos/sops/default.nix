@@ -20,6 +20,18 @@
         mode = "0600";
         path = "/home/${host.username}/.ansible/galaxy_token";
       };
+
+      gitlab_host_at = {
+        sopsFile = ../../../../sops/workstation/shared.yaml;
+        owner = host.username;
+        mode = "0600";
+      };
+
+      gitlab_token_at = {
+        sopsFile = ../../../../sops/workstation/shared.yaml;
+        owner = host.username;
+        mode = "0600";
+      };
     };
 
     # Configure SOPS to use SSH host keys (auto-detected)
