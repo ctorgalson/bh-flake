@@ -79,6 +79,12 @@
       profiles = {
         home = {
           containers = {
+            apple = {
+              color = "red";
+              icon = "circle";
+              id = 10;
+              name = "Apple";
+            };
             banking = {
               color = "green";
               icon = "dollar";
@@ -178,6 +184,12 @@
               icon = "briefcase";
               id = 1;
               name = "ANRT";
+            };
+            apple = {
+              color = "red";
+              icon = "circle";
+              id = 7;
+              name = "Apple";
             };
             obs = {
               color = "orange";
