@@ -51,7 +51,7 @@
       qrencode                    # QR code generator
       rpi-imager                  # Raspberry Pi imager
       tldr                        # simplified man pages
-      tkpdf                       # cli PDF editor
+      pdftk                       # cli PDF editor
       tree                        # list contents of directories in tree form
       unzip                       # Unzip files/directories
       wl-clip-persist             # Wayland clipboard contents "preserver"
