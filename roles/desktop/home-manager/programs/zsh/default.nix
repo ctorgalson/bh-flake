@@ -6,6 +6,10 @@
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
     ];
 
+    home.file = {
+      ".zsh_completions_tm".source = ./zsh_completions_tm;
+    };
+
     programs.zsh = {
       defaultKeymap = "vicmd";
       enable = true;
@@ -14,6 +18,7 @@
       '';
       initContent = ''
         hello-terminal "bonjour"
+        source "$HOME/.zsh_completions_tm"
         export SSH_AUTH_SOCK="''${HOME}/.bitwarden-ssh-agent.sock"
       '';
       plugins = [
