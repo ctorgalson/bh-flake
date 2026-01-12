@@ -16,44 +16,10 @@
         "en"
         "fr"
       ];
-      #profiles = {
-      #  # default = {
-      #  #   id = 0;
-      #  #   name = "Home";
-      #  #   search = {
-      #  #     force = true;
-      #  #     default = "DuckDuckGo";
-      #  #     privateDefault = "DuckDuckGo";
-      #  #     order = [ "DuckDuckGo" "Google" ];
-      #  #   };
-      #  #   settings = {
-      #  #     "browser.startup.homepage" = "about:home";
-      #  #     "browser.shell.checkDefaultBrowser" = false;
-      #  #     "browser.shell.defaultBrowserCheckCount" = 1;
-      #  #   };
-      #  # };
-      #  # work = {
-      #  #   id = 200;
-      #  #   name = "work";
-      #  #   search = {
-      #  #     force = true;
-      #  #     default = "DuckDuckGo";
-      #  #     privateDefault = "DuckDuckGo";
-      #  #     order = [ "DuckDuckGo" "Google" ];
-      #  #   };
-      #  #   settings = {
-      #  #     "browser.startup.homepage" = "about:home";
-      #  #     "browser.shell.checkDefaultBrowser" = false;
-      #  #     "browser.shell.defaultBrowserCheckCount" = 1;
-      #  #   };
-      #  # };
-      #};
 
       policies = {
         BlockAboutConfig = true;
-
         DefaultDownloadDirectory = "\${home}/Downloads";
-
         ExtensionSettings = {
           # 1password.
           "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
@@ -211,15 +177,28 @@
           };
           settings = {
             "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
-            browser = {
-              startup = {
-                homepage = "about:home";
-              };
-              shell = {
-                checkDefaultBrowser = false;
-                defaultBrowserCheckCount = 1;
-              };
-            };
+            "browser.startup.homepage" = "about:home";
+            "browser.search.region" = "CA";
+            "browser.search.isUS" = false;
+            "distribution.searchplugins.defaultLocale" = "en-CA";
+            "general.useragent.locale" = "en-CA";
+            "browser.bookmarks.showMobileBookmarks" = true;
+            "browser.shell.checkDefaultBrowser" = false;
+            "browser.shell.defaultBrowserCheckCount" = 1;
+            "browser.newtabpage.pinned" = [
+              {
+                name = "bedlamhotel.com Proton Mail";
+                url = "https://mail.proton.me/u/0/inbox";
+              }
+              {
+                name = "torgalson.net Gmail";
+                url = "https://mail.google.com/mail/u/0/#inbox";
+              }
+              {
+                name = "torgalson.net Google Maps";
+                url = "https://www.google.com/maps";
+              }
+            ];
           };
         };
         newwork = {
@@ -297,7 +276,37 @@
             privateDefault = "ddg";
           };
           settings = {
-            "extensions.activeThemeID" = "{68f3538d-3881-45f4-aa73-288b010b39a1}";
+            "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
+            "browser.startup.homepage" = "about:home";
+            "browser.search.region" = "CA";
+            "browser.search.isUS" = false;
+            "distribution.searchplugins.defaultLocale" = "en-CA";
+            "general.useragent.locale" = "en-CA";
+            "browser.bookmarks.showMobileBookmarks" = true;
+            "browser.shell.checkDefaultBrowser" = false;
+            "browser.shell.defaultBrowserCheckCount" = 1;
+            "browser.newtabpage.pinned" = [
+              {
+                name = "Annertech Teams";
+                url = "https://teams.microsoft.com/v2/";
+              }
+              {
+                name = "Annertech Gmail";
+                url = "https://mail.google.com/mail/u/0/#inbox";
+              }
+              {
+                name = "Annertech Teamwork";
+                url = "https://projects.annertech.com";
+              }
+              {
+                name = "Annertech Gitlab";
+                url = "https://code.anner.ie";
+              }
+              {
+                name = "Upsun";
+                url = "https://upsun.com";
+              }
+            ];
           };
         };
       };
