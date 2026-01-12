@@ -47,9 +47,9 @@ let
     # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
     "browser.newtabpage.activity-stream.feeds.topsites" = true;
 
-    # Home: Recommended stories (Pocket)
+    # Home: Recommended stories (Pocket) - disabled
     # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
-    "browser.newtabpage.activity-stream.feeds.section.topstories" = true;
+    "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
 
     # Home: Support Firefox (snippets) - disabled
     # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
