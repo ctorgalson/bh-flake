@@ -27,7 +27,7 @@
       ];
 
       policies = {
-        BlockAboutConfig = true;
+        BlockAboutConfig = false;
         DefaultDownloadDirectory = "\${home}/Downloads";
         ExtensionSettings = {
           # 1password.
