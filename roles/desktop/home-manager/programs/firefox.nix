@@ -2,6 +2,15 @@
 
 {
   config = {
+    home.packages = with pkgs; [
+      (writeShellScriptBin "homefox" ''
+        firefox -P "Home (new)"
+      '')
+      (writeShellScriptBin "workfox" ''
+        firefox -P "Work (new)"
+      '')
+    ];
+
     # References
     #
     # - https://github.com/Misterio77/nix-config/blob/main/home/gabriel/features/desktop/common/firefox.nix

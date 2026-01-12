@@ -10,7 +10,6 @@
     ./fzf.nix
     ./git.nix
     ./kitty.nix
-    #./neovim
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix

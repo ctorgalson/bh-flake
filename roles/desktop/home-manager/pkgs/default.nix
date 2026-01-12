@@ -8,13 +8,11 @@
     ./gcofzf.nix
     ./glab.nix
     ./gui.nix
-    ./homefox.nix
     ./nixnvm.nix
     ./opencode
     ./timereport.nix
     ./timewarrior
     ./tmux.nix
     ./wakehost.nix
-    ./workfox.nix
   ];
 }
