@@ -1,5 +1,148 @@
-{ config, pkgs, programs, ... }:
+{ config, pkgs, programs, lib, ... }:
 
+let
+  # Common Firefox settings for all profiles
+  commonSettings = {
+    "browser.startup.homepage" = "about:home";
+    "browser.search.region" = "CA";
+    "browser.search.isUS" = false;
+    "distribution.searchplugins.defaultLocale" = "en-CA";
+    "general.useragent.locale" = "en-CA";
+    "browser.bookmarks.showMobileBookmarks" = true;
+    "browser.shell.checkDefaultBrowser" = false;
+    "browser.shell.defaultBrowserCheckCount" = 1;
+
+    # Theme
+    "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
+
+    # Startup: Open previous windows and tabs
+    # https://support.mozilla.org/en-US/kb/restore-previous-session
+    "browser.startup.page" = 3;
+
+    # Language: Set accept languages for web content
+    # https://firefox-source-docs.mozilla.org/intl/locale.html
+    "intl.accept_languages" = "en-CA,en-US,fr";
+
+    # Delete files downloaded in private browsing when all private windows are closed
+    # https://chipp.in/news/firefox-how-to-delete-files-download-in-private-browsing-automatically/
+    "browser.download.deletePrivate" = true;
+
+    # Digital Rights Management (DRM) Content
+    # https://support.mozilla.org/en-US/kb/enable-drm
+    "media.eme.enabled" = true;
+
+    # Home: Web Search
+    # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
+    "browser.newtabpage.activity-stream.showSearch" = true;
+
+    # Home: Weather
+    # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
+    "browser.newtabpage.activity-stream.showWeather" = true;
+
+    # Home: Shortcuts (Top Sites)
+    # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
+    "browser.newtabpage.activity-stream.feeds.topsites" = true;
+
+    # Home: Recommended stories (Pocket)
+    # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
+    "browser.newtabpage.activity-stream.feeds.section.topstories" = true;
+
+    # Home: Support Firefox (snippets) - disabled
+    # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
+    "browser.newtabpage.activity-stream.feeds.snippets" = false;
+
+    # Home: Recent Activity (Highlights)
+    # https://firefox-source-docs.mozilla.org/browser/extensions/newtab/docs/v2-system-addon/preferences.html
+    "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
+
+    # Privacy: Enhanced Tracking Protection - Strict
+    # https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop
+    "browser.contentblocking.category" = "strict";
+
+    # Privacy: Tell websites to not sell or share my data (Global Privacy Control)
+    # https://globalprivacycontrol.org/
+    "privacy.globalprivacycontrol.enabled" = true;
+
+    # Privacy: Passwords - disable Firefox password manager
+    # Using 1Password/Bitwarden instead
+    "signon.rememberSignons" = false;
+
+    # Privacy: Payment methods - disable
+    # https://support.mozilla.org/en-US/kb/credit-card-autofill
+    "extensions.formautofill.creditCards.enabled" = false;
+
+    # Privacy: Addresses and more - disable
+    # https://support.mozilla.org/en-US/kb/autofill-address-forms-firefox
+    "extensions.formautofill.addresses.enabled" = false;
+
+    # Privacy: Firefox Data Collection and Use - mostly disabled
+    # https://github.com/K3V1991/Disable-Firefox-Telemetry-and-Data-Collection
+    # Allow ping-centre for Mozilla usage estimates
+    "datareporting.healthreport.uploadEnabled" = false;
+    "datareporting.policy.dataSubmissionEnabled" = false;
+    "toolkit.telemetry.enabled" = false;
+    "toolkit.telemetry.unified" = false;
+    "toolkit.telemetry.archive.enabled" = false;
+    "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+    "browser.newtabpage.activity-stream.telemetry" = false;
+    "browser.ping-centre.telemetry" = true;  # Allow for usage estimates
+    "toolkit.telemetry.bhrPing.enabled" = false;
+    "toolkit.telemetry.firstShutdownPing.enabled" = false;
+    "toolkit.telemetry.newProfilePing.enabled" = false;
+    "toolkit.telemetry.shutdownPingSender.enabled" = false;
+    "toolkit.telemetry.updatePing.enabled" = false;
+
+    # DNS over HTTPS: TRR-first mode with fallback
+    # https://firefox-source-docs.mozilla.org/networking/dns/dns-over-https-trr.html
+    # Mode 2: TRR by default, fallback to native resolver if needed
+    "network.trr.mode" = 2;
+    # Default DoH provider (Mozilla/Cloudflare)
+    "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
+    # Alternative providers:
+    # "network.trr.uri" = "https://dns.google/dns-query";
+    # "network.trr.uri" = "https://dns.quad9.net/dns-query";
+  };
+
+  # Common containers (based on newwork profile, minus work-specific ones)
+  commonContainers = {
+    apple = {
+      color = "red";
+      icon = "circle";
+      id = 7;
+      name = "Apple";
+    };
+    obs = {
+      color = "orange";
+      icon = "cart";
+      id = 2;
+      name = "OBS";
+    };
+    ul = {
+      color = "green";
+      icon = "tree";
+      id = 3;
+      name = "UL";
+    };
+    google = {
+      color = "pink";
+      icon = "circle";
+      id = 4;
+      name = "Google";
+    };
+    infrastructure = {
+      color = "purple";
+      icon = "circle";
+      id = 5;
+      name = "Infrastructure";
+    };
+    msft = {
+      color = "blue";
+      icon = "circle";
+      id = 8;
+      name = "MSFT";
+    };
+  };
+in
 {
   config = {
     home.packages = with pkgs; [
@@ -85,13 +228,8 @@
 
       profiles = {
         newhome = {
-          containers = {
-            apple = {
-              color = "red";
-              icon = "circle";
-              id = 11;
-              name = "Apple";
-            };
+          containers = commonContainers // {
+            # Home-specific containers
             banking = {
               color = "green";
               icon = "dollar";
@@ -101,55 +239,37 @@
             facebook = {
               color = "blue";
               icon = "fence";
-              id = 2;
+              id = 9;
               name = "Facebook";
-            };
-            google = {
-              color = "pink";
-              icon = "circle";
-              id = 3;
-              name = "Google";
             };
             housing = {
               color = "red";
               icon = "vacation";
-              id = 4;
+              id = 10;
               name = "Housing search";
-            };
-            infrastructure = {
-              color = "purple";
-              icon = "circle";
-              id = 5;
-              name = "Infrastructure";
             };
             linkedin = {
               color = "blue";
               icon = "circle";
-              id = 10;
+              id = 11;
               name = "Linkedin";
             };
             media = {
               color = "yellow";
               icon = "fence";
-              id = 6;
+              id = 12;
               name = "Media";
-            };
-            personal = {
-              color = "blue";
-              icon = "fingerprint";
-              id = 7;
-              name = "Personal";
             };
             proton = {
               color = "purple";
               icon = "circle";
-              id = 8;
+              id = 13;
               name = "Proton";
             };
             shopping = {
               color = "yellow";
               icon = "cart";
-              id = 9;
+              id = 14;
               name = "Shopping";
             };
           };
@@ -180,16 +300,7 @@
             ];
             privateDefault = "ddg";
           };
-          settings = {
-            "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
-            "browser.startup.homepage" = "about:home";
-            "browser.search.region" = "CA";
-            "browser.search.isUS" = false;
-            "distribution.searchplugins.defaultLocale" = "en-CA";
-            "general.useragent.locale" = "en-CA";
-            "browser.bookmarks.showMobileBookmarks" = true;
-            "browser.shell.checkDefaultBrowser" = false;
-            "browser.shell.defaultBrowserCheckCount" = 1;
+          settings = commonSettings // {
             "browser.newtabpage.pinned" = [
               {
                 name = "bedlamhotel.com Proton Mail";
@@ -207,54 +318,19 @@
           };
         };
         newwork = {
-          containers = {
+          containers = commonContainers // {
+            # Work-specific containers
             anrt = {
               color = "blue";
               icon = "briefcase";
               id = 1;
               name = "ANRT";
             };
-            apple = {
-              color = "red";
-              icon = "circle";
-              id = 7;
-              name = "Apple";
-            };
-            obs = {
-              color = "orange";
-              icon = "cart";
-              id = 2;
-              name = "OBS";
-            };
-            ul = {
-              color = "green";
-              icon = "tree";
-              id = 3;
-              name = "UL";
-            };
-            google = {
-              color = "pink";
-              icon = "circle";
-              id = 4;
-              name = "Google";
-            };
-            infrastructure = {
-              color = "purple";
-              icon = "circle";
-              id = 5;
-              name = "Infrastructure";
-            };
             lgd = {
               color = "turquoise";
               icon = "vacation";
               id = 6;
               name = "LGD";
-            };
-            msft = {
-              color = "blue";
-              icon = "circle";
-              id = 8;
-              name = "MSFT";
             };
           };
           containersForce = true;
@@ -286,16 +362,7 @@
             ];
             privateDefault = "ddg";
           };
-          settings = {
-            "extensions.activeThemeID" = "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}";
-            "browser.startup.homepage" = "about:home";
-            "browser.search.region" = "CA";
-            "browser.search.isUS" = false;
-            "distribution.searchplugins.defaultLocale" = "en-CA";
-            "general.useragent.locale" = "en-CA";
-            "browser.bookmarks.showMobileBookmarks" = true;
-            "browser.shell.checkDefaultBrowser" = false;
-            "browser.shell.defaultBrowserCheckCount" = 1;
+          settings = commonSettings // {
             "browser.newtabpage.pinned" = [
               {
                 name = "Annertech Teams";
