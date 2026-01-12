@@ -9,7 +9,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
-      backupFileExtension = ".bak";
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -69,6 +68,7 @@
               system = hostSystem;
               host = { inherit hostname role username; };
             };
+            home-manager.backupFileExtension = ".bak";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
           }
