@@ -9,6 +9,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
+      backupFileExtension = ".bak";
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };

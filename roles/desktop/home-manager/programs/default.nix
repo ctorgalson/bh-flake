@@ -18,6 +18,4 @@
     ./zoxide.nix
     ./zsh
   ];
-
-  config.backupFileExtension = ".bak";
 }
