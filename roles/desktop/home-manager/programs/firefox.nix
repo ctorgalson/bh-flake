@@ -254,10 +254,12 @@
               id = 6;
               name = "LGD";
             };
-            color = "blue";
-            icon = "circle";
-            id = 8;
-            name = "MSFT";
+            msft = {
+              color = "blue";
+              icon = "circle";
+              id = 8;
+              name = "MSFT";
+            };
           };
           containersForce = true;
           id = 1;
