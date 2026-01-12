@@ -23,6 +23,10 @@ let
     # https://firefox-source-docs.mozilla.org/intl/locale.html
     "intl.accept_languages" = "en-CA,en-US,fr";
 
+    # Language: Set default UI language
+    # https://firefox-source-docs.mozilla.org/intl/locale.html
+    "intl.locale.requested" = "en-CA";
+
     # Delete files downloaded in private browsing when all private windows are closed
     # https://chipp.in/news/firefox-how-to-delete-files-download-in-private-browsing-automatically/
     "browser.download.deletePrivate" = true;
