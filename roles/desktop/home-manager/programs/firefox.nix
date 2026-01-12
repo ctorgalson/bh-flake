@@ -48,19 +48,15 @@
             installation_mode = "force_installed";
           };
 
-          # Catppuccin Latte - Blue.
-          #
-          # TODO: do this in a way that works...
+          # Catppuccin Latte - Blue (Official).
           "{68f3538d-3881-45f4-aa73-288b010b39a1}" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-latte-blue-theme/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/3989616/catppuccin_latte_blue_git-2.0.xpi";
             installation_mode = "force_installed";
           };
 
-          # Catppuccin Mocha - Blue.
-          #
-          # TODO: do this in a way that works...
+          # Catppuccin Mocha - Blue (Official).
           "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-blue-theme/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/3989617/catppuccin_mocha_blue_git-2.0.xpi";
             installation_mode = "force_installed";
           };
 
