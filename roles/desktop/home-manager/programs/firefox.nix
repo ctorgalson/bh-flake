@@ -222,7 +222,7 @@
             };
           };
         };
-        work = {
+        newwork = {
           containers = {
             anrt = {
               color = "blue";
