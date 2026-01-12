@@ -113,7 +113,7 @@
       };
 
       profiles = {
-        newwork = {
+        newhome = {
           containers = {
             apple = {
               color = "red";
@@ -184,7 +184,7 @@
           };
           containersForce = true;
           id = 0;
-          name = "Home";
+          name = "Home (new)";
           search = {
             default = "ddg";
             force = true;
@@ -269,7 +269,7 @@
           };
           containersForce = true;
           id = 1;
-          name = "Work";
+          name = "Work (new)";
           # Todo: search engines
           # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.search.engines
           search = {
