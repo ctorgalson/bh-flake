@@ -1,4 +1,4 @@
-{ config, pkgs, programs, lib, ... }:
+{ config, host, lib, pkgs, programs, ... }:
 
 let
   # Common Firefox settings for all profiles
@@ -255,7 +255,7 @@ in
             Status = "locked";
           };
           "services.sync.client.name" = {
-            Value = config.networking.hostName;
+            Value = host.hostname;
             Status = "locked";
           };
         };
