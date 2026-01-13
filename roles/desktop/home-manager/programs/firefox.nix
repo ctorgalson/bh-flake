@@ -243,6 +243,19 @@ in
           };
         };
 
+        # Lock sync engine preferences to prevent Firefox Sync from overriding them
+        # https://mozilla.github.io/policy-templates/#preferences
+        Preferences = {
+          "services.sync.engine.addresses" = {
+            Value = false;
+            Status = "locked";
+          };
+          "services.sync.engine.creditcards" = {
+            Value = false;
+            Status = "locked";
+          };
+        };
+
         OfferToSaveLogins = false;
       };
 
