@@ -32,6 +32,12 @@ let
     temp_file="$(${pkgs.coreutils}/bin/mktemp)"
     signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
 
+    # Send desktop notification that scan is starting
+    for user in $(${pkgs.coreutils}/bin/users); do
+      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
+        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'ClamAV Full Scan' 'Weekly antivirus scan starting. This may take a while and use system resources.'" || true
+    done
+
     # Run full scan with low priority (nice +19, ionice idle class)
     # --fdpass allows daemon to scan files as root (inherits service permissions)
     # VirusEvent in clamd.conf will handle infection notifications automatically
@@ -40,8 +46,16 @@ let
         ${pkgs.clamav}/bin/clamdscan --fdpass --multiscan /home /tmp /var/tmp > "$temp_file" 2>&1 || true
 
     # Send success notification for completed full scan
-    ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
-      -m "✓ ClamAV full scan complete on ${host.hostname}" || true
+    if ! ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+      -m "✓ ClamAV full scan complete on ${host.hostname}" 2>&1 | ${pkgs.systemd}/bin/systemd-cat -t clamav-signal -p warning; then
+      echo "WARNING: Failed to send Signal notification - check logs: journalctl -t clamav-signal" | ${pkgs.systemd}/bin/systemd-cat -t clamav-signal -p err
+    fi
+
+    # Send desktop notification that scan is complete
+    for user in $(${pkgs.coreutils}/bin/users); do
+      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
+        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'ClamAV Full Scan' 'Weekly antivirus scan completed successfully.'" || true
+    done
 
     # Move results to full log
     ${pkgs.coreutils}/bin/mv "$temp_file" "$full_log"
@@ -59,10 +73,12 @@ let
 
     signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
 
-    ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
+    if ! ${pkgs.signal-cli}/bin/signal-cli send --username "$signal_username" \
       -m "⚠️ ClamAV ALERT on ${host.hostname}: Infected file detected!
 Virus: $CLAM_VIRUSEVENT_VIRUSNAME
-File: $CLAM_VIRUSEVENT_FILENAME" || true
+File: $CLAM_VIRUSEVENT_FILENAME" 2>&1 | ${pkgs.systemd}/bin/systemd-cat -t clamav-signal -p err; then
+      echo "CRITICAL: Failed to send virus detection Signal notification - check logs: journalctl -t clamav-signal" | ${pkgs.systemd}/bin/systemd-cat -t clamav-signal -p crit
+    fi
   '';
 
   # Incremental scan (daily) - only files modified in last 24 hours
@@ -70,6 +86,12 @@ File: $CLAM_VIRUSEVENT_FILENAME" || true
     daily_log="/home/${host.username}/last-clamscan-daily.log"
     temp_file="$(${pkgs.coreutils}/bin/mktemp)"
     file_list="$(${pkgs.coreutils}/bin/mktemp)"
+
+    # Send desktop notification that scan is starting
+    for user in $(${pkgs.coreutils}/bin/users); do
+      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
+        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=low 'ClamAV Daily Scan' 'Daily incremental antivirus scan starting.'" || true
+    done
 
     # Find files modified in last 24 hours
     ${pkgs.findutils}/bin/find /home /tmp /var/tmp -type f -mtime -1 2>/dev/null > "$file_list" || true
@@ -89,6 +111,12 @@ File: $CLAM_VIRUSEVENT_FILENAME" || true
       echo "" >> "$temp_file"
       echo "No files modified in last 24 hours" >> "$temp_file"
     fi
+
+    # Send desktop notification that scan is complete
+    for user in $(${pkgs.coreutils}/bin/users); do
+      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
+        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=low 'ClamAV Daily Scan' 'Daily incremental scan completed.'" || true
+    done
 
     # Cleanup
     ${pkgs.coreutils}/bin/rm -f "$file_list"
