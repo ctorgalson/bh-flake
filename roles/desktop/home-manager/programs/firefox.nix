@@ -254,6 +254,10 @@ in
             Value = false;
             Status = "locked";
           };
+          "services.sync.client.name" = {
+            Value = config.networking.hostName;
+            Status = "locked";
+          };
         };
 
         OfferToSaveLogins = false;
