@@ -110,6 +110,17 @@ let
     # https://www.askvg.com/tips-tweak-and-customize-firefox-sidebar-and-vertical-tabs-like-a-pro/
     "sidebar.revamp" = true;
     "sidebar.visibility" = "hide-sidebar";  # Show on hover
+
+    # Firefox Sync: Sync dynamic user data only, not Nix-managed config
+    # https://firefox-source-docs.mozilla.org/services/sync/
+    "services.sync.engine.addons" = false;      # Extensions managed by Nix
+    "services.sync.engine.prefs" = false;       # Settings managed by Nix
+    "services.sync.engine.bookmarks" = true;    # User bookmarks
+    "services.sync.engine.history" = true;      # Browsing history
+    "services.sync.engine.tabs" = true;         # Open tabs
+    "services.sync.engine.passwords" = false;   # Using 1Password/Bitwarden
+    "services.sync.engine.addresses" = false;   # Already disabled
+    "services.sync.engine.creditcards" = false; # Already disabled
   };
 
   # Common containers (based on newwork profile, minus work-specific ones)
