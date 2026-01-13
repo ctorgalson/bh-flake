@@ -105,6 +105,11 @@ let
     # Alternative providers:
     # "network.trr.uri" = "https://dns.google/dns-query";
     # "network.trr.uri" = "https://dns.quad9.net/dns-query";
+
+    # Sidebar: Enable new sidebar and show on hover (Firefox 136+)
+    # https://www.askvg.com/tips-tweak-and-customize-firefox-sidebar-and-vertical-tabs-like-a-pro/
+    "sidebar.revamp" = true;
+    "sidebar.visibility" = "hide-sidebar";  # Show on hover
   };
 
   # Common containers (based on newwork profile, minus work-specific ones)
