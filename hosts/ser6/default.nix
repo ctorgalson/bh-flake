@@ -8,6 +8,7 @@
     ./nixos/stylix
     ./power-management.nix
     ./wake-on-lan.nix
+    ./host-overrides.nix
   ];
 }
 
