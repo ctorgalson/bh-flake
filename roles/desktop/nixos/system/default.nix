@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ host, inputs, lib, pkgs, ... }:
 
 {
   # Enable ARM emulation for cross-compilation to pi0
@@ -22,10 +22,8 @@
   systemd.services.nixos-upgrade = {
     preStart = ''
       # Notify user that upgrade is starting
-      for user in $(${pkgs.coreutils}/bin/users); do
-        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
-          ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'NixOS Auto-Upgrade' 'System upgrade starting. This may take a while and use significant resources.'" || true
-      done
+      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u ${host.username})/bus" \
+        ${pkgs.su}/bin/su ${host.username} -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'NixOS Auto-Upgrade' 'System upgrade starting. This may take a while and use significant resources.'" || true
     '';
     postStop = ''
       # Notify user when upgrade completes (success or failure)
@@ -38,10 +36,8 @@
         urgency="critical"
       fi
 
-      for user in $(${pkgs.coreutils}/bin/users); do
-        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
-          ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=$urgency 'NixOS Auto-Upgrade' '$message'" || true
-      done
+      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u ${host.username})/bus" \
+        ${pkgs.su}/bin/su ${host.username} -c "${pkgs.libnotify}/bin/notify-send --urgency=$urgency 'NixOS Auto-Upgrade' '$message'" || true
     '';
     serviceConfig = {
       # Limit memory usage to 50% of system RAM (16GB on 32GB system)

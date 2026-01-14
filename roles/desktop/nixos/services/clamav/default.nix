@@ -33,10 +33,8 @@ let
     signal_username="$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.signal_username.path})"
 
     # Send desktop notification that scan is starting
-    for user in $(${pkgs.coreutils}/bin/users); do
-      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
-        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'ClamAV Full Scan' 'Weekly antivirus scan starting. This may take a while and use system resources.'" || true
-    done
+    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u ${host.username})/bus" \
+      ${pkgs.su}/bin/su ${host.username} -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'ClamAV Full Scan' 'Weekly antivirus scan starting. This may take a while and use system resources.'" || true
 
     # Run full scan with low priority (nice +19, ionice idle class)
     # --fdpass allows daemon to scan files as root (inherits service permissions)
@@ -52,10 +50,8 @@ let
     fi
 
     # Send desktop notification that scan is complete
-    for user in $(${pkgs.coreutils}/bin/users); do
-      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
-        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'ClamAV Full Scan' 'Weekly antivirus scan completed successfully.'" || true
-    done
+    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u ${host.username})/bus" \
+      ${pkgs.su}/bin/su ${host.username} -c "${pkgs.libnotify}/bin/notify-send --urgency=normal 'ClamAV Full Scan' 'Weekly antivirus scan completed successfully.'" || true
 
     # Move results to full log
     ${pkgs.coreutils}/bin/mv "$temp_file" "$full_log"
@@ -88,10 +84,8 @@ File: $CLAM_VIRUSEVENT_FILENAME" 2>&1 | ${pkgs.systemd}/bin/systemd-cat -t clama
     file_list="$(${pkgs.coreutils}/bin/mktemp)"
 
     # Send desktop notification that scan is starting
-    for user in $(${pkgs.coreutils}/bin/users); do
-      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
-        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=low 'ClamAV Daily Scan' 'Daily incremental antivirus scan starting.'" || true
-    done
+    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u ${host.username})/bus" \
+      ${pkgs.su}/bin/su ${host.username} -c "${pkgs.libnotify}/bin/notify-send --urgency=low 'ClamAV Daily Scan' 'Daily incremental antivirus scan starting.'" || true
 
     # Find files modified in last 24 hours
     ${pkgs.findutils}/bin/find /home /tmp /var/tmp -type f -mtime -1 2>/dev/null > "$file_list" || true
@@ -113,10 +107,8 @@ File: $CLAM_VIRUSEVENT_FILENAME" 2>&1 | ${pkgs.systemd}/bin/systemd-cat -t clama
     fi
 
     # Send desktop notification that scan is complete
-    for user in $(${pkgs.coreutils}/bin/users); do
-      DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u $user)/bus" \
-        ${pkgs.su}/bin/su $user -c "${pkgs.libnotify}/bin/notify-send --urgency=low 'ClamAV Daily Scan' 'Daily incremental scan completed.'" || true
-    done
+    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u ${host.username})/bus" \
+      ${pkgs.su}/bin/su ${host.username} -c "${pkgs.libnotify}/bin/notify-send --urgency=low 'ClamAV Daily Scan' 'Daily incremental scan completed.'" || true
 
     # Cleanup
     ${pkgs.coreutils}/bin/rm -f "$file_list"
