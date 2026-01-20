@@ -3,17 +3,14 @@
 {
   config = {
     home.packages = with pkgs; [
-      gnomeExtensions.appindicator
+      gnomeExtensions.tiling-shell
     ];
 
     dconf.settings = {
       "org/gnome/shell" = {
         enabled-extensions = [
-          "appindicatorsupport@rgcjonas.gmail.com"
+          "tilingshell@ferrarodomenico.com"
         ];
-      };
-
-      "org/gnome/shell/extensions/appindicator" = {
       };
     };
   };

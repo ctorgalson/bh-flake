@@ -1,7 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   config = {
+    home.packages = with pkgs; [
+      gnomeExtensions.tactile
+    ];
+
     dconf.settings = {
       "org/gnome/shell" = {
         enabled-extensions = [

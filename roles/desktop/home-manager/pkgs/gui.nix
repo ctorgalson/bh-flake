@@ -51,17 +51,11 @@
 
       # Gnome programs / extensions
       design                      # 2D CAD
-      gnomeExtensions.appindicator
-      gnomeExtensions.freon
-      gnomeExtensions.gsconnect
-      gnomeExtensions.solaar-extension
-      gnomeExtensions.tactile
-      gnomeExtensions.tiling-shell
       gnome-clocks
       gnome-color-manager
       gnome-multi-writer
       gnome-tweaks
-      # gnome-extension-manager
+      gnome-extension-manager
       totem                       # Gnome Videos
 
       # Graphics tools.
