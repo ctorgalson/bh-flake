@@ -1,8 +1,14 @@
-{ config, lib, pkgs, programs, ... }:
+{ ... }:
 
 {
   config = {
     dconf.settings = {
+      "org/gnome/shell" = {
+        enabled-extensions = [
+          "tactile@lundal.io"
+        ];
+      };
+
       "org/gnome/shell/extensions/tactile" = {
         grid-cols = 7;
         grid-rows = 4;
@@ -68,13 +74,13 @@
         tile-4-3 = ["b"];
         tile-5-3 = ["n"];
         tile-6-3 = ["m"];
-        
+
         # Layout keyboard shortcuts.
         layout-1 = ["F1"];
         layout-2 = ["F2"];
         layout-3 = ["F3"];
         layout-4 = ["F4"];
-        
+
         # Various.
         monitor-0-layout = 1;
         background-color = "rgba(255,255,255,0.666667)";

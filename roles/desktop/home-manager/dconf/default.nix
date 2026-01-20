@@ -2,19 +2,15 @@
 
 {
   imports = [
-    ./appindicator.nix
     ./clocks.nix
     ./desktop.nix
-    ./extensions.nix
+    ./extensions
     # Taken over by stylix
     # ./fonts.nix
-    ./freon.nix
     ./freedesktop.nix
     ./gnome-console.nix
     ./gnome-terminal.nix
-    ./gsconnect.nix
     ./settings-daemon.nix
-    ./tactile.nix
     ./weather.nix
   ];
 
