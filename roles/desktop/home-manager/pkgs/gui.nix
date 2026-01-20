@@ -56,6 +56,7 @@
       gnomeExtensions.gsconnect
       gnomeExtensions.solaar-extension
       gnomeExtensions.tactile
+      gnomeExtensions.tiling-shell
       gnome-clocks
       gnome-color-manager
       gnome-multi-writer
