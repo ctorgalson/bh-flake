@@ -43,7 +43,7 @@
     flake = let
       inherit (inputs) nixpkgs home-manager sops-nix stylix;
       system = "x86_64-linux";
-      unstable-pkgs = import inputs.unstable { inherit system; };
+      unstable-pkgs = import inputs.unstable { system = "x86_64-linux"; };
 
       mkColmenaHost = hostname: role: username: hostSystem: {
         deployment = {
@@ -117,7 +117,7 @@
       # Colmena deployment configuration
       colmena = {
         meta = {
-          nixpkgs = import nixpkgs { inherit system; };
+          nixpkgs = import nixpkgs { system = "x86_64-linux"; };
           specialArgs = { inherit inputs unstable-pkgs; };
         };
 
