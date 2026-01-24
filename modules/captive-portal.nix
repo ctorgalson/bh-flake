@@ -20,12 +20,13 @@
     };
 
     networkmanager = {
-      extraConfig = ''
-        [connectivity]
-        enabled = true
-        uri = http://nmcheck.gnome.org/check_network_status.txt
-        interval = 300
-      '';
+      settings = {
+        connectivity = {
+          enabled = true;
+          uri = "http://nmcheck.gnome.org/check_network_status.txt";
+          interval = 300;
+        };
+      };
     };
   };
 }
