@@ -93,17 +93,11 @@ in
 
       allowedUDPPortRanges = [
         { from = 1714; to = 1764; }
-      ]; 
-
-      checkReversePath = "loose"; # Allows asymmetric routing (common with portals).
+      ];
     };
 
     networkmanager = {
       enable = true;
-      extraConfig = ''
-        [connectivity]
-        enabled = true # Detects captive portals automatically.
-      '';
     };
   };
 

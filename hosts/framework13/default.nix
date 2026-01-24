@@ -7,5 +7,6 @@
     ./configuration.nix
     ./host-overrides.nix
     ./power-management.nix
+    ../../modules/captive-portal.nix
   ];
 }

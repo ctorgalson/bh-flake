@@ -7,5 +7,6 @@
     ./configuration.nix
     ./nixos/stylix
     ./power-management.nix
+    ../../modules/captive-portal.nix
   ];
 }
