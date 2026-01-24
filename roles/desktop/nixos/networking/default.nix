@@ -72,30 +72,41 @@ let
 
 in
 {
-  networking.firewall = {
-    # SSH firewall rules are in modules/ssh.nix
-    allowedTCPPorts = [
-      80
-      443
-      3000
-      4747
-      53317 # localsend
-    ];
+  networking = {
+    firewall = {
+      # SSH firewall rules are in modules/ssh.nix
+      allowedTCPPorts = [
+        80
+        443
+        3000
+        4747
+        53317 # localsend
+      ];
 
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
+      allowedTCPPortRanges = [
+        { from = 1714; to = 1764; }
+      ];
 
-    allowedUDPPorts = [
-      53317 # localsend
-    ];
+      allowedUDPPorts = [
+        53317 # localsend
+      ];
 
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
+      allowedUDPPortRanges = [
+        { from = 1714; to = 1764; }
+      ]; 
+
+      checkReversePath = "loose"; # Allows asymmetric routing (common with portals).
+    };
+
+    networkmanager = {
+      enable = true;
+      extraConfig = ''
+        [connectivity]
+        enabled = true # Detects captive portals automatically.
+      '';
+    };
   };
 
-  networking.networkmanager.enable = true;
 
   # SOPS secrets for Wi-Fi passwords
   # sops.secrets = wifiSecrets;
