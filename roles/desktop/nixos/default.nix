@@ -3,7 +3,6 @@
 {
   imports = [
     ../../../modules/ssh.nix
-    ../../../modules/iphone-tethering.nix
     ./boot
     ./environment
     ./i18n
