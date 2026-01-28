@@ -245,12 +245,6 @@ let
     echo "Creating disk image..."
     ${pkgs.qemu}/bin/qemu-img create -f qcow2 "$VM_DISK" "$VM_DISK_SIZE"
 
-    # Find VirtIO ISO path
-    VIRTIO_ISO=$(ls ${pkgs.virtio-win}/bin/virtio-win*.iso 2>/dev/null | head -n1)
-    if [ -z "$VIRTIO_ISO" ]; then
-      VIRTIO_ISO="${pkgs.virtio-win}/bin/virtio-win.iso"
-    fi
-
     echo "Creating VM definition..."
     ${pkgs.virt-manager}/bin/virt-install \
       --name "$VM_NAME" \
@@ -258,7 +252,6 @@ let
       --vcpus "$CPUS" \
       --disk path="$VM_DISK",format=qcow2,bus=virtio \
       --cdrom "$ISO_PATH" \
-      --disk "$VIRTIO_ISO",device=cdrom \
       --os-variant win10 \
       --network network=default,model=virtio \
       --graphics spice,listen=127.0.0.1 \
