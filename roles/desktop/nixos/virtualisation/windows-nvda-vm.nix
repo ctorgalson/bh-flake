@@ -191,16 +191,50 @@ let
     set -e
 
     VM_NAME="windows-nvda-test"
-    VM_DISK="$HOME/.local/share/libvirt/images/$VM_NAME.qcow2"
+    VM_DISK="/var/lib/libvirt/images/$VM_NAME.qcow2"
     VM_DISK_SIZE="60G"
     MEMORY="4096"
     CPUS="2"
+    LIBVIRT_URI="qemu:///system"
 
     echo "=== Windows NVDA VM Creation Script ==="
     echo ""
 
+    # Check if libvirtd is running
+    if ! systemctl is-active --quiet libvirtd; then
+      echo "Starting libvirtd service..."
+      systemctl start libvirtd || {
+        echo "❌ Failed to start libvirtd. Run: sudo systemctl start libvirtd"
+        exit 1
+      }
+    fi
+
+    # Check if default network exists, create if not
+    if ! ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" net-info default >/dev/null 2>&1; then
+      echo "Creating default network..."
+      ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" net-define /dev/stdin <<EOF
+<network>
+  <name>default</name>
+  <forward mode='nat'/>
+  <bridge name='virbr0' stp='on' delay='0'/>
+  <ip address='192.168.122.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.122.2' end='192.168.122.254'/>
+    </dhcp>
+  </ip>
+</network>
+EOF
+    fi
+
+    # Start and autostart the network
+    if ! ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" net-info default | grep -q "Active:.*yes"; then
+      echo "Starting default network..."
+      ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" net-start default
+    fi
+    ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" net-autostart default >/dev/null 2>&1 || true
+
     # Check if VM already exists
-    if ${pkgs.libvirt}/bin/virsh list --all | grep -q "$VM_NAME"; then
+    if ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --all | grep -q "$VM_NAME"; then
       echo "❌ VM '$VM_NAME' already exists!"
       echo "To recreate it, first run: remove-windows-nvda-vm"
       exit 1
@@ -248,6 +282,7 @@ let
     echo "Creating VM definition..."
     # Try with TPM first (for Windows 11), fall back without TPM if it fails
     if ! ${pkgs.virt-manager}/bin/virt-install \
+      --connect "$LIBVIRT_URI" \
       --name "$VM_NAME" \
       --memory "$MEMORY" \
       --vcpus "$CPUS" \
@@ -268,6 +303,7 @@ let
       ${pkgs.qemu}/bin/qemu-img create -f qcow2 "$VM_DISK" "$VM_DISK_SIZE"
 
       ${pkgs.virt-manager}/bin/virt-install \
+        --connect "$LIBVIRT_URI" \
         --name "$VM_NAME" \
         --memory "$MEMORY" \
         --vcpus "$CPUS" \
@@ -308,29 +344,31 @@ let
   # Script to open the VM
   openWindowsVm = pkgs.writeShellScriptBin "open-windows-nvda-vm" ''
     VM_NAME="windows-nvda-test"
+    LIBVIRT_URI="qemu:///system"
 
     # Check if VM exists
-    if ! ${pkgs.libvirt}/bin/virsh list --all | grep -q "$VM_NAME"; then
+    if ! ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --all | grep -q "$VM_NAME"; then
       echo "❌ VM '$VM_NAME' not found!"
       echo "Create it first with: create-windows-nvda-vm"
       exit 1
     fi
 
     # Start VM if not running
-    if ! ${pkgs.libvirt}/bin/virsh list --state-running | grep -q "$VM_NAME"; then
+    if ! ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --state-running | grep -q "$VM_NAME"; then
       echo "Starting VM..."
-      ${pkgs.libvirt}/bin/virsh start "$VM_NAME"
+      ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" start "$VM_NAME"
       sleep 2
     fi
 
     # Open with virt-viewer
-    ${pkgs.virt-viewer}/bin/virt-viewer "$VM_NAME" &
+    ${pkgs.virt-viewer}/bin/virt-viewer --connect "$LIBVIRT_URI" "$VM_NAME" &
   '';
 
   # Script to remove the VM
   removeWindowsVm = pkgs.writeShellScriptBin "remove-windows-nvda-vm" ''
     VM_NAME="windows-nvda-test"
-    VM_DISK="$HOME/.local/share/libvirt/images/$VM_NAME.qcow2"
+    VM_DISK="/var/lib/libvirt/images/$VM_NAME.qcow2"
+    LIBVIRT_URI="qemu:///system"
 
     echo "⚠️  This will permanently delete the VM and its disk!"
     read -p "Are you sure? (yes/no): " CONFIRM
@@ -341,21 +379,21 @@ let
     fi
 
     # Stop VM if running
-    if ${pkgs.libvirt}/bin/virsh list --state-running | grep -q "$VM_NAME"; then
+    if ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --state-running | grep -q "$VM_NAME"; then
       echo "Stopping VM..."
-      ${pkgs.libvirt}/bin/virsh destroy "$VM_NAME"
+      ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" destroy "$VM_NAME"
     fi
 
     # Undefine VM
-    if ${pkgs.libvirt}/bin/virsh list --all | grep -q "$VM_NAME"; then
+    if ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --all | grep -q "$VM_NAME"; then
       echo "Removing VM definition..."
-      ${pkgs.libvirt}/bin/virsh undefine "$VM_NAME" --nvram
+      ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" undefine "$VM_NAME" --nvram
     fi
 
-    # Remove disk
+    # Remove disk (requires sudo)
     if [ -f "$VM_DISK" ]; then
-      echo "Removing disk image..."
-      rm -f "$VM_DISK"
+      echo "Removing disk image (requires sudo)..."
+      sudo rm -f "$VM_DISK"
     fi
 
     echo "✅ VM removed successfully!"
@@ -435,12 +473,13 @@ POWERSHELL
   # Helper script to show status
   statusWindowsVm = pkgs.writeShellScriptBin "status-windows-nvda-vm" ''
     VM_NAME="windows-nvda-test"
+    LIBVIRT_URI="qemu:///system"
 
     echo "=== Windows NVDA VM Status ==="
     echo ""
 
-    if ${pkgs.libvirt}/bin/virsh list --all | grep -q "$VM_NAME"; then
-      STATE=$(${pkgs.libvirt}/bin/virsh domstate "$VM_NAME")
+    if ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --all 2>/dev/null | grep -q "$VM_NAME"; then
+      STATE=$(${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" domstate "$VM_NAME")
       echo "VM Status: $STATE"
 
       if [ "$STATE" = "running" ]; then

@@ -19,6 +19,16 @@
     };
   };
 
+  # Allow libvirtd group to manage VMs without password
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.libvirt.unix.manage" &&
+          subject.isInGroup("libvirtd")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   # Enable virt-manager GUI
   programs.virt-manager.enable = true;
 
