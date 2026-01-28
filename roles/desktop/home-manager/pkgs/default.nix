@@ -10,6 +10,7 @@
     ./gui.nix
     ./nixnvm.nix
     ./opencode
+    ./tailscale.nix
     ./timereport.nix
     ./timewarrior
     ./tmux.nix
