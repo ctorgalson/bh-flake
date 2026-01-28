@@ -250,12 +250,21 @@ EOF
 
     # Suggest auto-install ISO
     AUTO_ISO="$HOME/.local/share/windows-autoinstall/windows-autoinstall.iso"
+    SHARED_ISO_DIR="/var/lib/libvirt/images"
+
     if [ -f "$AUTO_ISO" ]; then
       echo "✓ Found auto-install ISO: $AUTO_ISO"
       echo ""
       read -p "Use this auto-install ISO? (y/n): " USE_AUTO
       if [ "$USE_AUTO" = "y" ]; then
-        ISO_PATH="$AUTO_ISO"
+        # Copy to shared location for qemu access
+        SHARED_ISO="$SHARED_ISO_DIR/windows-autoinstall.iso"
+        if [ ! -f "$SHARED_ISO" ] || [ "$AUTO_ISO" -nt "$SHARED_ISO" ]; then
+          echo "Copying ISO to shared location..."
+          sudo cp "$AUTO_ISO" "$SHARED_ISO"
+          sudo chmod 644 "$SHARED_ISO"
+        fi
+        ISO_PATH="$SHARED_ISO"
       else
         read -e -p "Enter ISO path: " ISO_PATH
       fi
@@ -269,6 +278,15 @@ EOF
     if [ ! -f "$ISO_PATH" ]; then
       echo "❌ ISO file not found: $ISO_PATH"
       exit 1
+    fi
+
+    # If ISO is in home directory, copy to shared location
+    if [[ "$ISO_PATH" == /home/* ]]; then
+      SHARED_ISO="$SHARED_ISO_DIR/$(basename "$ISO_PATH")"
+      echo "Copying ISO to shared location for qemu access..."
+      sudo cp "$ISO_PATH" "$SHARED_ISO"
+      sudo chmod 644 "$SHARED_ISO"
+      ISO_PATH="$SHARED_ISO"
     fi
 
     echo ""
