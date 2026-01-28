@@ -251,46 +251,38 @@ EOF
       exit 1
     fi
 
-    # Suggest auto-install ISO
-    AUTO_ISO="$HOME/.local/share/windows-autoinstall/windows-autoinstall.iso"
+    # Prompt for Windows ISO
     SHARED_ISO_DIR="/var/lib/libvirt/images"
 
-    if [ -f "$AUTO_ISO" ]; then
-      echo "✓ Found auto-install ISO: $AUTO_ISO"
-      echo ""
-      read -p "Use this auto-install ISO? (y/n): " USE_AUTO
-      if [ "$USE_AUTO" = "y" ]; then
-        # Copy to shared location for qemu access
-        SHARED_ISO="$SHARED_ISO_DIR/windows-autoinstall.iso"
-        if [ ! -f "$SHARED_ISO" ] || [ "$AUTO_ISO" -nt "$SHARED_ISO" ]; then
-          echo "Copying ISO to shared location..."
-          sudo cp "$AUTO_ISO" "$SHARED_ISO"
-          sudo chmod 644 "$SHARED_ISO"
-        fi
-        ISO_PATH="$SHARED_ISO"
-      else
-        read -e -p "Enter ISO path: " ISO_PATH
-      fi
-    else
-      echo "No auto-install ISO found."
-      echo "You can create one with: prepare-windows-autoinstall"
-      echo ""
-      read -e -p "Enter Windows ISO path: " ISO_PATH
-    fi
+    echo "Please provide the path to your Windows ISO file:"
+    echo "(Download from: https://www.microsoft.com/software-download/windows10)"
+    read -e -p "ISO path: " ORIGINAL_ISO_PATH
 
-    if [ ! -f "$ISO_PATH" ]; then
-      echo "❌ ISO file not found: $ISO_PATH"
+    if [ ! -f "$ORIGINAL_ISO_PATH" ]; then
+      echo "❌ ISO file not found: $ORIGINAL_ISO_PATH"
       exit 1
     fi
 
-    # If ISO is in home directory, copy to shared location
-    if [[ "$ISO_PATH" == /home/* ]]; then
-      SHARED_ISO="$SHARED_ISO_DIR/$(basename "$ISO_PATH")"
+    # Copy ISO to shared location if needed
+    if [[ "$ORIGINAL_ISO_PATH" == /home/* ]]; then
+      SHARED_ISO="$SHARED_ISO_DIR/$(basename "$ORIGINAL_ISO_PATH")"
       echo "Copying ISO to shared location for qemu access..."
-      sudo cp "$ISO_PATH" "$SHARED_ISO"
+      sudo cp "$ORIGINAL_ISO_PATH" "$SHARED_ISO"
       sudo chmod 644 "$SHARED_ISO"
       ISO_PATH="$SHARED_ISO"
+    else
+      ISO_PATH="$ORIGINAL_ISO_PATH"
     fi
+
+    # Create a small ISO with autounattend.xml
+    AUTOUNATTEND_ISO="$SHARED_ISO_DIR/autounattend.iso"
+    echo "Creating autounattend.xml ISO..."
+    TEMP_DIR=$(mktemp -d)
+    cp ${autounattendXml} "$TEMP_DIR/autounattend.xml"
+    ${pkgs.xorriso}/bin/xorriso -as mkisofs -o "$AUTOUNATTEND_ISO" -J -r "$TEMP_DIR" >/dev/null 2>&1
+    sudo chown qemu-libvirtd:qemu-libvirtd "$AUTOUNATTEND_ISO"
+    sudo chmod 644 "$AUTOUNATTEND_ISO"
+    rm -rf "$TEMP_DIR"
 
     echo ""
     echo "Creating VM with the following configuration:"
@@ -316,13 +308,14 @@ EOF
       --memory "$MEMORY" \
       --vcpus "$CPUS" \
       --disk path="$VM_DISK",format=qcow2,bus=virtio \
-      --cdrom "$ISO_PATH" \
+      --disk "$ISO_PATH",device=cdrom,bus=sata \
+      --disk "$AUTOUNATTEND_ISO",device=cdrom,bus=sata \
       --os-variant win10 \
       --network network=default,model=virtio \
       --graphics spice,listen=127.0.0.1 \
       --video qxl \
       --channel spicevmc,target_type=virtio,name=com.redhat.spice.0 \
-      --boot uefi,cdrom,hd \
+      --boot uefi \
       --tpm backend.type=emulator,backend.version=2.0,model=tpm-tis \
       --noautoconsole 2>/dev/null; then
 
@@ -336,13 +329,14 @@ EOF
         --memory "$MEMORY" \
         --vcpus "$CPUS" \
         --disk path="$VM_DISK",format=qcow2,bus=virtio \
-        --cdrom "$ISO_PATH" \
+        --disk "$ISO_PATH",device=cdrom,bus=sata \
+        --disk "$AUTOUNATTEND_ISO",device=cdrom,bus=sata \
         --os-variant win10 \
         --network network=default,model=virtio \
         --graphics spice,listen=127.0.0.1 \
         --video qxl \
         --channel spicevmc,target_type=virtio,name=com.redhat.spice.0 \
-        --boot uefi,cdrom,hd \
+        --boot uefi \
         --noautoconsole
     fi
 
