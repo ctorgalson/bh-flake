@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./windows-nvda-vm.nix
-  ];
-
   # Docker support
   virtualisation.docker.enable = true;
 
@@ -47,7 +43,4 @@
     spice-protocol
     virtio-win  # Windows virtio drivers
   ];
-
-  # Enable Windows NVDA VM helper scripts
-  bhFlake.windowsNvdaVm.enable = true;
 }
