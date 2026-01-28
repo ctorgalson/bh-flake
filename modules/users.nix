@@ -21,7 +21,7 @@ in
     (lib.mkIf cfg.enableAdmin {
       users.users.ctorgalson = {
         description = "Christopher";
-        extraGroups = [ "docker" "networkmanager" "wheel" ];
+        extraGroups = [ "docker" "libvirtd" "networkmanager" "wheel" ];
         isNormalUser = true;
         shell = pkgs.zsh;
         hashedPasswordFile = lib.mkIf (cfg.adminPasswordFile != null) cfg.adminPasswordFile;
