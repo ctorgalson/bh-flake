@@ -51,9 +51,10 @@
 
       # Gnome programs / extensions
       design                      # 2D CAD
-      gnome-clocks
+      gnome-clocks                # International clocks
       gnome-color-manager
-      gnome-multi-writer
+      gnome-multi-writer          # USB disk creator
+      gnome-podcasts              # Podcast player
       gnome-tweaks
       gnome-extension-manager
       totem                       # Gnome Videos
