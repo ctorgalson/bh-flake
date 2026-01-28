@@ -252,7 +252,7 @@ let
     fi
 
     echo "Creating VM definition..."
-    ${pkgs.virt-viewer}/bin/virt-install \
+    ${pkgs.virt-manager}/bin/virt-install \
       --name "$VM_NAME" \
       --memory "$MEMORY" \
       --vcpus "$CPUS" \
