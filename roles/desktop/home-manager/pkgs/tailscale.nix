@@ -13,10 +13,10 @@
     name = "Trayscale (Admin)";
     genericName = "Tailscale System Tray (Root)";
     comment = "Unofficial Tailscale system tray application with elevated privileges";
-    exec = "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR HOME=$HOME ${pkgs.trayscale}/bin/trayscale";
+    exec = "pkexec env DISPLAY=''$DISPLAY XAUTHORITY=''$XAUTHORITY XDG_RUNTIME_DIR=''$XDG_RUNTIME_DIR HOME=''$HOME ${pkgs.trayscale}/bin/trayscale";
     icon = "trayscale";
     terminal = false;
     type = "Application";
-    categories = [ "Network" "System" ];
+    categories = [ "Network" ];
   };
 }
