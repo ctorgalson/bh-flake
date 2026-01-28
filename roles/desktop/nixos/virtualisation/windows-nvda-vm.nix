@@ -319,10 +319,9 @@ EOF
       --graphics spice,listen=127.0.0.1 \
       --video qxl \
       --channel spicevmc,target_type=virtio,name=com.redhat.spice.0 \
-      --boot uefi \
+      --boot uefi,cdrom,hd \
       --tpm backend.type=emulator,backend.version=2.0,model=tpm-tis \
-      --noautoconsole \
-      --wait=-1 2>/dev/null; then
+      --noautoconsole 2>/dev/null; then
 
       echo "TPM not supported, creating without TPM (Windows 10 only)..."
       rm -f "$VM_DISK"
@@ -340,9 +339,8 @@ EOF
         --graphics spice,listen=127.0.0.1 \
         --video qxl \
         --channel spicevmc,target_type=virtio,name=com.redhat.spice.0 \
-        --boot uefi \
-        --noautoconsole \
-        --wait=-1
+        --boot uefi,cdrom,hd \
+        --noautoconsole
     fi
 
     echo ""
