@@ -279,7 +279,9 @@ EOF
     echo "Creating autounattend.xml ISO..."
     TEMP_DIR=$(mktemp -d)
     cp ${autounattendXml} "$TEMP_DIR/autounattend.xml"
-    ${pkgs.xorriso}/bin/xorriso -as mkisofs -o "$AUTOUNATTEND_ISO" -J -r "$TEMP_DIR" >/dev/null 2>&1
+    TEMP_ISO="$TEMP_DIR/autounattend.iso"
+    ${pkgs.xorriso}/bin/xorriso -as mkisofs -o "$TEMP_ISO" -J -r "$TEMP_DIR" >/dev/null 2>&1
+    sudo mv "$TEMP_ISO" "$AUTOUNATTEND_ISO"
     sudo chown qemu-libvirtd:qemu-libvirtd "$AUTOUNATTEND_ISO"
     sudo chmod 644 "$AUTOUNATTEND_ISO"
     rm -rf "$TEMP_DIR"
