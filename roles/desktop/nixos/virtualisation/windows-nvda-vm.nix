@@ -233,6 +233,14 @@ EOF
     fi
     ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" net-autostart default >/dev/null 2>&1 || true
 
+    # Create images directory if needed
+    if [ ! -d "$(dirname "$VM_DISK")" ]; then
+      echo "Creating images directory..."
+      sudo mkdir -p "$(dirname "$VM_DISK")"
+      sudo chown root:libvirtd "$(dirname "$VM_DISK")"
+      sudo chmod 775 "$(dirname "$VM_DISK")"
+    fi
+
     # Check if VM already exists
     if ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" list --all | grep -q "$VM_NAME"; then
       echo "❌ VM '$VM_NAME' already exists!"
