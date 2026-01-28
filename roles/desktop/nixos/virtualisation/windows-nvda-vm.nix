@@ -341,25 +341,35 @@ EOF
     fi
 
     echo ""
+    echo "Configuring boot order..."
+
+    # Stop VM if running
+    ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" destroy "$VM_NAME" 2>/dev/null || true
+
+    # Get VM XML, modify boot order, and redefine
+    ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" dumpxml "$VM_NAME" > /tmp/vm-temp.xml
+
+    # Add cdrom boot before hd boot
+    sed -i 's|<boot dev=.hd./>|<boot dev="cdrom"/>\n    <boot dev="hd"/>|' /tmp/vm-temp.xml
+
+    ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" define /tmp/vm-temp.xml
+    rm /tmp/vm-temp.xml
+
+    # Start the VM
+    ${pkgs.libvirt}/bin/virsh --connect "$LIBVIRT_URI" start "$VM_NAME"
+
+    echo ""
     echo "✅ VM created successfully!"
     echo ""
-
-    if [[ "$ISO_PATH" == *"autoinstall"* ]]; then
-      echo "🤖 Auto-installation in progress..."
-      echo "   Windows will install automatically (takes ~15-20 minutes)"
-      echo "   Credentials: username 'nvda' / password 'nvda'"
-      echo ""
-      echo "Monitor progress with:"
-      echo "  open-windows-nvda-vm"
-      echo ""
-      echo "After Windows boots, run inside Windows:"
-      echo "  setup-windows-nvda (shows PowerShell script to install NVDA/browsers)"
-    else
-      echo "To view and complete manual installation:"
-      echo "  open-windows-nvda-vm"
-      echo ""
-      echo "After Windows installation, run: setup-windows-nvda"
-    fi
+    echo "🤖 Auto-installation in progress..."
+    echo "   Windows will install automatically (takes ~15-20 minutes)"
+    echo "   Credentials: username 'nvda' / password 'nvda'"
+    echo ""
+    echo "Monitor progress with:"
+    echo "  open-windows-nvda-vm"
+    echo ""
+    echo "After Windows boots, run inside Windows:"
+    echo "  setup-windows-nvda (shows PowerShell script to install NVDA/browsers)"
   '';
 
   # Script to open the VM
