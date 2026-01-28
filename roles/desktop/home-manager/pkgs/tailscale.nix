@@ -2,8 +2,9 @@
 
 let
   # Create a wrapper script that properly passes environment variables
+  # Uses /run/wrappers/bin/pkexec which has the proper setuid bit set
   trayscale-sudo = pkgs.writeShellScriptBin "trayscale-sudo" ''
-    exec ${pkgs.polkit}/bin/pkexec env \
+    exec /run/wrappers/bin/pkexec env \
       DISPLAY="$DISPLAY" \
       XAUTHORITY="$XAUTHORITY" \
       XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
