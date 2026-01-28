@@ -369,6 +369,12 @@ in
               id = 6;
               name = "LGD";
             };
+            hm = {
+              color = "yellow";
+              icon = "circle";
+              id = 15;
+              name = "HM";
+            };
           };
           containersForce = true;
           id = 1;
