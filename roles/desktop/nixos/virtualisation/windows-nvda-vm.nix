@@ -166,15 +166,18 @@ let
 
     echo "Creating modified ISO..."
     ${pkgs.xorriso}/bin/xorriso -as mkisofs \
-      -iso-level 3 \
-      -full-iso9660-filenames \
-      -volid "WINDOWS_AUTO" \
-      -eltorito-boot boot/etfsboot.com \
+      -iso-level 4 \
+      -l -J -joliet-long -D \
+      -relaxed-filenames \
+      -V "WINDOWS_AUTO" \
+      -b boot/etfsboot.com \
       -no-emul-boot \
       -boot-load-size 8 \
+      -hide boot.catalog \
       -eltorito-alt-boot \
-      -e efi/microsoft/boot/efisys.bin \
+      -eltorito-platform efi \
       -no-emul-boot \
+      -b efi/microsoft/boot/efisys.bin \
       -o "$OUTPUT_ISO" \
       "$EXTRACT_DIR"
 
