@@ -246,7 +246,8 @@ let
     ${pkgs.qemu}/bin/qemu-img create -f qcow2 "$VM_DISK" "$VM_DISK_SIZE"
 
     echo "Creating VM definition..."
-    ${pkgs.virt-manager}/bin/virt-install \
+    # Try with TPM first (for Windows 11), fall back without TPM if it fails
+    if ! ${pkgs.virt-manager}/bin/virt-install \
       --name "$VM_NAME" \
       --memory "$MEMORY" \
       --vcpus "$CPUS" \
@@ -260,7 +261,27 @@ let
       --boot uefi \
       --tpm backend.type=emulator,backend.version=2.0,model=tpm-tis \
       --noautoconsole \
-      --wait=-1
+      --wait=-1 2>/dev/null; then
+
+      echo "TPM not supported, creating without TPM (Windows 10 only)..."
+      rm -f "$VM_DISK"
+      ${pkgs.qemu}/bin/qemu-img create -f qcow2 "$VM_DISK" "$VM_DISK_SIZE"
+
+      ${pkgs.virt-manager}/bin/virt-install \
+        --name "$VM_NAME" \
+        --memory "$MEMORY" \
+        --vcpus "$CPUS" \
+        --disk path="$VM_DISK",format=qcow2,bus=virtio \
+        --cdrom "$ISO_PATH" \
+        --os-variant win10 \
+        --network network=default,model=virtio \
+        --graphics spice,listen=127.0.0.1 \
+        --video qxl \
+        --channel spicevmc,target_type=virtio,name=com.redhat.spice.0 \
+        --boot uefi \
+        --noautoconsole \
+        --wait=-1
+    fi
 
     echo ""
     echo "✅ VM created successfully!"
