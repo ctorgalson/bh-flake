@@ -40,6 +40,7 @@ in
       # @see https://sw.kovidgoyal.net/kitty/conf/
       settings = {
         allow_hyperlinks = true;
+        copy_on_select = true;
         enable_audio_bell = false;
         hide_window_decorations = true;
         notify_on_cmd_finish = "unfocused 5";
