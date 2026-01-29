@@ -40,9 +40,15 @@ virt-manager
 5. Complete setup:
    - Region: your region
    - Keyboard: your layout
-   - **"I don't have internet"** or skip Microsoft account
+   - **To skip Microsoft account**:
+     - In virt-manager, click the info button (ⓘ) or View → Details
+     - Click "NIC" in the left sidebar
+     - Uncheck "Connect at boot" or change "Network source" to "Disconnected"
+     - Click Apply
+     - This forces Windows to allow local account creation
    - Create local account with any username/password
-   - Skip all privacy/Cortana prompts
+   - Skip all privacy/Cortana/services prompts
+   - After setup: Re-enable network in NIC settings
 
 ## Step 4: Install NVDA, Chrome, Firefox
 
