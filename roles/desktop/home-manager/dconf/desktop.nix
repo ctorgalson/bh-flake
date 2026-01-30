@@ -16,10 +16,12 @@
       };
 
       "org/gnome/desktop/input-sources" = {
+        sources = [
+          (lib.gvariant.mkTuple [ "xkb" "us+altgr-intl" ])
+        ];
         xk-options = [
           "terminate:ctrl_alt_bksp"
-          "lv3:switch"
-          "compose:ralt"
+          "lv3:ralt_switch"
         ];
       };
 
