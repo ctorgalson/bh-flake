@@ -21,7 +21,7 @@ let
 
     # Language: Set accept languages for web content
     # https://firefox-source-docs.mozilla.org/intl/locale.html
-    "intl.accept_languages" = "en-CA,en-US,fr";
+    "intl.accept_languages" = "en-CA,en,fr";
 
     # Language: Set default UI language
     # https://firefox-source-docs.mozilla.org/intl/locale.html
