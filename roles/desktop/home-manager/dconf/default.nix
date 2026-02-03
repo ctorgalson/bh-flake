@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./accessibility.nix
     ./clocks.nix
     ./desktop.nix
     ./extensions
