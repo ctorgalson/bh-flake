@@ -8,8 +8,9 @@
       # Previously used to disable auto-generated defaults like:
       #   ForwardAgent no, ServerAliveInterval 0, etc.
       extraConfig = ''
+        LogLevel ERROR
+
         Host *.upsun.com
-          LogLevel ERROR
           Include /home/${host.username}/.upsun-cli/ssh/*.config
       '';
       matchBlocks = {
