@@ -9,6 +9,7 @@
       #   ForwardAgent no, ServerAliveInterval 0, etc.
       extraConfig = ''
         Host *.upsun.com
+          LogLevel ERROR
           Include /home/${host.username}/.upsun-cli/ssh/*.config
       '';
       matchBlocks = {
