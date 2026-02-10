@@ -20,7 +20,6 @@
     systemPackages = with pkgs; [
       bws
       # catppuccin-plymouth
-      docker
       inputs.bh-nixvim.packages.${system}.default
       micro
       mkcert

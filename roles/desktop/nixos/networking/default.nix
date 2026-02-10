@@ -1,6 +1,13 @@
 { config, lib, ... }:
 
 let
+  # DDEV projects
+  ddevProjects = [
+    # Add your project names here, e.g.:
+    # "myproject"
+    # "anotherproject"
+  ];
+
   # Define Wi-Fi networks here
   wifiNetworks = [
     {
@@ -73,6 +80,11 @@ let
 in
 {
   networking = {
+    # Generate /etc/hosts entries for DDEV projects
+    extraHosts = lib.concatMapStringsSep "\n"
+      (project: "127.0.0.1 ${project}.ddev.site")
+      ddevProjects;
+
     firewall = {
       # SSH firewall rules are in modules/ssh.nix
       allowedTCPPorts = [

@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 {
-  # Docker support
-  virtualisation.docker.enable = true;
+  # Docker virtualisation enabled in ddev.nix
 
   # QEMU/KVM with virt-manager support
   virtualisation.libvirtd = {

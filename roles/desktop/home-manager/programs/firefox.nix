@@ -123,45 +123,37 @@ let
     "services.sync.engine.creditcards" = false; # Already disabled
   };
 
-  # Common containers (based on newwork profile, minus work-specific ones)
-  commonContainers = {
-    apple = {
-      color = "red";
-      icon = "circle";
-      id = 7;
-      name = "Apple";
-    };
-    obs = {
-      color = "orange";
-      icon = "cart";
-      id = 2;
-      name = "OBS";
-    };
-    ul = {
-      color = "green";
-      icon = "tree";
-      id = 3;
-      name = "UL";
-    };
-    google = {
-      color = "pink";
-      icon = "circle";
-      id = 4;
-      name = "Google";
-    };
-    infrastructure = {
-      color = "purple";
-      icon = "circle";
-      id = 5;
-      name = "Infrastructure";
-    };
-    msft = {
-      color = "blue";
-      icon = "circle";
-      id = 8;
-      name = "MSFT";
-    };
-  };
+  # All containers - omit profile for shared, specify for profile-specific
+  containerDefs = [
+    # Shared across all profiles (no profile property)
+    { key = "apple"; id = 7; color = "red"; icon = "circle"; name = "Apple"; }
+    { key = "google"; id = 4; color = "pink"; icon = "circle"; name = "Google"; }
+    { key = "infrastructure"; id = 5; color = "purple"; icon = "circle"; name = "Infrastructure"; }
+
+    # Home-only
+    { key = "banking"; id = 1; color = "green"; icon = "dollar"; name = "Banking"; profile = "home"; }
+    { key = "facebook"; id = 9; color = "blue"; icon = "fence"; name = "Facebook"; profile = "home"; }
+    { key = "yyj"; id = 10; color = "red"; icon = "vacation"; name = "YYJ"; profile = "home"; }
+    { key = "linkedin"; id = 11; color = "blue"; icon = "circle"; name = "Linkedin"; profile = "home"; }
+    { key = "media"; id = 12; color = "yellow"; icon = "fence"; name = "Media"; profile = "home"; }
+    { key = "proton"; id = 13; color = "purple"; icon = "circle"; name = "Proton"; profile = "home"; }
+    { key = "shopping"; id = 14; color = "yellow"; icon = "cart"; name = "Shopping"; profile = "home"; }
+
+    # Work-only
+    { key = "anrt"; id = 1; color = "blue"; icon = "briefcase"; name = "ANRT"; profile = "work"; }
+    { key = "lgd"; id = 6; color = "turquoise"; icon = "vacation"; name = "LGD"; profile = "work"; }
+    { key = "hm"; id = 15; color = "yellow"; icon = "circle"; name = "HM"; profile = "work"; }
+    { key = "obs"; id = 2; color = "orange"; icon = "cart"; name = "OBS"; profile = "work"; }
+    { key = "ul"; id = 3; color = "green"; icon = "tree"; name = "UL"; profile = "work"; }
+    { key = "msft"; id = 8; color = "blue"; icon = "circle"; name = "MSFT"; profile = "work"; }
+  ];
+
+  # Filter: include if no profile property OR profile matches
+  containersForProfile = profile:
+    lib.listToAttrs (
+      map (c: lib.nameValuePair c.key (builtins.removeAttrs c ["key" "profile"]))
+      (builtins.filter (c: !(c ? profile) || c.profile == profile) containerDefs)
+    );
 in
 {
   config = {
@@ -265,51 +257,7 @@ in
 
       profiles = {
         newhome = {
-          containers = commonContainers // {
-            # Home-specific containers
-            banking = {
-              color = "green";
-              icon = "dollar";
-              id = 1;
-              name = "Banking";
-            };
-            facebook = {
-              color = "blue";
-              icon = "fence";
-              id = 9;
-              name = "Facebook";
-            };
-            housing = {
-              color = "red";
-              icon = "vacation";
-              id = 10;
-              name = "Housing search";
-            };
-            linkedin = {
-              color = "blue";
-              icon = "circle";
-              id = 11;
-              name = "Linkedin";
-            };
-            media = {
-              color = "yellow";
-              icon = "fence";
-              id = 12;
-              name = "Media";
-            };
-            proton = {
-              color = "purple";
-              icon = "circle";
-              id = 13;
-              name = "Proton";
-            };
-            shopping = {
-              color = "yellow";
-              icon = "cart";
-              id = 14;
-              name = "Shopping";
-            };
-          };
+          containers = containersForProfile "home";
           containersForce = true;
           id = 0;
           name = "Home (new)";
@@ -355,27 +303,7 @@ in
           };
         };
         newwork = {
-          containers = commonContainers // {
-            # Work-specific containers
-            anrt = {
-              color = "blue";
-              icon = "briefcase";
-              id = 1;
-              name = "ANRT";
-            };
-            lgd = {
-              color = "turquoise";
-              icon = "vacation";
-              id = 6;
-              name = "LGD";
-            };
-            hm = {
-              color = "yellow";
-              icon = "circle";
-              id = 15;
-              name = "HM";
-            };
-          };
+          containers = containersForProfile "work";
           containersForce = true;
           id = 1;
           name = "Work (new)";

@@ -4,6 +4,7 @@
   imports = [
     ../../../modules/ssh.nix
     ./boot
+    ./ddev.nix
     ./environment
     ./i18n
     ./networking
