@@ -19,6 +19,7 @@
       go                          # go language
       golangci-lint               # golang linting tool
       httpie                      # curl-like tool
+      litecli                     # better sqlite TUI
       imagemagick                 # image-manipulation
       jq                          # json query + manipulation tool
       nodejs_22                   # nodejs 22
