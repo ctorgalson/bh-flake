@@ -24,6 +24,7 @@
           hostname = "ct.anner.ie";
           user = host.username;
           forwardAgent = true;
+          identityFile = "/home/${host.username}/.ssh/id_ed_25519_sk_annertech"
         };
         "r2" = {
           hostname = "135.181.200.94";
