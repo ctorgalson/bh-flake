@@ -10,13 +10,19 @@
       extraConfig = ''
         LogLevel ERROR
 
-        Host *.upsun.com
-          Include /home/${host.username}/.upsun-cli/ssh/*.config
+        # Host *.upsun.com
+        #   Include /home/${host.username}/.upsun-cli/ssh/*.config
       '';
       matchBlocks = {
-        "*" = {};
+        "*" = {
+          IdentityAgent = "/home/${host.username}/.bitwarden-ssh-agent.sock";
+        };
         "*.anner.ie" = {
           user = "at";
+        };
+        "*.upsun.com" = {
+          hostname = "*.upsun.com";
+          include = "/home/${host.username}/.upsun-cli/ssh/*.config";
         };
         "nx" = {
           hostname = "ct.anner.ie";
