@@ -37,14 +37,14 @@
         sopsFile = ../../../../sops/workstation/shared.yaml;
         owner = host.username;
         mode = "0600";
-        path = "/home/${host.username}/.ssh/id_ed_25519_sk_annertech";
+        path = "/home/${host.username}/.ssh/id_ed25519_sk_annertech";
       };
 
       id_ed_25519_sk_annertech_pub = {
         sopsFile = ../../../../sops/workstation/shared.yaml;
         owner = host.username;
         mode = "0600";
-        path = "/home/${host.username}/.ssh/id_ed_25519_sk_annertech.pub";
+        path = "/home/${host.username}/.ssh/id_ed25519_sk_annertech.pub";
       };
     };
 
