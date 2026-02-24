@@ -32,6 +32,20 @@
         owner = host.username;
         mode = "0600";
       };
+
+      id_ed_25519_sk_annertech = {
+        sopsFile = ../../../../sops/workstation/shared.yaml;
+        owner = host.username;
+        mode = "0600";
+        path = "/home/${host.username}/.ssh/id_ed_25519_sk_annertech";
+      };
+
+      id_ed_25519_sk_annertech_pub = {
+        sopsFile = ../../../../sops/workstation/shared.yaml;
+        owner = host.username;
+        mode = "0600";
+        path = "/home/${host.username}/.ssh/id_ed_25519_sk_annertech.pub";
+      };
     };
 
     # Configure SOPS to use SSH host keys (auto-detected)
