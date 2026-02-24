@@ -15,7 +15,7 @@
       '';
       matchBlocks = {
         "*" = {
-          IdentityAgent = "/home/${host.username}/.bitwarden-ssh-agent.sock";
+          identityAgent = "/home/${host.username}/.bitwarden-ssh-agent.sock";
         };
         "*.anner.ie" = {
           user = "at";
