@@ -1,5 +1,5 @@
 # ser6 host-specific overrides
-{ config, host, lib, pkgs, ... }:
+{ host, ... }:
 
 {
   # Enable vertical tabs in Firefox sidebar (ser6 only)
