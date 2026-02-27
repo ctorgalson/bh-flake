@@ -9,5 +9,11 @@
       newhome.settings."sidebar.verticalTabs" = true;
       newwork.settings."sidebar.verticalTabs" = true;
     };
+
+    dconf.settings = {
+      "org/gnome/shell/extensions/tilingshell" = {
+        layouts-json = (builtins.readFile ./tilingshell-layouts.json);
+      };
+    };
   };
 }
