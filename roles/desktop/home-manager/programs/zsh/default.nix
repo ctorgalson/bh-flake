@@ -21,6 +21,10 @@
         source "$HOME/.zsh_completions_tm"
         export SSH_AUTH_SOCK="''${HOME}/.bitwarden-ssh-agent.sock"
 
+        # Disable graphical SSH password prompts
+        unset SSH_ASKPASS
+        unset SSH_ASKPASS_REQUIRE
+
         # Auto-add key to regular ssh-agent for forwarding
         if [ -S "$XDG_RUNTIME_DIR/ssh-agent" ]; then
           SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent" ssh-add -l | grep -q "id_ed25519_sk_annertech" || \
