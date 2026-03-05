@@ -25,16 +25,8 @@
           user = host.username;
           forwardAgent = true;
           identityFile = "/home/${host.username}/.ssh/id_ed25519_sk_annertech";
-        };
-        "r2" = {
-          hostname = "135.181.200.94";
-          user = host.username;
-          forwardAgent = true;
-        };
-        "rcksl" = {
-          hostname = "162.55.164.32";
-          user = host.username;
-          forwardAgent = true;
+          identitiesOnly = true;
+          identityAgent = "$XDG_RUNTIME_DIR/ssh-agent";
         };
       };
     };
