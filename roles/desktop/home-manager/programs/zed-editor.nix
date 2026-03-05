@@ -102,6 +102,14 @@
                   "~/Projects/gcoco-lgd-theme-old"
                 ];
               }
+              {
+                paths = [
+                  "~/Projects/orange"
+                  "~/Projects/orange/web/themes/custom/slimline"
+                  "~/Projects/orange/web/modules/custom/anrt_asset_search"
+                  "~/Projects/orange/web/modules/custom/orange_homepage_grid"
+                ];
+              }
             ];
             # @see https://github.com/zed-industries/zed/issues/22251
             # @see https://zed.dev/docs/remote-development?highlight=remote#configuration
@@ -128,16 +136,13 @@
           };
           env = { };
         };
-        # Taken over by stylix
-        # theme = {
-        #   # dark = "Solarized Dark";
-        #   # light = "Solarized Light";
-        #   dark = "Catppuccin Macchiato";
-        #   light = "Cattpuccin Latte";
-        #   mode = "dark";
-        # };
-        # ui_font_size = 16;
-        # ui_font_family = "Ubuntu";
+        theme = {
+          dark = "Catppuccin Macchiato";
+          light = "Cattpuccin Latte";
+          mode = "dark";
+        };
+        ui_font_size = 16;
+        ui_font_family = "Ubuntu";
         vim_mode = true;
         working_directory = "current_project_directory";
       };
