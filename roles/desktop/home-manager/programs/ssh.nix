@@ -1,4 +1,4 @@
-{ host, ... }:
+{ host, config, ... }:
 
 {
   config = {
@@ -26,7 +26,7 @@
           forwardAgent = true;
           identityFile = "/home/${host.username}/.ssh/id_ed25519_sk_annertech";
           identitiesOnly = true;
-          identityAgent = "$XDG_RUNTIME_DIR/ssh-agent";
+          identityAgent = "${config.home.sessionVariables.XDG_RUNTIME_DIR}/ssh-agent";
         };
       };
     };
