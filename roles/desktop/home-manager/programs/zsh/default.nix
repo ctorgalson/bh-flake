@@ -20,6 +20,12 @@
         hello-terminal "bonjour"
         source "$HOME/.zsh_completions_tm"
         export SSH_AUTH_SOCK="''${HOME}/.bitwarden-ssh-agent.sock"
+
+        # Auto-add key to regular ssh-agent for forwarding
+        if [ -S "$XDG_RUNTIME_DIR/ssh-agent" ]; then
+          SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent" ssh-add -l | grep -q "id_ed25519_sk_annertech" || \
+            SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent" ssh-add "$HOME/.ssh/id_ed25519_sk_annertech" 2>/dev/null
+        fi
       '';
       plugins = [
          {
