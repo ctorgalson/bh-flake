@@ -38,6 +38,7 @@
         EDITOR = "nvim";
         GIT_EDITOR="vim -c 'set buftype='";
         VISUAL = "nvim";
+        SSH_ASKPASS = "";
       };
 
       stateVersion = "24.05";
