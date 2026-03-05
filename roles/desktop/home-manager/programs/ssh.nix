@@ -26,7 +26,7 @@
           forwardAgent = true;
           identityFile = "/home/${host.username}/.ssh/id_ed25519_sk_annertech";
           identitiesOnly = true;
-          identityAgent = "${config.home.sessionVariables.XDG_RUNTIME_DIR}/ssh-agent";
+          identityAgent = "/run/user/1000/ssh-agent";
         };
       };
     };
