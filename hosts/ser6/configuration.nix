@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ allowed-unfree-packages, config, inputs, lib, pkgs, ... }:
+{ allowed-unfree-packages, config, host, inputs, lib, pkgs, ... }:
 
 {
 # imports =
@@ -239,8 +239,24 @@
   # virtualisation.docker.enable = true;
 
   # Configure SOPS secret for Tailscale auth key
-  sops.secrets.tailscale_auth_key = {
-    sopsFile = ../../sops/workstation/ser6.yaml;
+  sops.secrets = { 
+    tailscale_auth_key = {
+      sopsFile = ../../sops/workstation/ser6.yaml;
+    };
+
+    id_ed_25519_storageshare = {
+      sopsFile = ../../../../sops/workstation/shared.yaml;
+      owner = host.username;
+      mode = "0600";
+      path = "/home/${host.username}/.ssh/id_ed25519_storageshare";
+    };
+
+    id_ed_25519_storageshare_pub = {
+      sopsFile = ../../../../sops/workstation/shared.yaml;
+      owner = host.username;
+      mode = "0600";
+      path = "/home/${host.username}/.ssh/id_ed25519_storageshare.pub";
+    };
   };
 
   services.tailscale = {
