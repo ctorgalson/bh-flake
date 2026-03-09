@@ -12,7 +12,7 @@
 
     programs.ssh = {
       matchBlocks = {
-        "storageshare" = {
+        "storagebox" = {
           # ssh://u362807@u362807.your-storagebox.de:23/./ser6
           hostname = "u362807.your-storagebox.de";
           user = "u362807";
