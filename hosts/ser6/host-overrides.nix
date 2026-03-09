@@ -18,6 +18,8 @@
           user = "u362807";
           identityFile = "/home/${host.username}/.ssh/id_ed25519_storagebox";
           port = 23;
+          identitiesOnly = true;
+          identityAgent = "/run/user/1000/ssh-agent";
         };
       };
     };
