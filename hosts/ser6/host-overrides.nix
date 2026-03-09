@@ -10,6 +10,18 @@
       newwork.settings."sidebar.verticalTabs" = true;
     };
 
+    programs.ssh = {
+      matchBlocks = {
+        "storageshare" = {
+          # ssh://u362807@u362807.your-storagebox.de:23/./ser6
+          hostname = "u362807.your-storagebox.de";
+          user = "u362807";
+          identityFile = "/home/${host.username}/.ssh/id_ed25519_storagebox";
+          port = 23;
+        };
+      };
+    };
+
     dconf.settings = {
       "org/gnome/shell/extensions/tilingshell" = {
         layouts-json = (builtins.readFile ./tilingshell-layouts.json);

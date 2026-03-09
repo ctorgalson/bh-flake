@@ -244,18 +244,18 @@
       sopsFile = ../../sops/workstation/ser6.yaml;
     };
 
-    id_ed_25519_storageshare = {
+    id_ed_25519_storagebox = {
       sopsFile = ../../../../sops/workstation/shared.yaml;
       owner = host.username;
       mode = "0600";
-      path = "/home/${host.username}/.ssh/id_ed25519_storageshare";
+      path = "/home/${host.username}/.ssh/id_ed25519_storagebox";
     };
 
-    id_ed_25519_storageshare_pub = {
+    id_ed_25519_storagebox_pub = {
       sopsFile = ../../../../sops/workstation/shared.yaml;
       owner = host.username;
       mode = "0600";
-      path = "/home/${host.username}/.ssh/id_ed25519_storageshare.pub";
+      path = "/home/${host.username}/.ssh/id_ed25519_storagebox.pub";
     };
   };
 
