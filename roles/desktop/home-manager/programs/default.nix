@@ -9,6 +9,7 @@
     ./fzf.nix
     ./git.nix
     ./kitty.nix
+    ./lazygit.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix

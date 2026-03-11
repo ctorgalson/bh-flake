@@ -15,6 +15,7 @@
 
       # Development
       bruno-cli                   # cli for Bruno API tester
+      delta                       # Syntax-highlighting code pager
       gh-dash                     # Github cli dashboard
       go                          # go language
       golangci-lint               # golang linting tool
