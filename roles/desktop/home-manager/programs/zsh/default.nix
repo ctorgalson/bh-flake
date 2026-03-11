@@ -55,6 +55,7 @@
         # @see roles/desktop/home-manager/pkgs/glab.nix.
         glab = "glab-wrapper";
         less = "moor";
+        lg = "lazygit";
         platform = "upsun";
         timelastmonth = "timew summary :annotations :ids :lastmonth";
         timelastweek = "timew summary :annotations :ids :lastweek";
