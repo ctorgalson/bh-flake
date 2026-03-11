@@ -22,8 +22,9 @@
           update.method = "never";
 
           git = {
-            # Auto-fetch from remote periodically
-            autoFetch = true;
+            # Auto-fetch from remote periodically: No, too irritating with
+            # ssh-confirmation required.
+            autoFetch = false;
             # Use delta for diffs with side-by-side view (pagers is an array)
             pagers = [
               { pager = "${pkgs.delta}/bin/delta --dark --paging=never"; }
