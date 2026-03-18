@@ -23,6 +23,7 @@
       litecli                     # better sqlite TUI
       imagemagick                 # image-manipulation
       jq                          # json query + manipulation tool
+      jwt-cli                     # CLI tool to decode and encode JWTs
       nodejs_22                   # nodejs 22
       python314                   # python 3.14
       scc                         # Go-based code counter
