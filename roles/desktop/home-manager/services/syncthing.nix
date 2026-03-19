@@ -39,7 +39,7 @@
             };
           };
           "${homedir}/.local/share/tk" = {
-            id = "tk";
+            id = "tkdb";
             devices = [ "executive14" "framework13" "ser6" ];
             label = "TK share";
             type = "sendreceive";
@@ -49,7 +49,7 @@
             };
           };
           "${homedir}/.local/share/tm" = {
-            id = "tm";
+            id = "tmdb";
             devices = [ "executive14" "framework13" "ser6" ];
             label = "TM share";
             type = "sendreceive";
