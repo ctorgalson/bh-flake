@@ -16,7 +16,7 @@
       usbutils
       via                          # Keyboard configurator: not sure if working
       vlc                          # Video player
-      vorta                        # Borg Backup GUI
+      unstable-pkgs.vorta                        # Borg Backup GUI
       xdg-desktop-portal-gnome     # For Zoom screen sharing
       yubioath-flutter
       # yubikey-manager-qt
