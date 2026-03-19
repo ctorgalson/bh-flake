@@ -38,6 +38,26 @@
               params.cleanoutDays = "500";
             };
           };
+          "${homedir}/.local/share/tk" = {
+            id = "tm";
+            devices = [ "executive14" "framework13" "ser6" ];
+            label = "TK share";
+            type = "sendreceive";
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "500";
+            };
+          };
+          "${homedir}/.local/share/tm" = {
+            id = "tm";
+            devices = [ "executive14" "framework13" "ser6" ];
+            label = "TM share";
+            type = "sendreceive";
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "500";
+            };
+          };
           "${homedir}/.local/share/timewarrior" = {
             id = "timewarrior";
             devices = [ "executive14" "framework13" "ser6" ];
