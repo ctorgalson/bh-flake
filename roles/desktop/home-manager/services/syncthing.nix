@@ -39,7 +39,7 @@
             };
           };
           "${homedir}/.local/share/tk" = {
-            id = "tm";
+            id = "tk";
             devices = [ "executive14" "framework13" "ser6" ];
             label = "TK share";
             type = "sendreceive";
