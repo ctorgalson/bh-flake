@@ -28,45 +28,8 @@ let
   ];
 
   # Generate SOPS secrets configuration
-  wifiSecrets = lib.listToAttrs (map (net: {
-    name = net.secretKey;
-    value = {
-      sopsFile = ../../../../sops/secrets.yaml;
-      mode = "0600";
-      owner = "root";
-    };
-  }) wifiNetworks);
 
   # Generate sops templates
-  wifiTemplates = lib.listToAttrs (map (net: {
-    name = "${net.ssid}.nmconnection";
-    value = {
-      content = ''
-        [connection]
-        id=${net.ssid}
-        uuid=${net.uuid}
-        type=wifi
-        autoconnect=false
-
-        [wifi]
-        mode=infrastructure
-        ssid=${net.ssid}
-
-        [wifi-security]
-        key-mgmt=wpa-psk
-        psk=''${config.sops.placeholder.${net.secretKey}}
-
-        [ipv4]
-        method=auto
-
-        [ipv6]
-        method=auto
-      '';
-      mode = "0600";
-      owner = "root";
-      group = "root";
-    };
-  }) wifiNetworks);
 
   # Generate environment.etc entries
   wifiEtcFiles = lib.listToAttrs (map (net: {
