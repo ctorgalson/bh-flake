@@ -12,6 +12,7 @@
     ./freedesktop.nix
     ./gnome-console.nix
     ./gnome-terminal.nix
+    ./location.nix
     ./settings-daemon.nix
     ./weather.nix
   ];

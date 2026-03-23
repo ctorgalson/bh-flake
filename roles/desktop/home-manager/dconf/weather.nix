@@ -13,12 +13,12 @@ let
       ]))
     ]);
 
-  toronto = mkLocation {
-    name = "Toronto";
-    airport = "CYTZ";
-    lat = 0.76154532446909495;
-    lon = -1.3857914260834978;
-  };
+  # toronto = mkLocation {
+  #   name = "Toronto";
+  #   airport = "CYTZ";
+  #   lat = 0.76154532446909495;
+  #   lon = -1.3857914260834978;
+  # };
 
   victoria = mkLocation {
     name = "Victoria";
