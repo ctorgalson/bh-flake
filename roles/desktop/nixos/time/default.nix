@@ -1,5 +1,5 @@
 { inputs, lib, pkgs, ... }:
 
 {
-  time.timeZone = "America/Toronto";
+  time.timeZone = "America/Vancouver";
 }
