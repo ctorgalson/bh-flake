@@ -4,6 +4,7 @@
   imports = [
     ./accessibility.nix
     ./clocks.nix
+    ./datetime.nix
     ./desktop.nix
     ./extensions
     # Taken over by stylix
