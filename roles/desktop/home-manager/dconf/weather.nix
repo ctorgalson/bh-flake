@@ -13,12 +13,12 @@ let
       ]))
     ]);
 
-  # toronto = mkLocation {
-  #   name = "Toronto";
-  #   airport = "CYTZ";
-  #   lat = 0.76154532446909495;
-  #   lon = -1.3857914260834978;
-  # };
+  toronto = mkLocation {
+    name = "Toronto";
+    airport = "CYTZ";
+    lat = 0.76154532446909495;
+    lon = -1.3857914260834978;
+  };
 
   victoria = mkLocation {
     name = "Victoria";
@@ -27,17 +27,15 @@ let
     lon = -2.1532672843410971;
   };
 
-  # lyon = mkLocation {
-  #   name = "Lyon";
-  #   airport = "LFLY";
-  #   lat = 0.7979063621878385;
-  #   lon = 0.086393797973719322;
-  # };
+  lyon = mkLocation {
+    name = "Lyon";
+    airport = "LFLY";
+    lat = 0.7979063621878385;
+    lon = 0.086393797973719322;
+  };
 
   locations = [
-    toronto
     victoria
-    # lyon
   ];
 in
 {
