@@ -191,13 +191,13 @@ in
           # 1password.
           "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
 
           # AXE Devtools.
           "@axe-firefox-devtools" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/axe-devtools/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
 
           # Bitwarden.
@@ -209,13 +209,13 @@ in
           # Catppuccin Latte - Blue (Official).
           "{68f3538d-3881-45f4-aa73-288b010b39a1}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/3989616/catppuccin_latte_blue_git-2.0.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
 
           # Catppuccin Mocha - Blue (Official).
           "{2adf0361-e6d8-4b74-b3bc-3f450e8ebb69}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/3989617/catppuccin_mocha_blue_git-2.0.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
 
           # Firefox Multi-Account Containers.
@@ -227,13 +227,13 @@ in
           # Obsidian Web Clipper.
           "clipper@obsidian.md" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/web-clipper-obsidian/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
 
           # React Developer Tools.
           "@react-devtools" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/react-devtools/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
 
           # uBlock Origin
