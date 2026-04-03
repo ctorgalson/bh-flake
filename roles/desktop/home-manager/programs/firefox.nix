@@ -164,6 +164,9 @@ in
       (writeShellScriptBin "workfox" ''
         firefox -P "Work (new)"
       '')
+      (writeShellScriptBin "cleanfox" ''
+        firefox -P "Clean"
+      '')
     ];
 
     # References
@@ -236,7 +239,7 @@ in
           # uBlock Origin
           "uBlock0@raymondhill.net" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
         };
@@ -262,6 +265,11 @@ in
       };
 
       profiles = {
+        clean = {
+          id = 2;
+          name = "Clean";
+          settings = {};
+        };
         newhome = {
           containers = containersForProfile "home";
           containersForce = true;
