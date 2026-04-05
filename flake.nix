@@ -43,7 +43,12 @@
     flake = let
       inherit (inputs) nixpkgs home-manager sops-nix stylix;
       system = "x86_64-linux";
-      unstable-pkgs = import inputs.unstable { system = "x86_64-linux"; };
+      unstable-pkgs = import inputs.unstable {
+        system = "x86_64-linux";
+        config.allowUnfreePredicate = pkg: builtins.elem (pkg.pname or pkg.name or "") [
+          "spideroak"
+        ];
+      };
 
       mkColmenaHost = hostname: role: username: hostSystem: {
         deployment = {
