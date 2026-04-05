@@ -11,7 +11,7 @@
       nextcloud-client            # Nextcloud desktop app
       # quickgui
       solaar
-      spideroak                    # Backups (installed temporarily)
+      unstable-pkgs.spideroak      # Backups (installed temporarily)
       calibre                      # Ebook library manager
       usbutils
       via                          # Keyboard configurator: not sure if working
