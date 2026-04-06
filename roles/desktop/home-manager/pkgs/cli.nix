@@ -50,7 +50,7 @@
       ffmpeg                      # media convertor
       gcc                         # c compiler
       links2                      # cli (text-only) browser
-      lunarvim                    # Neovim IDE for testing
+      unstable-pkgs.lunarvim      # Neovim IDE for testing
       qrencode                    # QR code generator
       rpi-imager                  # Raspberry Pi imager
       tldr                        # simplified man pages
