@@ -1,6 +1,13 @@
 { config, lib, ... }:
 
-let
+{
+  imports = [
+    ./wifi-dns.nix
+  ];
+}
+
+# Original configuration below
+// let
   # DDEV projects
   ddevProjects = [
     # Add your project names here, e.g.:
