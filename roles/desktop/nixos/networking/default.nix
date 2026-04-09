@@ -1,13 +1,6 @@
 { config, lib, ... }:
 
-{
-  imports = [
-    ./wifi-dns.nix
-  ];
-}
-
-# Original configuration below
-// let
+let
   # DDEV projects
   ddevProjects = [
     # Add your project names here, e.g.:
@@ -49,6 +42,10 @@
 
 in
 {
+  imports = [
+    ./wifi-dns.nix
+  ];
+
   networking = {
     # Generate /etc/hosts entries for DDEV projects
     extraHosts = lib.concatMapStringsSep "\n"
