@@ -246,3 +246,34 @@ If pi0 deployment fails, verify ARM emulation is working:
 ```bash
 nix-build '<nixpkgs>' -A hello --arg crossSystem '{ config = "aarch64-unknown-linux-gnu"; }'
 ```
+
+### Framework 13: Blinking Thunderbolt Icon
+
+**Symptoms**: GNOME constantly displays a blinking Thunderbolt/connection icon, even with no devices connected.
+
+**Cause**: The bolt daemon (Thunderbolt service) doesn't recognize Framework 13 AMD's USB4 controllers (PCI IDs 0x1668, 0x1669) and periodically probes them unsuccessfully. Check logs: `journalctl -u bolt.service`
+
+**Solutions** (choose based on needs):
+
+1. **Disable bolt entirely** (if not using Thunderbolt devices):
+   ```nix
+   # In roles/desktop/nixos/services/default.nix
+   services.hardware.bolt.enable = false;
+   ```
+
+2. **Make bolt on-demand only** (keeps functionality, reduces probing):
+   ```nix
+   # In roles/desktop/nixos/system/default.nix
+   systemd.services.bolt.wantedBy = lib.mkForce [];
+   ```
+
+3. **Slow down probing** (reduce frequency):
+   ```nix
+   # In roles/desktop/nixos/system/default.nix
+   systemd.services.bolt.serviceConfig = {
+     Restart = lib.mkForce "on-failure";
+     RestartSec = "60s";
+   };
+   ```
+
+Note: USB-C charging and basic USB functionality work independently of bolt and are not affected by disabling it.
