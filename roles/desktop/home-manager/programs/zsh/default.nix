@@ -4,7 +4,7 @@
   config = {
     home.packages = with pkgs; [
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
-      (writeShellScriptBin "lg" (builtins.readFile ./lg.sh))
+      (writeShellScriptBin "lz" (builtins.readFile ./lz.sh))
       (writeShellScriptBin "nv" (builtins.readFile ./nv.sh))
     ];
 
