@@ -5,13 +5,13 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      extraConfig = ''
-        LogLevel ERROR
-
-        Host *.upsun.com
-          Include /home/${host.username}/.upsun-cli/ssh/*.config
-      '';
       matchBlocks = {
+        "*" = {
+          extraOptions.LogLevel = "ERROR";
+        };
+        "*.upsun.com" = {
+          extraOptions.Include = "/home/${host.username}/.upsun-cli/ssh/*.config";
+        };
         "*.anner.ie" = {
           user = "at";
         };
