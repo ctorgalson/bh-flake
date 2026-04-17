@@ -4,6 +4,8 @@
   config = {
     home.packages = with pkgs; [
       (writeShellScriptBin "hello-terminal" (builtins.readFile ./hello-terminal.sh))
+      (writeShellScriptBin "lg" (builtins.readFile ./lg.sh))
+      (writeShellScriptBin "nv" (builtins.readFile ./nv.sh))
     ];
 
     home.file = {
@@ -55,7 +57,6 @@
         # @see roles/desktop/home-manager/pkgs/glab.nix.
         glab = "glab-wrapper";
         less = "moor";
-        lg = "lazygit";
         platform = "upsun";
         timelastmonth = "timew summary :annotations :ids :lastmonth";
         timelastweek = "timew summary :annotations :ids :lastweek";
