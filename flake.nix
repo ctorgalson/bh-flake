@@ -58,8 +58,6 @@
         };
 
         _module.args = {
-          # Use x86_64 system for building if target is aarch64
-          system = if hostSystem == "aarch64-linux" then "x86_64-linux" else hostSystem;
           host = { inherit hostname role username; };
         };
 
@@ -70,7 +68,6 @@
           {
             home-manager.extraSpecialArgs = {
               inherit inputs unstable-pkgs;
-              system = hostSystem;
               host = { inherit hostname role username; };
             };
             home-manager.backupFileExtension = "bak";
@@ -87,7 +84,7 @@
       mkHost = hostname: role: username:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs unstable-pkgs system;
+            inherit inputs unstable-pkgs;
             host = { inherit hostname role username; };
           };
           modules = [
@@ -95,8 +92,9 @@
             stylix.nixosModules.stylix
             home-manager.nixosModules.default
             {
+              nixpkgs.hostPlatform = system;
               home-manager.extraSpecialArgs = {
-                inherit inputs unstable-pkgs system;
+                inherit inputs unstable-pkgs;
                 host = { inherit hostname role username; };
               };
               home-manager.sharedModules = [
