@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, system, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   environment = {
@@ -20,7 +20,7 @@
     systemPackages = with pkgs; [
       bws
       # catppuccin-plymouth
-      inputs.bh-nixvim.packages.${system}.default
+      inputs.bh-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
       micro
       mkcert
       plymouth

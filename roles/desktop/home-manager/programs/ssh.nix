@@ -4,9 +4,7 @@
   config = {
     programs.ssh = {
       enable = true;
-      # Note: enableDefaultConfig option not available in Home Manager 25.05
-      # Previously used to disable auto-generated defaults like:
-      #   ForwardAgent no, ServerAliveInterval 0, etc.
+      enableDefaultConfig = false;
       extraConfig = ''
         LogLevel ERROR
 
