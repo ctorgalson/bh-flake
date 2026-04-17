@@ -1,18 +1,23 @@
 # zsh function - sourced, not executed
+_NV_PID=""
+
 function nv() {
-  local found_jnum tmpfile jnum_raw flag pid rest
-  tmpfile=$(mktemp)
-  jobs -l > "$tmpfile"
-  while read -r jnum_raw flag pid rest; do
-    if [[ "$(ps -p "$pid" -o comm= 2>/dev/null)" == *nvim* ]]; then
-      found_jnum=${jnum_raw[2,-2]}
-      break
-    fi
-  done < "$tmpfile"
-  rm -f "$tmpfile"
-  if [[ -n "$found_jnum" ]]; then
-    fg %"$found_jnum"
-  else
-    nvim "$@"
+  if [[ -n "$_NV_PID" ]] && \
+     [[ "$(ps -p "$_NV_PID" -o state= 2>/dev/null | tr -d ' ')" == T ]]; then
+    local tmpfile jnum_raw flag pid rest
+    tmpfile=$(mktemp)
+    jobs -l > "$tmpfile"
+    while read -r jnum_raw flag pid rest; do
+      if [[ "$pid" == "$_NV_PID" ]]; then
+        rm -f "$tmpfile"
+        fg %"${jnum_raw[2,-2]}"
+        return
+      fi
+    done < "$tmpfile"
+    rm -f "$tmpfile"
   fi
+  _NV_PID=""
+  nvim "$@" &
+  _NV_PID=$!
+  fg %%
 }
