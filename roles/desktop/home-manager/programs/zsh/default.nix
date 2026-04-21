@@ -19,8 +19,9 @@
       initContent = ''
         hello-terminal "bonjour"
         source "$HOME/.zsh_completions_tm"
-        source ${./nv.sh}
-        source ${./zg.sh}
+        # These don't work very well.
+        # source ${./nv.sh}
+        # source ${./zg.sh}
         export SSH_AUTH_SOCK="''${HOME}/.bitwarden-ssh-agent.sock"
 
         # Disable graphical SSH password prompts
@@ -66,8 +67,10 @@
         timeyear = "timew summary :annotations :ids :year";
         timeyesterday = "timew summary :annotations :ids :yesterday";
         top = "gtop";
-        vi = "nv";
-        vim = "nv";
+        vi = "nvim";
+        vim = "nvim";
+        nv = "nvim";
+        zg = "lazygit";
       };
     };
   };
