@@ -37,7 +37,10 @@
 
   # Fix Plymouth horizontal stretching by setting explicit video mode.
   # Must include "quiet" and "splash" for Plymouth graphical mode.
-  boot.kernelParams = [ "video=1920x1080@60" "quiet" "splash" ];
+  boot.kernelParams = [ "video=1920x1080@60" "quiet" "splash" "efi_pstore.pstore_update_ms=0" ];
+
+  # Archive kernel panic logs from EFI NVRAM on boot to prevent EFI var space filling up.
+  systemd.services.systemd-pstore.enable = true;
   #boot.kernelParams = [ "video=2880x1620@60" "quiet" "splash" ];
   #boot.kernelParams = [ "quiet" "splash" ];
 
