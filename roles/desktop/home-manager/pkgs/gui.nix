@@ -31,8 +31,7 @@
 
       # Chat clients / coms
       localsend                    # Cross-platform "airdrop" app
-      # Removed in favour of (hopefully more stable) cli version.
-      # protonvpn-gui                # ProtonVPN: appears to be permanently borked
+      protonvpn-gui                # ProtonVPN: appears to be permanently borked
       signal-desktop-bin           # Signal client
       slack                        # Slack client
 
