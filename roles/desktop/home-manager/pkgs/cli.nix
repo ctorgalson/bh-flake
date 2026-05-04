@@ -12,6 +12,7 @@
 
       # Communications
       signal-cli                  # Cli version of Signal for sending msgs
+      proton-vpn-cli              # Cli version of ProtonVPN...MUST be better...
 
       # Development
       bruno-cli                   # cli for Bruno API tester
