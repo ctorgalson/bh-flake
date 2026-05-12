@@ -5,7 +5,7 @@
     ./byobu
     ./claude-code
     ./cli.nix
-    ./gcofzf.nix
+    ./gbf.nix
     ./glab.nix
     ./gui.nix
     ./nixnvm.nix
