@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    (writeShellScriptBin "gcofzf" ''
+    (writeShellScriptBin "gbf" ''
       if command -v fzf &> /dev/null; then
         git branch | fzf | xargs git checkout
       else
