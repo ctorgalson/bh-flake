@@ -69,6 +69,9 @@
 
       # Security
       bitwarden-desktop           # Password manager
+
+      # Networking
+      unifi-controller            # Controller for Ubiquiti UniFi access points
     ];
   };
 }
