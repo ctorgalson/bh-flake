@@ -71,8 +71,7 @@
       bitwarden-desktop           # Password manager
 
       # Networking
-      # unifi-controller            # Controller for Ubiquiti UniFi access points
-      unifi                       # Controller for Ubiquiti UniFi access points
+      unstable-pkgs.unifi           # Controller for Ubiquiti UniFi access points (stable has CVEs)
     ];
   };
 }
