@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ allowed-unfree-packages, config, host, inputs, lib, pkgs, ... }:
+{ allowed-unfree-packages, config, host, inputs, lib, pkgs, unstable-pkgs, ... }:
 
 {
 # imports =
@@ -260,6 +260,12 @@
       mode = "0600";
       path = "/home/${host.username}/.ssh/id_ed25519_storagebox.pub";
     };
+  };
+
+  services.unifi = {
+    enable = true;
+    unifiPackage = unstable-pkgs.unifi;
+    openFirewall = true;
   };
 
   services.tailscale = {
