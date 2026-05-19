@@ -265,6 +265,7 @@
   services.unifi = {
     enable = true;
     unifiPackage = unstable-pkgs.unifi;
+    mongodbPackage = pkgs.mongodb-7_0;
     openFirewall = true;
   };
 
