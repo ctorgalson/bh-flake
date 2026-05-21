@@ -55,24 +55,20 @@ in
     firewall = {
       # SSH firewall rules are in modules/ssh.nix
       allowedTCPPorts = [
-        80
-        443
-        3000
-        4747
         53317 # localsend
       ];
 
-      allowedTCPPortRanges = [
-        { from = 1714; to = 1764; }
-      ];
+      # allowedTCPPortRanges = [
+      #   { from = 1714; to = 1764; } # kde connect
+      # ];
 
       allowedUDPPorts = [
         53317 # localsend
       ];
 
-      allowedUDPPortRanges = [
-        { from = 1714; to = 1764; }
-      ];
+      # allowedUDPPortRanges = [
+      #   { from = 1714; to = 1764; } # kde connect
+      # ];
     };
 
     networkmanager = {

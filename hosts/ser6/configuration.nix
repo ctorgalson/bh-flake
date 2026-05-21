@@ -270,6 +270,9 @@
     openFirewall = true;
   };
 
+  # Advertise hostname to directly-connected UniFi switches via LLDP.
+  services.lldpd.enable = true;
+
   services.tailscale = {
     # Configure Tailscale to use auth key for automatic connection.
     authKeyFile = config.sops.secrets.tailscale_auth_key.path;

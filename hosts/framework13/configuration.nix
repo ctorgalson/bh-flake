@@ -23,5 +23,18 @@
   # Configure Tailscale to use auth key for automatic connection
   services.tailscale.authKeyFile = config.sops.secrets.tailscale_auth_key.path;
 
+  # Advertise hostname via mDNS so UniFi (and other LAN tooling) can name this
+  # device. Publishes the host/addresses only — userServices stays off so we
+  # never advertise app-level services on roaming networks.
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
+    };
+  };
+
   system.stateVersion = "24.11";
 }
