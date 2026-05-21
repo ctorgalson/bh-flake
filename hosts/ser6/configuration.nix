@@ -266,6 +266,7 @@
     enable = true;
     unifiPackage = unstable-pkgs.unifi;
     mongodbPackage = pkgs.mongodb-7_0;
+    jrePackage = unstable-pkgs.jdk25_headless;
     openFirewall = true;
   };
 
