@@ -72,6 +72,7 @@
       diceware                    # passphrase generator
       lynis                       # security audit and hardening tool
       openssl                     # SSL and TLS protocols
+      pcsclite                    # Middleware to access a smart card
       sops                        # Secrets management tool
 
       # Hardware
