@@ -271,16 +271,12 @@
     };
   };
 
-  # Temporarily disabled to avoid mongodb-7_0 recompile while testing the
-  # video=DP-2:d kernel param fix. Unifi controller is moving to dedicated
-  # hardware shortly anyway; restore by uncommenting if needed before then.
-  # /var/lib/unifi state is preserved across the disable/enable cycle.
-  # services.unifi = {
-  #   enable = true;
-  #   unifiPackage = unstable-pkgs.unifi;
-  #   mongodbPackage = pkgs.mongodb-7_0;
-  #   openFirewall = true;
-  # };
+  services.unifi = {
+    enable = true;
+    unifiPackage = unstable-pkgs.unifi;
+    mongodbPackage = pkgs.mongodb-7_0;
+    openFirewall = true;
+  };
 
   services.tailscale = {
     # Configure Tailscale to use auth key for automatic connection.
