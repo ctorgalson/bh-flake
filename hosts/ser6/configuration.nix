@@ -275,6 +275,9 @@
     enable = true;
     unifiPackage = unstable-pkgs.unifi;
     mongodbPackage = pkgs.mongodb-7_0;
+    # unstable's unifi (10.x) is compiled against JDK 25; the NixOS module's
+    # default JRE is JDK 17 in stable, which fails with UnsupportedClassVersionError.
+    jrePackage = unstable-pkgs.jdk25_headless;
     openFirewall = true;
   };
 
