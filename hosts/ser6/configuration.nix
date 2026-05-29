@@ -35,9 +35,18 @@
   # boot.loader.systemd-boot.consoleMode = "1";
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Fix Plymouth horizontal stretching by setting explicit video mode.
-  # Must include "quiet" and "splash" for Plymouth graphical mode.
-  boot.kernelParams = [ "video=1920x1080@60" "quiet" "splash" "efi_pstore.pstore_update_ms=0" ];
+  # video=DP-2:d disables the phantom DP-Alt-Mode output the monitor presents
+  # on the USB-C hub cable; without it mutter treats the single physical display
+  # as two outputs and puts the greeter UI on the unseen one.
+  # video=DP-8 pins Plymouth to 1920x1080 on the real DisplayPort cable.
+  # quiet/splash required for Plymouth graphical mode.
+  boot.kernelParams = [
+    "video=DP-2:d"
+    "video=DP-8:1920x1080@60"
+    "quiet"
+    "splash"
+    "efi_pstore.pstore_update_ms=0"
+  ];
 
   # Archive kernel panic logs from EFI NVRAM on boot to prevent EFI var space filling up.
   systemd.services.systemd-pstore.enable = true;
