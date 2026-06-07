@@ -11,6 +11,9 @@ in
 {
   # Enable Docker for DDEV
   virtualisation.docker.enable = true;
+  # Pin to docker_29: nixos-25.11's `pkgs.docker` alias still points at the
+  # now-insecure docker_28. Revisit when upgrading to a newer stable channel.
+  virtualisation.docker.package = pkgs.docker_29;
 
   # Install DDEV system-wide
   environment.systemPackages = with pkgs; [
