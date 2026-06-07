@@ -42,6 +42,7 @@
 
     flake = let
       inherit (inputs) nixpkgs;
+      inherit (nixpkgs) lib;
       system = "x86_64-linux";
       unstable-pkgs = import inputs.unstable {
         system = "x86_64-linux";
@@ -53,12 +54,11 @@
 
       inherit (import ./lib/mk-host.nix { inherit inputs unstable-pkgs; })
         mkHost mkColmenaHost;
+
+      hosts = import ./hosts/data.nix;
     in {
-      nixosConfigurations = {
-        framework13 = mkHost "framework13" "desktop" "ctorgalson";
-        ser6 = mkHost "ser6" "desktop" "ctorgalson";
-        executive14 = mkHost "executive14" "desktop" "ctorgalson";
-      };
+      nixosConfigurations =
+        lib.mapAttrs (hostname: h: mkHost hostname h.profile h.username) hosts;
 
       # Colmena deployment configuration
       colmena = {
@@ -66,12 +66,9 @@
           nixpkgs = import nixpkgs { system = "x86_64-linux"; };
           specialArgs = { inherit inputs unstable-pkgs; };
         };
-
-        # Desktop hosts (x86_64-linux)
-        framework13 = mkColmenaHost "framework13" "desktop" "ctorgalson" system;
-        ser6 = mkColmenaHost "ser6" "desktop" "ctorgalson" system;
-        executive14 = mkColmenaHost "executive14" "desktop" "ctorgalson" system;
-      };
+      } // lib.mapAttrs
+        (hostname: h: mkColmenaHost hostname h.profile h.username system)
+        hosts;
     };
 
     perSystem = { pkgs, self', ... }: {
