@@ -28,26 +28,4 @@
     ACTION=="add", SUBSYSTEM=="input", KERNEL=="event*", ATTRS{id/bustype}=="0005", ATTR{power/wakeup}="enabled"
   '';
 
-  # Bluetooth power settings
-  hardware.bluetooth.powerOnBoot = true;
-
-  # Let GNOME handle power management - logind stays out of the way
-  # GNOME Settings Daemon blocks these keys via inhibitor and handles them itself
-  services.logind.settings = {
-    Login = {
-      HandlePowerKey = "ignore";
-      HandleSuspendKey = "ignore";
-      HandleLidSwitch = "ignore";
-      # Don't set IdleAction - let GNOME power settings control screen blanking/suspend
-    };
-  };
-
-  # Disable power-profiles-daemon to avoid conflicts with GNOME power management
-  services.power-profiles-daemon.enable = false;
-
-  # CPU governor - balanced mode for efficiency while still responsive
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "schedutil";  # Modern balanced scheduler-based governor
-  };
 }

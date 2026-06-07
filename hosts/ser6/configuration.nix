@@ -50,6 +50,17 @@
 
   # Archive kernel panic logs from EFI NVRAM on boot to prevent EFI var space filling up.
   systemd.services.systemd-pstore.enable = true;
+
+  # Force Mutter to use software cursor rendering instead of the GPU's hardware
+  # cursor plane. Workaround for an amdgpu/Mutter interaction on this host: when
+  # the DisplayPort link to the USB-C monitor renegotiates (e.g. monitor power
+  # save, hub re-enumeration), Mutter's atomic cursor plane commits start
+  # failing with EINVAL. Combined with the 1000 Hz polling rate of the wireless
+  # mouse, this floods the kernel with ~1000 failed atomic commits/sec and
+  # freezes the display. Software cursor avoids the atomic commit path
+  # entirely. Costs a small amount of CPU per cursor move; imperceptible at
+  # 1080p. Revisit if a newer kernel/mesa/mutter fixes the underlying bug.
+  environment.sessionVariables.MUTTER_DEBUG_DISABLE_HW_CURSORS = "1";
   #boot.kernelParams = [ "video=2880x1620@60" "quiet" "splash" ];
   #boot.kernelParams = [ "quiet" "splash" ];
 
@@ -273,11 +284,14 @@
 
   services.unifi = {
     enable = true;
+    # Stable's pinned unifi is 9.5.21; we want 10.x. Unstable currently has
+    # 10.2.105. Once stable catches up, this can move back to `pkgs.unifi`.
     unifiPackage = unstable-pkgs.unifi;
+    # The unifi module asserts both unifiPackage and mongodbPackage must be set
+    # explicitly (no UniFi <8 support → no safe default).
     mongodbPackage = pkgs.mongodb-7_0;
-    # unstable's unifi (10.x) is compiled against JDK 25; the NixOS module's
-    # default JRE is JDK 17 in stable, which fails with UnsupportedClassVersionError.
-    jrePackage = unstable-pkgs.jdk25_headless;
+    # unifi 10.x requires JDK 25; module default is JDK 17.
+    jrePackage = pkgs.jdk25_headless;
     openFirewall = true;
   };
 
