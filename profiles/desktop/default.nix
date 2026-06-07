@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/users.nix
+    ../../modules/nixos/users.nix
     ./nixos
   ];
 

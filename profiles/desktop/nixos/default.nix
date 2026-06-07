@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../../modules/ssh.nix
+    ../../../modules/nixos/ssh.nix
     ./boot
     ./ddev.nix
     ./environment
