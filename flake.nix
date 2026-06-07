@@ -75,7 +75,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
           }
-          ./roles/${role}
+          ./profiles/${role}
           ./hosts/${hostname}
         ];
 
@@ -106,7 +106,7 @@
               home-manager.useUserPackages = true;
             }
             # role configuration.
-            ./roles/${role}
+            ./profiles/${role}
             # host configuration (including role overrides).
             ./hosts/${hostname}
           ];
