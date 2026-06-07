@@ -9,9 +9,6 @@
     enable = true;
   };
 
-  # For floorp.
-  services.gnome.gnome-browser-connector.enable = true;
-
   services.journald.extraConfig = ''
     SystemMaxUse=500M
     MaxRetentionSec=7d
