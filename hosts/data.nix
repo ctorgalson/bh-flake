@@ -1,6 +1,6 @@
 {
   framework13 = {
-    profile = "desktop";
+    profile = "laptop";
     username = "ctorgalson";
   };
   ser6 = {
@@ -8,7 +8,7 @@
     username = "ctorgalson";
   };
   executive14 = {
-    profile = "desktop";
+    profile = "laptop";
     username = "ctorgalson";
   };
 }
