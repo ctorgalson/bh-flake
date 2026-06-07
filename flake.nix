@@ -41,7 +41,7 @@
     systems = [ "x86_64-linux" ];
 
     flake = let
-      inherit (inputs) nixpkgs home-manager sops-nix stylix;
+      inherit (inputs) nixpkgs;
       system = "x86_64-linux";
       unstable-pkgs = import inputs.unstable {
         system = "x86_64-linux";
@@ -51,66 +51,8 @@
         ];
       };
 
-      mkColmenaHost = hostname: role: username: hostSystem: {
-        deployment = {
-          targetHost = hostname;
-          targetUser = "bh";
-          allowLocalDeployment = true;
-        };
-
-        _module.args = {
-          host = { inherit hostname role username; };
-        };
-
-        imports = [
-          sops-nix.nixosModules.sops
-          stylix.nixosModules.stylix
-          home-manager.nixosModules.default
-          {
-            home-manager.extraSpecialArgs = {
-              inherit inputs unstable-pkgs;
-              host = { inherit hostname role username; };
-            };
-            home-manager.backupFileExtension = "bak";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-          ./profiles/${role}
-          ./hosts/${hostname}
-        ];
-
-        nixpkgs.hostPlatform = hostSystem;
-      };
-
-      mkHost = hostname: role: username:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs unstable-pkgs;
-            host = { inherit hostname role username; };
-          };
-          modules = [
-            sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.default
-            {
-              nixpkgs.hostPlatform = system;
-              home-manager.extraSpecialArgs = {
-                inherit inputs unstable-pkgs;
-                host = { inherit hostname role username; };
-              };
-              home-manager.sharedModules = [
-                # sops-nix.homeManagerModules.sops
-                # stylix.homeManagerModules.stylix
-              ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-            # role configuration.
-            ./profiles/${role}
-            # host configuration (including role overrides).
-            ./hosts/${hostname}
-          ];
-        };
+      inherit (import ./lib/mk-host.nix { inherit inputs unstable-pkgs; })
+        mkHost mkColmenaHost;
     in {
       nixosConfigurations = {
         framework13 = mkHost "framework13" "desktop" "ctorgalson";
