@@ -2,6 +2,10 @@
 
 {
   environment = {
+    extraInit = ''
+      export UPSUN_CLI_TOKEN=$(cat /run/secrets/platformsh_cli_token)
+    '';
+
     sessionVariables = {
       # BW's ssh-agent doesn't seem to work properly on Nixos (?)
       # SSH_AUTH_SOCK = "$HOME.bitwarden-ssh-agent.sock";
