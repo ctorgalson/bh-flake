@@ -46,6 +46,13 @@
         mode = "0600";
         path = "/home/${host.username}/.ssh/id_ed25519_sk_annertech.pub";
       };
+
+      platformsh_cli_token = {
+        sopsFile = ../../../../sops/workstation/shared.yaml;
+        owner = host.username;
+        mode = "0600";
+        path = "/home/${host.username}/.ssh/id_ed25519_sk_annertech.pub";
+      };
     };
 
     # Configure SOPS to use SSH host keys (auto-detected)
