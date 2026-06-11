@@ -3,6 +3,7 @@
 {
   imports = [
     ../../../modules/nixos/ssh.nix
+    ../../../modules/nixos/iphone-webcam.nix
     ./boot
     ./ddev.nix
     ./environment
