@@ -13,7 +13,7 @@
     ./tailscale.nix
     ./timereport.nix
     ./timewarrior
-    ./tmux.nix
+    ./tmux
     ./wakehost.nix
   ];
 }
